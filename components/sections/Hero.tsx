@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 
 const TGE_DATE = new Date("2026-06-01T00:00:00Z").getTime();
@@ -29,27 +29,48 @@ function useCountdown() {
 }
 
 function Embers() {
-  const embers = Array.from({ length: 20 });
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const embers = useMemo(
+    () =>
+      Array.from({ length: 30 }).map((_, i) => ({
+        id: i,
+        startX: Math.random() * 100,
+        endX: Math.random() * 100,
+        duration: 6 + Math.random() * 8,
+        delay: Math.random() * 10,
+        size: 2 + Math.random() * 3,
+      })),
+    []
+  );
+
+  if (!mounted) return null;
+
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {embers.map((_, i) => (
+      {embers.map((e) => (
         <motion.div
-          key={i}
+          key={e.id}
           className="ember"
+          style={{
+            width: `${e.size}px`,
+            height: `${e.size}px`,
+          }}
           initial={{
-            x: `${Math.random() * 100}%`,
-            y: "100%",
+            left: `${e.startX}%`,
+            bottom: "-5%",
             opacity: 0,
           }}
           animate={{
-            y: "-10%",
+            left: `${e.endX}%`,
+            bottom: "105%",
             opacity: [0, 1, 1, 0],
-            x: `${Math.random() * 100}%`,
           }}
           transition={{
-            duration: 8 + Math.random() * 6,
+            duration: e.duration,
+            delay: e.delay,
             repeat: Infinity,
-            delay: Math.random() * 8,
             ease: "easeOut",
           }}
         />
