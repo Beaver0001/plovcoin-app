@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg text-rice font-body;
+    background-image:
+      radial-gradient(ellipse at top, rgba(255, 107, 26, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom, rgba(245, 200, 66, 0.04) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-fire text-bg;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-soft;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-fire/40 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-fire/70;
+  }
+}
+
+@layer components {
+  .container-narrow {
+    @apply mx-auto max-w-6xl px-6;
+  }
+
+  .text-fire-gradient {
+    @apply bg-fire-gradient bg-clip-text text-transparent;
+  }
+
+  .card-warm {
+    @apply rounded-2xl border border-fire/15 bg-bg-soft/60 p-6 backdrop-blur-sm
+           transition-all duration-300 hover:border-fire/40 hover:bg-bg-soft;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+           bg-fire-gradient px-7 py-3.5 font-display text-base
+           text-bg shadow-[0_0_30px_rgba(255,107,26,0.3)]
+           transition-all duration-300 hover:scale-105
+           hover:shadow-[0_0_50px_rgba(255,107,26,0.5)];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+           border border-fire/40 bg-transparent px-7 py-3.5
+           font-display text-base text-rice
+           transition-all duration-300 hover:border-fire hover:bg-fire/10;
+  }
+
+  .badge-pill {
+    @apply inline-flex items-center gap-1.5 rounded-full
+           border border-fire/30 bg-fire/5 px-3 py-1
+           font-mono text-xs uppercase tracking-wider text-fire-glow;
+  }
+
+  .glow-text {
+    text-shadow:
+      0 0 20px rgba(255, 107, 26, 0.5),
+      0 0 40px rgba(255, 107, 26, 0.3);
+  }
+
+  .divider-fire {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-fire/30 to-transparent;
+  }
+}
+
+/* Ember particles */
+.ember {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, #FF8A3D 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Noise texture overlay */
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+}

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A0806"/>
+      <stop offset="100%" stop-color="#1A1410"/>
+    </linearGradient>
+    <linearGradient id="fire" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B1A"/>
+      <stop offset="50%" stop-color="#FFB700"/>
+      <stop offset="100%" stop-color="#F5C842"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF6B1A" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#FF6B1A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow">
+      <feGaussianBlur stdDeviation="8"/>
+      <feOffset dx="0" dy="0"/>
+      <feFlood flood-color="#FF6B1A" flood-opacity="0.5"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="600" cy="315" rx="500" ry="300" fill="url(#glow)"/>
+
+  <!-- Top badge -->
+  <g transform="translate(600, 130)" text-anchor="middle">
+    <rect x="-180" y="-20" width="360" height="40" rx="20" fill="none" stroke="#FF6B1A" stroke-opacity="0.3" stroke-width="1"/>
+    <circle cx="-150" cy="0" r="4" fill="#FF6B1A"/>
+    <text y="6" font-family="monospace" font-size="14" fill="#D8CBA6" letter-spacing="3">SOLANA · PRE-TGE · JUNE 2026</text>
+  </g>
+
+  <!-- Main title $PLOV -->
+  <text x="600" y="350" text-anchor="middle" font-family="Georgia, 'Bagel Fat One', serif" font-weight="900" font-size="220" fill="url(#fire)" filter="url(#shadow)">$PLOV</text>
+
+  <!-- Tagline -->
+  <text x="600" y="430" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="36" fill="#F5ECD5">Billions have tasted it. <tspan fill="#FF8A3D">Now they can own it.</tspan></text>
+
+  <!-- Subtitle -->
+  <text x="600" y="490" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#D8CBA6">The first universal cultural memecoin on Solana</text>
+
+  <!-- Bottom row -->
+  <g transform="translate(600, 570)" text-anchor="middle">
+    <text font-family="monospace" font-size="16" fill="#8A7E60" letter-spacing="2">FAIR LAUNCH · 45% TO COMMUNITY · NO PRESALE · NO VC</text>
+  </g>
+
+  <!-- URL bottom-right -->
+  <text x="1140" y="600" text-anchor="end" font-family="monospace" font-size="16" fill="#FF6B1A">plovcoin.com</text>
+</svg>
