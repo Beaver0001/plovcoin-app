@@ -3,27 +3,14 @@ import { I18nProvider } from "@/components/I18nProvider";
 import { getDictionary } from "@/lib/i18n";
 import { HomeView } from "@/components/views/HomeView";
 
-const dict = getDictionary("en");
+const dict = getDictionary("ru");
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://plovcoin.com"),
   title: dict.meta.homeTitle,
   description: dict.meta.homeDesc,
-  keywords: [
-    "PlovCoin",
-    "PLOV",
-    "Solana memecoin",
-    "fair launch",
-    "cultural memecoin",
-    "airdrop",
-    "Solana",
-    "crypto",
-  ],
-  authors: [{ name: "PlovCoin Team" }],
-  creator: "PlovCoin",
-  publisher: "PlovCoin",
   alternates: {
-    canonical: "https://plovcoin.com/",
+    canonical: "https://plovcoin.com/ru",
     languages: {
       en: "https://plovcoin.com/",
       ru: "https://plovcoin.com/ru",
@@ -31,8 +18,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://plovcoin.com/",
+    locale: "ru_RU",
+    url: "https://plovcoin.com/ru",
     siteName: "PlovCoin",
     title: dict.meta.homeTitle,
     description: dict.meta.homeDesc,
@@ -41,7 +28,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "PlovCoin — The Universal Recipe On-Chain",
+        alt: "PlovCoin — Универсальный рецепт в блокчейне",
       },
     ],
   },
@@ -52,24 +39,11 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
     creator: "@PlovCoinOfficial",
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/manifest.json",
 };
 
 export default function Page() {
   return (
-    <I18nProvider locale="en" dict={dict}>
+    <I18nProvider locale="ru" dict={dict}>
       <HomeView />
     </I18nProvider>
   );

@@ -3,13 +3,13 @@ import { I18nProvider } from "@/components/I18nProvider";
 import { getDictionary } from "@/lib/i18n";
 import { PlovDropView } from "@/components/views/PlovDropView";
 
-const dict = getDictionary("en");
+const dict = getDictionary("ru");
 
 export const metadata: Metadata = {
   title: dict.meta.plovdropTitle,
   description: dict.meta.plovdropDesc,
   alternates: {
-    canonical: "https://plovcoin.com/plovdrop",
+    canonical: "https://plovcoin.com/ru/plovdrop",
     languages: {
       en: "https://plovcoin.com/plovdrop",
       ru: "https://plovcoin.com/ru/plovdrop",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <I18nProvider locale="en" dict={dict}>
+    <I18nProvider locale="ru" dict={dict}>
       <PlovDropView />
     </I18nProvider>
   );

@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
+import { useI18n } from "../I18nProvider";
+import { localePath } from "@/lib/i18n";
 
 const TGE_DATE = new Date("2026-06-01T00:00:00Z").getTime();
 
@@ -80,7 +82,16 @@ function Embers() {
 }
 
 export function Hero() {
-  const t = useCountdown();
+  const time = useCountdown();
+  const { locale, t } = useI18n();
+
+  const trustItems = [
+    t.hero.trust.loved,
+    t.hero.trust.supply,
+    t.hero.trust.multisig,
+    t.hero.trust.fair,
+    t.hero.trust.proof,
+  ];
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
@@ -101,7 +112,7 @@ export function Hero() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-fire" />
           </span>
           <span className="font-mono text-xs uppercase tracking-widest text-rice-soft">
-            Solana · Pre-TGE · June 2026
+            {t.hero.badge}
           </span>
         </motion.div>
 
@@ -123,12 +134,11 @@ export function Hero() {
           className="mx-auto mt-8 max-w-2xl"
         >
           <p className="font-serif text-3xl italic leading-tight text-rice md:text-4xl">
-            Billions have tasted it.{" "}
-            <span className="text-fire-glow">Now they can own it.</span>
+            {t.hero.taglineStart}{" "}
+            <span className="text-fire-glow">{t.hero.taglineEnd}</span>
           </p>
           <p className="mt-6 text-base text-rice-soft md:text-lg">
-            A recipe loved across every continent. Now on-chain, with a 1,000-year community testing it.
-            Fair launch. No presale. No&nbsp;VC.
+            {t.hero.subtitle}
           </p>
         </motion.div>
 
@@ -140,10 +150,10 @@ export function Hero() {
           className="mx-auto mt-12 grid max-w-xl grid-cols-4 gap-3"
         >
           {[
-            { label: "Days", value: t.days },
-            { label: "Hours", value: t.hours },
-            { label: "Mins", value: t.minutes },
-            { label: "Secs", value: t.seconds },
+            { label: t.hero.countdownDays, value: time.days },
+            { label: t.hero.countdownHours, value: time.hours },
+            { label: t.hero.countdownMins, value: time.minutes },
+            { label: t.hero.countdownSecs, value: time.seconds },
           ].map((item) => (
             <div
               key={item.label}
@@ -166,11 +176,11 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <Link href="/#community" className="btn-primary">
-            Join PlovArmy →
+          <Link href={`${localePath(locale, "/")}#community`} className="btn-primary">
+            {t.hero.ctaPrimary}
           </Link>
-          <Link href="/whitepaper" className="btn-secondary">
-            Read Whitepaper
+          <Link href={localePath(locale, "/whitepaper")} className="btn-secondary">
+            {t.hero.ctaSecondary}
           </Link>
         </motion.div>
 
@@ -181,13 +191,7 @@ export function Hero() {
           transition={{ duration: 1, delay: 1 }}
           className="mt-20 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-rice-dim"
         >
-          {[
-            "Globally Loved",
-            "13B Fixed Supply",
-            "Squads Multisig",
-            "Fair Launch",
-            "Proof-Hub Open",
-          ].map((item) => (
+          {trustItems.map((item) => (
             <div key={item} className="flex items-center gap-2 font-mono uppercase tracking-wider">
               <span className="h-1 w-1 rounded-full bg-fire/60" />
               {item}

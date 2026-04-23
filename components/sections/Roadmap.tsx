@@ -2,80 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Check, Clock, Lock } from "lucide-react";
+import { useI18n } from "../I18nProvider";
 
-const phases = [
-  {
-    status: "in-progress",
-    quarter: "Q2 2026",
-    name: "Phase 0",
-    subtitle: "Foundation",
-    items: [
-      "Token deployed on Solana (mint & freeze disabled)",
-      "Squads multisig treasury setup",
-      "Security review initiated",
-      "Proof-Hub live, all addresses public",
-    ],
-  },
-  {
-    status: "upcoming",
-    quarter: "June 2026",
-    name: "Phase 1",
-    subtitle: "TGE Launch",
-    items: [
-      "Meteora DLMM launch pool (T0)",
-      "PlovDrop Wave 1 distribution (~6.8% supply)",
-      "Liquidity protection active (lock/timelock)",
-      "Claim portal opens at claim.plovcoin.com",
-    ],
-  },
-  {
-    status: "upcoming",
-    quarter: "Q3 2026",
-    name: "Phase 2",
-    subtitle: "Growth",
-    items: [
-      "Raydium CPMM mirror pool (T+1 APY-gated)",
-      "20,000+ holders target",
-      "CEX Tier-2 listings initiated",
-      "PlovDrop Wave 2 distribution",
-    ],
-  },
-  {
-    status: "upcoming",
-    quarter: "Q4 2026",
-    name: "Phase 3",
-    subtitle: "Scale",
-    items: [
-      "Orca CLMM USDC support pool (T+30)",
-      "Liquidity expansion across multiple DEXs",
-      "100,000+ holders target",
-      "Additional Tier-2 CEX listings",
-    ],
-  },
-  {
-    status: "future",
-    quarter: "2027+",
-    name: "Phase 4+",
-    subtitle: "Expansion",
-    items: [
-      "DAO governance transition",
-      "Kazan Genesis NFT collection",
-      "Cross-chain bridges evaluation",
-      "#PlovFest — annual community event",
-    ],
-  },
-];
+const STATUSES = ["in-progress", "upcoming", "upcoming", "upcoming", "future"] as const;
 
 const statusIcon = {
   "in-progress": Clock,
   upcoming: Lock,
   future: Lock,
-};
-
-const statusLabel = {
-  "in-progress": "In Progress",
-  upcoming: "Upcoming",
-  future: "Future",
 };
 
 const statusColor = {
@@ -85,6 +19,14 @@ const statusColor = {
 };
 
 export function Roadmap() {
+  const { t } = useI18n();
+
+  const statusLabel = {
+    "in-progress": t.roadmap.statusInProgress,
+    upcoming: t.roadmap.statusUpcoming,
+    future: t.roadmap.statusFuture,
+  };
+
   return (
     <section id="roadmap" className="relative py-32">
       <div className="container-narrow">
@@ -95,21 +37,21 @@ export function Roadmap() {
           transition={{ duration: 0.6 }}
           className="mb-16 max-w-3xl"
         >
-          <div className="badge-pill mb-5">The Cooking Stages</div>
+          <div className="badge-pill mb-5">{t.roadmap.chapter}</div>
           <h2 className="font-display text-5xl leading-[0.95] text-rice md:text-7xl">
-            Roadmap
+            {t.roadmap.titleLine1}
             <br />
-            <span className="text-fire-gradient">to the table</span>
+            <span className="text-fire-gradient">{t.roadmap.titleLine2}</span>
           </h2>
           <p className="mt-8 max-w-2xl font-serif text-xl italic text-rice-soft">
-            Every dish has phases. Ingredients, preparation, fire, serving. Same with $PLOV —
-            a deliberate sequence, not a hype pump.
+            {t.roadmap.intro}
           </p>
         </motion.div>
 
         <div className="space-y-3">
-          {phases.map((p, i) => {
-            const Icon = statusIcon[p.status as keyof typeof statusIcon];
+          {t.roadmap.phases.map((p, i) => {
+            const status = STATUSES[i] ?? "future";
+            const Icon = statusIcon[status];
             return (
               <motion.div
                 key={p.name}
@@ -118,17 +60,15 @@ export function Roadmap() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 className={`card-warm grid gap-6 md:grid-cols-[200px_1fr] !p-6 ${
-                  p.status === "in-progress" ? "border-fire/40 bg-bg-soft/80" : ""
+                  status === "in-progress" ? "border-fire/40 bg-bg-soft/80" : ""
                 }`}
               >
                 <div>
                   <div
-                    className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest ${
-                      statusColor[p.status as keyof typeof statusColor]
-                    }`}
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest ${statusColor[status]}`}
                   >
                     <Icon size={10} />
-                    {statusLabel[p.status as keyof typeof statusLabel]}
+                    {statusLabel[status]}
                   </div>
                   <div className="mt-3 font-mono text-xs uppercase tracking-widest text-rice-dim">
                     {p.quarter}
@@ -143,7 +83,7 @@ export function Roadmap() {
                       <Check
                         size={14}
                         className={`mt-1 shrink-0 ${
-                          p.status === "in-progress" ? "text-fire" : "text-rice-dim"
+                          status === "in-progress" ? "text-fire" : "text-rice-dim"
                         }`}
                       />
                       <span>{item}</span>

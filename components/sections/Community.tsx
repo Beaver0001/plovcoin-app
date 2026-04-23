@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useI18n } from "../I18nProvider";
+import { localePath } from "@/lib/i18n";
 
 const channels = [
   {
@@ -51,6 +53,8 @@ const channels = [
 ];
 
 export function Community() {
+  const { locale, t } = useI18n();
+
   return (
     <section id="community" className="relative py-32">
       <div className="container-narrow">
@@ -61,14 +65,14 @@ export function Community() {
           transition={{ duration: 0.6 }}
           className="mb-16 max-w-3xl"
         >
-          <div className="badge-pill mb-5">PlovArmy</div>
+          <div className="badge-pill mb-5">{t.community.chapter}</div>
           <h2 className="font-display text-5xl leading-[0.95] text-rice md:text-7xl">
-            Join
+            {t.community.titleLine1}
             <br />
-            <span className="text-fire-gradient">the table</span>
+            <span className="text-fire-gradient">{t.community.titleLine2}</span>
           </h2>
           <p className="mt-8 max-w-2xl font-serif text-xl italic text-rice-soft">
-            Every plov is shared. Ours is no different. Whichever channel you're on, we're there.
+            {t.community.intro}
           </p>
         </motion.div>
 
@@ -105,14 +109,14 @@ export function Community() {
           className="mt-20 text-center"
         >
           <div className="font-display text-4xl text-fire-gradient glow-text md:text-6xl">
-            Ready to taste the chain?
+            {t.community.finalTitle}
           </div>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link href="https://t.me/plovcoin" target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Join PlovArmy →
+              {t.community.ctaPrimary}
             </Link>
-            <Link href="/whitepaper" className="btn-secondary">
-              Read Whitepaper
+            <Link href={localePath(locale, "/whitepaper")} className="btn-secondary">
+              {t.community.ctaSecondary}
             </Link>
           </div>
         </motion.div>

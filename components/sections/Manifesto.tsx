@@ -2,32 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Flame, Sparkles, Users } from "lucide-react";
+import { useI18n } from "../I18nProvider";
 
-const beliefs = [
-  {
-    icon: Flame,
-    no: "01",
-    title: "Culture First",
-    body: "Most tokens borrow a cute mascot and call it a day. We're rooted in something older — a recipe that connects strangers across continents. Real story, real heritage, real meaning.",
-    quote: "If your meme needs explaining, it isn't one yet.",
-  },
-  {
-    icon: Sparkles,
-    no: "02",
-    title: "Fair Launch",
-    body: "No presale. No private round. No insider allocations. No VCs at a discount. Everyone gets the same shot, at the same price, at the same time. The token launches the way a community potluck starts — open to all who show up.",
-    quote: "Same fire, same kazan, same chance.",
-  },
-  {
-    icon: Users,
-    no: "03",
-    title: "Community Owned",
-    body: "45% of supply goes to airdrops over four waves. Just 8% for the team, fully vested. Mint authority disabled forever. Liquidity locked. The chef sets the table, the community feasts together.",
-    quote: "The one who cooks it shouldn't own it. The belongs to those who eat.",
-  },
-];
+const ICONS = [Flame, Sparkles, Users];
 
 export function Manifesto() {
+  const { t } = useI18n();
+
   return (
     <section className="relative py-32">
       <div className="container-narrow">
@@ -38,21 +19,20 @@ export function Manifesto() {
           transition={{ duration: 0.6 }}
           className="mb-20 max-w-3xl"
         >
-          <div className="badge-pill mb-5">Chapter Two</div>
+          <div className="badge-pill mb-5">{t.manifesto.chapter}</div>
           <h2 className="font-display text-5xl leading-[0.95] text-rice md:text-7xl">
-            Three things
+            {t.manifesto.titleLine1}
             <br />
-            <span className="text-fire-gradient">we believe</span>
+            <span className="text-fire-gradient">{t.manifesto.titleLine2}</span>
           </h2>
           <p className="mt-8 max-w-2xl font-serif text-xl italic text-rice-soft">
-            Most memecoins are jokes told once. We're building something that already passed
-            the test — a cultural artifact that survived for centuries because it actually works.
+            {t.manifesto.intro}
           </p>
         </motion.div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {beliefs.map((b, i) => {
-            const Icon = b.icon;
+          {t.manifesto.items.map((b, i) => {
+            const Icon = ICONS[i] ?? Flame;
             return (
               <motion.div
                 key={b.no}
@@ -72,7 +52,7 @@ export function Manifesto() {
                 <h3 className="mt-6 font-display text-3xl text-rice">{b.title}</h3>
                 <p className="mt-4 text-sm leading-relaxed text-rice-soft">{b.body}</p>
                 <p className="mt-6 border-l-2 border-fire/40 pl-3 font-serif text-sm italic text-rice-dim">
-                  "{b.quote}"
+                  &ldquo;{b.quote}&rdquo;
                 </p>
               </motion.div>
             );

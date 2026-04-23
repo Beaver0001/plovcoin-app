@@ -1,23 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://plovcoin.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://plovcoin.com/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://plovcoin.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://plovcoin.com/"/>
+  </url>
+  <url>
+    <loc>https://plovcoin.com/ru</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://plovcoin.com/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://plovcoin.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://plovcoin.com/"/>
   </url>
   <url>
     <loc>https://plovcoin.com/proof</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://plovcoin.com/proof"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://plovcoin.com/ru/proof"/>
+  </url>
+  <url>
+    <loc>https://plovcoin.com/ru/proof</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://plovcoin.com/proof"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://plovcoin.com/ru/proof"/>
   </url>
   <url>
     <loc>https://plovcoin.com/whitepaper</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://plovcoin.com/whitepaper"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://plovcoin.com/ru/whitepaper"/>
+  </url>
+  <url>
+    <loc>https://plovcoin.com/ru/whitepaper</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://plovcoin.com/whitepaper"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://plovcoin.com/ru/whitepaper"/>
   </url>
   <url>
     <loc>https://plovcoin.com/plovdrop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://plovcoin.com/plovdrop"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://plovcoin.com/ru/plovdrop"/>
+  </url>
+  <url>
+    <loc>https://plovcoin.com/ru/plovdrop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://plovcoin.com/plovdrop"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://plovcoin.com/ru/plovdrop"/>
   </url>
 </urlset>
