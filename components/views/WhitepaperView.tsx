@@ -530,13 +530,8 @@ export function WhitepaperView() {
 
                 <div className="space-y-3">
                   {(() => {
-                    // pick 4 most common from first FAQ category
-                    const quickQs = [
-                      { q: t.faq.categories[1].items[1].q, a: t.faq.categories[1].items[1].a },
-                      { q: t.faq.categories[1].items[2].q, a: t.faq.categories[1].items[2].a },
-                      { q: t.faq.categories[2].items[2].q, a: t.faq.categories[2].items[2].a },
-                      { q: t.faq.categories[2].items[0].q, a: t.faq.categories[2].items[0].a },
-                    ];
+                    // Use first 4 questions from featured FAQ
+                    const quickQs = t.faq.featured.slice(0, 4);
                     return quickQs.map((item, i) => (
                       <div
                         key={i}

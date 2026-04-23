@@ -99,7 +99,7 @@ export function Footer() {
           <div className="font-mono">
             {t.footer.builtOn} <span className="text-fire">Solana</span> · {t.footer.auditedOn}{" "}
             <Link href={localePath(locale, "/proof")} className="text-fire hover:underline">
-              /proof
+              Proof-hub
             </Link>
           </div>
         </div>
