@@ -7,8 +7,10 @@ const nextConfig = {
     return {
       beforeFiles: [
         // claim.plovcoin.com subdomain → /claim-soon page
+        // IMPORTANT: exclude /_next (assets), /api, and static files
+        // so that CSS, JS, fonts load correctly from the same domain
         {
-          source: "/:path*",
+          source: "/((?!_next|api|.*\\..*).*)",
           has: [{ type: "host", value: "claim.plovcoin.com" }],
           destination: "/claim-soon",
         },
