@@ -3,6 +3,18 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  async rewrites() {
+    return {
+      beforeFiles: [
+        // claim.plovcoin.com subdomain → /claim-soon page
+        {
+          source: "/:path*",
+          has: [{ type: "host", value: "claim.plovcoin.com" }],
+          destination: "/claim-soon",
+        },
+      ],
+    };
+  },
   async headers() {
     return [
       {

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useI18n } from "./I18nProvider";
 import { localePath } from "@/lib/i18n";
+import { MintAddressBlock } from "./MintAddressBlock";
 
 export function Footer() {
   const { locale, t } = useI18n();
@@ -17,6 +18,7 @@ export function Footer() {
     ],
     [t.footer.sectionResources]: [
       { href: localePath(locale, "/whitepaper"), label: t.footer.links.whitepaper },
+      { href: localePath(locale, "/faq"), label: t.footer.links.faq },
       { href: localePath(locale, "/proof"), label: t.footer.links.proof },
       { href: localePath(locale, "/plovdrop"), label: t.footer.links.plovdrop },
     ],
@@ -37,9 +39,14 @@ export function Footer() {
     <footer className="relative mt-32 border-t border-fire/10 bg-bg-soft/40">
       <div className="container-narrow py-16">
         {/* Anti-phishing banner */}
-        <div className="mb-12 rounded-xl border border-fire/30 bg-fire/5 px-5 py-4 font-mono text-xs text-rice-soft">
+        <div className="mb-4 rounded-xl border border-fire/30 bg-fire/5 px-5 py-4 font-mono text-xs text-rice-soft">
           <span className="font-bold text-fire">{t.footer.antiPhishBold}</span>{" "}
           {t.footer.antiPhishText}
+        </div>
+
+        {/* Official mint address (compact) */}
+        <div className="mb-12">
+          <MintAddressBlock variant="footer" />
         </div>
 
         {/* Brand + Links */}

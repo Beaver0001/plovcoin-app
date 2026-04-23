@@ -23,14 +23,15 @@ export function Navbar() {
   const home = localePath(locale, "/");
   const proof = localePath(locale, "/proof");
   const whitepaper = localePath(locale, "/whitepaper");
+  const faq = localePath(locale, "/faq");
 
   const links = [
     { href: `${home}#story`, label: t.nav.story },
     { href: `${home}#tokenomics`, label: t.nav.tokenomics },
     { href: `${home}#roadmap`, label: t.nav.roadmap },
-    { href: `${home}#security`, label: t.nav.security },
     { href: proof, label: t.nav.proofHub },
     { href: whitepaper, label: t.nav.whitepaper },
+    { href: faq, label: t.nav.faq },
   ];
 
   return (

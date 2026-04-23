@@ -4,9 +4,10 @@
     "tokenomics": "Tokenomics",
     "roadmap": "Roadmap",
     "security": "Security",
-    "proofHub": "Proof-Hub",
+    "proofHub": "Proof-hub",
     "whitepaper": "Whitepaper",
-    "joinCta": "Join PlovArmy"
+    "joinCta": "Join PlovArmy",
+    "faq": "FAQ"
   },
   "hero": {
     "badge": "Solana · Pre-TGE · June 2026",
@@ -24,7 +25,7 @@
       "supply": "13B Fixed Supply",
       "multisig": "Squads Multisig",
       "fair": "Fair Launch",
-      "proof": "Proof-Hub Open"
+      "proof": "Proof-hub Open"
     }
   },
   "story": {
@@ -41,17 +42,17 @@
       {
         "era": "10th Century",
         "title": "The Spread",
-        "text": "Trade routes carry the recipe across continents. Saffron, lamb, dried fruit, chicken, vegetables. Each version honest."
+        "text": "Trade routes carry the recipe across continents. Saffron, lamb, dried fruit, chicken, vegetables. Each version authentic."
       },
       {
-        "era": "2010",
+        "era": "2016",
         "title": "UNESCO Heritage",
-        "text": "Recognized as humanity's intangible cultural heritage — not because one place owns it, but because everyone does. A communal recipe scaled across cultures."
+        "text": "Recognized as humanity's intangible cultural heritage — not because one place owns it, but because everyone does. A shared recipe carried across cultures."
       },
       {
         "era": "2026",
         "title": "On-Chain",
-        "text": "A recipe that survived 1,000 years of distributed consensus moves to Solana. Same philosophy, new technology. Open source, community-owned, immutable."
+        "text": "A recipe that survived 1,000 years of distributed consensus moves to Solana. Same philosophy, new technology. Open source, transparent, multisig-protected."
       }
     ]
   },
@@ -75,9 +76,9 @@
       },
       {
         "no": "03",
-        "title": "Community Owned",
-        "body": "45% of supply goes to airdrops over four waves. Just 8% for the team, fully vested. Mint authority disabled forever. Liquidity locked. The chef sets the table, the community feasts together.",
-        "quote": "The one who cooks it shouldn't own it. The belongs to those who eat."
+        "title": "Transparent & Multisig-Protected",
+        "body": "45% of supply goes to airdrops over four waves. Just 8% for the team, fully vested over 24 months. Mint authority disabled forever. Liquidity protected. Treasury operations require Squads multisig with role-based thresholds and timelocks.",
+        "quote": "The one who cooks it shouldn't own it. It belongs to those who share it."
       }
     ]
   },
@@ -87,12 +88,30 @@
     "titleLine2": "distribution",
     "intro": "Every ingredient in its place. 45% goes to the community through PlovDrop — the largest allocation. No presale, no private sale, no VC rounds.",
     "allocations": [
-      { "label": "PlovDrop (Airdrop)", "note": "4 waves · 5,855,851,350 $PLOV" },
-      { "label": "Liquidity", "note": "2,602,600,600 $PLOV · Meteora/Raydium/Orca" },
-      { "label": "Marketing & Growth", "note": "1,951,950,450 $PLOV · KOL / Community" },
-      { "label": "Team", "note": "1,041,040,240 $PLOV · 12-cliff + 24m vest" },
-      { "label": "Burn Reserve", "note": "910,910,210 $PLOV · Milestone burns" },
-      { "label": "Loyalty (Hold-to-Earn)", "note": "650,650,150 $PLOV · On-chain snapshots" }
+      {
+        "label": "PlovDrop (Airdrop)",
+        "note": "4 waves · 5,855,851,350 $PLOV"
+      },
+      {
+        "label": "Liquidity",
+        "note": "2,602,600,600 $PLOV · Meteora/Raydium/Orca"
+      },
+      {
+        "label": "Marketing & Growth",
+        "note": "1,951,950,450 $PLOV · KOL / Community"
+      },
+      {
+        "label": "Team",
+        "note": "1,041,040,240 $PLOV · 12m cliff + 12m linear vest"
+      },
+      {
+        "label": "Burn Reserve",
+        "note": "910,910,210 $PLOV · Milestone burns"
+      },
+      {
+        "label": "Loyalty (Hold-to-Earn)",
+        "note": "650,650,150 $PLOV · On-chain snapshots"
+      }
     ],
     "totalSupply": "Total Supply",
     "totalNote": "$PLOV · Fixed forever",
@@ -120,7 +139,7 @@
           "Token deployed on Solana (mint & freeze disabled)",
           "Squads multisig treasury setup",
           "Security review initiated",
-          "Proof-Hub live, all addresses public"
+          "Proof-hub live, all addresses public"
         ]
       },
       {
@@ -161,7 +180,7 @@
         "name": "Phase 4+",
         "subtitle": "Expansion",
         "items": [
-          "DAO governance transition",
+          "Governance expansion exploration",
           "Kazan Genesis NFT collection",
           "Cross-chain bridges evaluation",
           "#PlovFest — annual community event"
@@ -177,24 +196,24 @@
     "cards": [
       {
         "title": "Squads Multisig",
-        "body": "All treasury operations require multi-signature approval with timelock. No single signer can move funds. 4 hardware wallets, 3 signers required.",
+        "body": "Treasury and sensitive operations run through Squads multisig with role-based thresholds (4/7 for Treasury; 3/5 for LP, Marketing, Updates, Burns) and timelocks. Exact safes and settings are published on Proof-hub.",
         "ctaLabel": "View on Solscan"
       },
       {
-        "title": "Proof-Hub",
+        "title": "Proof-hub",
         "body": "Every action is on-chain and published with transaction hashes, addresses, and timestamps. No private allocations. Everything verifiable on Solana.",
-        "ctaLabel": "Open Proof-Hub"
+        "ctaLabel": "Open Proof-hub"
       },
       {
         "title": "Security Review",
-        "body": "Independent security review process initiated with external auditors. Results will be published on Proof-Hub when finalized. We do not claim any audit completion until officially confirmed.",
+        "body": "Independent security review process initiated with external auditors. Results will be published on Proof-hub when finalized. We do not claim any audit completion until officially confirmed.",
         "ctaLabel": "Status & Reports"
       }
     ],
     "bannerLabel": "Security Status",
     "bannerBold": "Security review / audit process initiated.",
     "bannerRest": "Engagement with external auditors is underway. Results will be published on",
-    "bannerProofLink": "Proof-Hub",
+    "bannerProofLink": "Proof-hub",
     "bannerTail": "when finalized. We do not claim any audit completion until officially confirmed by the auditor."
   },
   "community": {
@@ -202,7 +221,7 @@
     "titleLine1": "Join",
     "titleLine2": "the table",
     "intro": "Every plov is shared. Ours is no different. Whichever channel you're on, we're there.",
-    "finalTitle": "Ready to taste the chain?",
+    "finalTitle": "Pull up a seat at the table",
     "ctaPrimary": "Join PlovArmy →",
     "ctaSecondary": "Read Whitepaper"
   },
@@ -221,14 +240,15 @@
       "roadmap": "Roadmap",
       "security": "Security",
       "whitepaper": "Whitepaper v7.3",
-      "proof": "Proof-Hub",
-      "plovdrop": "PlovDrop"
+      "proof": "Proof-hub",
+      "plovdrop": "PlovDrop",
+      "faq": "FAQ"
     },
     "riskBold": "RISK DISCLAIMER:",
     "riskText": "$PLOV is a memecoin with no inherent utility or expectation of profit. Cryptocurrency investments are highly volatile and may result in total loss of capital. Nothing on this site constitutes financial, legal, or investment advice. Not available in restricted jurisdictions. Do your own research. Past performance does not indicate future results. Compliance with local laws is the sole responsibility of the participant.",
     "copyright": "© 2026 PlovCoin. All rights reserved.",
-    "builtOn": "Built on",
-    "auditedOn": "Audited progress on"
+    "builtOn": "Built on Solana",
+    "auditedOn": "Security review in progress"
   },
   "proof": {
     "chapter": "Verifiable on Solana",
@@ -237,44 +257,567 @@
     "intro": "Every action on-chain. Every address public. Every transaction verifiable. No private wallets. No hidden allocations.",
     "lastUpdated": "Last updated: pending TGE",
     "placeholder": "— pending publication —",
-    "placeholderNote": "Data will be published progressively as TGE approaches (June 2026). Bookmark this page — every operation will appear here within 24 hours.",
+    "placeholderNote": "Data will be published progressively as TGE approaches (June 2026). Sensitive operations and scheduled transparency updates will be published here on a defined cadence.",
     "verifyTitle": "Verify everything yourself",
     "verifyText": "Once published, every address and transaction here links directly to Solscan. You don't need to trust us — verify on-chain.",
     "verifyCta1": "Open Solscan ↗",
     "verifyCta2": "Read Whitepaper",
     "sections": [
-      { "id": "addresses", "title": "Addresses", "note": "All Squads multisig + mint address. Single source of truth." },
-      { "id": "liquidity", "title": "Liquidity", "note": "Pool addresses, seed transactions, lock/timelock status." },
-      { "id": "airdrop", "title": "Airdrop / PlovDrop", "note": "Per-wave snapshot hash, IPFS CID, claim portal link." },
-      { "id": "burn-log", "title": "Burn Log", "note": "Date, amount, reason, transaction hash for every burn." },
-      { "id": "vesting", "title": "Vesting", "note": "Streamflow stream IDs for every team member." },
-      { "id": "advertising", "title": "Advertising / KOL", "note": "Every paid placement: KOL, platform, amount, tx hash." },
-      { "id": "security", "title": "Security", "note": "Audit status, security@plovcoin.com, PGP key, bug bounty." },
-      { "id": "incidents", "title": "Incidents", "note": "P0/P1 incident notes within 24h. Post-mortems published." },
-      { "id": "transparency", "title": "Transparency Reports", "note": "Monthly KPI report — first 3 days of each month." }
+      {
+        "id": "addresses",
+        "title": "Addresses",
+        "note": "All Squads multisig + mint address. Single source of truth."
+      },
+      {
+        "id": "liquidity",
+        "title": "Liquidity",
+        "note": "Pool addresses, seed transactions, lock/timelock status."
+      },
+      {
+        "id": "airdrop",
+        "title": "Airdrop / PlovDrop",
+        "note": "Per-wave snapshot hash, IPFS CID, claim portal link."
+      },
+      {
+        "id": "burn-log",
+        "title": "Burn Log",
+        "note": "Date, amount, reason, transaction hash for every burn."
+      },
+      {
+        "id": "vesting",
+        "title": "Vesting",
+        "note": "Streamflow stream IDs for every team member."
+      },
+      {
+        "id": "advertising",
+        "title": "Advertising / KOL",
+        "note": "Every paid placement: KOL, platform, amount, tx hash."
+      },
+      {
+        "id": "security",
+        "title": "Security",
+        "note": "Audit status, security@plovcoin.com, PGP key, bug bounty."
+      },
+      {
+        "id": "incidents",
+        "title": "Incidents",
+        "note": "P0/P1 incident notes within 24h. Post-mortems published."
+      },
+      {
+        "id": "transparency",
+        "title": "Transparency Reports",
+        "note": "Monthly KPI report — first 3 days of each month."
+      }
     ]
   },
   "whitepaper": {
-    "badge": "Document v7.3 · April 2026",
+    "badge": "v7.3 · March 2026",
     "title": "Whitepaper",
-    "intro": "Full technical and economic specification. Read it. Question it. Verify it.",
-    "downloadTitle": "Download PDF",
-    "downloadMeta": "~2.4 MB · 48 pages",
-    "githubTitle": "View on GitHub",
-    "githubMeta": "Markdown source",
-    "toc": "Table of Contents",
-    "sections": [
-      { "num": "01", "title": "Executive Summary", "desc": "What $PLOV is, why it exists, what it isn't." },
-      { "num": "02", "title": "Cultural Thesis", "desc": "Why a universal recipe is the right base for a memecoin." },
-      { "num": "03", "title": "Tokenomics", "desc": "Supply, distribution, allocation rationale, vesting." },
-      { "num": "04", "title": "Liquidity Strategy", "desc": "Meteora DLMM, Raydium, Orca CLMM. Pool design and protections." },
-      { "num": "05", "title": "PlovDrop", "desc": "Four-wave airdrop structure. Anti-sybil. Eligibility criteria." },
-      { "num": "06", "title": "Security Architecture", "desc": "Squads multisig, Streamflow vesting, audit process, MEV policy." },
-      { "num": "07", "title": "Roadmap", "desc": "Phase 0 through Phase 4+. Milestones, dependencies." },
-      { "num": "08", "title": "Governance (Future)", "desc": "PlovDAO transition path. Voting mechanics. Treasury control." },
-      { "num": "09", "title": "Risks & Disclaimers", "desc": "Comprehensive risk disclosure. Regulatory considerations." },
-      { "num": "10", "title": "Team & Operations", "desc": "Pseudonymous team structure. DRI registry. Operational discipline." }
-    ]
+    "intro": "Fair launch, broad distribution, protected launch liquidity, and transparency through Proof-hub. This website whitepaper is designed for community readers, partners, and exchanges: concise, factual, and easy to verify.",
+    "trust": {
+      "mintOff": {
+        "title": "Mint = OFF",
+        "desc": "No new tokens can be minted"
+      },
+      "freezeOff": {
+        "title": "Freeze = OFF",
+        "desc": "Addresses cannot be frozen"
+      },
+      "fairLaunch": {
+        "title": "Fair Launch",
+        "desc": "No presale, no private sale"
+      },
+      "liqProtection": {
+        "title": "Liquidity Protection",
+        "desc": "Publicly verified on Proof-hub"
+      }
+    },
+    "disclaimerBold": "⚠ PlovCoin is a meme project.",
+    "disclaimerText": "Cryptoassets are unregulated and can fall in value. Capital at risk. No inherent utility. This content is not financial advice. Tax on profits may apply. DYOR.",
+    "toc": "On this page",
+    "overview": {
+      "num": "01",
+      "title": "Project Overview",
+      "lead": "PlovCoin ($PLOV) is a cultural memecoin on Solana with fixed supply and public launch structure. The project is built around a recognizable cultural symbol, broad community distribution, protected launch liquidity, and transparency through Proof-hub.",
+      "coreIdeaLabel": "Core idea",
+      "coreIdea": [
+        "Fair launch — no presale, no private sale",
+        "45% distributed through airdrop waves",
+        "Launch liquidity protection with public verification",
+        "Monthly #PlovTransparency reporting"
+      ],
+      "paramsLabel": "Key parameters",
+      "params": [
+        {
+          "label": "Ticker",
+          "value": "$PLOV"
+        },
+        {
+          "label": "Network",
+          "value": "Solana (SPL classic)"
+        },
+        {
+          "label": "Supply",
+          "value": "13,013,003,000"
+        },
+        {
+          "label": "Mint address",
+          "value": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x"
+        },
+        {
+          "label": "Mint / Freeze",
+          "value": "OFF / OFF"
+        },
+        {
+          "label": "Claim",
+          "value": "claim.plovcoin.com"
+        },
+        {
+          "label": "Proof-hub",
+          "value": "plovcoin.com/proof"
+        }
+      ],
+      "formatNote": "Live addresses, transactions, and logs are published separately on Proof-hub — keeping this document compact and up-to-date."
+    },
+    "why": {
+      "num": "02",
+      "title": "Why PlovCoin",
+      "points": [
+        "Plov is a recognizable cultural symbol of hospitality and the shared table.",
+        "A cultural symbol tends to hold up better over time than a random meme character.",
+        "The project doesn't rely on borrowed IP and isn't tied to a single fleeting trend.",
+        "PlovArmy forms around a shared symbol, not just a ticker."
+      ]
+    },
+    "wpTokenomics": {
+      "num": "03",
+      "title": "Tokenomics",
+      "lead": "Fixed supply, distributed transparently. 45% of supply goes to the community through PlovDrop airdrop waves — the largest allocation in the protocol.",
+      "allocations": [
+        {
+          "emoji": "🎁",
+          "label": "PlovDrop (airdrop)",
+          "pct": "45%",
+          "tokens": "5,855,851,350",
+          "logic": "4 waves; 50% instant / 50% T+14"
+        },
+        {
+          "emoji": "💧",
+          "label": "Liquidity",
+          "pct": "20%",
+          "tokens": "2,602,600,600",
+          "logic": "Meteora DLMM (T0) → Raydium CPMM (T+7) → Orca CLMM (T+30); launch liquidity protection"
+        },
+        {
+          "emoji": "🎨",
+          "label": "Marketing",
+          "pct": "15%",
+          "tokens": "1,951,950,450",
+          "logic": "KOLs, ads, challenges, AI MemeLab"
+        },
+        {
+          "emoji": "👥",
+          "label": "Team",
+          "pct": "8%",
+          "tokens": "1,041,040,240",
+          "logic": "12-month cliff + 12-month linear vesting"
+        },
+        {
+          "emoji": "🔥",
+          "label": "Burn Reserve",
+          "pct": "7%",
+          "tokens": "910,910,210",
+          "logic": "Milestone burns + discretionary quarterly burns"
+        },
+        {
+          "emoji": "💎",
+          "label": "Loyalty Rewards",
+          "pct": "5%",
+          "tokens": "650,650,150",
+          "logic": "Hold-to-Earn bonuses via on-chain snapshots"
+        }
+      ],
+      "fairLaunchTitle": "Fair Launch",
+      "fairLaunchText": "For $PLOV, fair launch means: no presale, no private sale, no hidden preferential allocations, and no discounted pricing for early insiders. Token access is available through the public DEX market and officially announced airdrop waves.",
+      "vestingTitle": "Team & token note",
+      "vestingText": "Team tokens are not unlocked at launch. The unlock begins only after a 12-month cliff, followed by 12 months of linear vesting. All sensitive operations go through Squads multisig and timelock."
+    },
+    "liquidity": {
+      "num": "04",
+      "title": "Liquidity & Launch",
+      "archTitle": "Launch architecture",
+      "archStages": [
+        {
+          "period": "T0 – T+7",
+          "venue": "Meteora DLMM",
+          "desc": "Launch pool with dynamic range"
+        },
+        {
+          "period": "T+7 – T+30",
+          "venue": "Raydium CPMM → Orca CLMM",
+          "desc": "Mirrored ranges and depth expansion"
+        },
+        {
+          "period": "T+30 – T+90",
+          "venue": "Jupiter routing",
+          "desc": "Optimization based on aggregator data and deeper liquidity"
+        }
+      ],
+      "protectionTitle": "Launch Liquidity Protection",
+      "protectionText": "For compatible pool models, LP token burn may be used; for position-based DLMM/CLMM models, a lock / timelock / non-withdrawable custody design applies. The specific launch scheme and transaction confirmations are published on Proof-hub.",
+      "metricsTitle": "KPI targets (30 days post-TGE)",
+      "metrics": [
+        {
+          "metric": "Depth ±1%",
+          "target": "≥ $15,000",
+          "source": "DEX / explorer"
+        },
+        {
+          "metric": "Slippage p90 ($1k)",
+          "target": "< 1.0%",
+          "source": "Jupiter / DEX analytics"
+        },
+        {
+          "metric": "Routing share",
+          "target": "≥ 60%",
+          "source": "Jupiter / dashboards"
+        },
+        {
+          "metric": "LP retention (30d)",
+          "target": "≥ 60%",
+          "source": "On-chain analysis"
+        },
+        {
+          "metric": "Unique holders",
+          "target": "≥ 5,000",
+          "source": "Solscan"
+        },
+        {
+          "metric": "Daily volume",
+          "target": "≥ $50,000",
+          "source": "CoinGecko / CMC / DEX data"
+        }
+      ],
+      "cexNote": "CEX listings follow a Tier-2 first approach: gradual expansion based on organic demand, liquidity depth, and community metrics. No paid listings. No market maker wash-trading."
+    },
+    "airdrops": {
+      "num": "05",
+      "title": "Airdrops & Hold-to-Earn",
+      "lead": "45% of supply is distributed to the community through four airdrop waves over 12 months. Every wave is verified on-chain with SHA-256 hashes published on Proof-hub.",
+      "waves": [
+        {
+          "wave": "Wave 1",
+          "period": "Q2 2026",
+          "tool": "Streamflow",
+          "mechanic": "50% instant / 50% T+14"
+        },
+        {
+          "wave": "Wave 2",
+          "period": "Q3 2026",
+          "tool": "Streamflow",
+          "mechanic": "50% instant / 50% T+14"
+        },
+        {
+          "wave": "Wave 3",
+          "period": "Q3–Q4 2026",
+          "tool": "Streamflow",
+          "mechanic": "50% instant / 50% T+14"
+        },
+        {
+          "wave": "Wave 4",
+          "period": "Q2 2027",
+          "tool": "Airship / Helius",
+          "mechanic": "Merkle claim, 30 days, sweep → burn"
+        }
+      ],
+      "antiSybilTitle": "Anti-Sybil",
+      "antiSybilText": "Address deduplication, minimum on-chain SOL balance, on-chain activity thresholds for later waves, and public SHA-256 / IPFS CIDs on Proof-hub. The only official claim domain is claim.plovcoin.com.",
+      "loyaltyTitle": "Hold-to-Earn Loyalty Program",
+      "tiers": [
+        {
+          "tier": "Bronze",
+          "condition": "30+ days",
+          "reward": "+5% bonus"
+        },
+        {
+          "tier": "Silver",
+          "condition": "90+ days",
+          "reward": "+10% bonus"
+        },
+        {
+          "tier": "Gold",
+          "condition": "180+ days",
+          "reward": "+20% bonus + priority"
+        },
+        {
+          "tier": "Diamond",
+          "condition": "365+ days",
+          "reward": "+35% bonus + access to future phases"
+        }
+      ],
+      "loyaltyNote": "Important: this is not a staking contract and not a lockup. Tokens stay in your wallet; the bonus is calculated through on-chain snapshots."
+    },
+    "marketing": {
+      "num": "06",
+      "title": "Marketing & Community",
+      "armyTitle": "PlovArmy",
+      "armyChannels": [
+        "Telegram community",
+        "Telegram announcements",
+        "X / Twitter",
+        "TikTok",
+        "Instagram",
+        "Discord"
+      ],
+      "challengeTitle": "#PlovChallenge",
+      "challengePoints": [
+        "UGC virality around plov and memes",
+        "Rewards from the marketing reserve",
+        "Short-form content for TikTok / Reels / Shorts",
+        "Mass organic reach around TGE"
+      ],
+      "kolTitle": "KOL / Ads Policy",
+      "kolText": "All paid placements are marked #ad / #sponsored. No yield promises, no buy signals. For UK/EU audiences, a risk disclaimer is added. All placements are logged in the Ad Registry on Proof-hub.",
+      "labTitle": "AI MemeLab",
+      "labPoints": [
+        "Web-based meme generator with $PLOV templates",
+        "Export to X / TikTok / Instagram / Telegram",
+        "Transparent contests with anti-Sybil protection",
+        "AI tools assist with routine and analytics but don't replace governance"
+      ]
+    },
+    "governance": {
+      "num": "07",
+      "title": "Governance & Transparency",
+      "transitionalTitle": "Transitional Governance",
+      "transitionalText": "Before the formal DAO, the project is run through the Core Team, Squads multisig, timelocks, and public operating rules. The community contributes through discussions, polls, and feedback. After Phase 2, governance authority may be expanded.",
+      "multisigTitle": "Multisig thresholds",
+      "multisigRows": [
+        {
+          "role": "Treasury",
+          "threshold": "4/7",
+          "timelock": "24–72h"
+        },
+        {
+          "role": "LP Ops",
+          "threshold": "3/5",
+          "timelock": "12–24h"
+        },
+        {
+          "role": "Marketing",
+          "threshold": "3/5",
+          "timelock": "12–24h"
+        },
+        {
+          "role": "Update authority",
+          "threshold": "3/5",
+          "timelock": "12–24h"
+        },
+        {
+          "role": "Burn Ops",
+          "threshold": "3/5",
+          "timelock": "12–24h"
+        }
+      ],
+      "transparencyTitle": "Proof-hub & #PlovTransparency",
+      "transparencyPoints": [
+        "Proof-hub is the single public source of truth: addresses, transactions, burn logs, airdrop hashes, MEV log, marketing and charity flows.",
+        "In Launch-Ready mode, Proof-hub publishes addresses, rules, operational procedures, and future campaign IDs.",
+        "In Live mode, Proof-hub is updated post-factum after each sensitive operation.",
+        "Monthly #PlovTransparency report includes Squads balances, liquidity KPIs, burns, airdrop status, and charity updates."
+      ]
+    },
+    "risks": {
+      "num": "08",
+      "title": "Security & Risks",
+      "rows": [
+        {
+          "risk": "Volatility",
+          "manifestation": "Sharp candles / slippage",
+          "mitigation": "DLMM range, CLMM depth, slippage KPIs"
+        },
+        {
+          "risk": "MEV / bots",
+          "manifestation": "Snipe / sandwich",
+          "mitigation": "Jito bundles + quiet windows"
+        },
+        {
+          "risk": "Phishing",
+          "manifestation": "Fake sites / fake claims",
+          "mitigation": "Only claim.plovcoin.com + Proof-hub"
+        },
+        {
+          "risk": "Rug risk",
+          "manifestation": "Draining launch liquidity",
+          "mitigation": "Launch Liquidity Protection + public verification"
+        },
+        {
+          "risk": "Sybil",
+          "manifestation": "Bots / multi-wallets",
+          "mitigation": "Deduplication + min SOL + on-chain activity"
+        },
+        {
+          "risk": "Regulatory",
+          "manifestation": "MiCA / FCA / promo risks",
+          "mitigation": "Compliant marketing, #ad, risk disclaimer"
+        }
+      ],
+      "deskTitle": "Security Desk",
+      "deskText": "security@plovcoin.com • PGP key on Proof-hub • bug bounty rewards may be offered for confirmed critical issues. Incident protocol: initial post ≤ 60 minutes, updates every 6–8 hours, followed by AMA and post-mortem."
+    },
+    "wpRoadmap": {
+      "num": "09",
+      "title": "Roadmap",
+      "rows": [
+        {
+          "period": "Q1–Q2 2026",
+          "goals": "TGE preparation, final whitepaper, AI toolchain, utility bots, Telegram automation"
+        },
+        {
+          "period": "Q2 2026",
+          "goals": "TGE, launch liquidity protection, Wave 1, Meteora DLMM, DEX launch"
+        },
+        {
+          "period": "Q3 2026",
+          "goals": "Waves 2–3, hold-to-earn launch, Tier-2 CEX push, KOL partnerships, Milestone Burn #1"
+        },
+        {
+          "period": "Q4 2026",
+          "goals": "50K+ holders target, Milestone Burn #2, Tier-1 prep, AI MemeLab v1, charity report"
+        },
+        {
+          "period": "Q2 2027",
+          "goals": "Wave 4, Kazan Genesis NFT (if criteria are met), multichain R&D, 100K holders, Burn #3"
+        }
+      ],
+      "note": "Readiness over urgency. If security, liquidity, legal, or infrastructure blocks require more time, the launch is postponed. Better to ship slower than to repair trust live on stage."
+    },
+    "team": {
+      "num": "10",
+      "title": "Team & Contacts",
+      "members": [
+        {
+          "emoji": "👨‍🍳",
+          "name": "Chef Kazan",
+          "role": "Strategy & coordination"
+        },
+        {
+          "emoji": "👾",
+          "name": "Rais-Barbaris",
+          "role": "Telegram & community"
+        },
+        {
+          "emoji": "🎨",
+          "name": "Brevno",
+          "role": "Visuals & memes"
+        },
+        {
+          "emoji": "🧂",
+          "name": "Master Rice",
+          "role": "TikTok / short-form / challenge"
+        },
+        {
+          "emoji": "🧠",
+          "name": "Madam Zira",
+          "role": "Brand & visual identity"
+        },
+        {
+          "emoji": "🧄",
+          "name": "Don Luk",
+          "role": "Operational coordination"
+        },
+        {
+          "emoji": "🍚",
+          "name": "Trader Plovassio",
+          "role": "Liquidity analytics / execution support"
+        }
+      ],
+      "contactsTitle": "Official entry points",
+      "contacts": [
+        {
+          "label": "Website",
+          "value": "plovcoin.com",
+          "href": "https://plovcoin.com"
+        },
+        {
+          "label": "Proof-hub",
+          "value": "plovcoin.com/proof",
+          "href": "https://plovcoin.com/proof"
+        },
+        {
+          "label": "Claim",
+          "value": "claim.plovcoin.com",
+          "href": "https://claim.plovcoin.com"
+        },
+        {
+          "label": "Telegram",
+          "value": "t.me/PlovCoin",
+          "href": "https://t.me/PlovCoin"
+        },
+        {
+          "label": "Announcements",
+          "value": "t.me/PlovCoinOfficial",
+          "href": "https://t.me/PlovCoinOfficial"
+        },
+        {
+          "label": "X",
+          "value": "x.com/PlovTeam",
+          "href": "https://x.com/PlovTeam"
+        },
+        {
+          "label": "Discord",
+          "value": "discord.gg/plovcoin",
+          "href": "https://discord.gg/plovcoin"
+        },
+        {
+          "label": "Security",
+          "value": "security@plovcoin.com",
+          "href": "mailto:security@plovcoin.com"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "q": "Is mint enabled?",
+          "a": "No. Mint = OFF. New tokens cannot be created."
+        },
+        {
+          "q": "Is freeze enabled?",
+          "a": "No. Freeze = OFF. Addresses cannot be frozen."
+        },
+        {
+          "q": "Is there a presale?",
+          "a": "No. Fair launch through DEX and airdrop waves only."
+        },
+        {
+          "q": "Where to claim airdrops?",
+          "a": "Only claim.plovcoin.com. Any other URL is a phishing attempt."
+        },
+        {
+          "q": "Where can I buy $PLOV?",
+          "a": "At TGE (June 2026), $PLOV will be available on Meteora DLMM, then Raydium CPMM (T+7) and Orca CLMM (T+30). Use Jupiter for best routing."
+        },
+        {
+          "q": "When is the TGE?",
+          "a": "Target: June 2026. Exact date announced 2 weeks before launch. Follow @PlovTeam on X or PlovCoinOfficial on Telegram."
+        },
+        {
+          "q": "Is there a tax on buy/sell?",
+          "a": "No. $PLOV is a standard SPL token with zero transfer fees."
+        },
+        {
+          "q": "Is this staking?",
+          "a": "No. Hold-to-Earn is based on on-chain snapshots. Tokens stay in your wallet — no contract interaction required."
+        },
+        {
+          "q": "Can I see the team?",
+          "a": "Yes — team members use consistent pseudonyms. Core operations require Squads multisig approval (4/7 threshold, 24–72h timelock)."
+        }
+      ]
+    },
+    "footerTagline": "PlovCoin — bringing people together through plov and blockchain"
   },
   "plovdrop": {
     "badge": "45% to Community",
@@ -290,7 +833,7 @@
         "wave": "Wave 1",
         "when": "TGE · June 2026",
         "pct": "6.8%",
-        "target": "Founding members + #PlovChallenge participants"
+        "target": "Creator-led launch wave for verified #PlovChallenge participation and early community activity"
       },
       {
         "wave": "Wave 2",
@@ -314,16 +857,206 @@
     "ctaTitle": "Want to be eligible?",
     "ctaText": "Join the community now. Wave 1 eligibility starts with #PlovChallenge participation and verified social engagement.",
     "ctaPrimary": "Join PlovArmy →",
-    "ctaSecondary": "Verify on Proof-Hub"
+    "ctaSecondary": "Verify on Proof-hub"
   },
   "meta": {
     "homeTitle": "PlovCoin ($PLOV) — The Universal Recipe On-Chain",
     "homeDesc": "PlovCoin is the first universal cultural memecoin on Solana. Billions have tasted it. Now they can own it. Fair launch, 45% to community, no presale, no VC.",
-    "proofTitle": "Proof-Hub — On-Chain Verification",
+    "proofTitle": "Proof-hub — On-Chain Verification",
     "proofDesc": "Verify every PlovCoin operation on-chain. Addresses, liquidity, airdrops, burns, vesting, advertising, security, incidents — all public, all verifiable on Solana.",
-    "whitepaperTitle": "Whitepaper v7.3",
-    "whitepaperDesc": "PlovCoin Whitepaper v7.3 — full technical and economic specification. Tokenomics, liquidity strategy, security architecture, roadmap.",
+    "whitepaperTitle": "Whitepaper v7.3 — Fair Launch, Transparent Tokenomics",
+    "whitepaperDesc": "PlovCoin Whitepaper v7.3: tokenomics, launch structure, airdrops, governance, and risks. Cultural memecoin on Solana. Fair launch, 45% to community, Proof-hub verified.",
     "plovdropTitle": "PlovDrop — 45% to Community",
-    "plovdropDesc": "PlovDrop is the largest allocation in $PLOV — 45% of supply distributed across four airdrop waves to the community."
+    "plovdropDesc": "PlovDrop is the largest allocation in $PLOV — 45% of supply distributed across four airdrop waves to the community.",
+    "faqTitle": "FAQ — PlovCoin Help Center",
+    "faqDesc": "Frequently asked questions about PlovCoin: how to buy, airdrops, tokenomics, security, and more."
+  },
+  "mintBlock": {
+    "label": "Official $PLOV Token Address",
+    "copyBtn": "Copy",
+    "copiedBtn": "Copied!",
+    "solscanBtn": "View on Solscan",
+    "warning": "Verify before ANY interaction. Any other address claiming to be $PLOV is a scam."
+  },
+  "faq": {
+    "badge": "Help Center",
+    "title": "Frequently Asked Questions",
+    "intro": "Everything you need to know about PlovCoin — from buying tokens to understanding our launch structure. Can't find your answer? Reach out on Telegram.",
+    "categories": [
+      {
+        "id": "general",
+        "label": "General",
+        "items": [
+          {
+            "q": "What is PlovCoin?",
+            "a": "PlovCoin ($PLOV) is a cultural memecoin on Solana with fixed supply and transparent launch structure. It's built around plov — a universal symbol of hospitality and the shared table."
+          },
+          {
+            "q": "Why plov?",
+            "a": "Plov is recognized across dozens of cultures as a symbol of hospitality, community, and the shared table. A cultural symbol tends to hold up better over time than a random meme character, and it doesn't rely on borrowed IP."
+          },
+          {
+            "q": "Is this a serious project or just a meme?",
+            "a": "Both. PlovCoin is a memecoin — no inherent utility, no yield promises. But operationally, we run it with serious discipline: Squads multisig, on-chain transparency via Proof-hub, monthly reporting, and compliant marketing."
+          },
+          {
+            "q": "What is PlovArmy?",
+            "a": "PlovArmy is the PlovCoin community — a growing group of holders, creators, and supporters united around the plov symbol. It lives on Telegram, X, TikTok, Instagram, and Discord."
+          },
+          {
+            "q": "Is PlovCoin tied to a specific region or country?",
+            "a": "No. Plov is shared across dozens of cultures from Central Asia to the Middle East to the Mediterranean. PlovCoin celebrates the universal symbol, not any single regional claim."
+          },
+          {
+            "q": "Who runs the project?",
+            "a": "A 7-person core team using consistent pseudonyms (Chef Kazan, Rais-Barbaris, Brevno, Master Rice, Madam Zira, Don Luk, Trader Plovassio). Core operations require Squads multisig approval. See the Team section in the Whitepaper."
+          }
+        ]
+      },
+      {
+        "id": "tokenomics",
+        "label": "Tokenomics",
+        "items": [
+          {
+            "q": "What is the total supply?",
+            "a": "Fixed supply of 13,013,003,000 $PLOV tokens. No new tokens can ever be minted."
+          },
+          {
+            "q": "Is mint authority disabled?",
+            "a": "Yes. Mint = OFF. The mint authority is permanently disabled. You can verify this on Solscan using the official mint address."
+          },
+          {
+            "q": "Is freeze authority disabled?",
+            "a": "Yes. Freeze = OFF. No address can be frozen by the project. You can verify this on Solscan."
+          },
+          {
+            "q": "How is the supply distributed?",
+            "a": "45% PlovDrop airdrop, 20% liquidity, 15% marketing, 8% team (with 12-month cliff + 12-month vesting), 7% burn reserve, 5% loyalty rewards. See Tokenomics section in Whitepaper for full breakdown."
+          },
+          {
+            "q": "Will tokens be burned?",
+            "a": "Yes. 7% of supply (910,910,210 tokens) is reserved for burns: milestone burns at specific holder thresholds, plus discretionary quarterly burns. All burns are verified on-chain and published on Proof-hub."
+          }
+        ]
+      },
+      {
+        "id": "buying",
+        "label": "Buying & Trading",
+        "items": [
+          {
+            "q": "When can I buy $PLOV?",
+            "a": "Target launch: June 2026. Exact date announced 2 weeks before TGE. Follow @PlovTeam on X or PlovCoinOfficial on Telegram for updates."
+          },
+          {
+            "q": "Where will $PLOV be listed?",
+            "a": "At TGE, $PLOV launches on Meteora DLMM. At T+7, we expand to Raydium CPMM. At T+30, we add Orca CLMM. Use Jupiter for best routing across all DEX."
+          },
+          {
+            "q": "Is there a tax on buy/sell?",
+            "a": "No. $PLOV is a standard SPL token with zero transfer fees."
+          },
+          {
+            "q": "What is the official token address?",
+            "a": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x — always verify before any interaction. Any other address claiming to be $PLOV is a scam."
+          },
+          {
+            "q": "How do I avoid buying a fake PlovCoin?",
+            "a": "Always verify the token mint address matches: B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x. Use Jupiter or direct DEX links from plovcoin.com — never trust random Telegram/Discord links."
+          },
+          {
+            "q": "What about slippage?",
+            "a": "Our KPI target is slippage p90 < 1.0% on $1,000 trades within 30 days post-TGE. See Liquidity & Launch section for full metrics."
+          }
+        ]
+      },
+      {
+        "id": "airdrops",
+        "label": "Airdrops (PlovDrop)",
+        "items": [
+          {
+            "q": "What is PlovDrop?",
+            "a": "PlovDrop is our airdrop program — 45% of total supply distributed through 4 waves over 12 months. It's the largest allocation in the protocol."
+          },
+          {
+            "q": "How do I qualify for an airdrop?",
+            "a": "Eligibility criteria vary by wave but generally include on-chain SOL balance, wallet age, Solana ecosystem activity, and community participation. Full criteria for each wave published 1 week before that wave opens."
+          },
+          {
+            "q": "Where do I claim?",
+            "a": "Only on claim.plovcoin.com. Any other URL claiming to be a PlovCoin claim site is phishing. We will never DM you a claim link."
+          },
+          {
+            "q": "When are the airdrop waves?",
+            "a": "Wave 1: Q2 2026. Wave 2: Q3 2026. Wave 3: Q3–Q4 2026. Wave 4: Q2 2027. Each wave opens for a limited time."
+          },
+          {
+            "q": "How does anti-Sybil protection work?",
+            "a": "We use address deduplication, minimum on-chain SOL balance, on-chain activity thresholds for later waves, and publish SHA-256 / IPFS hashes on Proof-hub for full transparency."
+          }
+        ]
+      },
+      {
+        "id": "holdToEarn",
+        "label": "Hold-to-Earn",
+        "items": [
+          {
+            "q": "Is Hold-to-Earn the same as staking?",
+            "a": "No. Hold-to-Earn has no staking contract, no lockup, no token deposit. Tokens stay in your wallet — you just need to hold them. Bonuses are calculated through on-chain snapshots."
+          },
+          {
+            "q": "How do tiers work?",
+            "a": "Bronze (30+ days): +5%. Silver (90+ days): +10%. Gold (180+ days): +20% + priority. Diamond (365+ days): +35% + access to future phases."
+          },
+          {
+            "q": "What do I need to do to earn bonuses?",
+            "a": "Nothing — just hold $PLOV in your wallet. On-chain snapshots track your holding duration automatically. Bonuses are distributed during designated snapshots."
+          },
+          {
+            "q": "Where do Hold-to-Earn bonuses come from?",
+            "a": "From the 5% Loyalty Rewards allocation (650,650,150 tokens) — set aside specifically for this program."
+          }
+        ]
+      },
+      {
+        "id": "security",
+        "label": "Security",
+        "items": [
+          {
+            "q": "Has PlovCoin been audited?",
+            "a": "Security audit review has been initiated. Full audit report will be published on Proof-hub before TGE."
+          },
+          {
+            "q": "How is the treasury protected?",
+            "a": "All treasury operations go through Squads multisig with 4/7 threshold and 24–72h timelock. No single person can move funds. See Governance section for all thresholds."
+          },
+          {
+            "q": "What about MEV and sniper bots?",
+            "a": "We use Jito bundles + quiet windows during launch to mitigate MEV. Full strategy published on Proof-hub."
+          },
+          {
+            "q": "How do I report a security issue?",
+            "a": "Email security@plovcoin.com. PGP key available on Proof-hub. Bug bounty rewards may be offered for confirmed critical issues. Response protocol: initial reply ≤ 60 minutes."
+          }
+        ]
+      },
+      {
+        "id": "team",
+        "label": "Team & Governance",
+        "items": [
+          {
+            "q": "Why does the team use pseudonyms?",
+            "a": "Memecoin culture favors pseudonymity, and our canonical roster (Chef Kazan, Rais-Barbaris, etc.) has been consistent since the project started. Accountability comes from multisig thresholds and on-chain transparency, not from KYC."
+          },
+          {
+            "q": "Is there a DAO?",
+            "a": "Not yet. Before the formal DAO, the project is run through the Core Team, Squads multisig, timelocks, and public operating rules. The community contributes through discussions, polls, and feedback. After Phase 2, governance authority may be expanded."
+          },
+          {
+            "q": "How can I contribute?",
+            "a": "Join PlovArmy on Telegram or Discord. Participate in #PlovChallenge UGC campaigns. KOL partnerships: contact via official channels. All paid placements are logged in our Ad Registry on Proof-hub."
+          }
+        ]
+      }
+    ]
   }
 }

@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
-    pathname.includes(".")
+    pathname.includes(".") // file extensions (favicon, og-image, etc.)
   ) {
     return NextResponse.next();
   }
@@ -22,7 +22,7 @@ export function middleware(request: NextRequest) {
     if (pathname === `/${loc}` || pathname.startsWith(`/${loc}/`)) {
       const response = NextResponse.next();
       response.cookies.set(COOKIE_NAME, loc, {
-        maxAge: 60 * 60 * 24 * 365,
+        maxAge: 60 * 60 * 24 * 365, // 1 year
         sameSite: "lax",
         path: "/",
       });
@@ -43,9 +43,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Default locale (English). Set cookie so we don't keep checking.
-  // We explicitly do NOT detect browser language — English is always the default
-  // for first-time visitors, regardless of browser settings.
+  // Default locale (English). Set cookie so we don't keep checking on every nav.
+  // NOTE: we explicitly do NOT detect browser language here — English is always
+  // the default for first-time visitors, regardless of browser settings.
   const response = NextResponse.next();
   if (!cookieLocale) {
     response.cookies.set(COOKIE_NAME, DEFAULT_LOCALE, {
@@ -58,5 +58,13 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|.*\\..*).*)"],
+  matcher: [
+    /*
+     * Match all paths except:
+     * - /_next (internals)
+     * - /api (API routes)
+     * - static files (anything with a dot)
+     */
+    "/((?!_next|api|.*\\..*).*)",
+  ],
 };

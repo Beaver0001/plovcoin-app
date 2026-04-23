@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { useI18n } from "../I18nProvider";
+import { MintAddressBlock } from "../MintAddressBlock";
 import { localePath } from "@/lib/i18n";
 
 const TGE_DATE = new Date("2026-06-01T00:00:00Z").getTime();
@@ -183,6 +184,11 @@ export function Hero() {
             {t.hero.ctaSecondary}
           </Link>
         </motion.div>
+
+        {/* Official mint address block — anti-phishing */}
+        <div className="mx-auto mt-12 max-w-2xl">
+          <MintAddressBlock variant="hero" />
+        </div>
 
         {/* Trust bar */}
         <motion.div
