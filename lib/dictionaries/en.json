@@ -860,7 +860,7 @@
     "ctaSecondary": "Verify on Proof-hub"
   },
   "meta": {
-    "homeTitle": "PlovCoin ($PLOV) — The Universal Recipe On-Chain",
+    "homeTitle": "PlovCoin ($PLOV) — Fair Launch Cultural Memecoin on Solana",
     "homeDesc": "PlovCoin is the first universal cultural memecoin on Solana. Billions have tasted it. Now they can own it. Fair launch, 45% to community, no presale, no VC.",
     "proofTitle": "Proof-hub — On-Chain Verification",
     "proofDesc": "Verify every PlovCoin operation on-chain. Addresses, liquidity, airdrops, burns, vesting, advertising, security, incidents — all public, all verifiable on Solana.",
@@ -1158,5 +1158,37 @@
         ]
       }
     ]
+  },
+  "notFound": {
+    "badge": "404",
+    "title": "Page not found",
+    "subtitle": "This recipe doesn't exist — or it's simmering in another pot.",
+    "suggestion": "Try one of these instead:",
+    "links": {
+      "home": "Go home",
+      "whitepaper": "Read Whitepaper",
+      "faq": "Browse FAQ",
+      "proof": "Proof-hub"
+    },
+    "antiPhishNote": "Make sure you're on plovcoin.com — the only official URL."
+  },
+  "ui": {
+    "quickAnswers": "Quick answers",
+    "seeAllFaq": "See all FAQ",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "open": "Open",
+    "tableHeaders": {
+      "metric": "Metric",
+      "target": "Target",
+      "source": "Source",
+      "role": "Role",
+      "threshold": "Threshold",
+      "timelock": "Timelock",
+      "risk": "Risk",
+      "manifestation": "Manifestation",
+      "mitigation": "Mitigation"
+    },
+    "menu": "Menu"
   }
 }

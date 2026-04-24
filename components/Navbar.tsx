@@ -76,7 +76,7 @@ export function Navbar() {
         <button
           className="md:hidden text-rice"
           onClick={() => setOpen(!open)}
-          aria-label="Menu"
+          aria-label={t.ui.menu}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>

@@ -12,13 +12,13 @@ export function MultisigTable() {
         <thead className="bg-bg-soft">
           <tr>
             <th className="p-4 text-left font-mono text-[10px] uppercase tracking-widest text-fire-glow">
-              Role
+              {t.ui.tableHeaders.role}
             </th>
             <th className="p-4 text-left font-mono text-[10px] uppercase tracking-widest text-fire-glow">
-              Threshold
+              {t.ui.tableHeaders.threshold}
             </th>
             <th className="p-4 text-left font-mono text-[10px] uppercase tracking-widest text-fire-glow">
-              Timelock
+              {t.ui.tableHeaders.timelock}
             </th>
           </tr>
         </thead>

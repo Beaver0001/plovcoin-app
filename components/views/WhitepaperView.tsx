@@ -284,13 +284,13 @@ export function WhitepaperView() {
                       <thead className="bg-bg-soft">
                         <tr>
                           <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest text-fire-glow">
-                            Metric
+                            {t.ui.tableHeaders.metric}
                           </th>
                           <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest text-fire-glow">
-                            Target
+                            {t.ui.tableHeaders.target}
                           </th>
                           <th className="hidden p-3 text-left font-mono text-[10px] uppercase tracking-widest text-fire-glow sm:table-cell">
-                            Source
+                            {t.ui.tableHeaders.source}
                           </th>
                         </tr>
                       </thead>
@@ -515,12 +515,12 @@ export function WhitepaperView() {
               {/* Quick FAQ (4 items) with link to /faq */}
               <section className="mt-20 border-t border-fire/10 pt-12">
                 <div className="mb-6 flex items-baseline justify-between gap-4">
-                  <h2 className="font-display text-2xl text-rice">Quick answers</h2>
+                  <h2 className="font-display text-2xl text-rice">{t.ui.quickAnswers}</h2>
                   <Link
                     href={localePath(locale, "/faq")}
                     className="group inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-fire hover:underline"
                   >
-                    See all FAQ
+                    {t.ui.seeAllFaq}
                     <ArrowRight
                       size={12}
                       className="transition-transform group-hover:translate-x-0.5"

@@ -135,6 +135,7 @@ function FeaturedCard({
 }
 
 function CopyableValue({ value, mono }: { value: string; mono?: boolean }) {
+  const { t } = useI18n();
   const [copied, setCopied] = useState(false);
   async function copy() {
     try {
@@ -149,7 +150,7 @@ function CopyableValue({ value, mono }: { value: string; mono?: boolean }) {
       className={`inline-flex items-center gap-1.5 rounded border border-fire/20 bg-bg/40 px-1.5 py-0.5 text-[11px] text-rice hover:border-fire/40 hover:text-fire transition-colors ${
         mono ? "font-mono" : ""
       }`}
-      title="Copy"
+      title={copied ? t.ui.copied : t.ui.copy}
     >
       <span className="max-w-[220px] truncate sm:max-w-none">{value}</span>
       {copied ? <Check size={11} className="text-fire" /> : <Copy size={11} className="opacity-50" />}
@@ -188,7 +189,7 @@ function OfficialSources() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="shrink-0 text-fire hover:opacity-70"
-                  title="Open"
+                  title={t.ui.open}
                 >
                   <ExternalLink size={11} />
                 </a>

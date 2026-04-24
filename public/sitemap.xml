@@ -59,4 +59,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://plovcoin.com/plovdrop"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://plovcoin.com/ru/plovdrop"/>
   </url>
+  <url>
+    <loc>https://plovcoin.com/faq</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://plovcoin.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://plovcoin.com/ru/faq"/>
+  </url>
+  <url>
+    <loc>https://plovcoin.com/ru/faq</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://plovcoin.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://plovcoin.com/ru/faq"/>
+  </url>
 </urlset>

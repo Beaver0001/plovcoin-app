@@ -12,13 +12,13 @@ export function RiskMatrix() {
         <thead className="bg-bg-soft">
           <tr>
             <th className="p-4 text-left font-mono text-[10px] uppercase tracking-widest text-fire-glow">
-              Risk
+              {t.ui.tableHeaders.risk}
             </th>
             <th className="p-4 text-left font-mono text-[10px] uppercase tracking-widest text-fire-glow">
-              Manifestation
+              {t.ui.tableHeaders.manifestation}
             </th>
             <th className="p-4 text-left font-mono text-[10px] uppercase tracking-widest text-fire-glow">
-              Mitigation
+              {t.ui.tableHeaders.mitigation}
             </th>
           </tr>
         </thead>
