@@ -60,6 +60,7 @@ export function Footer() {
                 width={48}
                 height={48}
                 className="h-12 w-12"
+            style={{ mixBlendMode: "screen" }}
               />
               <div className="font-display text-3xl text-fire-gradient glow-text">$PLOV</div>
             </div>

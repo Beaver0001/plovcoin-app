@@ -56,6 +56,7 @@ export function Navbar() {
             height={36}
             priority
             className="h-9 w-9"
+            style={{ mixBlendMode: "screen" }}
           />
           <span className="font-display text-2xl text-fire-gradient glow-text">
             $PLOV
