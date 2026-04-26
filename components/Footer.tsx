@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useI18n } from "./I18nProvider";
 import { localePath } from "@/lib/i18n";
 import { MintAddressBlock } from "./MintAddressBlock";
@@ -52,7 +53,16 @@ export function Footer() {
         {/* Brand + Links */}
         <div className="grid gap-12 lg:grid-cols-[1.5fr_3fr]">
           <div>
-            <div className="font-display text-3xl text-fire-gradient glow-text">$PLOV</div>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/plov-logo.png"
+                alt="PlovCoin"
+                width={48}
+                height={48}
+                className="h-12 w-12"
+              />
+              <div className="font-display text-3xl text-fire-gradient glow-text">$PLOV</div>
+            </div>
             <p className="mt-3 font-serif text-lg italic text-rice-soft">
               {t.footer.tagline}
             </p>

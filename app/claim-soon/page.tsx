@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Claim — Opens at TGE | PlovCoin",
@@ -13,8 +14,18 @@ export default function ClaimSoonPage() {
     <main className="min-h-screen flex items-center justify-center p-6">
       <div className="w-full max-w-xl text-center">
         {/* Logo */}
-        <Link href="/" className="inline-block font-display text-4xl text-fire-gradient glow-text">
-          $PLOV
+        <Link href="/" className="inline-flex items-center gap-3">
+          <Image
+            src="/plov-logo.png"
+            alt="PlovCoin"
+            width={64}
+            height={64}
+            priority
+            className="h-16 w-16"
+          />
+          <span className="font-display text-4xl text-fire-gradient glow-text">
+            $PLOV
+          </span>
         </Link>
 
         {/* Badge */}

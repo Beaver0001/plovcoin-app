@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Home, FileText, HelpCircle, ShieldCheck, AlertTriangle } from "lucide-react";
@@ -27,6 +28,23 @@ export default function NotFound() {
       <div className="pointer-events-none absolute inset-0 bg-ember-radial opacity-40" />
 
       <div className="relative w-full max-w-xl text-center">
+        {/* Logo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
+          className="mb-6 flex justify-center"
+        >
+          <Image
+            src="/plov-logo.png"
+            alt="PlovCoin"
+            width={72}
+            height={72}
+            priority
+            className="h-16 w-16 sm:h-20 sm:w-20"
+          />
+        </motion.div>
+
         {/* Badge with 404 */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}

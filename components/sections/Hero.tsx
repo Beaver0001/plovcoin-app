@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useI18n } from "../I18nProvider";
 import { MintAddressBlock } from "../MintAddressBlock";
 import { localePath } from "@/lib/i18n";
@@ -117,15 +118,25 @@ export function Hero() {
           </span>
         </motion.div>
 
-        {/* Main title */}
-        <motion.h1
+        {/* Main title — logo + $PLOV side by side */}
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display text-7xl leading-none tracking-tight text-fire-gradient glow-text animate-fire-flicker md:text-9xl"
+          className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8"
         >
-          $PLOV
-        </motion.h1>
+          <Image
+            src="/plov-logo-hero.png"
+            alt="PlovCoin"
+            width={400}
+            height={400}
+            priority
+            className="h-24 w-24 sm:h-32 sm:w-32 md:h-44 md:w-44 lg:h-52 lg:w-52"
+          />
+          <h1 className="font-display text-6xl leading-none tracking-tight text-fire-gradient glow-text animate-fire-flicker sm:text-7xl md:text-8xl lg:text-9xl">
+            $PLOV
+          </h1>
+        </motion.div>
 
         {/* Tagline */}
         <motion.div

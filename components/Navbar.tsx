@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useI18n } from "./I18nProvider";
@@ -46,9 +47,19 @@ export function Navbar() {
       <nav className="container-narrow flex h-16 items-center justify-between">
         <Link
           href={home}
-          className="font-display text-2xl text-fire-gradient glow-text"
+          className="flex items-center gap-2.5 transition-opacity hover:opacity-90"
         >
-          $PLOV
+          <Image
+            src="/plov-logo.png"
+            alt="PlovCoin"
+            width={36}
+            height={36}
+            priority
+            className="h-9 w-9"
+          />
+          <span className="font-display text-2xl text-fire-gradient glow-text">
+            $PLOV
+          </span>
         </Link>
 
         <div className="hidden items-center gap-7 md:flex">
