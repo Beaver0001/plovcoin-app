@@ -22,7 +22,6 @@ export default function ClaimSoonPage() {
             height={64}
             priority
             className="h-16 w-16"
-            style={{ mixBlendMode: "screen" }}
           />
           <span className="font-display text-4xl text-fire-gradient glow-text">
             $PLOV

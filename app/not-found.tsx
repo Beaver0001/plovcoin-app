@@ -42,7 +42,6 @@ export default function NotFound() {
             height={72}
             priority
             className="h-16 w-16 sm:h-20 sm:w-20"
-            style={{ mixBlendMode: "screen" }}
           />
         </motion.div>
 

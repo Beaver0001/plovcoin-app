@@ -132,7 +132,6 @@ export function Hero() {
             height={400}
             priority
             className="h-24 w-24 sm:h-32 sm:w-32 md:h-44 md:w-44 lg:h-52 lg:w-52"
-            style={{ mixBlendMode: "screen" }}
           />
           <h1 className="font-display text-6xl leading-none tracking-tight text-fire-gradient glow-text animate-fire-flicker sm:text-7xl md:text-8xl lg:text-9xl">
             $PLOV
