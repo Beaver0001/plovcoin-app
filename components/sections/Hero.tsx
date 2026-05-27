@@ -8,7 +8,7 @@ import { useI18n } from "../I18nProvider";
 import { MintAddressBlock } from "../MintAddressBlock";
 import { localePath } from "@/lib/i18n";
 
-const TGE_DATE = new Date("2026-06-01T00:00:00Z").getTime();
+const TGE_DATE = new Date("2026-08-01T00:00:00Z").getTime();
 
 function useCountdown() {
   const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });

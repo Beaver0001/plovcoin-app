@@ -10,7 +10,7 @@
     "faq": "FAQ"
   },
   "hero": {
-    "badge": "Solana · Pre-TGE · June 2026",
+    "badge": "Solana · Pre-TGE · August 2026",
     "taglineStart": "Billions have tasted it.",
     "taglineEnd": "Now they can own it.",
     "subtitle": "A recipe loved across every continent. Now on-chain, with a 1,000-year community testing it. Fair launch. No presale. No VC.",
@@ -143,7 +143,7 @@
         ]
       },
       {
-        "quarter": "June 2026",
+        "quarter": "August 2026",
         "name": "Phase 1",
         "subtitle": "TGE Launch",
         "items": [
@@ -257,7 +257,7 @@
     "intro": "Every action on-chain. Every address public. Every transaction verifiable. No private wallets. No hidden allocations.",
     "lastUpdated": "Last updated: pending TGE",
     "placeholder": "— pending publication —",
-    "placeholderNote": "Data will be published progressively as TGE approaches (June 2026). Sensitive operations and scheduled transparency updates will be published here on a defined cadence.",
+    "placeholderNote": "Data will be published progressively as TGE approaches (August 2026). Sensitive operations and scheduled transparency updates will be published here on a defined cadence.",
     "verifyTitle": "Verify everything yourself",
     "verifyText": "Once published, every address and transaction here links directly to Solscan. You don't need to trust us — verify on-chain.",
     "verifyCta1": "Open Solscan ↗",
@@ -797,11 +797,11 @@
         },
         {
           "q": "Where can I buy $PLOV?",
-          "a": "At TGE (June 2026), $PLOV will be available on Meteora DLMM, then Raydium CPMM (T+7) and Orca CLMM (T+30). Use Jupiter for best routing."
+          "a": "At TGE (August 2026), $PLOV will be available on Meteora DLMM, then Raydium CPMM (T+7) and Orca CLMM (T+30). Use Jupiter for best routing."
         },
         {
           "q": "When is the TGE?",
-          "a": "Target: June 2026. Exact date announced 2 weeks before launch. Follow @PlovTeam on X or PlovCoinOfficial on Telegram."
+          "a": "Target: August 2026. Exact date announced 2 weeks before launch. Follow @PlovTeam on X or PlovCoinOfficial on Telegram."
         },
         {
           "q": "Is there a tax on buy/sell?",
@@ -831,7 +831,7 @@
     "waves": [
       {
         "wave": "Wave 1",
-        "when": "TGE · June 2026",
+        "when": "TGE · August 2026",
         "pct": "6.8%",
         "target": "Creator-led launch wave for verified #PlovChallenge participation and early community activity"
       },
@@ -930,7 +930,7 @@
       },
       {
         "q": "Where can I buy $PLOV?",
-        "a": "At TGE (target: June 2026), $PLOV launches on Meteora DLMM. At T+7 we add Raydium CPMM, at T+30 Orca CLMM. Use Jupiter for best routing across DEXs.",
+        "a": "At TGE (target: August 2026), $PLOV launches on Meteora DLMM. At T+7 we add Raydium CPMM, at T+30 Orca CLMM. Use Jupiter for best routing across DEXs.",
         "proofLabel": "Whitepaper → Liquidity",
         "proofHref": "/whitepaper#liquidity"
       },
@@ -1029,7 +1029,7 @@
         "items": [
           {
             "q": "When is the TGE?",
-            "a": "Target: June 2026. Exact date announced 2 weeks before launch via official channels."
+            "a": "Target: August 2026. Exact date announced 2 weeks before launch via official channels."
           },
           {
             "q": "Is there a tax on buy/sell?",
