@@ -8,7 +8,7 @@ import { useI18n } from "../I18nProvider";
 import { MintAddressBlock } from "../MintAddressBlock";
 import { localePath } from "@/lib/i18n";
 
-const TGE_DATE = new Date("2026-08-01T00:00:00Z").getTime();
+const TGE_DATE = new Date("2026-09-30T00:00:00Z").getTime();
 
 function useCountdown() {
   const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -159,26 +159,31 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mx-auto mt-12 grid max-w-xl grid-cols-4 gap-3"
+          className="mx-auto mt-12 max-w-xl"
         >
-          {[
-            { label: t.hero.countdownDays, value: time.days },
-            { label: t.hero.countdownHours, value: time.hours },
-            { label: t.hero.countdownMins, value: time.minutes },
-            { label: t.hero.countdownSecs, value: time.seconds },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="rounded-2xl border border-fire/20 bg-bg-soft/60 px-3 py-4 backdrop-blur-sm"
-            >
-              <div className="font-display text-3xl text-fire-gradient md:text-4xl tabular-nums">
-                {String(item.value).padStart(2, "0")}
+          <div className="grid grid-cols-4 gap-3">
+            {[
+              { label: t.hero.countdownDays, value: time.days },
+              { label: t.hero.countdownHours, value: time.hours },
+              { label: t.hero.countdownMins, value: time.minutes },
+              { label: t.hero.countdownSecs, value: time.seconds },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-2xl border border-fire/20 bg-bg-soft/60 px-3 py-4 backdrop-blur-sm"
+              >
+                <div className="font-display text-3xl text-fire-gradient md:text-4xl tabular-nums">
+                  {String(item.value).padStart(2, "0")}
+                </div>
+                <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-rice-dim">
+                  {item.label}
+                </div>
               </div>
-              <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-rice-dim">
-                {item.label}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <p className="mt-3 font-mono text-[10px] uppercase tracking-widest text-rice-dim">
+            {t.hero.countdownNote}
+          </p>
         </motion.div>
 
         {/* CTAs */}
