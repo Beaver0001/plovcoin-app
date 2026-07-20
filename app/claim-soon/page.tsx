@@ -5,7 +5,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Claim — Opens at TGE | PlovCoin",
   description:
-    "The PlovCoin airdrop claim portal opens at TGE (August 2026). Follow @PlovTeam for the launch announcement.",
+    "The PlovCoin airdrop claim portal opens at TGE (target: September 2026, pending final audit). Follow @PlovTeam for the launch announcement.",
   robots: { index: false, follow: false },
 };
 
@@ -44,9 +44,10 @@ export default function ClaimSoonPage() {
         {/* Subtitle */}
         <p className="mt-6 text-base text-rice-soft">
           The PlovCoin airdrop claim site will be live at Token Generation Event — target{" "}
-          <strong className="text-rice">August 2026</strong>.
+          <strong className="text-rice">September 2026</strong>.
         </p>
         <p className="mt-3 text-sm text-rice-dim">
+          Target date subject to final audit completion and exchange listing approval.
           Exact date announced 2 weeks before launch via official channels.
         </p>
 
