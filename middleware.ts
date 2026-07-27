@@ -25,6 +25,8 @@ export function middleware(request: NextRequest) {
         maxAge: 60 * 60 * 24 * 365, // 1 year
         sameSite: "lax",
         path: "/",
+        httpOnly: true,
+        secure: true,
       });
       return response;
     }
@@ -52,6 +54,8 @@ export function middleware(request: NextRequest) {
       maxAge: 60 * 60 * 24 * 365,
       sameSite: "lax",
       path: "/",
+      httpOnly: true,
+      secure: true,
     });
   }
   return response;
