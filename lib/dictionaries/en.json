@@ -139,7 +139,7 @@
         "items": [
           "Token deployed on Solana (mint & freeze disabled)",
           "Squads multisig treasury setup",
-          "Security review initiated",
+          "Security audit: preliminary report in, findings remediated (re-test)",
           "Proof-hub live, all addresses public"
         ]
       },
@@ -207,15 +207,15 @@
       },
       {
         "title": "Security Review",
-        "body": "Independent security review process initiated with external auditors. Results will be published on Proof-hub when finalized. We do not claim any audit completion until officially confirmed.",
+        "body": "Penetration-test audit: the preliminary report has been received (July 2026), all findings have been remediated and submitted to the auditor for re-testing. The final report will be published on Proof-hub. We do not claim audit completion until officially confirmed by the auditor.",
         "ctaLabel": "Status & Reports"
       }
     ],
     "bannerLabel": "Security Status",
-    "bannerBold": "Security review / audit process initiated.",
-    "bannerRest": "Engagement with external auditors is underway. Results will be published on",
+    "bannerBold": "Audit: findings remediated, re-testing underway.",
+    "bannerRest": "The preliminary report is in; every finding has been fixed and submitted for re-testing. The final report will be published on",
     "bannerProofLink": "Proof-hub",
-    "bannerTail": "when finalized. We do not claim any audit completion until officially confirmed by the auditor."
+    "bannerTail": "when finalized. We do not claim audit completion until officially confirmed by the auditor."
   },
   "community": {
     "chapter": "PlovArmy",
@@ -240,7 +240,7 @@
       "tokenomics": "Tokenomics",
       "roadmap": "Roadmap",
       "security": "Security",
-      "whitepaper": "Whitepaper v7.3",
+      "whitepaper": "Whitepaper v7.4",
       "proof": "Proof-hub",
       "plovdrop": "PlovDrop",
       "faq": "FAQ"
@@ -425,7 +425,7 @@
     ]
   },
   "whitepaper": {
-    "badge": "v7.3 · March 2026",
+    "badge": "v7.4 · July 2026",
     "title": "Whitepaper",
     "intro": "Fair launch, broad distribution, protected launch liquidity, and transparency through Proof-hub. This website whitepaper is designed for community readers, partners, and exchanges: concise, factual, and easy to verify.",
     "trust": {
@@ -978,8 +978,8 @@
     "homeDesc": "PlovCoin is the first universal cultural memecoin on Solana. Billions have tasted it. Now they can own it. Fair launch, 45% to community, no presale, no VC.",
     "proofTitle": "Proof-hub — On-Chain Verification",
     "proofDesc": "Verify every PlovCoin operation on-chain. Addresses, liquidity, airdrops, burns, vesting, advertising, security, incidents — all public, all verifiable on Solana.",
-    "whitepaperTitle": "Whitepaper v7.3 — Fair Launch, Transparent Tokenomics",
-    "whitepaperDesc": "PlovCoin Whitepaper v7.3: tokenomics, launch structure, airdrops, governance, and risks. Cultural memecoin on Solana. Fair launch, 45% to community, Proof-hub verified.",
+    "whitepaperTitle": "Whitepaper v7.4 — Fair Launch, Transparent Tokenomics",
+    "whitepaperDesc": "PlovCoin Whitepaper v7.4: tokenomics, launch structure, airdrops, governance, and risks. Cultural memecoin on Solana. Fair launch, 45% to community, Proof-hub verified.",
     "plovdropTitle": "PlovDrop — 45% to Community",
     "plovdropDesc": "PlovDrop is the largest allocation in $PLOV — 45% of supply distributed across four airdrop waves to the community.",
     "faqTitle": "FAQ — PlovCoin Help Center",
@@ -1223,7 +1223,7 @@
         "items": [
           {
             "q": "Has PlovCoin been audited?",
-            "a": "A security review process has been initiated. Any finalized audit scope, status updates, and published reports will appear in Proof-hub.",
+            "a": "The preliminary audit report has been received; all findings have been remediated and submitted for re-testing. The final report and its scope will be published on Proof-hub once officially finalized.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           },
