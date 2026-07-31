@@ -38,19 +38,11 @@ export function middleware(request: NextRequest) {
     });
     return response;
   }
-  // If user is on a non-default locale path, remember that choice in cookie.
+  // Locale-prefixed paths render as-is; the cookie changes ONLY via ?setLocale above.
   for (const loc of LOCALES) {
     if (loc === DEFAULT_LOCALE) continue;
     if (pathname === `/${loc}` || pathname.startsWith(`/${loc}/`)) {
-      const response = NextResponse.next();
-      response.cookies.set(COOKIE_NAME, loc, {
-        maxAge: 60 * 60 * 24 * 365, // 1 year
-        sameSite: "lax",
-        path: "/",
-        httpOnly: true,
-        secure: true,
-      });
-      return response;
+      return NextResponse.next();
     }
   }
 
