@@ -197,7 +197,7 @@
     "cards": [
       {
         "title": "Squads Multisig",
-        "body": "Treasury and sensitive operations run through Squads multisig with role-based thresholds (4/7 for Treasury; 3/5 for LP, Marketing, Updates, Burns) and timelocks. Exact safes and settings are published on Proof-hub.",
+        "body": "Treasury and sensitive operations run through Squads multisig with role-based thresholds (3/5 for Treasury with a 48h timelock; 2/3 with 12h timelocks for LP, Marketing, Updates, Burns). Exact safes and settings are published on Proof-hub.",
         "ctaLabel": "View on Solscan"
       },
       {
@@ -256,9 +256,9 @@
     "titleStart": "Proof-",
     "titleAccent": "Hub",
     "intro": "Every action on-chain. Every address public. Every transaction verifiable. No private wallets. No hidden allocations.",
-    "lastUpdated": "Last updated: pending TGE",
+    "lastUpdated": "Last updated: July 2026",
     "placeholder": "— pending publication —",
-    "placeholderNote": "Data will be published progressively as TGE approaches (target: September 2026, pending final audit completion). Sensitive operations and scheduled transparency updates will be published here on a defined cadence.",
+    "placeholderNote": "This section is populated as TGE approaches (Q3 2026, audit-gated). Sensitive operations are published here after execution.",
     "verifyTitle": "Verify everything yourself",
     "verifyText": "Once published, every address and transaction here links directly to Solscan. You don't need to trust us — verify on-chain.",
     "verifyCta1": "Open Solscan ↗",
@@ -267,47 +267,160 @@
       {
         "id": "addresses",
         "title": "Addresses",
-        "note": "All Squads multisig + mint address. Single source of truth."
+        "note": "All custody addresses are Squads Protocol v4 multisigs on hardware keys. Signer addresses are never published. Legacy v1 addresses (May 2026) are deprecated and empty.",
+        "items": [
+          {
+            "label": "$PLOV mint",
+            "value": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
+            "href": "https://solscan.io/token/B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
+            "tag": "SPL"
+          },
+          {
+            "label": "Treasury v2 — vault",
+            "value": "3w5DmerxzYfMhVLHsdjHn5BU194u3R9DD5HaD7rr5VRm",
+            "href": "https://solscan.io/account/3w5DmerxzYfMhVLHsdjHn5BU194u3R9DD5HaD7rr5VRm",
+            "tag": "3/5 · 48h"
+          },
+          {
+            "label": "Treasury v2 — multisig",
+            "value": "Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz",
+            "href": "https://solscan.io/account/Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz",
+            "tag": "Squads v4"
+          },
+          {
+            "label": "LP Ops v2 — vault",
+            "value": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+            "href": "https://solscan.io/account/2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+            "tag": "2/3 · 12h"
+          },
+          {
+            "label": "LP Ops v2 — multisig",
+            "value": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+            "href": "https://solscan.io/account/9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+            "tag": "Squads v4"
+          },
+          {
+            "label": "Marketing v2 — vault",
+            "value": "79cVRibjjHzQZALUgLbhDtzNrkYbzbCF7Cz5qWfu4UZi",
+            "href": "https://solscan.io/account/79cVRibjjHzQZALUgLbhDtzNrkYbzbCF7Cz5qWfu4UZi",
+            "tag": "2/3 · 12h"
+          },
+          {
+            "label": "Marketing v2 — multisig",
+            "value": "6QHLZE4sq58Zd44gKZDxGRoPbHyDHjHhxbhqy1X2XFFm",
+            "href": "https://solscan.io/account/6QHLZE4sq58Zd44gKZDxGRoPbHyDHjHhxbhqy1X2XFFm",
+            "tag": "Squads v4"
+          },
+          {
+            "label": "Update Auth v2 — vault",
+            "value": "Dyy5d1X7MhvhByK2JcDRFoTaj52pvDHH9vg9pwvzUGNF",
+            "href": "https://solscan.io/account/Dyy5d1X7MhvhByK2JcDRFoTaj52pvDHH9vg9pwvzUGNF",
+            "tag": "2/3 · 12h"
+          },
+          {
+            "label": "Update Auth v2 — multisig",
+            "value": "DkG6HuPbSxSSiem19LhFbtjZk2SEhoZqQ1Wc9KxuaegY",
+            "href": "https://solscan.io/account/DkG6HuPbSxSSiem19LhFbtjZk2SEhoZqQ1Wc9KxuaegY",
+            "tag": "Squads v4"
+          },
+          {
+            "label": "Burn Ops v2 — vault",
+            "value": "6E5C6JvpURy45dTGXhbbXuze4b4r27ShR9pSzX1SD6o7",
+            "href": "https://solscan.io/account/6E5C6JvpURy45dTGXhbbXuze4b4r27ShR9pSzX1SD6o7",
+            "tag": "2/3 · 12h"
+          },
+          {
+            "label": "Burn Ops v2 — multisig",
+            "value": "E9GY1DF26gjLXegDG7UX6BjmzMN1CrTHDLHgp3wEv6fH",
+            "href": "https://solscan.io/account/E9GY1DF26gjLXegDG7UX6BjmzMN1CrTHDLHgp3wEv6fH",
+            "tag": "Squads v4"
+          },
+          {
+            "label": "Creator wallet (retired)",
+            "value": "CeAF9ZHmaNrvjh31jKcdcPjtyoNYhhU9sJb2j8pjSZwD",
+            "href": "https://solscan.io/account/CeAF9ZHmaNrvjh31jKcdcPjtyoNYhhU9sJb2j8pjSZwD",
+            "tag": "0 tokens · 0 authorities"
+          }
+        ]
       },
       {
         "id": "liquidity",
         "title": "Liquidity",
-        "note": "Pool addresses, seed transactions, lock/timelock status."
+        "note": "Pool addresses, seed transactions, lock/timelock status.",
+        "items": []
       },
       {
         "id": "airdrop",
         "title": "Airdrop / PlovDrop",
-        "note": "Per-wave snapshot hash, IPFS CID, claim portal link."
+        "note": "Per-wave snapshot hash, IPFS CID, claim portal link.",
+        "items": []
       },
       {
         "id": "burn-log",
         "title": "Burn Log",
-        "note": "Date, amount, reason, transaction hash for every burn."
+        "note": "Date, amount, reason, transaction hash for every burn.",
+        "items": []
       },
       {
         "id": "vesting",
         "title": "Vesting",
-        "note": "Streamflow stream IDs for every team member."
+        "note": "Streamflow stream IDs for every team member.",
+        "items": []
       },
       {
         "id": "advertising",
         "title": "Advertising / KOL",
-        "note": "Every paid placement: KOL, platform, amount, tx hash."
+        "note": "Every paid placement: KOL, platform, amount, tx hash.",
+        "items": []
       },
       {
         "id": "security",
         "title": "Security",
-        "note": "Audit status, security@plovcoin.com, PGP key, bug bounty."
+        "note": "Token authorities: mint and freeze are permanently revoked at the protocol level; the update authority is held by the Update Auth v2 multisig (2/3 + 12h); the full supply sits in the Treasury v2 safe (3/5 + 48h). Key transactions below are verifiable in any explorer.",
+        "items": [
+          {
+            "label": "Mint authority",
+            "value": "revoked — no new tokens can ever be minted",
+            "href": "",
+            "tag": ""
+          },
+          {
+            "label": "Freeze authority",
+            "value": "revoked — wallets can never be frozen",
+            "href": "",
+            "tag": ""
+          },
+          {
+            "label": "Update authority → Update Auth v2 (28.07.2026)",
+            "value": "4CFfhwrmHacSMjpPtwuvxbMb7qGqfUFzh24mw6cetdDw6xmyFk6ir1Gu7pzSqgPB8THipzuvzM4PSXpcuN7zbrKj",
+            "href": "https://solscan.io/tx/4CFfhwrmHacSMjpPtwuvxbMb7qGqfUFzh24mw6cetdDw6xmyFk6ir1Gu7pzSqgPB8THipzuvzM4PSXpcuN7zbrKj",
+            "tag": "tx"
+          },
+          {
+            "label": "Canary transfer, 1,000 PLOV → Treasury v2",
+            "value": "1QDPF33SNw8yGH1WWX6aaF8tiJAC4ad3F1KjjdmPUcb9Np574bVsKGeFzQdFt1RUUfs8B2svc7vSPhYJsziWBkk",
+            "href": "https://solscan.io/tx/1QDPF33SNw8yGH1WWX6aaF8tiJAC4ad3F1KjjdmPUcb9Np574bVsKGeFzQdFt1RUUfs8B2svc7vSPhYJsziWBkk",
+            "tag": "tx"
+          },
+          {
+            "label": "Main transfer, 13,013,001,940 PLOV → Treasury v2",
+            "value": "2txPSX8XxxegcYiLRvkLTztUKPJ8z9g1tvk6q2ofo3rH4e9i4egsdGtKYiwPfufXurvdiqvjzWoTMvMitZzBeJAL",
+            "href": "https://solscan.io/tx/2txPSX8XxxegcYiLRvkLTztUKPJ8z9g1tvk6q2ofo3rH4e9i4egsdGtKYiwPfufXurvdiqvjzWoTMvMitZzBeJAL",
+            "tag": "tx"
+          }
+        ]
       },
       {
         "id": "incidents",
         "title": "Incidents",
-        "note": "P0/P1 incident notes within 24h. Post-mortems published."
+        "note": "P0/P1 incident notes within 24h. Post-mortems published.",
+        "items": []
       },
       {
         "id": "transparency",
         "title": "Transparency Reports",
-        "note": "Monthly KPI report — first 3 days of each month."
+        "note": "Monthly KPI report — first 3 days of each month.",
+        "items": []
       }
     ]
   },
@@ -596,28 +709,28 @@
       "multisigRows": [
         {
           "role": "Treasury",
-          "threshold": "4/7",
-          "timelock": "24–72h"
+          "threshold": "3/5",
+          "timelock": "48h"
         },
         {
           "role": "LP Ops",
-          "threshold": "3/5",
-          "timelock": "12–24h"
+          "threshold": "2/3",
+          "timelock": "12h"
         },
         {
           "role": "Marketing",
-          "threshold": "3/5",
-          "timelock": "12–24h"
+          "threshold": "2/3",
+          "timelock": "12h"
         },
         {
           "role": "Update authority",
-          "threshold": "3/5",
-          "timelock": "12–24h"
+          "threshold": "2/3",
+          "timelock": "12h"
         },
         {
           "role": "Burn Ops",
-          "threshold": "3/5",
-          "timelock": "12–24h"
+          "threshold": "2/3",
+          "timelock": "12h"
         }
       ],
       "transparencyTitle": "Proof-hub & #PlovTransparency",
@@ -814,7 +927,7 @@
         },
         {
           "q": "Can I see the team?",
-          "a": "Yes — team members use consistent pseudonyms. Core operations require Squads multisig approval (4/7 threshold, 24–72h timelock)."
+          "a": "Yes — team members use consistent pseudonyms. Core operations require Squads multisig approval (Treasury: 3/5 threshold, 48h timelock; operational safes: 2/3, 12h)."
         }
       ]
     },
@@ -1116,7 +1229,7 @@
           },
           {
             "q": "How is the treasury protected?",
-            "a": "All treasury operations go through Squads multisig with role-based thresholds (4/7 for Treasury; 3/5 for LP, Marketing, Updates, Burns) and timelocks.",
+            "a": "All treasury operations go through Squads multisig with role-based thresholds (3/5 for Treasury with a 48h timelock; 2/3 with 12h for LP, Marketing, Updates, Burns) and timelocks.",
             "proofLabel": "Whitepaper → Governance",
             "proofHref": "/whitepaper#governance"
           },

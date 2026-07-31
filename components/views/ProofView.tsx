@@ -55,12 +55,54 @@ export function ProofView() {
                 </div>
                 <p className="text-sm text-rice-soft">{s.note}</p>
 
-                <div className="mt-6 rounded-xl border border-rice-dim/20 bg-bg/40 p-5 font-mono text-xs text-rice-dim">
-                  {t.proof.placeholder}
-                  <div className="mt-3 text-[11px]">
-                    {t.proof.placeholderNote}
-                  </div>
-                </div>
+                {(() => {
+                  const items = (s as {
+                    items?: { label: string; value: string; href: string; tag: string }[];
+                  }).items;
+                  if (!items || items.length === 0) {
+                    return (
+                      <div className="mt-6 rounded-xl border border-rice-dim/20 bg-bg/40 p-5 font-mono text-xs text-rice-dim">
+                        {t.proof.placeholder}
+                        <div className="mt-3 text-[11px]">
+                          {t.proof.placeholderNote}
+                        </div>
+                      </div>
+                    );
+                  }
+                  return (
+                    <div className="mt-6 space-y-2">
+                      {items.map((it) => (
+                        <div
+                          key={it.label + it.value}
+                          className="rounded-xl border border-rice-dim/20 bg-bg/40 p-4 font-mono text-xs"
+                        >
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <span className="text-[10px] uppercase tracking-wider text-fire-glow">
+                              {it.label}
+                            </span>
+                            {it.tag ? (
+                              <span className="rounded-full border border-fire/30 bg-fire/10 px-2 py-0.5 text-[10px] text-fire">
+                                {it.tag}
+                              </span>
+                            ) : null}
+                          </div>
+                          {it.href ? (
+                            <a
+                              href={it.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="mt-1 block break-all text-rice-soft transition-colors hover:text-fire"
+                            >
+                              {it.value}
+                            </a>
+                          ) : (
+                            <div className="mt-1 break-all text-rice-dim">{it.value}</div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  );
+                })()}
               </section>
             ))}
           </div>
