@@ -16,6 +16,28 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Explicit locale override: any path + ?setLocale=en|ru
+  const setLocale = request.nextUrl.searchParams.get("setLocale");
+  if (setLocale && LOCALES.includes(setLocale as (typeof LOCALES)[number])) {
+    const url = request.nextUrl.clone();
+    url.searchParams.delete("setLocale");
+    let rest = pathname;
+    for (const loc of LOCALES) {
+      if (rest === `/${loc}`) rest = "/";
+      else if (rest.startsWith(`/${loc}/`)) rest = rest.slice(loc.length + 1);
+    }
+    url.pathname =
+      setLocale === DEFAULT_LOCALE ? rest : `/${setLocale}${rest === "/" ? "" : rest}`;
+    const response = NextResponse.redirect(url);
+    response.cookies.set(COOKIE_NAME, setLocale, {
+      maxAge: 60 * 60 * 24 * 365,
+      sameSite: "lax",
+      path: "/",
+      httpOnly: true,
+      secure: true,
+    });
+    return response;
+  }
   // If user is on a non-default locale path, remember that choice in cookie.
   for (const loc of LOCALES) {
     if (loc === DEFAULT_LOCALE) continue;
