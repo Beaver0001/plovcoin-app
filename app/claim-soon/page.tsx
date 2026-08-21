@@ -3,9 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Claim — Opens at TGE | PlovCoin",
+  title: "Claim — PlovCoin",
   description:
-    "The PlovCoin airdrop claim portal opens at TGE (target: September 2026, pending final audit). Follow @PlovTeam for the launch announcement.",
+    "The reserved official PlovCoin claim domain. Claim is not open and no public claim date has been announced. PlovCoin will never ask for your seed phrase, private key, or a transfer of funds.",
   robots: { index: false, follow: false },
 };
 
@@ -36,42 +36,43 @@ export default function ClaimSoonPage() {
 
         {/* Title */}
         <h1 className="mt-8 font-display text-4xl leading-tight text-rice sm:text-5xl">
-          Claim portal
+          Claim is
           <br />
-          <span className="text-fire-gradient glow-text">opens at TGE</span>
+          <span className="text-fire-gradient glow-text">not open</span>
         </h1>
 
-        {/* Subtitle */}
+        {/* Body */}
         <p className="mt-6 text-base text-rice-soft">
-          The PlovCoin airdrop claim site will be live at Token Generation Event — target{" "}
-          <strong className="text-rice">September 2026</strong>.
+          No public claim date has been announced. This is the reserved official
+          PlovCoin claim domain.
         </p>
         <p className="mt-3 text-sm text-rice-dim">
-          Target date subject to final audit completion and exchange listing approval.
-          Exact date announced 2 weeks before launch via official channels.
+          Claim availability and eligibility will be published only after the
+          applicable readiness and distribution gates are approved.
         </p>
 
-        {/* Warning */}
+        {/* Security warning */}
         <div className="mt-8 rounded-xl border border-fire/20 bg-fire/5 p-4 text-left">
           <div className="font-mono text-[10px] uppercase tracking-widest text-fire">
-            ⚠ Anti-phishing
+            ⚠ Security
           </div>
           <p className="mt-2 text-sm leading-relaxed text-rice-soft">
             <strong className="text-rice">claim.plovcoin.com</strong> is the{" "}
-            <em>only</em> official PlovCoin claim domain. Any other URL is a scam. We will never DM
-            you a claim link.
+            <em>only</em> official PlovCoin claim domain. Any other URL is a scam.
+            PlovCoin will never ask for your seed phrase, private key, or a transfer
+            of funds to verify eligibility — and we will never DM you a claim link.
           </p>
         </div>
 
         {/* CTAs */}
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="https://t.me/PlovCoinOfficial"
+            href="https://t.me/PlovCoinOfficialBot"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
           >
-            Follow announcements
+            Official announcements
           </a>
           <Link href="/" className="btn-secondary">
             Back to plovcoin.com
@@ -101,12 +102,12 @@ export default function ClaimSoonPage() {
             </li>
             <li>
               <a
-                href="https://t.me/PlovCoin"
+                href="https://t.me/PlovCoinOfficialBot"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-fire"
               >
-                t.me/PlovCoin
+                t.me/PlovCoinOfficialBot
               </a>
             </li>
           </ul>

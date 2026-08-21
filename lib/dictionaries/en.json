@@ -10,7 +10,7 @@
     "faq": "FAQ"
   },
   "hero": {
-    "badge": "Solana · Pre-TGE · September 2026",
+    "badge": "Solana · Pre-TGE · Q3 2026, audit-gated",
     "taglineStart": "Billions have tasted it.",
     "taglineEnd": "Now they can own it.",
     "subtitle": "A recipe loved across every continent. Now on-chain, with a 1,000-year community testing it. Fair launch. No presale. No VC.",
@@ -144,12 +144,12 @@
         ]
       },
       {
-        "quarter": "September 2026",
+        "quarter": "Q3 2026",
         "name": "Phase 1",
         "subtitle": "TGE Launch",
         "items": [
           "Meteora DLMM launch pool (T0)",
-          "PlovDrop Wave 1 distribution (~6.8% supply)",
+          "PlovDrop Wave 1 distribution",
           "Liquidity protection active (lock/timelock)",
           "Claim portal opens at claim.plovcoin.com"
         ]
@@ -513,7 +513,7 @@
           "label": "PlovDrop (airdrop)",
           "pct": "45%",
           "tokens": "5,855,851,350",
-          "logic": "4 waves; 50% instant / 50% T+14"
+          "logic": "4 waves; per official wave rules"
         },
         {
           "emoji": "💧",
@@ -541,7 +541,7 @@
           "label": "Burn Reserve",
           "pct": "7%",
           "tokens": "910,910,210",
-          "logic": "Milestone burns + discretionary quarterly burns"
+          "logic": "Milestone-based burns only. Not a price-support mechanism."
         },
         {
           "emoji": "💎",
@@ -621,25 +621,25 @@
       "waves": [
         {
           "wave": "Wave 1",
-          "period": "Q2 2026",
+          "period": "TBA",
           "tool": "Streamflow",
-          "mechanic": "50% instant / 50% T+14"
+          "mechanic": "Per official wave rules"
         },
         {
           "wave": "Wave 2",
-          "period": "Q3 2026",
+          "period": "TBA",
           "tool": "Streamflow",
-          "mechanic": "50% instant / 50% T+14"
+          "mechanic": "Per official wave rules"
         },
         {
           "wave": "Wave 3",
-          "period": "Q3–Q4 2026",
+          "period": "TBA",
           "tool": "Streamflow",
-          "mechanic": "50% instant / 50% T+14"
+          "mechanic": "Per official wave rules"
         },
         {
           "wave": "Wave 4",
-          "period": "Q2 2027",
+          "period": "TBA",
           "tool": "Airship / Helius",
           "mechanic": "Merkle claim, 30 days, sweep → burn"
         }
@@ -683,7 +683,7 @@
         "Instagram",
         "Discord"
       ],
-      "challengeTitle": "#PlovChallenge",
+      "challengeTitle": "Community participation",
       "challengePoints": [
         "UGC virality around plov and memes",
         "Rewards from the marketing reserve",
@@ -911,11 +911,11 @@
         },
         {
           "q": "Where can I buy $PLOV?",
-          "a": "At TGE (target: September 2026, pending final audit), $PLOV will be available on Meteora DLMM, then Raydium CPMM (T+7) and Orca CLMM (T+30). Use Jupiter for best routing."
+          "a": "At TGE — Q3 2026, audit-gated — $PLOV will be available on Meteora DLMM, then Raydium CPMM (T+7) and Orca CLMM (T+30). Use Jupiter for best routing."
         },
         {
           "q": "When is the TGE?",
-          "a": "Target: September 2026, pending final audit completion. Exact date announced 2 weeks before launch. Follow @PlovTeam on X or PlovCoinOfficial on Telegram."
+          "a": "Q3 2026, audit-gated. The exact date is announced only after the final audit and listing are confirmed. Follow @PlovTeam on X for announcements."
         },
         {
           "q": "Is there a tax on buy/sell?",
@@ -945,31 +945,31 @@
     "waves": [
       {
         "wave": "Wave 1",
-        "when": "TGE · September 2026",
-        "pct": "6.8%",
-        "target": "Creator-led launch wave for verified #PlovChallenge participation and early community activity"
+        "when": "TBA",
+        "pct": "TBA",
+        "target": "Per-wave allocation, eligibility, claim timing and unlock mechanics are published in the official rules for each wave after the applicable readiness, compliance and distribution approvals are complete."
       },
       {
         "wave": "Wave 2",
-        "when": "Q3 2026",
-        "pct": "12%",
-        "target": "Holders + active community + verified social engagement"
+        "when": "TBA",
+        "pct": "TBA",
+        "target": "Published in the official rules for this wave after approvals are complete."
       },
       {
         "wave": "Wave 3",
-        "when": "Q3-Q4 2026",
-        "pct": "13.2%",
-        "target": "Loyalty rewards + ecosystem contributors"
+        "when": "TBA",
+        "pct": "TBA",
+        "target": "Published in the official rules for this wave after approvals are complete."
       },
       {
         "wave": "Wave 4",
-        "when": "Q2 2027",
-        "pct": "13%",
-        "target": "Long-term holders + DAO participants"
+        "when": "TBA",
+        "pct": "TBA",
+        "target": "Published in the official rules for this wave after approvals are complete."
       }
     ],
     "ctaTitle": "Want to be eligible?",
-    "ctaText": "Join the community now. Wave 1 eligibility starts with #PlovChallenge participation and verified social engagement.",
+    "ctaText": "Join the community now. Eligibility and claim rules for each wave are published in the official wave rules after approvals.",
     "ctaPrimary": "Join PlovArmy →",
     "ctaSecondary": "Verify on Proof-hub"
   },
@@ -1044,7 +1044,7 @@
       },
       {
         "q": "Where can I buy $PLOV?",
-        "a": "At TGE (target: September 2026, pending final audit), $PLOV launches on Meteora DLMM. At T+7 we add Raydium CPMM, at T+30 Orca CLMM. Use Jupiter for best routing across DEXs.",
+        "a": "At TGE — Q3 2026, audit-gated — $PLOV launches on Meteora DLMM. At T+7 we add Raydium CPMM, at T+30 Orca CLMM. Use Jupiter for best routing across DEXs.",
         "proofLabel": "Whitepaper → Liquidity",
         "proofHref": "/whitepaper#liquidity"
       },
@@ -1131,7 +1131,7 @@
           },
           {
             "q": "Will tokens be burned?",
-            "a": "Yes. 7% of supply (910,910,210 tokens) is reserved for burns: milestone burns at specific thresholds, plus discretionary quarterly burns. All burns are verified on-chain.",
+            "a": "Yes. 7% of supply (910,910,210 tokens) is reserved for milestone-based burns only — not a price-support mechanism. All burns are verified on-chain.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           }
@@ -1143,7 +1143,7 @@
         "items": [
           {
             "q": "When is the TGE?",
-            "a": "Target: September 2026, pending final audit completion. Exact date announced 2 weeks before launch via official channels."
+            "a": "Q3 2026, audit-gated. The exact date is announced only after the final audit and listing are confirmed, via official channels."
           },
           {
             "q": "Is there a tax on buy/sell?",
@@ -1181,7 +1181,7 @@
           },
           {
             "q": "When are the airdrop waves?",
-            "a": "Wave 1: Q2 2026. Wave 2: Q3 2026. Wave 3: Q3–Q4 2026. Wave 4: Q2 2027. Each wave opens for a limited time.",
+            "a": "Wave allocations, timing and claim windows are published in the official rules for each wave after approvals. There is no fixed public schedule yet.",
             "proofLabel": "PlovDrop page",
             "proofHref": "/plovdrop"
           },
@@ -1265,7 +1265,7 @@
           },
           {
             "q": "How can I contribute?",
-            "a": "Join PlovArmy on Telegram or Discord. Participate in #PlovChallenge UGC campaigns. KOL partnerships: contact via official channels.",
+            "a": "Join PlovArmy on X and Discord. KOL partnerships: contact via official channels.",
             "proofLabel": "Join Telegram",
             "proofHref": "https://t.me/PlovCoin"
           }
