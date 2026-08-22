@@ -641,7 +641,7 @@
           "wave": "Wave 4",
           "period": "TBA",
           "tool": "Airship / Helius",
-          "mechanic": "Merkle claim, 30 days, sweep → burn"
+          "mechanic": "Per official wave rules"
         }
       ],
       "antiSybilTitle": "Anti-Sybil",
@@ -676,8 +676,7 @@
       "title": "Marketing & Community",
       "armyTitle": "PlovArmy",
       "armyChannels": [
-        "Telegram community",
-        "Telegram announcements",
+        "Telegram announcements channel",
         "X / Twitter",
         "TikTok",
         "Instagram",
@@ -818,7 +817,7 @@
         {
           "emoji": "👾",
           "name": "Rais-Barbaris",
-          "role": "Telegram & community"
+          "role": "Telegram announcements & community"
         },
         {
           "emoji": "⚙️",
@@ -990,10 +989,10 @@
   "faq": {
     "badge": "Help Center",
     "title": "Frequently Asked Questions",
-    "intro": "Everything you need to know about PlovCoin — from buying tokens to understanding our launch structure. Can't find your answer? Reach out on Telegram.",
+    "intro": "Everything you need to know about PlovCoin — from buying tokens to understanding our launch structure. Always verify information through the official channels listed below.",
     "officialSources": {
       "title": "Official Sources",
-      "warning": "Only these are real. Any other URL or address claiming to be PlovCoin is a scam.",
+      "warning": "Only these are real. Any other URL or address claiming to be PlovCoin is a scam. PlovCoin admins will never ask for your seed phrase or private key. During the current pre-TGE stage, no live trading, token-sale, claim or wallet-connect instructions are published through Telegram.",
       "items": [
         {
           "label": "Website",
@@ -1014,6 +1013,11 @@
           "label": "X",
           "value": "@PlovTeam",
           "href": "https://x.com/PlovTeam"
+        },
+        {
+          "label": "Official Info Bot",
+          "value": "@PlovCoinCommunityBot",
+          "href": "https://t.me/PlovCoinCommunityBot"
         },
         {
           "label": "Token mint",
@@ -1249,6 +1253,22 @@
             "a": "Email security@plovcoin.com. Our PGP key and reporting policy are published in Proof-hub. Confirmed critical issues may be eligible for a reward.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
+          },
+          {
+            "q": "What is the official PlovCoin Telegram?",
+            "a": "The official PlovCoin announcements channel is @PlovCoinAnnouncements. Always verify Telegram links before interacting with PlovCoin content.",
+            "proofLabel": "Official Telegram",
+            "proofHref": "https://t.me/PlovCoinAnnouncements"
+          },
+          {
+            "q": "Does PlovCoin have a Telegram community group?",
+            "a": "PlovCoin currently operates an official announcements channel and an official information bot. There is no separate public Telegram community group at this stage."
+          },
+          {
+            "q": "What is @PlovCoinCommunityBot?",
+            "a": "@PlovCoinCommunityBot is the official PlovCoin information bot for verified project information, tokenomics, roadmap status and security guidance.",
+            "proofLabel": "Official Info Bot",
+            "proofHref": "https://t.me/PlovCoinCommunityBot"
           }
         ]
       },

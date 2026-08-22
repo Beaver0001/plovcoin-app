@@ -641,7 +641,7 @@
           "wave": "Волна 4",
           "period": "TBA",
           "tool": "Airship / Helius",
-          "mechanic": "Merkle claim, 30 дней, sweep → burn"
+          "mechanic": "По официальным правилам волны"
         }
       ],
       "antiSybilTitle": "Anti-Sybil",
@@ -676,8 +676,7 @@
       "title": "Маркетинг и сообщество",
       "armyTitle": "PlovArmy",
       "armyChannels": [
-        "Telegram community",
-        "Telegram announcements",
+        "Telegram-канал анонсов",
         "X / Twitter",
         "TikTok",
         "Instagram",
@@ -818,7 +817,7 @@
         {
           "emoji": "👾",
           "name": "Раис-Барбарис",
-          "role": "Telegram и сообщество"
+          "role": "Telegram-анонсы и сообщество"
         },
         {
           "emoji": "⚙️",
@@ -990,10 +989,10 @@
   "faq": {
     "badge": "Центр помощи",
     "title": "Частые вопросы",
-    "intro": "Всё что нужно знать о PlovCoin — от покупки токенов до понимания структуры запуска. Не нашли ответ? Напишите нам в Telegram.",
+    "intro": "Всё что нужно знать о PlovCoin — от покупки токенов до понимания структуры запуска. Всегда проверяйте информацию через официальные каналы, указанные ниже.",
     "officialSources": {
       "title": "Официальные источники",
-      "warning": "Только эти — настоящие. Любой другой URL или адрес, выдающий себя за PlovCoin — мошенничество.",
+      "warning": "Только эти — настоящие. Любой другой URL или адрес, выдающий себя за PlovCoin — мошенничество. Администраторы PlovCoin никогда не запрашивают seed-фразу или приватный ключ. На текущем pre-TGE этапе PlovCoin не публикует в Telegram инструкции по торговле, продаже токенов, claim или подключению кошелька.",
       "items": [
         {
           "label": "Сайт",
@@ -1014,6 +1013,11 @@
           "label": "X",
           "value": "@PlovTeam",
           "href": "https://x.com/PlovTeam"
+        },
+        {
+          "label": "Официальный инфо-бот",
+          "value": "@PlovCoinCommunityBot",
+          "href": "https://t.me/PlovCoinCommunityBot"
         },
         {
           "label": "Адрес токена",
@@ -1095,7 +1099,7 @@
           {
             "q": "Что такое PlovArmy?",
             "a": "PlovArmy — сообщество PlovCoin: растущая группа держателей, креаторов и сторонников вокруг символа плова. Живёт в Telegram, X, TikTok, Instagram и Discord.",
-            "proofLabel": "Войти в Telegram",
+            "proofLabel": "Официальный Telegram",
             "proofHref": "https://t.me/PlovCoinAnnouncements"
           },
           {
@@ -1249,6 +1253,22 @@
             "a": "Пишите на security@plovcoin.com. PGP-ключ и правила отправки отчётов опубликованы в Proof-hub. За подтверждённые критические проблемы может быть предложено вознаграждение.",
             "proofLabel": "Proof-hub",
             "proofHref": "/ru/proof"
+          },
+          {
+            "q": "Какой официальный Telegram PlovCoin?",
+            "a": "Официальный канал объявлений PlovCoin: @PlovCoinAnnouncements. Всегда проверяйте Telegram-ссылки перед взаимодействием с контентом PlovCoin.",
+            "proofLabel": "Официальный Telegram",
+            "proofHref": "https://t.me/PlovCoinAnnouncements"
+          },
+          {
+            "q": "Есть ли у PlovCoin Telegram-группа?",
+            "a": "На текущем этапе у PlovCoin есть официальный канал объявлений и официальный информационный бот. Отдельной публичной Telegram-группы сейчас нет."
+          },
+          {
+            "q": "Что такое @PlovCoinCommunityBot?",
+            "a": "Это официальный информационный бот PlovCoin с проверенной информацией о проекте, токеномике, roadmap и безопасности.",
+            "proofLabel": "Официальный инфо-бот",
+            "proofHref": "https://t.me/PlovCoinCommunityBot"
           }
         ]
       },
@@ -1271,7 +1291,7 @@
           {
             "q": "Как я могу внести вклад?",
             "a": "Присоединяйтесь к PlovArmy в X и Discord. KOL-партнёрства: обращайтесь через официальные каналы.",
-            "proofLabel": "Войти в Telegram",
+            "proofLabel": "Официальный Telegram",
             "proofHref": "https://t.me/PlovCoinAnnouncements"
           }
         ]

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -318,8 +318,8 @@ export function FaqView() {
             </div>
             <p className="mt-2 text-sm text-rice-soft">
               {locale === "ru"
-                ? "Присоединяйтесь к PlovArmy в Telegram — мы отвечаем быстро."
-                : "Join PlovArmy on Telegram — we answer fast."}
+                ? "Официальный Telegram-канал PlovCoin — только анонсы."
+                : "PlovCoin official Telegram channel — announcements only."}
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
               <a
