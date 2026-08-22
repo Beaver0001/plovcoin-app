@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: dict.meta.homeTitle,
     description: dict.meta.homeDesc,
     images: ["/og-image.png"],
-    creator: "PlovCoin",
+    creator: "@PlovTeam",
   },
   robots: {
     index: true,

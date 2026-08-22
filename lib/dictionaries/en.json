@@ -14,11 +14,6 @@
     "taglineStart": "Billions have tasted it.",
     "taglineEnd": "Now they can own it.",
     "subtitle": "A recipe loved across every continent. Now on-chain, with a 1,000-year community testing it. Fair launch. No presale. No VC.",
-    "countdownDays": "Days",
-    "countdownHours": "Hours",
-    "countdownMins": "Mins",
-    "countdownSecs": "Secs",
-    "countdownNote": "Target date — subject to final audit completion and exchange listing approval.",
     "ctaPrimary": "Join PlovArmy →",
     "ctaSecondary": "Read Whitepaper",
     "trust": {
@@ -151,7 +146,7 @@
           "Meteora DLMM launch pool (T0)",
           "PlovDrop Wave 1 distribution",
           "Liquidity protection active (lock/timelock)",
-          "Claim portal opens at claim.plovcoin.com"
+          "Claim portal at claim.plovcoin.com"
         ]
       },
       {
@@ -933,7 +928,7 @@
     "titleAccent": "Drop",
     "intro": "The largest allocation goes to the people. Four waves over 12 months. No insiders, no whitelists, no pay-to-play.",
     "phishBold": "⚠ OFFICIAL CLAIM ONLY:",
-    "phishText": "claim.plovcoin.com — opens at TGE. Any other URL is a phishing attempt. We will never DM you.",
+    "phishText": "claim.plovcoin.com is the only official claim domain. Any other URL is a phishing attempt. We will never DM you and never ask for your seed phrase, private key, or a transfer of funds.",
     "statusComing": "Coming Soon",
     "statusLocked": "Locked",
     "waves": [
