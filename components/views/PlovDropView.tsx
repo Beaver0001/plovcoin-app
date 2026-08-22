@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -82,7 +82,7 @@ export function PlovDropView() {
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
-                href="https://t.me/plovcoin"
+                href="https://t.me/PlovCoinAnnouncements"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary !text-sm !py-2.5 !px-5"

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -67,7 +67,7 @@ export default function ClaimSoonPage() {
         {/* CTAs */}
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="https://t.me/PlovCoinOfficialBot"
+            href="https://t.me/PlovCoinAnnouncements"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
@@ -102,12 +102,12 @@ export default function ClaimSoonPage() {
             </li>
             <li>
               <a
-                href="https://t.me/PlovCoinOfficialBot"
+                href="https://t.me/PlovCoinAnnouncements"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-fire"
               >
-                t.me/PlovCoinOfficialBot
+                t.me/PlovCoinAnnouncements
               </a>
             </li>
           </ul>

@@ -865,13 +865,8 @@
         },
         {
           "label": "Telegram",
-          "value": "t.me/PlovCoin",
-          "href": "https://t.me/PlovCoin"
-        },
-        {
-          "label": "Announcements",
-          "value": "t.me/PlovCoinOfficial",
-          "href": "https://t.me/PlovCoinOfficial"
+          "value": "t.me/PlovCoinAnnouncements",
+          "href": "https://t.me/PlovCoinAnnouncements"
         },
         {
           "label": "X",
@@ -1011,6 +1006,16 @@
           "href": "https://claim.plovcoin.com"
         },
         {
+          "label": "Telegram",
+          "value": "@PlovCoinAnnouncements",
+          "href": "https://t.me/PlovCoinAnnouncements"
+        },
+        {
+          "label": "X",
+          "value": "@PlovTeam",
+          "href": "https://x.com/PlovTeam"
+        },
+        {
           "label": "Token mint",
           "value": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
           "href": "https://solscan.io/token/B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
@@ -1090,8 +1095,8 @@
           {
             "q": "What is PlovArmy?",
             "a": "PlovArmy is the PlovCoin community — a growing group of holders, creators, and supporters united around the plov symbol. It lives on Telegram, X, TikTok, Instagram, and Discord.",
-            "proofLabel": "Join on Telegram",
-            "proofHref": "https://t.me/PlovCoin"
+            "proofLabel": "Official Telegram",
+            "proofHref": "https://t.me/PlovCoinAnnouncements"
           },
           {
             "q": "Who runs the project?",
@@ -1266,8 +1271,8 @@
           {
             "q": "How can I contribute?",
             "a": "Join PlovArmy on X and Discord. KOL partnerships: contact via official channels.",
-            "proofLabel": "Join Telegram",
-            "proofHref": "https://t.me/PlovCoin"
+            "proofLabel": "Official Telegram",
+            "proofHref": "https://t.me/PlovCoinAnnouncements"
           }
         ]
       }

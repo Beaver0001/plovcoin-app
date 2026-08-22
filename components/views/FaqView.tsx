@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -323,7 +323,7 @@ export function FaqView() {
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="https://t.me/PlovCoin"
+                href="https://t.me/PlovCoinAnnouncements"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"

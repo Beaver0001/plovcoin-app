@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { I18nProvider } from "@/components/I18nProvider";
 import { getDictionary } from "@/lib/i18n";
 import { HomeView } from "@/components/views/HomeView";
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: dict.meta.homeTitle,
     description: dict.meta.homeDesc,
     images: ["/og-image.png"],
-    creator: "@PlovCoinOfficial",
+    creator: "PlovCoin",
   },
 };
 

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -24,8 +24,8 @@ export function Footer() {
       { href: localePath(locale, "/plovdrop"), label: t.footer.links.plovdrop },
     ],
     [t.footer.sectionCommunity]: [
-      { href: "https://t.me/plovcoin", label: "Telegram", external: true },
-      { href: "https://x.com/PlovCoin", label: "X / Twitter", external: true },
+      { href: "https://t.me/PlovCoinAnnouncements", label: "Telegram", external: true },
+      { href: "https://x.com/PlovTeam", label: "X / Twitter", external: true },
       { href: "https://instagram.com/plovcoin", label: "Instagram", external: true },
       { href: "https://tiktok.com/@plovcoin", label: "TikTok", external: true },
     ],

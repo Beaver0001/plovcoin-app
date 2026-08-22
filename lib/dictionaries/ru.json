@@ -865,13 +865,8 @@
         },
         {
           "label": "Telegram",
-          "value": "t.me/PlovCoin",
-          "href": "https://t.me/PlovCoin"
-        },
-        {
-          "label": "Анонсы",
-          "value": "t.me/PlovCoinOfficial",
-          "href": "https://t.me/PlovCoinOfficial"
+          "value": "t.me/PlovCoinAnnouncements",
+          "href": "https://t.me/PlovCoinAnnouncements"
         },
         {
           "label": "X",
@@ -1011,6 +1006,16 @@
           "href": "https://claim.plovcoin.com"
         },
         {
+          "label": "Telegram",
+          "value": "@PlovCoinAnnouncements",
+          "href": "https://t.me/PlovCoinAnnouncements"
+        },
+        {
+          "label": "X",
+          "value": "@PlovTeam",
+          "href": "https://x.com/PlovTeam"
+        },
+        {
           "label": "Адрес токена",
           "value": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
           "href": "https://solscan.io/token/B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
@@ -1091,7 +1096,7 @@
             "q": "Что такое PlovArmy?",
             "a": "PlovArmy — сообщество PlovCoin: растущая группа держателей, креаторов и сторонников вокруг символа плова. Живёт в Telegram, X, TikTok, Instagram и Discord.",
             "proofLabel": "Войти в Telegram",
-            "proofHref": "https://t.me/PlovCoin"
+            "proofHref": "https://t.me/PlovCoinAnnouncements"
           },
           {
             "q": "Кто управляет проектом?",
@@ -1267,7 +1272,7 @@
             "q": "Как я могу внести вклад?",
             "a": "Присоединяйтесь к PlovArmy в X и Discord. KOL-партнёрства: обращайтесь через официальные каналы.",
             "proofLabel": "Войти в Telegram",
-            "proofHref": "https://t.me/PlovCoin"
+            "proofHref": "https://t.me/PlovCoinAnnouncements"
           }
         ]
       }
