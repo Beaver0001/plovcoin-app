@@ -10,7 +10,7 @@
     "faq": "FAQ"
   },
   "hero": {
-    "badge": "Solana · Pre-TGE · Q3 2026, audit-gated",
+    "badge": "Solana · Pre-TGE · Target Q4 2026 · Go/No-Go gated",
     "taglineStart": "Billions have tasted it.",
     "taglineEnd": "Now they can own it.",
     "subtitle": "A recipe loved across every continent. Now on-chain, with a 1,000-year community testing it. Fair launch. No presale. No VC.",
@@ -90,7 +90,7 @@
       },
       {
         "label": "Liquidity",
-        "note": "2,602,600,600 $PLOV · Meteora/Raydium/Orca"
+        "note": "2,602,600,600 $PLOV · staged, gated liquidity deployment"
       },
       {
         "label": "Marketing & Growth",
@@ -128,51 +128,51 @@
     "statusFuture": "Future",
     "phases": [
       {
-        "quarter": "Q2 2026",
+        "quarter": "Pre-TGE",
         "name": "Phase 0",
         "subtitle": "Foundation",
         "items": [
           "Token deployed on Solana (mint & freeze disabled)",
           "Squads multisig treasury setup",
           "Security audit: preliminary report in, findings remediated (re-test)",
-          "Proof-hub live, all addresses public"
+          "Proof Hub live with verified production facts"
         ]
       },
       {
-        "quarter": "Q3 2026",
+        "quarter": "Target Q4 2026",
         "name": "Phase 1",
         "subtitle": "TGE Launch",
         "items": [
-          "Meteora DLMM launch pool (T0)",
-          "PlovDrop Wave 1 distribution",
-          "Liquidity protection active (lock/timelock)",
-          "Claim portal at claim.plovcoin.com"
+          "Primary PLOV/SOL market on Meteora DAMM v2",
+          "Capped Pro-Rata Alpha Vault before public activation",
+          "Public activation only after the final Go/No-Go",
+          "Wave 1 review no earlier than T+24h"
         ]
       },
       {
-        "quarter": "Q3 2026",
+        "quarter": "Post-TGE",
         "name": "Phase 2",
         "subtitle": "Growth",
         "items": [
-          "Raydium CPMM mirror pool (T+1 APY-gated)",
-          "20,000+ holders target",
-          "CEX Tier-2 listings initiated",
-          "PlovDrop Wave 2 distribution"
+          "Jupiter routing and execution-quality monitoring",
+          "Conditional liquidity backstop through T+90",
+          "CEX listings subject to readiness and due diligence",
+          "PlovDrop waves governed by the separate Wave Policy"
         ]
       },
       {
-        "quarter": "Q4 2026",
+        "quarter": "Scale phase",
         "name": "Phase 3",
         "subtitle": "Scale",
         "items": [
-          "Orca CLMM USDC support pool (T+30)",
-          "Liquidity expansion across multiple DEXs",
-          "100,000+ holders target",
-          "Additional Tier-2 CEX listings"
+          "Conditional liquidity expansion based on market quality",
+          "No fixed secondary-DEX launch calendar",
+          "Growth targets remain non-binding KPIs",
+          "CEX expansion subject to readiness and due diligence"
         ]
       },
       {
-        "quarter": "2027+",
+        "quarter": "Long-term",
         "name": "Phase 4+",
         "subtitle": "Expansion",
         "items": [
@@ -235,7 +235,7 @@
       "tokenomics": "Tokenomics",
       "roadmap": "Roadmap",
       "security": "Security",
-      "whitepaper": "Whitepaper v7.4",
+      "whitepaper": "Whitepaper v8.1",
       "proof": "Proof-hub",
       "plovdrop": "PlovDrop",
       "faq": "FAQ"
@@ -250,10 +250,10 @@
     "chapter": "Verifiable on Solana",
     "titleStart": "Proof-",
     "titleAccent": "Hub",
-    "intro": "Every action on-chain. Every address public. Every transaction verifiable. No private wallets. No hidden allocations.",
-    "lastUpdated": "Last updated: July 2026",
-    "placeholder": "— pending publication —",
-    "placeholderNote": "This section is populated as TGE approaches (Q3 2026, audit-gated). Sensitive operations are published here after execution.",
+    "intro": "Verified production addresses, transactions, and control evidence are published here after execution. Planned values are never presented as completed facts.",
+    "lastUpdated": "Last updated: August 2026",
+    "placeholder": "— no verified production transaction published yet —",
+    "placeholderNote": "Production addresses and transactions are published here only after they exist and are verified. Planned values are never presented as completed execution.",
     "verifyTitle": "Verify everything yourself",
     "verifyText": "Once published, every address and transaction here links directly to Solscan. You don't need to trust us — verify on-chain.",
     "verifyCta1": "Open Solscan ↗",
@@ -515,7 +515,7 @@
           "label": "Liquidity",
           "pct": "20%",
           "tokens": "2,602,600,600",
-          "logic": "Meteora DLMM (T0) → Raydium CPMM (T+7) → Orca CLMM (T+30); launch liquidity protection"
+          "logic": "Primary PLOV/SOL market on Meteora DAMM v2; capped Pro-Rata Alpha Vault; Jupiter routing after activation; conditional post-launch liquidity backstop"
         },
         {
           "emoji": "🎨",
@@ -557,23 +557,23 @@
       "archTitle": "Launch architecture",
       "archStages": [
         {
-          "period": "T0 – T+7",
-          "venue": "Meteora DLMM",
-          "desc": "Launch pool with dynamic range"
+          "period": "Pre-activation",
+          "venue": "Meteora DAMM v2 · PLOV/SOL",
+          "desc": "One-sided PLOV liquidity and capped Pro-Rata Alpha Vault; fill completes before public activation"
         },
         {
-          "period": "T+7 – T+30",
-          "venue": "Raydium CPMM → Orca CLMM",
-          "desc": "Mirrored ranges and depth expansion"
+          "period": "Public activation",
+          "venue": "Meteora DAMM v2 → Jupiter routing",
+          "desc": "Activation only after the final Go/No-Go; execution quality and routing monitored after launch"
         },
         {
-          "period": "T+30 – T+90",
-          "venue": "Jupiter routing",
-          "desc": "Optimization based on aggregator data and deeper liquidity"
+          "period": "Post-launch through T+90",
+          "venue": "Conditional liquidity backstop",
+          "desc": "Liquidity actions target execution quality, depth, and resilience — not price support"
         }
       ],
       "protectionTitle": "Launch Liquidity Protection",
-      "protectionText": "For compatible pool models, LP token burn may be used; for position-based DLMM/CLMM models, a lock / timelock / non-withdrawable custody design applies. The specific launch scheme and transaction confirmations are published on Proof-hub.",
+      "protectionText": "The production pool address, position, custody controls, and transaction confirmations are published through Proof Hub only after execution and verification. Planned configurations are not presented as completed actions.",
       "metricsTitle": "KPI targets (30 days post-TGE)",
       "metrics": [
         {
@@ -674,8 +674,7 @@
         "Telegram announcements channel",
         "X / Twitter",
         "TikTok",
-        "Instagram",
-        "Discord"
+        "Instagram"
       ],
       "challengeTitle": "Community participation",
       "challengePoints": [
@@ -742,7 +741,7 @@
         {
           "risk": "Volatility",
           "manifestation": "Sharp candles / slippage",
-          "mitigation": "DLMM range, CLMM depth, slippage KPIs"
+          "mitigation": "DAMM v2 market configuration, slippage KPIs, depth and execution-quality monitoring"
         },
         {
           "risk": "MEV / bots",
@@ -778,24 +777,24 @@
       "title": "Roadmap",
       "rows": [
         {
-          "period": "Q1–Q2 2026",
-          "goals": "TGE preparation, final whitepaper, AI toolchain, utility bots, Telegram automation"
+          "period": "Pre-TGE",
+          "goals": "Launch readiness, final audit/re-test, communications readiness, Proof Hub, DAMM v2 and Alpha Vault preparation"
         },
         {
-          "period": "Q2 2026",
-          "goals": "TGE, launch liquidity protection, Wave 1, Meteora DLMM, DEX launch"
+          "period": "Target Q4 2026",
+          "goals": "Final Go/No-Go, capped Pro-Rata Alpha Vault fill, PLOV/SOL public activation on Meteora DAMM v2, Jupiter routing"
         },
         {
-          "period": "Q3 2026",
-          "goals": "Waves 2–3, hold-to-earn launch, Tier-2 CEX push, KOL partnerships, Milestone Burn #1"
+          "period": "Post-TGE",
+          "goals": "Wave 1 review no earlier than T+24h; conditional liquidity backstop; execution-quality, depth, and resilience monitoring"
         },
         {
-          "period": "Q4 2026",
-          "goals": "50K+ holders target, Milestone Burn #2, Tier-1 prep, AI MemeLab v1, charity report"
+          "period": "Scale phase",
+          "goals": "Subsequent PlovDrop waves under the separate Wave Policy; conditional liquidity and CEX expansion; growth initiatives"
         },
         {
-          "period": "Q2 2027",
-          "goals": "Wave 4, Kazan Genesis NFT (if criteria are met), multichain R&D, 100K holders, Burn #3"
+          "period": "Long-term",
+          "goals": "Kazan Genesis NFT if criteria are met, governance expansion, multichain R&D, and community growth"
         }
       ],
       "note": "Readiness over urgency. If security, liquidity, legal, or infrastructure blocks require more time, the launch is postponed. Better to ship slower than to repair trust live on stage."
@@ -868,11 +867,6 @@
           "href": "https://x.com/PlovTeam"
         },
         {
-          "label": "Discord",
-          "value": "discord.gg/plovcoin",
-          "href": "https://discord.gg/plovcoin"
-        },
-        {
           "label": "Security",
           "value": "security@plovcoin.com",
           "href": "mailto:security@plovcoin.com"
@@ -900,11 +894,11 @@
         },
         {
           "q": "Where can I buy $PLOV?",
-          "a": "At TGE — Q3 2026, audit-gated — $PLOV will be available on Meteora DLMM, then Raydium CPMM (T+7) and Orca CLMM (T+30). Use Jupiter for best routing."
+          "a": "Live trading is not open during the pre-TGE stage. At public activation, the primary PLOV/SOL market is planned on Meteora DAMM v2, with Jupiter routing after activation. No fixed Raydium or Orca launch schedule is announced."
         },
         {
           "q": "When is the TGE?",
-          "a": "Q3 2026, audit-gated. The exact date is announced only after the final audit and listing are confirmed. Follow @PlovTeam on X for announcements."
+          "a": "We are preparing for a Q4 2026 public launch. The exact date will be announced through official channels only after communications readiness and the final Go/No-Go. The launch will be postponed if any critical requirement remains unmet."
         },
         {
           "q": "Is there a tax on buy/sell?",
@@ -967,8 +961,8 @@
     "homeDesc": "PlovCoin is the first universal cultural memecoin on Solana. Billions have tasted it. Now they can own it. Fair launch, 45% to community, no presale, no VC.",
     "proofTitle": "Proof-hub — On-Chain Verification",
     "proofDesc": "Verify every PlovCoin operation on-chain. Addresses, liquidity, airdrops, burns, vesting, advertising, security, incidents — all public, all verifiable on Solana.",
-    "whitepaperTitle": "Whitepaper v7.4 — Fair Launch, Transparent Tokenomics",
-    "whitepaperDesc": "PlovCoin Whitepaper v7.4: tokenomics, launch structure, airdrops, governance, and risks. Cultural memecoin on Solana. Fair launch, 45% to community, Proof-hub verified.",
+    "whitepaperTitle": "Whitepaper v8.1 — Fair Launch, Transparent Tokenomics",
+    "whitepaperDesc": "PlovCoin Whitepaper v8.1: tokenomics, launch structure, airdrops, governance, and risks. Cultural memecoin on Solana. Fair launch, 45% to community, Proof Hub transparency.",
     "plovdropTitle": "PlovDrop — 45% to Community",
     "plovdropDesc": "PlovDrop is the largest allocation in $PLOV — 45% of supply distributed across four airdrop waves to the community.",
     "faqTitle": "FAQ — PlovCoin Help Center",
@@ -1048,7 +1042,7 @@
       },
       {
         "q": "Where can I buy $PLOV?",
-        "a": "At TGE — Q3 2026, audit-gated — $PLOV launches on Meteora DLMM. At T+7 we add Raydium CPMM, at T+30 Orca CLMM. Use Jupiter for best routing across DEXs.",
+        "a": "Live trading is not open during the pre-TGE stage. At public activation, the primary PLOV/SOL market is planned on Meteora DAMM v2, with Jupiter routing after activation. No fixed Raydium or Orca launch schedule is announced.",
         "proofLabel": "Whitepaper → Liquidity",
         "proofHref": "/whitepaper#liquidity"
       },
@@ -1093,7 +1087,7 @@
           },
           {
             "q": "What is PlovArmy?",
-            "a": "PlovArmy is the PlovCoin community — a growing group of holders, creators, and supporters united around the plov symbol. It lives on Telegram, X, TikTok, Instagram, and Discord.",
+            "a": "PlovArmy is the PlovCoin community — a growing group of holders, creators, and supporters united around the plov symbol. Official updates are published on Telegram and X, with cultural content on TikTok and Instagram.",
             "proofLabel": "Official Telegram",
             "proofHref": "https://t.me/PlovCoinAnnouncements"
           },
@@ -1147,7 +1141,7 @@
         "items": [
           {
             "q": "When is the TGE?",
-            "a": "Q3 2026, audit-gated. The exact date is announced only after the final audit and listing are confirmed, via official channels."
+            "a": "We are preparing for a Q4 2026 public launch. The exact date will be announced through official channels only after communications readiness and the final Go/No-Go. The launch will be postponed if any critical requirement remains unmet."
           },
           {
             "q": "Is there a tax on buy/sell?",
@@ -1285,7 +1279,7 @@
           },
           {
             "q": "How can I contribute?",
-            "a": "Join PlovArmy on X and Discord. KOL partnerships: contact via official channels.",
+            "a": "Follow PlovCoin on X, TikTok, and Instagram, and use the official Telegram announcements channel for verified updates. KOL partnerships: contact us through official channels.",
             "proofLabel": "Official Telegram",
             "proofHref": "https://t.me/PlovCoinAnnouncements"
           }

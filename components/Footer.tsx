@@ -26,8 +26,8 @@ export function Footer() {
     [t.footer.sectionCommunity]: [
       { href: "https://t.me/PlovCoinAnnouncements", label: "Telegram", external: true },
       { href: "https://x.com/PlovTeam", label: "X / Twitter", external: true },
-      { href: "https://instagram.com/plovcoin", label: "Instagram", external: true },
-      { href: "https://tiktok.com/@plovcoin", label: "TikTok", external: true },
+      { href: "https://www.instagram.com/plovcoinofficial/", label: "Instagram", external: true },
+      { href: "https://www.tiktok.com/@plovcoinofficial", label: "TikTok", external: true },
     ],
     [t.footer.sectionContact]: [
       { href: "mailto:hello@plovcoin.com", label: "hello@plovcoin.com" },

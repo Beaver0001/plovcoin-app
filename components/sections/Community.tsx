@@ -29,8 +29,8 @@ const channels = [
   },
   {
     name: "Instagram",
-    handle: "@plovcoin",
-    href: "https://instagram.com/plovcoin",
+    handle: "@plovcoinofficial",
+    href: "https://www.instagram.com/plovcoinofficial/",
     color: "from-[#E4405F] via-[#FCAF45] to-[#833AB4]",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -40,8 +40,8 @@ const channels = [
   },
   {
     name: "TikTok",
-    handle: "@plovcoin",
-    href: "https://tiktok.com/@plovcoin",
+    handle: "@plovcoinofficial",
+    href: "https://www.tiktok.com/@plovcoinofficial",
     color: "from-[#FF0050] to-[#00F2EA]",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
