@@ -11,8 +11,8 @@
   },
   "hero": {
     "badge": "Solana · Pre-TGE · Target Q4 2026 · Go/No-Go gated",
-    "taglineStart": "Billions have tasted it.",
-    "taglineEnd": "Now they can own it.",
+    "taglineStart": "Loved across the world.",
+    "taglineEnd": "Now on-chain.",
     "subtitle": "A recipe loved across every continent. Now on-chain, with a 1,000-year community testing it. Fair launch. No presale. No VC.",
     "ctaPrimary": "Join PlovArmy →",
     "ctaSecondary": "Read Whitepaper",
@@ -920,7 +920,7 @@
     "badge": "45% to Community",
     "titleStart": "Plov",
     "titleAccent": "Drop",
-    "intro": "The largest allocation goes to the people. Four waves over 12 months. No insiders, no whitelists, no pay-to-play.",
+    "intro": "The largest allocation goes to the people. Four waves over 12 months. No insiders, no pay-to-play. Eligibility and access rules for each wave are published in the official wave rules.",
     "phishBold": "⚠ OFFICIAL CLAIM ONLY:",
     "phishText": "claim.plovcoin.com is the only official claim domain. Any other URL is a phishing attempt. We will never DM you and never ask for your seed phrase, private key, or a transfer of funds.",
     "statusComing": "Coming Soon",
@@ -958,7 +958,7 @@
   },
   "meta": {
     "homeTitle": "PlovCoin ($PLOV) — Fair Launch Cultural Memecoin on Solana",
-    "homeDesc": "PlovCoin is the first universal cultural memecoin on Solana. Billions have tasted it. Now they can own it. Fair launch, 45% to community, no presale, no VC.",
+    "homeDesc": "PlovCoin is the first universal cultural memecoin on Solana. A dish loved across the world. Now on-chain. Fair launch, 45% to community, no presale, no VC.",
     "proofTitle": "Proof-hub — On-Chain Verification",
     "proofDesc": "Verify every PlovCoin operation on-chain. Addresses, liquidity, airdrops, burns, vesting, advertising, security, incidents — all public, all verifiable on Solana.",
     "whitepaperTitle": "Whitepaper v8.1 — Fair Launch, Transparent Tokenomics",
