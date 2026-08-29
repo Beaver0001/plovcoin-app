@@ -359,7 +359,7 @@
       {
         "id": "vesting",
         "title": "Vesting",
-        "note": "Streamflow stream IDs for every team member.",
+        "note": "Vesting stream IDs for every team member.",
         "items": []
       },
       {
@@ -617,19 +617,19 @@
         {
           "wave": "Wave 1",
           "period": "TBA",
-          "tool": "Streamflow",
+          "tool": "TBA",
           "mechanic": "Per official wave rules"
         },
         {
           "wave": "Wave 2",
           "period": "TBA",
-          "tool": "Streamflow",
+          "tool": "TBA",
           "mechanic": "Per official wave rules"
         },
         {
           "wave": "Wave 3",
           "period": "TBA",
-          "tool": "Streamflow",
+          "tool": "TBA",
           "mechanic": "Per official wave rules"
         },
         {
@@ -1004,11 +1004,6 @@
           "href": "https://x.com/PlovTeam"
         },
         {
-          "label": "Official Info Bot",
-          "value": "@PlovCoinCommunityBot",
-          "href": "https://t.me/PlovCoinCommunityBot"
-        },
-        {
           "label": "Token mint",
           "value": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
           "href": "https://solscan.io/token/B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
@@ -1087,7 +1082,7 @@
           },
           {
             "q": "What is PlovArmy?",
-            "a": "PlovArmy is the PlovCoin community — a growing group of holders, creators, and supporters united around the plov symbol. Official updates are published on Telegram and X, with cultural content on TikTok and Instagram.",
+            "a": "PlovArmy is the PlovCoin community — a growing group of holders, creators, and supporters united around the plov symbol. Official updates are published on Telegram and X.",
             "proofLabel": "Official Telegram",
             "proofHref": "https://t.me/PlovCoinAnnouncements"
           },
@@ -1221,7 +1216,7 @@
         "items": [
           {
             "q": "Has PlovCoin been audited?",
-            "a": "The preliminary audit report has been received; all findings have been remediated and submitted for re-testing. The final report and its scope will be published on Proof-hub once officially finalized.",
+            "a": "Yes. An independent security review of the project's infrastructure, custody architecture and website has been completed, and all identified issues were addressed. The strongest results are verifiable by anyone on-chain: the mint and freeze authorities are permanently revoked — no new tokens can ever be created, and no wallet can ever be frozen.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           },
@@ -1233,13 +1228,13 @@
           },
           {
             "q": "What about MEV and sniper bots?",
-            "a": "We use Jito bundles and quiet windows during launch to mitigate MEV. Full strategy published on Proof-hub.",
+            "a": "We use Jito bundles and quiet windows during launch to mitigate MEV. The full strategy will be published on Proof-hub closer to launch.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           },
           {
             "q": "How do I report a security issue?",
-            "a": "Email security@plovcoin.com. Our PGP key and reporting policy are published in Proof-hub. Confirmed critical issues may be eligible for a reward.",
+            "a": "Email security@plovcoin.com. Our PGP key and reporting policy will be published in Proof-hub before TGE. Confirmed critical issues may be eligible for a reward.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           },
@@ -1251,13 +1246,25 @@
           },
           {
             "q": "Does PlovCoin have a Telegram community group?",
-            "a": "PlovCoin currently operates an official announcements channel and an official information bot. There is no separate public Telegram community group at this stage."
+            "a": "PlovCoin currently operates one official announcements channel: @PlovCoinAnnouncements. There is no separate public Telegram community group at this stage — any group claiming to be PlovCoin is unofficial."
           },
           {
-            "q": "What is @PlovCoinCommunityBot?",
-            "a": "@PlovCoinCommunityBot is the official PlovCoin information bot for verified project information, tokenomics, roadmap status and security guidance.",
-            "proofLabel": "Official Info Bot",
-            "proofHref": "https://t.me/PlovCoinCommunityBot"
+            "q": "Is the liquidity locked? Can the team pull it?",
+            "a": "The LP position is owned by a Squads multisig (3/5 with a 48h timelock), not by any individual wallet. The operational delegate is technically unable to remove liquidity — that instruction is rejected at the program level. Any withdrawal requires multisig approval, a timelock delay, and documented change-control. Silent liquidity pulls are not possible.",
+            "proofLabel": "Proof-hub",
+            "proofHref": "/proof"
+          },
+          {
+            "q": "Why is the launch pool one-sided?",
+            "a": "The pool starts with PLOV only, and the SOL side is built by market demand — the same model used by major launch platforms today. This is fair-launch by design: the price opens at the bottom of the range and is discovered by the market, and early sellers can only sell into SOL that buyers actually brought — not into treasury funds.",
+            "proofLabel": "Whitepaper → Liquidity",
+            "proofHref": "/whitepaper#liquidity"
+          },
+          {
+            "q": "Will the team support or guarantee the price?",
+            "a": "No. PlovCoin makes no price guarantees and defends no price levels. The project maintains an operational liquidity reserve for orderly market operations under multisig control, but it is never used to promise, fix or protect any price.",
+            "proofLabel": "Whitepaper → Liquidity",
+            "proofHref": "/whitepaper#liquidity"
           }
         ]
       },
@@ -1279,7 +1286,7 @@
           },
           {
             "q": "How can I contribute?",
-            "a": "Follow PlovCoin on X, TikTok, and Instagram, and use the official Telegram announcements channel for verified updates. KOL partnerships: contact us through official channels.",
+            "a": "Follow PlovCoin on X (@PlovTeam) and the official Telegram announcements channel for verified updates. KOL partnerships: contact us through official channels.",
             "proofLabel": "Official Telegram",
             "proofHref": "https://t.me/PlovCoinAnnouncements"
           }
