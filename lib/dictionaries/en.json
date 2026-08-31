@@ -202,13 +202,13 @@
       },
       {
         "title": "Security Review",
-        "body": "Penetration-test audit: the preliminary report has been received (July 2026), all findings have been remediated and submitted to the auditor for re-testing. The final report will be published on Proof-hub. We do not claim audit completion until officially confirmed by the auditor.",
+        "body": "An independent penetration-test audit has been completed. The full report is confidential; instead of promises we publish verifiable facts: mint and freeze authorities are revoked and treasury custody runs through Squads multisig - all checkable on-chain via Proof-hub. We claim nothing that cannot be independently verified.",
         "ctaLabel": "Status & Reports"
       }
     ],
     "bannerLabel": "Security Status",
     "bannerBold": "Audit: findings remediated, re-testing underway.",
-    "bannerRest": "The preliminary report is in; every finding has been fixed and submitted for re-testing. The final report will be published on",
+    "bannerRest": "The independent audit is complete. Verifiable security facts - revoked authorities, multisig custody - are documented on",
     "bannerProofLink": "Proof-hub",
     "bannerTail": "when finalized. We do not claim audit completion until officially confirmed by the auditor."
   },
@@ -420,7 +420,7 @@
     ]
   },
   "whitepaper": {
-    "badge": "v7.4 · July 2026",
+    "badge": "v8.1 · August 2026",
     "title": "Whitepaper",
     "intro": "Fair launch, broad distribution, protected launch liquidity, and transparency through Proof-hub. This website whitepaper is designed for community readers, partners, and exchanges: concise, factual, and easy to verify.",
     "trust": {
@@ -612,7 +612,7 @@
     "airdrops": {
       "num": "05",
       "title": "Airdrops & Hold-to-Earn",
-      "lead": "45% of supply is distributed to the community through four airdrop waves over 12 months. Every wave is verified on-chain with SHA-256 hashes published on Proof-hub.",
+      "lead": "45% of supply is distributed to the community through four airdrop waves; timing and rules for each wave are set by the approved Wave Policy. Every wave is verified on-chain with SHA-256 hashes published on Proof-hub.",
       "waves": [
         {
           "wave": "Wave 1",
@@ -635,7 +635,7 @@
         {
           "wave": "Wave 4",
           "period": "TBA",
-          "tool": "Airship / Helius",
+          "tool": "TBA",
           "mechanic": "Per official wave rules"
         }
       ],
@@ -770,7 +770,7 @@
         }
       ],
       "deskTitle": "Security Desk",
-      "deskText": "security@plovcoin.com • PGP key on Proof-hub • bug bounty rewards may be offered for confirmed critical issues. Incident protocol: initial post ≤ 60 minutes, updates every 6–8 hours, followed by AMA and post-mortem."
+      "deskText": "security@plovcoin.com • bug bounty rewards may be offered for confirmed critical issues. Incident protocol: initial post ≤ 60 minutes, updates every 6–8 hours, followed by AMA and post-mortem."
     },
     "wpRoadmap": {
       "num": "09",
@@ -920,7 +920,7 @@
     "badge": "45% to Community",
     "titleStart": "Plov",
     "titleAccent": "Drop",
-    "intro": "The largest allocation goes to the people. Four waves over 12 months. No insiders, no pay-to-play. Eligibility and access rules for each wave are published in the official wave rules.",
+    "intro": "The largest allocation goes to the people. Four waves under approved rules. No insiders, no pay-to-play. Eligibility and access rules for each wave are published in the official wave rules.",
     "phishBold": "⚠ OFFICIAL CLAIM ONLY:",
     "phishText": "claim.plovcoin.com is the only official claim domain. Any other URL is a phishing attempt. We will never DM you and never ask for your seed phrase, private key, or a transfer of funds.",
     "statusComing": "Coming Soon",
@@ -1162,7 +1162,7 @@
         "items": [
           {
             "q": "What is PlovDrop?",
-            "a": "PlovDrop is the airdrop program — 45% of total supply distributed through 4 waves over 12 months. The largest allocation in the protocol.",
+            "a": "PlovDrop is the airdrop program — 45% of total supply distributed through 4 waves per the approved Wave Policy. The largest allocation in the protocol.",
             "proofLabel": "Whitepaper → Airdrops",
             "proofHref": "/whitepaper#airdrops"
           },
@@ -1228,13 +1228,13 @@
           },
           {
             "q": "What about MEV and sniper bots?",
-            "a": "We use Jito bundles and quiet windows during launch to mitigate MEV. The full strategy will be published on Proof-hub closer to launch.",
+            "a": "We use Jito bundles and quiet windows during launch to mitigate MEV. Operational details are documented on Proof-hub as they are finalized.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           },
           {
             "q": "How do I report a security issue?",
-            "a": "Email security@plovcoin.com. Our PGP key and reporting policy will be published in Proof-hub before TGE. Confirmed critical issues may be eligible for a reward.",
+            "a": "Email security@plovcoin.com. Confirmed critical issues may be eligible for a reward.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           },

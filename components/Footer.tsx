@@ -103,7 +103,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-between gap-4 text-xs text-rice-dim sm:flex-row">
-          <div>{t.footer.copyright}</div>
+          <div className="flex flex-wrap items-center gap-3">{t.footer.copyright}<Link href={localePath(locale, "/terms")} className="hover:text-fire">Terms</Link><Link href={localePath(locale, "/privacy")} className="hover:text-fire">Privacy</Link></div>
           <div className="font-mono">
             {t.footer.builtOn} <span className="text-fire">Solana</span> · {t.footer.auditedOn}{" "}
             <Link href={localePath(locale, "/proof")} className="text-fire hover:underline">
