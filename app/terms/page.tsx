@@ -1,4 +1,4 @@
-export const metadata = { title: "Terms of Use — PlovCoin" };
+export const metadata = { alternates: { canonical: "https://plovcoin.com/terms", languages: { en: "https://plovcoin.com/terms", ru: "https://plovcoin.com/ru/terms", "x-default": "https://plovcoin.com/terms" } }, title: "Terms of Use — PlovCoin" };
 export default function Page() {
   return (
     <main className="mx-auto max-w-3xl px-6 py-24 text-rice-soft">

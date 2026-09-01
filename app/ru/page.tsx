@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: dict.meta.homeDesc,
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image-v2.png",
         width: 1200,
         height: 630,
         alt: "PlovCoin — Универсальный рецепт в блокчейне",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: dict.meta.homeTitle,
     description: dict.meta.homeDesc,
-    images: ["/og-image.png"],
+    images: ["/og-image-v2.png"],
     creator: "@PlovTeam",
   },
 };
