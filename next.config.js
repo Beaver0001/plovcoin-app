@@ -3,6 +3,17 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  async redirects() {
+    return [
+      // ru.plovcoin.com subdomain -> plovcoin.com/ru (path preserved)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "ru.plovcoin.com" }],
+        destination: "https://plovcoin.com/ru/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return {
       beforeFiles: [
