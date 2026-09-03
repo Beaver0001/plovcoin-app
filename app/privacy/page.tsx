@@ -7,7 +7,7 @@ export default function Page() {
       <p className="mb-8 text-xs opacity-70">Last updated: September 3, 2026</p>
       <div className="space-y-5 text-sm leading-relaxed">
         <p>This website does not require accounts and does not collect personal data beyond standard technical logs of our hosting provider (IP address, user agent) used for security and operation.</p>
-        <p>We do not use advertising trackers and do not set cookies. Page views are counted in aggregate with Vercel Web Analytics, which uses no cookies and does not identify individual visitors.</p>
+        <p>We do not use advertising trackers. The site sets a single functional cookie, plov_locale, which remembers your language choice for one year and is not used for tracking. Page views are counted in aggregate with Vercel Web Analytics, which uses no cookies and does not identify individual visitors.</p>
         <p>If you email us (e.g. security@plovcoin.com), we process your message and address solely to respond and handle the report. Correspondence is retained no longer than needed to handle the report; you may request deletion of your data by writing to the same address. We do not sell or share personal data with third parties except where required by law.</p>
         <p>Third-party services you use to interact with PlovCoin (wallets, Telegram, X, exchanges) have their own privacy policies; we are not responsible for their processing.</p>
         <p>We may update this Policy; the current version is published on this page.</p>
