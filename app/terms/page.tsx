@@ -14,7 +14,7 @@ export default function Page() {
         <p>Official channels and contract addresses are listed on the <a href="/proof" className="underline hover:text-rice">Proof-hub</a> page. Anything else claiming to be PlovCoin is not us. We never DM first and never ask for seed phrases.</p>
         <p>We may update these Terms. The current version is always published on this page; the date of the last update is shown above.</p>
       </div>
-      <nav className="mt-12 flex flex-wrap gap-x-5 gap-y-2 text-xs opacity-80"><a href="/" className="underline hover:text-rice">Home</a><a href="/proof" className="underline hover:text-rice">Proof-hub</a><a href="/whitepaper" className="underline hover:text-rice">Whitepaper</a><a href="/faq" className="underline hover:text-rice">FAQ</a><a href="/terms" className="underline hover:text-rice">Terms</a><a href="/privacy" className="underline hover:text-rice">Privacy</a><a href="/ru/terms" className="underline hover:text-rice">Русский</a></nav>
+      <nav className="mt-12 flex flex-wrap gap-x-5 gap-y-2 text-xs opacity-80"><a href="/" className="underline hover:text-rice">Home</a><a href="/proof" className="underline hover:text-rice">Proof-hub</a><a href="/whitepaper" className="underline hover:text-rice">Whitepaper</a><a href="/faq" className="underline hover:text-rice">FAQ</a><a href="/terms" className="underline hover:text-rice">Terms</a><a href="/privacy" className="underline hover:text-rice">Privacy</a><a href="/terms?setLocale=ru" className="underline hover:text-rice">Русский</a></nav>
     </main>
   );
 }

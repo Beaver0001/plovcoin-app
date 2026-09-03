@@ -13,7 +13,7 @@ export default function Page() {
         <p>Мы можем обновлять настоящую Политику; актуальная версия размещена на этой странице.</p>
         <p>Вопросы: security@plovcoin.com.</p>
       </div>
-      <nav className="mt-12 flex flex-wrap gap-x-5 gap-y-2 text-xs opacity-80"><a href="/ru" className="underline hover:text-rice">Главная</a><a href="/ru/proof" className="underline hover:text-rice">Proof-hub</a><a href="/ru/whitepaper" className="underline hover:text-rice">Whitepaper</a><a href="/ru/faq" className="underline hover:text-rice">FAQ</a><a href="/ru/terms" className="underline hover:text-rice">Условия</a><a href="/ru/privacy" className="underline hover:text-rice">Конфиденциальность</a><a href="/privacy" className="underline hover:text-rice">English</a></nav>
+      <nav className="mt-12 flex flex-wrap gap-x-5 gap-y-2 text-xs opacity-80"><a href="/ru" className="underline hover:text-rice">Главная</a><a href="/ru/proof" className="underline hover:text-rice">Proof-hub</a><a href="/ru/whitepaper" className="underline hover:text-rice">Whitepaper</a><a href="/ru/faq" className="underline hover:text-rice">FAQ</a><a href="/ru/terms" className="underline hover:text-rice">Условия</a><a href="/ru/privacy" className="underline hover:text-rice">Конфиденциальность</a><a href="/ru/privacy?setLocale=en" className="underline hover:text-rice">English</a></nav>
     </main>
   );
 }

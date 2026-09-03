@@ -13,7 +13,7 @@ export default function Page() {
         <p>We may update this Policy; the current version is published on this page.</p>
         <p>Questions: security@plovcoin.com.</p>
       </div>
-      <nav className="mt-12 flex flex-wrap gap-x-5 gap-y-2 text-xs opacity-80"><a href="/" className="underline hover:text-rice">Home</a><a href="/proof" className="underline hover:text-rice">Proof-hub</a><a href="/whitepaper" className="underline hover:text-rice">Whitepaper</a><a href="/faq" className="underline hover:text-rice">FAQ</a><a href="/terms" className="underline hover:text-rice">Terms</a><a href="/privacy" className="underline hover:text-rice">Privacy</a><a href="/ru/privacy" className="underline hover:text-rice">Русский</a></nav>
+      <nav className="mt-12 flex flex-wrap gap-x-5 gap-y-2 text-xs opacity-80"><a href="/" className="underline hover:text-rice">Home</a><a href="/proof" className="underline hover:text-rice">Proof-hub</a><a href="/whitepaper" className="underline hover:text-rice">Whitepaper</a><a href="/faq" className="underline hover:text-rice">FAQ</a><a href="/terms" className="underline hover:text-rice">Terms</a><a href="/privacy" className="underline hover:text-rice">Privacy</a><a href="/privacy?setLocale=ru" className="underline hover:text-rice">Русский</a></nav>
     </main>
   );
 }
