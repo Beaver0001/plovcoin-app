@@ -17,6 +17,7 @@ export function middleware(request: NextRequest) {
   }
 
   // Explicit locale override: any path + ?setLocale=en|ru
+  // This is the ONLY place the locale cookie is set.
   const setLocale = request.nextUrl.searchParams.get("setLocale");
   if (setLocale && LOCALES.includes(setLocale as (typeof LOCALES)[number])) {
     const url = request.nextUrl.clone();
@@ -38,7 +39,8 @@ export function middleware(request: NextRequest) {
     });
     return response;
   }
-  // Locale-prefixed paths render as-is; the cookie changes ONLY via ?setLocale above.
+
+  // Locale-prefixed paths render as-is.
   for (const loc of LOCALES) {
     if (loc === DEFAULT_LOCALE) continue;
     if (pathname === `/${loc}` || pathname.startsWith(`/${loc}/`)) {
@@ -59,20 +61,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Default locale (English). Set cookie so we don't keep checking on every nav.
-  // NOTE: we explicitly do NOT detect browser language here — English is always
-  // the default for first-time visitors, regardless of browser settings.
-  const response = NextResponse.next();
-  if (!cookieLocale) {
-    response.cookies.set(COOKIE_NAME, DEFAULT_LOCALE, {
-      maxAge: 60 * 60 * 24 * 365,
-      sameSite: "lax",
-      path: "/",
-      httpOnly: true,
-      secure: true,
-    });
-  }
-  return response;
+  // Default locale (English), no cookie or cookie=en: render as-is.
+  // No cookie is written here: first-time visitors get no cookie at all.
+  // English is always the default regardless of browser language.
+  return NextResponse.next();
 }
 
 export const config = {
