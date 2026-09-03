@@ -1,7 +1,33 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { Bagel_Fat_One, Instrument_Serif, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+// Fonts are downloaded at build time and served from plovcoin.com.
+// No runtime requests to Google Fonts (privacy + performance).
+const fontDisplay = Bagel_Fat_One({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+const fontSerif = Instrument_Serif({
+  weight: "400",
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+});
+const fontBody = Geist({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-body",
+  display: "swap",
+});
+const fontMono = JetBrains_Mono({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://plovcoin.com"),
@@ -32,7 +58,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${fontDisplay.variable} ${fontSerif.variable} ${fontBody.variable} ${fontMono.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"
@@ -43,12 +72,6 @@ export default function RootLayout({
             { "@context": "https://schema.org", "@type": "WebSite", "name": "PlovCoin",
               "url": "https://plovcoin.com", "inLanguage": ["en", "ru"] }
           ]) }}
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
-          rel="stylesheet"
         />
       </head>
       <body className="noise-overlay">

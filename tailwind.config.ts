@@ -31,10 +31,11 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ['"Bagel Fat One"', "system-ui", "sans-serif"],
-        serif: ['"Instrument Serif"', "Georgia", "serif"],
-        body: ['"Geist"', "system-ui", "-apple-system", "sans-serif"],
-        mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
+        // CSS variables are set by next/font in app/layout.tsx
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+        body: ["var(--font-body)", "system-ui", "-apple-system", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       animation: {
         "ember-float": "ember-float 6s ease-in-out infinite",
