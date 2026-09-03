@@ -1,8 +1,16 @@
+import { I18nProvider } from "@/components/I18nProvider";
+import { getDictionary } from "@/lib/i18n";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+
+const dict = getDictionary("en");
+
 export const metadata = { alternates: { canonical: "https://plovcoin.com/privacy", languages: { en: "https://plovcoin.com/privacy", ru: "https://plovcoin.com/ru/privacy", "x-default": "https://plovcoin.com/privacy" } }, title: "Privacy Policy — PlovCoin" };
 export default function Page() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24 text-rice-soft">
-      <p className="mb-6 text-xs"><a href="/" className="underline hover:text-rice">&larr; PlovCoin</a></p>
+    <I18nProvider locale="en" dict={dict}>
+      <Navbar />
+      <main className="mx-auto max-w-3xl px-6 pb-8 pt-32 text-rice-soft">
       <h1 className="mb-3 text-3xl font-bold text-rice">Privacy Policy</h1>
       <p className="mb-8 text-xs opacity-70">Last updated: September 3, 2026</p>
       <div className="space-y-5 text-sm leading-relaxed">
@@ -13,7 +21,8 @@ export default function Page() {
         <p>We may update this Policy; the current version is published on this page.</p>
         <p>Questions: security@plovcoin.com.</p>
       </div>
-      <nav className="mt-12 flex flex-wrap gap-x-5 gap-y-2 text-xs opacity-80"><a href="/" className="underline hover:text-rice">Home</a><a href="/proof" className="underline hover:text-rice">Proof-hub</a><a href="/whitepaper" className="underline hover:text-rice">Whitepaper</a><a href="/faq" className="underline hover:text-rice">FAQ</a><a href="/terms" className="underline hover:text-rice">Terms</a><a href="/privacy" className="underline hover:text-rice">Privacy</a><a href="/privacy?setLocale=ru" className="underline hover:text-rice">Русский</a></nav>
-    </main>
+      </main>
+      <Footer />
+    </I18nProvider>
   );
 }

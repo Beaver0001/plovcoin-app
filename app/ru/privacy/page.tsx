@@ -1,8 +1,16 @@
+import { I18nProvider } from "@/components/I18nProvider";
+import { getDictionary } from "@/lib/i18n";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+
+const dict = getDictionary("ru");
+
 export const metadata = { alternates: { canonical: "https://plovcoin.com/ru/privacy", languages: { en: "https://plovcoin.com/privacy", ru: "https://plovcoin.com/ru/privacy", "x-default": "https://plovcoin.com/privacy" } }, description: "Политика конфиденциальности PlovCoin: какие данные обрабатываются, аналитика, сторонние сервисы, ваши права.", openGraph: { description: "Политика конфиденциальности PlovCoin: какие данные обрабатываются, аналитика, сторонние сервисы, ваши права.", images: ["/og-image-v2.png"] }, title: "Политика конфиденциальности — PlovCoin" };
 export default function Page() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24 text-rice-soft">
-      <p className="mb-6 text-xs"><a href="/ru" className="underline hover:text-rice">&larr; PlovCoin</a></p>
+    <I18nProvider locale="ru" dict={dict}>
+      <Navbar />
+      <main className="mx-auto max-w-3xl px-6 pb-8 pt-32 text-rice-soft">
       <h1 className="mb-3 text-3xl font-bold text-rice">Политика конфиденциальности</h1>
       <p className="mb-8 text-xs opacity-70">Последнее обновление: 3 сентября 2026</p>
       <div className="space-y-5 text-sm leading-relaxed">
@@ -13,7 +21,8 @@ export default function Page() {
         <p>Мы можем обновлять настоящую Политику; актуальная версия размещена на этой странице.</p>
         <p>Вопросы: security@plovcoin.com.</p>
       </div>
-      <nav className="mt-12 flex flex-wrap gap-x-5 gap-y-2 text-xs opacity-80"><a href="/ru" className="underline hover:text-rice">Главная</a><a href="/ru/proof" className="underline hover:text-rice">Proof-hub</a><a href="/ru/whitepaper" className="underline hover:text-rice">Whitepaper</a><a href="/ru/faq" className="underline hover:text-rice">FAQ</a><a href="/ru/terms" className="underline hover:text-rice">Условия</a><a href="/ru/privacy" className="underline hover:text-rice">Конфиденциальность</a><a href="/ru/privacy?setLocale=en" className="underline hover:text-rice">English</a></nav>
-    </main>
+      </main>
+      <Footer />
+    </I18nProvider>
   );
 }
