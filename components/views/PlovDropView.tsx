@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import { useI18n } from "@/components/I18nProvider";
+import { official } from "@/lib/official-config.mjs";
 import { localePath } from "@/lib/i18n";
 
 const STATUS_FLAGS = ["coming", "locked", "locked", "locked"] as const;
@@ -82,7 +83,7 @@ export function PlovDropView() {
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
-                href="https://t.me/PlovCoinAnnouncements"
+                href={official.channels.find(channel => channel.id === `announcements_${locale}`)!.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary !text-sm !py-2.5 !px-5"

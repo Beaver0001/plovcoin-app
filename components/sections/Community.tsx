@@ -1,15 +1,13 @@
-﻿"use client";
+"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useI18n } from "../I18nProvider";
+import { official } from "@/lib/official-config.mjs";
 import { localePath } from "@/lib/i18n";
 
-const channels = [
+const channelStyles = [
   {
-    name: "Telegram",
-    handle: "@PlovCoinAnnouncements",
-    href: "https://t.me/PlovCoinAnnouncements",
     color: "from-[#2AABEE] to-[#229ED9]",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -17,9 +15,6 @@ const channels = [
       </svg>
     ),
   },  {
-    name: "X / Twitter",
-    handle: "@PlovTeam",
-    href: "https://x.com/PlovTeam",
     color: "from-rice to-rice-soft",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -33,6 +28,11 @@ const channels = [
 
 export function Community() {
   const { locale, t } = useI18n();
+  const channels = official.channels.map(channel => ({
+    ...channelStyles[channel.id === "x" ? 1 : 0],
+    name: channel[locale], href: channel.href,
+    handle: channel.id === "telegram_folder" ? channel.href.replace(/^https:\/\//, "") : `@${channel.href.split("/").pop()}`,
+  }));
 
   return (
     <section id="community" className="relative py-32">
@@ -55,7 +55,7 @@ export function Community() {
           </p>
         </motion.div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {channels.map((c, i) => (
             <motion.a
               key={c.name}
@@ -74,7 +74,7 @@ export function Community() {
                 {c.icon}
               </div>
               <div className="mt-4 font-display text-lg text-rice">{c.name}</div>
-              <div className="mt-1 font-mono text-xs text-rice-dim">{c.handle}</div>
+              <div className="mt-1 max-w-full font-mono text-xs text-rice-dim [overflow-wrap:anywhere]">{c.handle}</div>
             </motion.a>
           ))}
         </div>
@@ -91,7 +91,7 @@ export function Community() {
             {t.community.finalTitle}
           </div>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="https://x.com/PlovTeam" target="_blank" rel="noopener noreferrer" className="btn-primary">
+            <Link href={official.channels.find(channel => channel.id === "x")!.href} target="_blank" rel="noopener noreferrer" className="btn-primary">
               {t.community.ctaPrimary}
             </Link>
             <Link href={localePath(locale, "/whitepaper")} className="btn-secondary">

@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useId } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ChevronDown, ShieldAlert, Copy, Check, ExternalLink, ArrowRight } from "lucide-react";
 import { useI18n } from "../I18nProvider";
 import { Navbar } from "../Navbar";
 import { Footer } from "../Footer";
+import { official } from "@/lib/official-config.mjs";
+import { useCopyFeedback } from "@/components/useCopyFeedback";
 import { localePath } from "@/lib/i18n";
 
 // Type-safe access - FAQ items may have optional proofLink
@@ -44,10 +46,13 @@ function FaqAccordion({
   isOpen,
   onToggle,
 }: FaqItem & { isOpen: boolean; onToggle: () => void }) {
+  const panelId = useId();
   return (
     <div className="overflow-hidden rounded-xl border border-fire/15 bg-bg-soft/40">
       <button
         onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={isOpen ? panelId : undefined}
         className="flex w-full items-start gap-3 p-4 text-left transition-colors hover:bg-fire/5"
       >
         <span className="flex-1 font-display text-sm text-rice">{q}</span>
@@ -59,6 +64,7 @@ function FaqAccordion({
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
+            id={panelId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -89,6 +95,7 @@ function FeaturedCard({
   onToggle,
   index,
 }: FaqItem & { isOpen: boolean; onToggle: () => void; index: number }) {
+  const panelId = useId();
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -99,6 +106,8 @@ function FeaturedCard({
     >
       <button
         onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={isOpen ? panelId : undefined}
         className="flex w-full items-start gap-3 p-4 text-left transition-colors hover:bg-fire/5"
       >
         <span className="shrink-0 font-mono text-xs font-semibold text-fire">
@@ -113,6 +122,7 @@ function FeaturedCard({
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
+            id={panelId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -136,30 +146,32 @@ function FeaturedCard({
 
 function CopyableValue({ value, mono }: { value: string; mono?: boolean }) {
   const { t } = useI18n();
-  const [copied, setCopied] = useState(false);
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {}
-  }
+  const { copied, message, copy } = useCopyFeedback(value);
   return (
     <button
       onClick={copy}
-      className={`inline-flex items-center gap-1.5 rounded border border-fire/20 bg-bg/40 px-1.5 py-0.5 text-[11px] text-rice hover:border-fire/40 hover:text-fire transition-colors ${
+      aria-label={`${t.ui.copy}: ${value}`}
+      className={`inline-flex flex-wrap items-center gap-1.5 rounded border border-fire/20 bg-bg/40 px-1.5 py-0.5 text-[11px] text-rice hover:border-fire/40 hover:text-fire transition-colors ${
         mono ? "font-mono" : ""
       }`}
       title={copied ? t.ui.copied : t.ui.copy}
     >
-      <span className="max-w-[220px] truncate sm:max-w-none">{value}</span>
+      <span className="min-w-0 break-all text-left">{value}</span>
+      <span role="status" className={copied || !message ? "sr-only" : "basis-full text-xs normal-case tracking-normal"}>{message}</span>
       {copied ? <Check size={11} className="text-fire" /> : <Copy size={11} className="opacity-50" />}
     </button>
   );
 }
 
 function OfficialSources() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+  const items = [
+    { label: locale === "ru" ? "Сайт" : "Website", value: official.website, href: official.website, mono: false },
+    { label: locale === "ru" ? "Клейм · закрыт" : "Claim · closed", value: official.claim, href: official.claim, mono: false },
+    { label: "Mint", value: official.mint, href: `https://solscan.io/token/${official.mint}`, mono: true },
+    ...official.channels.map(channel => ({ label: channel[locale], value: channel.href, href: channel.href, mono: false })),
+    { label: locale === "ru" ? "Безопасность" : "Security", value: official.securityEmail, href: `mailto:${official.securityEmail}`, mono: false },
+  ];
   const os = t.faq.officialSources;
   return (
     <div
@@ -173,10 +185,10 @@ function OfficialSources() {
       <p className="text-xs text-rice-soft">{os.warning}</p>
 
       <div className="mt-4 grid gap-2 sm:grid-cols-2">
-        {os.items.map((item, i: number) => (
+        {items.map((item, i: number) => (
           <div
             key={i}
-            className="flex items-center justify-between gap-3 rounded-lg border border-fire/15 bg-bg-soft/60 px-3 py-2"
+            className="flex min-w-0 flex-col items-start gap-2 rounded-lg border border-fire/15 bg-bg-soft/60 px-3 py-2"
           >
             <span className="shrink-0 font-mono text-[10px] uppercase tracking-widest text-rice-dim">
               {item.label}
@@ -189,7 +201,8 @@ function OfficialSources() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="shrink-0 text-fire hover:opacity-70"
-                  title={t.ui.open}
+                  title={`${t.ui.open}: ${item.label}`}
+                  aria-label={`${t.ui.open}: ${item.label}`}
                 >
                   <ExternalLink size={11} />
                 </a>
@@ -253,7 +266,7 @@ export function FaqView() {
           </div>
 
           {/* Featured questions */}
-          <section className="mt-16">
+          <section className="faq-interactive mt-16">
             <h2 className="font-display text-2xl text-rice">{faq.featuredTitle}</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-2">
               {faq.featured.map((item: FaqItem, i: number) => {
@@ -272,7 +285,7 @@ export function FaqView() {
           </section>
 
           {/* Categories */}
-          <section className="mt-16">
+          <section className="faq-interactive mt-16">
             <h2 className="font-display text-2xl text-rice">{faq.categoriesTitle}</h2>
 
             {/* Category tabs */}
@@ -280,6 +293,7 @@ export function FaqView() {
               {faq.categories.map((cat) => (
                 <button
                   key={cat.id}
+                  aria-pressed={activeCat === cat.id}
                   onClick={() => {
                     setActiveCat(cat.id);
                     setOpenKey(null);
@@ -311,6 +325,17 @@ export function FaqView() {
             </div>
           </section>
 
+          <noscript>
+            <section className="mt-16 space-y-5">
+              <h2 className="font-display text-2xl text-rice">{faq.title}</h2>
+              {[...faq.featured, ...faq.categories.flatMap(category => category.items)].map((item, index) => (
+                <div key={index} className="card-warm">
+                  <h3 className="font-display text-lg text-rice">{item.q}</h3>
+                  <p className="mt-2 text-sm text-rice-soft">{item.a}</p>
+                </div>
+              ))}
+            </section>
+          </noscript>
           {/* Still have questions CTA */}
           <div className="mt-16 card-warm !p-8 text-center">
             <div className="font-display text-xl text-rice">
@@ -318,17 +343,17 @@ export function FaqView() {
             </div>
             <p className="mt-2 text-sm text-rice-soft">
               {locale === "ru"
-                ? "Официальный Telegram-канал PlovCoin — только анонсы."
-                : "PlovCoin official Telegram channel — announcements only."}
+                ? "Обсуждения — в PlovCoin Kitchen. Важные объявления — в официальных каналах анонсов."
+                : "Join PlovCoin Kitchen for discussion. Important updates are published in the official announcement channels."}
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="https://t.me/PlovCoinAnnouncements"
+                href={official.channels.find(channel => channel.id === "community")!.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
               >
-                Telegram
+                PlovCoin Kitchen
               </a>
               <Link href={localePath(locale, "/whitepaper")} className="btn-secondary">
                 {locale === "ru" ? "Читать Whitepaper" : "Read Whitepaper"}

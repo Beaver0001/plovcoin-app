@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -12,6 +12,15 @@ import { localePath } from "@/lib/i18n";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setOpen(false); menuButton.current?.focus(); }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
   const { locale, t } = useI18n();
 
   useEffect(() => {
@@ -62,7 +71,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-7 lg:flex">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -74,7 +83,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-5">
+        <div className="hidden lg:flex items-center gap-5">
           <LocaleSwitcher />
           <Link
             href={`${home}#community`}
@@ -85,8 +94,11 @@ export function Navbar() {
         </div>
 
         <button
-          className="md:hidden text-rice"
+          className="lg:hidden text-rice"
           onClick={() => setOpen(!open)}
+          ref={menuButton}
+          aria-expanded={open}
+          aria-controls={open ? "mobile-navigation" : undefined}
           aria-label={t.ui.menu}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
@@ -94,7 +106,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-fire/10 bg-bg-soft md:hidden">
+        <div id="mobile-navigation" className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-fire/10 bg-bg-soft lg:hidden">
           <div className="container-narrow flex flex-col gap-4 py-6">
             {links.map((l) => (
               <Link

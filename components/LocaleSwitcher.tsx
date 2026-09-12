@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useI18n } from "./I18nProvider";
 import { locales, localeLabels, stripLocale, localePath, type Locale } from "@/lib/i18n";
@@ -24,7 +23,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
         return (
           <div key={loc} className="flex items-center gap-0.5">
             {i > 0 && <span className="text-rice-dim px-1">|</span>}
-            <Link
+            <a
               href={href}
               className={cn(
                 "transition-colors px-1",
@@ -35,7 +34,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
               aria-current={isActive ? "page" : undefined}
             >
               {localeLabels[loc as Locale]}
-            </Link>
+            </a>
           </div>
         );
       })}

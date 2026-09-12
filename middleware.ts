@@ -40,41 +40,13 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
-  // Locale-prefixed paths render as-is.
-  for (const loc of LOCALES) {
-    if (loc === DEFAULT_LOCALE) continue;
-    if (pathname === `/${loc}` || pathname.startsWith(`/${loc}/`)) {
-      return NextResponse.next();
-    }
-  }
-
-  // User is on a default-locale path (no prefix).
-  // If cookie says they previously picked a non-default locale, redirect.
-  const cookieLocale = request.cookies.get(COOKIE_NAME)?.value;
-  if (
-    cookieLocale &&
-    cookieLocale !== DEFAULT_LOCALE &&
-    LOCALES.includes(cookieLocale as (typeof LOCALES)[number])
-  ) {
-    const url = request.nextUrl.clone();
-    url.pathname = `/${cookieLocale}${pathname === "/" ? "" : pathname}`;
-    return NextResponse.redirect(url);
-  }
-
-  // Default locale (English), no cookie or cookie=en: render as-is.
-  // No cookie is written here: first-time visitors get no cookie at all.
-  // English is always the default regardless of browser language.
-  return NextResponse.next();
+  // The explicit URL owns the locale. Old cookies must not redirect EN links.
+  // Always overwrite the internal header; client input is not trusted.
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-plov-locale", pathname === "/ru" || pathname.startsWith("/ru/") ? "ru" : "en");
+  return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all paths except:
-     * - /_next (internals)
-     * - /api (API routes)
-     * - static files (anything with a dot)
-     */
-    "/((?!_next|api|.*\\..*).*)",
-  ],
+  matcher: ["/((?!_next|api|.*\\..*).*)"],
 };

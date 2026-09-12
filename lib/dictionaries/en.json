@@ -48,7 +48,7 @@
       {
         "era": "2026",
         "title": "On-Chain",
-        "text": "A recipe that survived 1,000 years of distributed consensus moves to Solana. Same philosophy, new technology. Open source, transparent, multisig-protected."
+        "text": "A recipe that survived 1,000 years of distributed consensus moves to Solana. Same philosophy, new technology. Transparent, multisig-protected."
       }
     ]
   },
@@ -67,13 +67,13 @@
       {
         "no": "02",
         "title": "Fair Launch",
-        "body": "No presale. No private round. No insider allocations. No VCs at a discount. Everyone gets the same shot, at the same price, at the same time. The token launches the way a community potluck starts — open to all who show up.",
+        "body": "No presale. No private round. No discounted VC seats. Before the market opens, a capped pro-rata Alpha Vault runs under published rules — the same rules for everyone who shows up. After that, the market sets the price, not us.",
         "quote": "Same fire, same kazan, same chance."
       },
       {
         "no": "03",
         "title": "Transparent & Multisig-Protected",
-        "body": "45% of supply goes to airdrops over four waves. Just 8% for the team, fully vested over 24 months. Mint authority disabled forever. Liquidity protected. Treasury operations require Squads multisig with role-based thresholds and timelocks.",
+        "body": "45% of supply goes to airdrops over four waves. Just 8% for the team, with vesting scheduled over 24 months. Mint authority disabled forever. Treasury operations require Squads multisig with role-based thresholds and timelocks.",
         "quote": "The one who cooks it shouldn't own it. It belongs to those who share it."
       }
     ]
@@ -134,7 +134,7 @@
         "items": [
           "Token deployed on Solana (mint & freeze disabled)",
           "Squads multisig treasury setup",
-          "Security audit: preliminary report in, findings remediated (re-test)",
+          "Hacken review complete; all 12 findings Fixed; public report awaiting publication",
           "Proof Hub live with verified production facts"
         ]
       },
@@ -193,7 +193,7 @@
       {
         "title": "Squads Multisig",
         "body": "Treasury and sensitive operations run through Squads multisig with role-based thresholds (3/5 for Treasury with a 48h timelock; 2/3 with 12h timelocks for LP, Marketing, Updates, Burns). Exact safes and settings are published on Proof-hub.",
-        "ctaLabel": "View on Solscan"
+        "ctaLabel": "View safes on Proof-hub"
       },
       {
         "title": "Proof-hub",
@@ -201,16 +201,16 @@
         "ctaLabel": "Open Proof-hub"
       },
       {
-        "title": "Security Review",
-        "body": "An independent penetration-test audit has been completed. The full report is confidential; instead of promises we publish verifiable facts: mint and freeze authorities are revoked and treasury custody runs through Squads multisig - all checkable on-chain via Proof-hub. We claim nothing that cannot be independently verified.",
+        "title": "Hacken Security Review",
+        "body": "Hacken’s security review of VPS infrastructure, custody architecture and frontend code is complete. All 12 findings are marked Fixed. Publication of the public report is pending. Future wallet-connect, registration and claim functionality is outside this review’s scope.",
         "ctaLabel": "Status & Reports"
       }
     ],
     "bannerLabel": "Security Status",
-    "bannerBold": "Audit: findings remediated, re-testing underway.",
-    "bannerRest": "The independent audit is complete. Verifiable security facts - revoked authorities, multisig custody - are documented on",
+    "bannerBold": "Hacken review complete. Public report awaiting publication.",
+    "bannerRest": "Scope and current evidence are described on",
     "bannerProofLink": "Proof-hub",
-    "bannerTail": "when finalized. We do not claim audit completion until officially confirmed by the auditor."
+    "bannerTail": "Future claim functionality requires a separate review."
   },
   "community": {
     "chapter": "PlovArmy",
@@ -437,8 +437,8 @@
         "desc": "No presale, no private sale"
       },
       "liqProtection": {
-        "title": "Liquidity Protection",
-        "desc": "Publicly verified on Proof-hub"
+        "title": "Liquidity deployment status",
+        "desc": "Planned; execution evidence on Proof-hub when available"
       }
     },
     "disclaimerBold": "⚠ PlovCoin is a meme project.",
@@ -778,7 +778,7 @@
       "rows": [
         {
           "period": "Pre-TGE",
-          "goals": "Launch readiness, final audit/re-test, communications readiness, Proof Hub, DAMM v2 and Alpha Vault preparation"
+          "goals": "Launch readiness, completed Hacken review, public report publication, communications readiness, Proof Hub, DAMM v2 and Alpha Vault preparation"
         },
         {
           "period": "Target Q4 2026",
@@ -920,7 +920,7 @@
     "badge": "45% to Community",
     "titleStart": "Plov",
     "titleAccent": "Drop",
-    "intro": "The largest allocation goes to the people. Four waves under approved rules. No insiders, no pay-to-play. Eligibility and access rules for each wave are published in the official wave rules.",
+    "intro": "45% of supply is allocated to PlovDrop across four waves. Eligibility, allocations and access rules are published separately for each wave after approvals. Community membership alone does not establish eligibility.",
     "phishBold": "⚠ OFFICIAL CLAIM ONLY:",
     "phishText": "claim.plovcoin.com is the only official claim domain. Any other URL is a phishing attempt. We will never DM you and never ask for your seed phrase, private key, or a transfer of funds.",
     "statusComing": "Coming Soon",
@@ -951,9 +951,9 @@
         "target": "Published in the official rules for this wave after approvals are complete."
       }
     ],
-    "ctaTitle": "Want to be eligible?",
-    "ctaText": "Join the community now. Eligibility and claim rules for each wave are published in the official wave rules after approvals.",
-    "ctaPrimary": "Join PlovArmy →",
+    "ctaTitle": "Follow wave announcements",
+    "ctaText": "Follow the official announcements. Joining the community does not guarantee airdrop eligibility or rewards.",
+    "ctaPrimary": "Official announcements",
     "ctaSecondary": "Verify on Proof-hub"
   },
   "meta": {
@@ -981,45 +981,7 @@
     "intro": "Everything you need to know about PlovCoin — from buying tokens to understanding our launch structure. Always verify information through the official channels listed below.",
     "officialSources": {
       "title": "Official Sources",
-      "warning": "Only these are real. Any other URL or address claiming to be PlovCoin is a scam. PlovCoin admins will never ask for your seed phrase or private key. During the current pre-TGE stage, no live trading, token-sale, claim or wallet-connect instructions are published through Telegram.",
-      "items": [
-        {
-          "label": "Website",
-          "value": "plovcoin.com",
-          "href": "https://plovcoin.com"
-        },
-        {
-          "label": "Claim domain",
-          "value": "claim.plovcoin.com",
-          "href": "https://claim.plovcoin.com"
-        },
-        {
-          "label": "Telegram",
-          "value": "@PlovCoinAnnouncements",
-          "href": "https://t.me/PlovCoinAnnouncements"
-        },
-        {
-          "label": "X",
-          "value": "@PlovTeam",
-          "href": "https://x.com/PlovTeam"
-        },
-        {
-          "label": "Token mint",
-          "value": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
-          "href": "https://solscan.io/token/B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
-          "mono": true
-        },
-        {
-          "label": "Proof-hub",
-          "value": "plovcoin.com/proof",
-          "href": "https://plovcoin.com/proof"
-        },
-        {
-          "label": "Security email",
-          "value": "security@plovcoin.com",
-          "href": "mailto:security@plovcoin.com"
-        }
-      ]
+      "warning": "Only these are real. Any other URL or address claiming to be PlovCoin is a scam. PlovCoin admins will never ask for your seed phrase or private key. During the current pre-TGE stage, no live trading, token-sale, claim or wallet-connect instructions are published through Telegram."
     },
     "featuredTitle": "Start here",
     "featured": [
@@ -1043,13 +1005,13 @@
       },
       {
         "q": "Can I buy $PLOV before TGE?",
-        "a": "No. There is no presale, private sale, or early allocation. Anyone offering $PLOV before TGE is a scammer. Wait for the official launch — we'll announce it 2 weeks in advance.",
+        "a": "There is no presale or private sale. The approved launch plan includes a capped Pro-Rata Alpha Vault before public activation, subject to readiness gates and official participation rules. No participation instructions are currently published. Use only verified official announcements; do not act on unsolicited offers. Anyone selling $PLOV before an official announcement is not PlovCoin.",
         "proofLabel": "Whitepaper → Tokenomics",
         "proofHref": "/whitepaper#tokenomics"
       },
       {
         "q": "How do I verify this isn't a scam?",
-        "a": "Cross-check three things: the URL is plovcoin.com (or ru.plovcoin.com), the token mint matches the address on our site and Solscan, and any claim link starts with claim.plovcoin.com. We never DM claim links. We never ask for seed phrases.",
+        "a": "Open https://plovcoin.com directly and compare the full token mint with Proof-hub and Solscan. For claim, the protocol must be HTTPS and the hostname must be exactly claim.plovcoin.com — not a prefix or a subdomain of another website. Claim is not open. We never ask for seed phrases or private keys and never DM claim links.",
         "proofLabel": "Official Sources (above)",
         "proofHref": "#official-sources"
       },
@@ -1059,7 +1021,7 @@
       },
       {
         "q": "Will team tokens unlock at launch?",
-        "a": "No. Team tokens (8% of supply) are locked for a 12-month cliff, then released through 12 months of linear vesting. Nothing unlocks at launch.",
+        "a": "The approved team allocation is 8%, with a 12-month cliff followed by 12 months of linear vesting; no team unlock is scheduled at launch. The deployed vesting account and execution evidence will be published on Proof-hub when available.",
         "proofLabel": "Whitepaper → Tokenomics",
         "proofHref": "/whitepaper#tokenomics"
       }
@@ -1174,7 +1136,7 @@
           },
           {
             "q": "When are the airdrop waves?",
-            "a": "Wave allocations, timing and claim windows are published in the official rules for each wave after approvals. There is no fixed public schedule yet.",
+            "a": "There is no public claim schedule yet. Wave 1 review can begin no earlier than T+24h after public activation; review is not the opening of claim. Each wave requires approved rules, readiness checks and an official announcement.",
             "proofLabel": "PlovDrop page",
             "proofHref": "/plovdrop"
           },
@@ -1216,7 +1178,7 @@
         "items": [
           {
             "q": "Has PlovCoin been audited?",
-            "a": "Yes. An independent security review of the project's infrastructure, custody architecture and website has been completed, and all identified issues were addressed. The strongest results are verifiable by anyone on-chain: the mint and freeze authorities are permanently revoked — no new tokens can ever be created, and no wallet can ever be frozen.",
+            "a": "Hacken’s security review of VPS infrastructure, custody architecture and frontend code is complete. All 12 findings are marked Fixed. Publication of the public report is pending. Future wallet-connect, registration and claim functionality is outside this review’s scope. The strongest results are verifiable by anyone on-chain: the mint and freeze authorities are permanently revoked — no new tokens can ever be created, and no wallet can ever be frozen.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           },
@@ -1240,23 +1202,23 @@
           },
           {
             "q": "What is the official PlovCoin Telegram?",
-            "a": "The official PlovCoin announcements channel is @PlovCoinAnnouncements. Always verify Telegram links before interacting with PlovCoin content.",
+            "a": "Official Telegram: @PlovCoinAnnouncements (EN announcements), @PlovCoinRU (RU announcements), and @PlovCoinKitchen (community discussion). Direct links and the Telegram folder are listed in Official Sources.",
             "proofLabel": "Official Telegram",
             "proofHref": "https://t.me/PlovCoinAnnouncements"
           },
           {
             "q": "Does PlovCoin have a Telegram community group?",
-            "a": "PlovCoin currently operates one official announcements channel: @PlovCoinAnnouncements. There is no separate public Telegram community group at this stage — any group claiming to be PlovCoin is unofficial."
+            "a": "Yes. @PlovCoinKitchen is the official community discussion group. Joining it does not establish airdrop eligibility or guarantee rewards. Admins never DM first or ask for a seed phrase or private key."
           },
           {
             "q": "Is the liquidity locked? Can the team pull it?",
-            "a": "The LP position is owned by a Squads multisig (3/5 with a 48h timelock), not by any individual wallet. The operational delegate is technically unable to remove liquidity — that instruction is rejected at the program level. Any withdrawal requires multisig approval, a timelock delay, and documented change-control. Silent liquidity pulls are not possible.",
+            "a": "Production liquidity deployment is still subject to launch gates. The governance rules and currently verified accounts are listed on Proof-hub. A liquidity-lock or withdrawal-permission claim requires evidence for the actual deployed position; a plan alone is not that evidence.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           },
           {
-            "q": "Why is the launch pool one-sided?",
-            "a": "The pool starts with PLOV only, and the SOL side is built by market demand — the same model used by major launch platforms today. This is fair-launch by design: the price opens at the bottom of the range and is discovered by the market, and early sellers can only sell into SOL that buyers actually brought — not into treasury funds.",
+            "q": "How is the launch structured?",
+            "a": "The planned primary market is PLOV/SOL on Meteora DAMM v2, with a capped Pro-Rata Alpha Vault before public activation and Jupiter routing after activation. Participation rules and execution evidence will be published when the applicable launch gates are met. This is not a promise of a fixed price.",
             "proofLabel": "Whitepaper → Liquidity",
             "proofHref": "/whitepaper#liquidity"
           },
@@ -1286,7 +1248,7 @@
           },
           {
             "q": "How can I contribute?",
-            "a": "Follow PlovCoin on X (@PlovTeam) and the official Telegram announcements channel for verified updates. KOL partnerships: contact us through official channels.",
+            "a": "Join @PlovCoinKitchen for community discussion, follow @PlovCoinAnnouncements (EN), @PlovCoinRU (RU) and @PlovTeam on X for updates. Participation does not guarantee rewards. Partnership enquiries should use the contact details published on this site.",
             "proofLabel": "Official Telegram",
             "proofHref": "https://t.me/PlovCoinAnnouncements"
           }

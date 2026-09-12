@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Bagel_Fat_One, Instrument_Serif, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { headers } from "next/headers";
+import { official } from "@/lib/official-config.mjs";
 
 // Fonts are downloaded at build time and served from plovcoin.com.
 // No runtime requests to Google Fonts (privacy + performance).
@@ -40,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@PlovTeam",
+    site: `@${official.channels.find(channel => channel.id === "x")!.href.split("/").pop()}`,
     images: ["/og-image-v2.png"],
   },
 };
@@ -52,23 +54,25 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = (await headers()).get("x-plov-locale") === "ru" ? "ru" : "en";
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${fontDisplay.variable} ${fontSerif.variable} ${fontBody.variable} ${fontMono.variable}`}
     >
       <head>
+        <noscript><style>{`[style*="opacity:0"], [style*="opacity: 0"] { opacity: 1 !important; transform: none !important; } .faq-interactive { display: none !important; }`}</style></noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify([
             { "@context": "https://schema.org", "@type": "Organization", "name": "PlovCoin",
               "url": "https://plovcoin.com", "logo": "https://plovcoin.com/plov-logo.png",
-              "sameAs": ["https://x.com/PlovTeam", "https://t.me/PlovCoinAnnouncements"] },
+              "sameAs": official.channels.map(channel => channel.href) },
             { "@context": "https://schema.org", "@type": "WebSite", "name": "PlovCoin",
               "url": "https://plovcoin.com", "inLanguage": ["en", "ru"] }
           ]) }}

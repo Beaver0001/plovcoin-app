@@ -11,7 +11,7 @@ import ruDict from "@/lib/dictionaries/ru.json";
 export default function NotFound() {
   const pathname = usePathname();
   // Detect locale from pathname (best-effort - not-found runs before layouts)
-  const isRu = pathname?.startsWith("/ru");
+  const isRu = (pathname === "/ru" || pathname?.startsWith("/ru/"));
   const t = isRu ? ruDict.notFound : enDict.notFound;
   const prefix = isRu ? "/ru" : "";
 
