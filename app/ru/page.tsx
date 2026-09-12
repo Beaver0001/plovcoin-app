@@ -1,3 +1,4 @@
+import { official } from "@/lib/official-config.mjs";
 ﻿import type { Metadata } from "next";
 import { I18nProvider } from "@/components/I18nProvider";
 import { getDictionary } from "@/lib/i18n";
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     title: dict.meta.homeTitle,
     description: dict.meta.homeDesc,
     images: ["/og-image-v2.png"],
-    creator: "@PlovTeam",
+    creator: `@${official.channels.find(channel => channel.id === "x")!.href.split("/").pop()}`,
   },
 };
 

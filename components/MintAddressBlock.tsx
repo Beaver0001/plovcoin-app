@@ -1,29 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useCopyFeedback } from "./useCopyFeedback";
+import { official } from "@/lib/official-config.mjs";
 import { motion } from "framer-motion";
 import { Copy, Check, ExternalLink, ShieldAlert } from "lucide-react";
 import { useI18n } from "./I18nProvider";
 
-const MINT_ADDRESS = "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x";
+const MINT_ADDRESS = official.mint;
 const SOLSCAN_URL = `https://solscan.io/token/${MINT_ADDRESS}`;
 
 type Variant = "hero" | "compact" | "footer";
 
 export function MintAddressBlock({ variant = "hero" }: { variant?: Variant }) {
   const { t } = useI18n();
-  const [copied, setCopied] = useState(false);
+  const { copied, message, copy } = useCopyFeedback(MINT_ADDRESS);
   const mb = t.mintBlock;
-
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(MINT_ADDRESS);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // fallback: select text
-    }
-  }
 
   if (variant === "footer") {
     return (
@@ -33,18 +24,20 @@ export function MintAddressBlock({ variant = "hero" }: { variant?: Variant }) {
             <div className="font-mono text-[9px] uppercase tracking-widest text-fire-glow">
               {mb.label}
             </div>
-            <code className="mt-0.5 block truncate font-mono text-[11px] text-rice">
+            <code className="mt-0.5 block break-all font-mono text-[11px] text-rice">
               {MINT_ADDRESS}
             </code>
           </div>
           <div className="flex shrink-0 gap-1.5">
             <button
               onClick={copy}
-              className="inline-flex items-center gap-1 rounded-md border border-fire/30 bg-fire/10 px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-fire transition-colors hover:bg-fire/20"
+              aria-label={`${mb.copyBtn}: ${mb.label}`}
+              className="inline-flex flex-wrap items-center gap-1 rounded-md border border-fire/30 bg-fire/10 px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-fire transition-colors hover:bg-fire/20"
               title={copied ? mb.copiedBtn : mb.copyBtn}
             >
               {copied ? <Check size={11} /> : <Copy size={11} />}
               {copied ? mb.copiedBtn : mb.copyBtn}
+              <span role="status" className={copied || !message ? "sr-only" : "basis-full text-xs normal-case tracking-normal"}>{message}</span>
             </button>
           </div>
         </div>
@@ -65,16 +58,18 @@ export function MintAddressBlock({ variant = "hero" }: { variant?: Variant }) {
         <div className="mt-3 flex flex-wrap gap-2">
           <button
             onClick={copy}
-            className="inline-flex items-center gap-1.5 rounded-md border border-fire/30 bg-fire/10 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-fire transition-colors hover:bg-fire/20"
+              aria-label={`${mb.copyBtn}: ${mb.label}`}
+            className="inline-flex flex-wrap items-center gap-1.5 rounded-md border border-fire/30 bg-fire/10 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-fire transition-colors hover:bg-fire/20"
           >
             {copied ? <Check size={12} /> : <Copy size={12} />}
             {copied ? mb.copiedBtn : mb.copyBtn}
+              <span role="status" className={copied || !message ? "sr-only" : "basis-full text-xs normal-case tracking-normal"}>{message}</span>
           </button>
           <a
             href={SOLSCAN_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md border border-fire/20 bg-bg/40 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-rice-soft transition-colors hover:border-fire/40 hover:text-fire"
+            className="inline-flex flex-wrap items-center gap-1.5 rounded-md border border-fire/20 bg-bg/40 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-rice-soft transition-colors hover:border-fire/40 hover:text-fire"
           >
             {mb.solscanBtn}
             <ExternalLink size={11} />
@@ -112,16 +107,18 @@ export function MintAddressBlock({ variant = "hero" }: { variant?: Variant }) {
         <div className="mt-3 flex flex-wrap gap-2">
           <button
             onClick={copy}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-fire/40 bg-fire/15 px-3.5 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-fire transition-all hover:bg-fire/25"
+              aria-label={`${mb.copyBtn}: ${mb.label}`}
+            className="inline-flex flex-wrap items-center gap-1.5 rounded-lg border border-fire/40 bg-fire/15 px-3.5 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-fire transition-all hover:bg-fire/25"
           >
             {copied ? <Check size={13} /> : <Copy size={13} />}
             {copied ? mb.copiedBtn : mb.copyBtn}
+              <span role="status" className={copied || !message ? "sr-only" : "basis-full text-xs normal-case tracking-normal"}>{message}</span>
           </button>
           <a
             href={SOLSCAN_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-fire/20 bg-bg/40 px-3.5 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-rice-soft transition-all hover:border-fire/40 hover:text-fire"
+            className="inline-flex flex-wrap items-center gap-1.5 rounded-lg border border-fire/20 bg-bg/40 px-3.5 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-rice-soft transition-all hover:border-fire/40 hover:text-fire"
           >
             {mb.solscanBtn}
             <ExternalLink size={12} />

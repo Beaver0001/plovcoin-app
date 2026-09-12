@@ -47,6 +47,16 @@ export function ProofView() {
                 id={s.id}
                 className="scroll-mt-24 rounded-2xl border border-fire/15 bg-bg-soft/40 p-8"
               >
+                {s.id === "security" && (
+                  <div className="mb-8 rounded-xl border border-fire/30 bg-fire/5 p-5">
+                    <h2 className="font-display text-2xl text-rice">
+                      {t.security.cards[2].title}
+                    </h2>
+                    <p className="mt-3 text-sm leading-relaxed text-rice-soft">
+                      {t.security.cards[2].body}
+                    </p>
+                  </div>
+                )}
                 <div className="mb-4 flex items-center justify-between">
                   <h2 className="font-display text-3xl text-rice">{s.title}</h2>
                   <span className="font-mono text-[10px] uppercase tracking-widest text-rice-dim">

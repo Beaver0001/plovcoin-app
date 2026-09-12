@@ -1,4 +1,3 @@
-import { SetLangRu } from "@/components/SetLangRu";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function RuLayout({ children }: { children: React.ReactNode }) {
-  return <div lang="ru"><SetLangRu />{children}</div>;
+  return <div lang="ru">{children}</div>;
 }

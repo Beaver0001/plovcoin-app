@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, ReactNode } from "react";
+import { MotionConfig } from "framer-motion";
 import type { Dictionary, Locale } from "@/lib/i18n";
 
 type I18nContextValue = {
@@ -21,7 +22,7 @@ export function I18nProvider({
 }) {
   return (
     <I18nContext.Provider value={{ locale, t: dict }}>
-      {children}
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
     </I18nContext.Provider>
   );
 }

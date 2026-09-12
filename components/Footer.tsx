@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { useI18n } from "./I18nProvider";
 import { localePath } from "@/lib/i18n";
+import { official } from "@/lib/official-config.mjs";
 import { MintAddressBlock } from "./MintAddressBlock";
 
 export function Footer() {
@@ -23,13 +24,10 @@ export function Footer() {
       { href: localePath(locale, "/proof"), label: t.footer.links.proof },
       { href: localePath(locale, "/plovdrop"), label: t.footer.links.plovdrop },
     ],
-    [t.footer.sectionCommunity]: [
-      { href: "https://t.me/PlovCoinAnnouncements", label: "Telegram", external: true },
-      { href: "https://x.com/PlovTeam", label: "X / Twitter", external: true },
-    ],
+    [t.footer.sectionCommunity]: official.channels.map(channel => ({ href: channel.href, label: channel[locale], external: true })),
     [t.footer.sectionContact]: [
       { href: "mailto:hello@plovcoin.com", label: "hello@plovcoin.com" },
-      { href: "mailto:security@plovcoin.com", label: "security@plovcoin.com" },
+      { href: `mailto:${official.securityEmail}`, label: official.securityEmail },
       { href: "mailto:listing@plovcoin.com", label: "listing@plovcoin.com" },
     ],
   } as const;
@@ -82,7 +80,7 @@ export function Footer() {
                         href={item.href}
                         target={"external" in item && item.external ? "_blank" : undefined}
                         rel={"external" in item && item.external ? "noopener noreferrer" : undefined}
-                        className="text-sm text-rice-soft transition-colors hover:text-fire"
+                        className="break-words [overflow-wrap:anywhere] text-sm text-rice-soft transition-colors hover:text-fire"
                       >
                         {item.label}
                       </Link>
@@ -103,7 +101,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-between gap-4 text-xs text-rice-dim sm:flex-row">
-          <div className="flex flex-wrap items-center gap-3">{t.footer.copyright}<Link href={localePath(locale, "/terms")} className="hover:text-fire">Terms</Link><Link href={localePath(locale, "/privacy")} className="hover:text-fire">Privacy</Link></div>
+          <div className="flex flex-wrap items-center gap-3">{t.footer.copyright}<Link href={localePath(locale, "/terms")} className="hover:text-fire">{locale === "ru" ? "Условия" : "Terms"}</Link><Link href={localePath(locale, "/privacy")} className="hover:text-fire">{locale === "ru" ? "Конфиденциальность" : "Privacy"}</Link></div>
           <div className="font-mono">
             {t.footer.builtOn} <span className="text-fire">Solana</span> · {t.footer.auditedOn}{" "}
             <Link href={localePath(locale, "/proof")} className="text-fire hover:underline">
