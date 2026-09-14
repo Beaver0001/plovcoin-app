@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { I18nProvider } from "@/components/I18nProvider";
 import { getDictionary } from "@/lib/i18n";
 import { WhitepaperView } from "@/components/views/WhitepaperView";
+import { websiteEditionLabel } from "@/lib/website-edition";
 
 const dict = getDictionary("ru");
 
 export const metadata: Metadata = {
   title: dict.meta.whitepaperTitle,
-  description: dict.meta.whitepaperDesc,
+  description: `${dict.meta.whitepaperDesc} ${websiteEditionLabel("ru")}.`,
   alternates: {
     canonical: "https://plovcoin.com/ru/whitepaper",
     languages: {

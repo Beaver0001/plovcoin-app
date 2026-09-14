@@ -27,7 +27,7 @@ export function Tokenomics() {
           className="mb-16 max-w-3xl"
         >
           <div className="badge-pill mb-5">{t.tokenomics.chapter}</div>
-          <h2 className="font-display text-5xl leading-[0.95] text-rice md:text-7xl">
+          <h2 className="font-display text-[clamp(1.75rem,8vw,3rem)] leading-[0.95] text-rice md:text-7xl">
             {t.tokenomics.titleLine1}{" "}
             <span className="text-fire-gradient">{t.tokenomics.titleLine2}</span>
           </h2>
@@ -38,7 +38,7 @@ export function Tokenomics() {
 
         {/* Allocations bars */}
         <div className="grid gap-8 lg:grid-cols-[2fr_1fr]">
-          <div className="space-y-3">
+          <div className="min-w-0 space-y-3">
             {t.tokenomics.allocations.map((a, i) => {
               const pct = PCTS[i] ?? 0;
               const color = COLORS[i] ?? COLORS[0];
@@ -51,12 +51,12 @@ export function Tokenomics() {
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                   className="card-warm !p-5"
                 >
-                  <div className="flex items-baseline justify-between mb-3">
-                    <div>
+                  <div className="mb-3 flex items-baseline justify-between gap-2">
+                    <div className="min-w-0">
                       <div className="font-display text-lg text-rice">{a.label}</div>
                       <div className="font-mono text-[11px] text-rice-dim mt-0.5">{a.note}</div>
                     </div>
-                    <div className="font-display text-2xl text-fire-gradient">{pct}%</div>
+                    <div className="shrink-0 font-display text-2xl text-fire-gradient">{pct}%</div>
                   </div>
                   <div className="h-1.5 overflow-hidden rounded-full bg-bg/60">
                     <motion.div
@@ -73,7 +73,7 @@ export function Tokenomics() {
           </div>
 
           {/* Side stats */}
-          <div className="space-y-4">
+          <div className="min-w-0 space-y-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -84,7 +84,7 @@ export function Tokenomics() {
               <div className="font-mono text-[10px] uppercase tracking-widest text-fire-glow">
                 {t.tokenomics.totalSupply}
               </div>
-              <div className="mt-3 font-display text-4xl text-fire-gradient glow-text leading-tight">
+              <div className="mt-3 font-display text-2xl text-fire-gradient glow-text leading-tight sm:text-4xl">
                 13,013,003,000
               </div>
               <div className="mt-2 font-mono text-xs text-rice-soft">{t.tokenomics.totalNote}</div>

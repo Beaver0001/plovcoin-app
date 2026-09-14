@@ -28,7 +28,7 @@ export function Security() {
           className="mb-16 max-w-3xl"
         >
           <div className="badge-pill mb-5">{t.security.chapter}</div>
-          <h2 className="font-display text-5xl leading-[0.95] text-rice md:text-7xl">
+          <h2 className="break-words font-display text-4xl leading-[0.95] text-rice sm:text-5xl md:text-7xl">
             {t.security.titleLine1}
             <br />
             <span className="text-fire-gradient">{t.security.titleLine2}</span>
