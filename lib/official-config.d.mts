@@ -14,7 +14,7 @@ export const official: {
   readonly securityEmail: string;
   readonly channels: readonly OfficialChannel[];
   readonly hacken: {
-    readonly status: 'COMPLETE_AWAITING_PUBLICATION';
+    readonly status: 'COMPLETE_AWAITING_REPORT_LINK';
     readonly reportUrl: null;
     readonly badgeAsset: null;
     readonly scope: readonly string[];

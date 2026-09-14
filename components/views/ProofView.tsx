@@ -5,9 +5,24 @@ import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import { useI18n } from "@/components/I18nProvider";
 import { localePath } from "@/lib/i18n";
+import { official } from "@/lib/official-config.mjs";
+import evidence from "@/lib/proof-evidence.json";
+
+const observedAt = `${evidence.observedAt.slice(0, 19).replace("T", " ")} UTC`;
+
+function formatTokens(raw: string, locale: string) {
+  const whole = BigInt(raw) / 10n ** BigInt(evidence.decimals);
+  return `${whole.toLocaleString(locale === "ru" ? "ru-RU" : "en-US")} PLOV`;
+}
 
 export function ProofView() {
   const { locale, t } = useI18n();
+  const snapshot = [
+    { label: t.proof.snapshotLabels.supply, value: formatTokens(evidence.supply, locale), href: `https://solscan.io/token/${official.mint}` },
+    { label: t.proof.snapshotLabels.balance, value: formatTokens(evidence.treasuryBalance, locale), href: `https://solscan.io/account/${evidence.treasuryTokenAccount}` },
+    { label: t.proof.snapshotLabels.updateAuthority, value: evidence.updateAuthority, href: `https://solscan.io/account/${evidence.updateAuthority}` },
+    { label: t.proof.snapshotLabels.metadataAccount, value: evidence.metadataAccount, href: `https://solscan.io/account/${evidence.metadataAccount}` },
+  ];
 
   return (
     <>
@@ -23,6 +38,9 @@ export function ProofView() {
             </h1>
             <p className="mt-6 max-w-2xl font-serif text-xl italic text-rice-soft">
               {t.proof.intro}
+            </p>
+            <p className="mt-4 text-xs text-rice-soft">
+              {t.proof.copyReviewedLabel}: <time dateTime={evidence.copyReviewedOn}>{evidence.copyReviewedOn}</time>
             </p>
           </div>
 
@@ -52,18 +70,44 @@ export function ProofView() {
                     <h2 className="font-display text-2xl text-rice">
                       {t.security.cards[2].title}
                     </h2>
-                    <p className="mt-3 text-sm leading-relaxed text-rice-soft">
-                      {t.security.cards[2].body}
+                    <dl className="mt-4 space-y-3 text-sm leading-relaxed">
+                      {t.proof.reviewFields.map(field => (
+                        <div key={field.label}>
+                          <dt className="font-semibold text-rice">{field.label}</dt>
+                          <dd className="mt-1 text-rice-soft">{field.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                    <p className="mt-4 text-sm text-rice-soft">
+                      {official.hacken.reportUrl ? (
+                        <a href={official.hacken.reportUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{t.proof.reportLinkLabel}</a>
+                      ) : t.proof.reportLinkPending}
                     </p>
                   </div>
                 )}
                 <div className="mb-4 flex items-center justify-between">
                   <h2 className="font-display text-3xl text-rice">{s.title}</h2>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-rice-dim">
-                    {t.proof.lastUpdated}
-                  </span>
                 </div>
                 <p className="text-sm text-rice-soft">{s.note}</p>
+                {s.id === "security" && (
+                  <div className="mt-6 space-y-3">
+                    <p className="text-xs leading-relaxed text-rice-soft">
+                      {t.proof.observedLabel}: <time dateTime={evidence.observedAt}>{observedAt}</time>
+                      {` · finalized · slot ${evidence.slot}`}
+                    </p>
+                    <p className="text-xs leading-relaxed text-rice-soft">{t.proof.observationNote}</p>
+                    <dl className="space-y-3 rounded-xl border border-rice-dim/20 bg-bg/40 p-4 text-sm">
+                      {snapshot.map(item => (
+                        <div key={item.label}>
+                          <dt className="text-rice">{item.label}</dt>
+                          <dd className="mt-1 break-all font-mono text-xs text-rice-soft">
+                            <a href={item.href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-fire">{item.value}</a>
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                )}
 
                 {(() => {
                   const items = (s as {
@@ -72,7 +116,7 @@ export function ProofView() {
                   if (!items || items.length === 0) {
                     return (
                       <div className="mt-6 rounded-xl border border-rice-dim/20 bg-bg/40 p-5 font-mono text-xs text-rice-dim">
-                        {t.proof.placeholder}
+                        {("emptyState" in s && s.emptyState) || t.proof.placeholder}
                         <div className="mt-3 text-[11px]">
                           {t.proof.placeholderNote}
                         </div>
@@ -107,6 +151,11 @@ export function ProofView() {
                             </a>
                           ) : (
                             <div className="mt-1 break-all text-rice-dim">{it.value}</div>
+                          )}
+                          {evidence.multisigs.some(multisig => multisig.address === it.value) && (
+                            <p className="mt-2 text-[11px] leading-relaxed text-rice-soft">
+                              {t.proof.observedLabel}: <time dateTime={evidence.observedAt}>{observedAt}</time>
+                            </p>
                           )}
                         </div>
                       ))}

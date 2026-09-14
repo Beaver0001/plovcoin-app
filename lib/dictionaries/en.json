@@ -188,7 +188,7 @@
     "chapter": "Transparency",
     "titleLine1": "Security",
     "titleLine2": "& proof",
-    "intro": "Every treasury operation is on-chain, multi-signed, and published. No hidden wallets. No secret allocations. Everything verifiable on Solana.",
+    "intro": "Treasury addresses and multisig settings are published on Proof-hub. Evidence of completed operations is published as it is verified.",
     "cards": [
       {
         "title": "Squads Multisig",
@@ -197,17 +197,17 @@
       },
       {
         "title": "Proof-hub",
-        "body": "Every action is on-chain and published with transaction hashes, addresses, and timestamps. No private allocations. Everything verifiable on Solana.",
+        "body": "Proof-hub collects verified addresses, transactions and reports. Dates show when evidence was checked; planned actions are distinguished from completed operations.",
         "ctaLabel": "Open Proof-hub"
       },
       {
         "title": "Hacken Security Review",
-        "body": "Hacken’s security review of VPS infrastructure, custody architecture and frontend code is complete. All 12 findings are marked Fixed. Publication of the public report is pending. Future wallet-connect, registration and claim functionality is outside this review’s scope.",
+        "body": "Hacken’s review of VPS infrastructure, custody architecture and frontend code is complete. All 12 findings are marked Fixed. A verified public-report link will be added to Proof-hub. Future wallet-connect, registration and claim functionality is outside this review’s scope.",
         "ctaLabel": "Status & Reports"
       }
     ],
     "bannerLabel": "Security Status",
-    "bannerBold": "Hacken review complete. Public report awaiting publication.",
+    "bannerBold": "Hacken review complete. Verified public-report link pending.",
     "bannerRest": "Scope and current evidence are described on",
     "bannerProofLink": "Proof-hub",
     "bannerTail": "Future claim functionality requires a separate review."
@@ -251,7 +251,6 @@
     "titleStart": "Proof-",
     "titleAccent": "Hub",
     "intro": "Verified production addresses, transactions, and control evidence are published here after execution. Planned values are never presented as completed facts.",
-    "lastUpdated": "Last updated: August 2026",
     "placeholder": "— no verified production transaction published yet —",
     "placeholderNote": "Production addresses and transactions are published here only after they exist and are verified. Planned values are never presented as completed execution.",
     "verifyTitle": "Verify everything yourself",
@@ -262,7 +261,7 @@
       {
         "id": "addresses",
         "title": "Addresses",
-        "note": "All custody addresses are Squads Protocol v4 multisigs on hardware keys. Signer addresses are never published. Legacy v1 addresses (May 2026) are deprecated and empty.",
+        "note": "Custody addresses and Squads v4 multisig configurations are listed below. Signer identities are not disclosed; public keys are visible in the multisig configuration.",
         "items": [
           {
             "label": "$PLOV mint",
@@ -334,7 +333,7 @@
             "label": "Creator wallet (retired)",
             "value": "CeAF9ZHmaNrvjh31jKcdcPjtyoNYhhU9sJb2j8pjSZwD",
             "href": "https://solscan.io/account/CeAF9ZHmaNrvjh31jKcdcPjtyoNYhhU9sJb2j8pjSZwD",
-            "tag": "0 tokens · 0 authorities"
+            "tag": "Historical address"
           }
         ]
       },
@@ -342,66 +341,71 @@
         "id": "liquidity",
         "title": "Liquidity",
         "note": "Pool addresses, seed transactions, lock/timelock status.",
-        "items": []
+        "items": [],
+        "emptyState": "No verified pool-launch transactions have been published yet."
       },
       {
         "id": "airdrop",
         "title": "Airdrop / PlovDrop",
-        "note": "Per-wave snapshot hash, IPFS CID, claim portal link.",
-        "items": []
+        "note": "Wave rules and stage-specific evidence: dataset hashes, claim links and distribution transactions as published. Full participant-data publication is not required for every wave.",
+        "items": [],
+        "emptyState": "No wave-distribution evidence has been published yet."
       },
       {
         "id": "burn-log",
         "title": "Burn Log",
         "note": "Date, amount, reason, transaction hash for every burn.",
-        "items": []
+        "items": [],
+        "emptyState": "No verified burn transactions have been published yet."
       },
       {
         "id": "vesting",
         "title": "Vesting",
         "note": "Vesting stream IDs for every team member.",
-        "items": []
+        "items": [],
+        "emptyState": "No vesting deployment or funding evidence has been published yet."
       },
       {
         "id": "advertising",
         "title": "Advertising / KOL",
-        "note": "Every paid placement: KOL, platform, amount, tx hash.",
-        "items": []
+        "note": "A paid-placement register will be published here: partner, platform, compensation and available evidence. KOL compensation is not counted as PlovDrop.",
+        "items": [],
+        "emptyState": "No paid-placement records have been published yet."
       },
       {
         "id": "security",
         "title": "Security",
-        "note": "Token authorities: mint and freeze are permanently revoked at the protocol level; the update authority is held by the Update Auth v2 multisig (2/3 + 12h); the full supply sits in the Treasury v2 safe (3/5 + 48h). Key transactions below are verifiable in any explorer.",
+        "note": "The $PLOV mint and freeze authorities are revoked. Below are dated observations of supply, the specific treasury token-account balance and the current metadata update authority. The balance covers only the named token account.",
         "items": [
           {
             "label": "Mint authority",
             "value": "revoked — no new tokens can ever be minted",
-            "href": "",
+            "href": "https://solscan.io/token/B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
             "tag": ""
           },
           {
             "label": "Freeze authority",
-            "value": "revoked — wallets can never be frozen",
-            "href": "",
+            "value": "revoked — the team cannot freeze official $PLOV token accounts; this does not describe every asset in a wallet",
+            "href": "https://solscan.io/token/B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
             "tag": ""
           },
           {
             "label": "Update authority → Update Auth v2 (28.07.2026)",
             "value": "4CFfhwrmHacSMjpPtwuvxbMb7qGqfUFzh24mw6cetdDw6xmyFk6ir1Gu7pzSqgPB8THipzuvzM4PSXpcuN7zbrKj",
             "href": "https://solscan.io/tx/4CFfhwrmHacSMjpPtwuvxbMb7qGqfUFzh24mw6cetdDw6xmyFk6ir1Gu7pzSqgPB8THipzuvzM4PSXpcuN7zbrKj",
-            "tag": "tx"
+            "tag": "Historical transaction"
           },
           {
             "label": "Canary transfer, 1,000 PLOV → Treasury v2",
             "value": "1QDPF33SNw8yGH1WWX6aaF8tiJAC4ad3F1KjjdmPUcb9Np574bVsKGeFzQdFt1RUUfs8B2svc7vSPhYJsziWBkk",
             "href": "https://solscan.io/tx/1QDPF33SNw8yGH1WWX6aaF8tiJAC4ad3F1KjjdmPUcb9Np574bVsKGeFzQdFt1RUUfs8B2svc7vSPhYJsziWBkk",
-            "tag": "tx"
+            "tag": "Historical transaction"
           },
           {
             "label": "Main transfer, 13,013,001,940 PLOV → Treasury v2",
             "value": "2txPSX8XxxegcYiLRvkLTztUKPJ8z9g1tvk6q2ofo3rH4e9i4egsdGtKYiwPfufXurvdiqvjzWoTMvMitZzBeJAL",
             "href": "https://solscan.io/tx/2txPSX8XxxegcYiLRvkLTztUKPJ8z9g1tvk6q2ofo3rH4e9i4egsdGtKYiwPfufXurvdiqvjzWoTMvMitZzBeJAL",
-            "tag": "tx"
+            "tag": "Historical transaction"
           }
         ]
       },
@@ -409,15 +413,50 @@
         "id": "incidents",
         "title": "Incidents",
         "note": "P0/P1 incident notes within 24h. Post-mortems published.",
-        "items": []
+        "items": [],
+        "emptyState": "No incident records have been published yet. This does not establish that no incidents occurred."
       },
       {
         "id": "transparency",
         "title": "Transparency Reports",
-        "note": "Monthly KPI report — first 3 days of each month.",
-        "items": []
+        "note": "The first monitoring report will be published together with its measurement methodology no later than T+30 days after public activation.",
+        "items": [],
+        "emptyState": "No monitoring reports have been published yet."
       }
-    ]
+    ],
+    "copyReviewedLabel": "Copy reviewed",
+    "observedLabel": "On-chain state checked",
+    "observationNote": "Dated values are a snapshot, not live data. The transactions below show individual historical operations.",
+    "snapshotLabels": {
+      "supply": "$PLOV supply",
+      "balance": "Treasury v2 token-account balance",
+      "updateAuthority": "Current metadata update authority — Update Auth v2",
+      "metadataAccount": "Metadata account"
+    },
+    "reviewFields": [
+      {
+        "label": "Scope",
+        "value": "VPS infrastructure, custody architecture and the reviewed frontend source code."
+      },
+      {
+        "label": "Report revision",
+        "value": "Final report: 21 August 2026; cover date: 31 August 2026."
+      },
+      {
+        "label": "Code version",
+        "value": "The repository and commit were shared privately with the reviewer and are not disclosed in the public report. Later website changes are not automatically covered."
+      },
+      {
+        "label": "Result",
+        "value": "All 12 findings are marked Fixed; no Critical or High findings."
+      },
+      {
+        "label": "Exclusions",
+        "value": "Future wallet-connect, registration and claim functionality is outside this review’s scope."
+      }
+    ],
+    "reportLinkLabel": "Hacken public report",
+    "reportLinkPending": "A verified link to the public report will be added here."
   },
   "whitepaper": {
     "badge": "v8.1 · August 2026",
@@ -1074,7 +1113,7 @@
           },
           {
             "q": "Is freeze authority disabled?",
-            "a": "Yes. Freeze = OFF. No address can be frozen by the project.",
+            "a": "Yes. The official $PLOV freeze authority is revoked: the team cannot freeze this token’s accounts. This does not describe every asset in a wallet.",
             "proofLabel": "Solscan",
             "proofHref": "https://solscan.io/token/B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x"
           },
@@ -1178,7 +1217,7 @@
         "items": [
           {
             "q": "Has PlovCoin been audited?",
-            "a": "Hacken’s security review of VPS infrastructure, custody architecture and frontend code is complete. All 12 findings are marked Fixed. Publication of the public report is pending. Future wallet-connect, registration and claim functionality is outside this review’s scope. The strongest results are verifiable by anyone on-chain: the mint and freeze authorities are permanently revoked — no new tokens can ever be created, and no wallet can ever be frozen.",
+            "a": "Hacken’s review of VPS infrastructure, custody architecture and frontend code is complete. All 12 findings are marked Fixed. A verified public-report link will be added to Proof-hub. Future wallet-connect, registration and claim functionality is outside this review’s scope.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           },
