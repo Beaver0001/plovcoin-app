@@ -550,7 +550,7 @@ export function WhitepaperView() {
                         className="rounded-xl border border-fire/15 bg-bg-soft/40 p-4"
                       >
                         <div className="font-display text-sm text-rice">{item.q}</div>
-                        <p className="mt-2 text-sm leading-relaxed text-rice-soft">{item.a}</p>
+                        <p className="mt-2 break-words text-sm leading-relaxed text-rice-soft">{item.a}</p>
                       </div>
                     ));
                   })()}

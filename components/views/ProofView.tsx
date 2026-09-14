@@ -63,7 +63,7 @@ export function ProofView() {
               <section
                 key={s.id}
                 id={s.id}
-                className="scroll-mt-24 rounded-2xl border border-fire/15 bg-bg-soft/40 p-8"
+                className="scroll-mt-24 rounded-2xl border border-fire/15 bg-bg-soft/40 p-5 sm:p-8"
               >
                 {s.id === "security" && (
                   <div className="mb-8 rounded-xl border border-fire/30 bg-fire/5 p-5">
@@ -86,7 +86,7 @@ export function ProofView() {
                   </div>
                 )}
                 <div className="mb-4 flex items-center justify-between">
-                  <h2 className="font-display text-3xl text-rice">{s.title}</h2>
+                  <h2 className="break-words font-display text-2xl text-rice sm:text-3xl">{s.title}</h2>
                 </div>
                 <p className="text-sm text-rice-soft">{s.note}</p>
                 {s.id === "security" && (
