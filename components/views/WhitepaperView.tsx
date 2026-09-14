@@ -11,10 +11,11 @@ import { TrustStrip } from "../whitepaper/TrustStrip";
 import { TokenomicsPie } from "../whitepaper/TokenomicsPie";
 import { LaunchStages } from "../whitepaper/LaunchStages";
 import { WavesTimeline } from "../whitepaper/WavesTimeline";
-import { LoyaltyTiers } from "../whitepaper/LoyaltyTiers";
 import { RiskMatrix } from "../whitepaper/RiskMatrix";
 import { MultisigTable } from "../whitepaper/MultisigTable";
 import { localePath } from "@/lib/i18n";
+import { official } from "@/lib/official-config.mjs";
+import { websiteEditionLabel } from "@/lib/website-edition";
 import { AlertTriangle, ExternalLink, ArrowRight } from "lucide-react";
 
 const SECTION_IDS = [
@@ -125,7 +126,7 @@ export function WhitepaperView() {
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 rounded-full border border-fire/30 bg-fire/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-fire"
             >
-              {wp.badge}
+              {websiteEditionLabel(locale)}
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -265,6 +266,9 @@ export function WhitepaperView() {
                   {wp.liquidity.archTitle}
                 </div>
                 <LaunchStages />
+                <p className="mt-6 text-sm leading-relaxed text-rice-soft">
+                  {wp.liquidity.launchPricePrinciple}
+                </p>
 
                 <div className="mt-8 card-warm !p-5">
                   <div className="font-display text-base text-fire">
@@ -279,6 +283,7 @@ export function WhitepaperView() {
                   <div className="mb-4 font-mono text-[10px] uppercase tracking-widest text-fire-glow">
                     {wp.liquidity.metricsTitle}
                   </div>
+                  <p className="mb-4 text-sm leading-relaxed text-rice-soft">{wp.liquidity.metricsNote}</p>
                   <div className="overflow-hidden rounded-2xl border border-fire/15 bg-bg-soft/40">
                     <table className="w-full text-sm">
                       <thead className="bg-bg-soft">
@@ -287,7 +292,7 @@ export function WhitepaperView() {
                             {t.ui.tableHeaders.metric}
                           </th>
                           <th className="p-3 text-left font-mono text-[10px] uppercase tracking-widest text-fire-glow">
-                            {t.ui.tableHeaders.target}
+                            {wp.liquidity.metricsReferenceHeader}
                           </th>
                           <th className="hidden p-3 text-left font-mono text-[10px] uppercase tracking-widest text-fire-glow sm:table-cell">
                             {t.ui.tableHeaders.source}
@@ -335,10 +340,11 @@ export function WhitepaperView() {
                   <div className="mb-4 font-display text-lg text-rice">
                     {wp.airdrops.loyaltyTitle}
                   </div>
-                  <LoyaltyTiers />
+                  {/* Keep LoyaltyTiers and its data until the Loyalty Policy is approved. */}
                   <p className="mt-4 rounded-lg border border-fire/10 bg-bg-soft/30 p-4 text-sm italic leading-relaxed text-rice-dim">
                     {wp.airdrops.loyaltyNote}
                   </p>
+                  <p className="mt-3 text-sm leading-relaxed text-rice-soft">{wp.airdrops.loyaltyAllocationNote}</p>
                 </div>
               </section>
 
@@ -495,16 +501,22 @@ export function WhitepaperView() {
                     {wp.team.contactsTitle}
                   </div>
                   <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-                    {wp.team.contacts.map((c, i) => (
-                      <li key={i} className="flex justify-between gap-3 text-sm">
+                    {[
+                      { label: locale === "ru" ? "Сайт" : "Website", href: `${official.website}${localePath(locale, "/")}` },
+                      { label: "Proof-hub", href: `${official.website}${localePath(locale, "/proof")}` },
+                      { label: "Claim", href: official.claim },
+                      ...official.channels.map(channel => ({ label: channel[locale], href: channel.href })),
+                      { label: "Security", href: `mailto:${official.securityEmail}` },
+                    ].map((c) => (
+                      <li key={c.href} className="flex min-w-0 flex-col gap-1 text-sm">
                         <span className="text-rice-dim">{c.label}</span>
                         <a
                           href={c.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="truncate font-mono text-xs text-fire hover:underline"
+                          className="break-all font-mono text-xs text-fire hover:underline"
                         >
-                          {c.value}
+                          {c.href.replace(/^https:\/\/|^mailto:/, "")}
                         </a>
                       </li>
                     ))}

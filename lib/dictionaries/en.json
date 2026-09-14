@@ -235,7 +235,7 @@
       "tokenomics": "Tokenomics",
       "roadmap": "Roadmap",
       "security": "Security",
-      "whitepaper": "Whitepaper v8.1",
+      "whitepaper": "Whitepaper · Website edition",
       "proof": "Proof-hub",
       "plovdrop": "PlovDrop",
       "faq": "FAQ"
@@ -459,9 +459,9 @@
     "reportLinkPending": "A verified link to the public report will be added here."
   },
   "whitepaper": {
-    "badge": "v8.1 · August 2026",
+    "badge": "Website edition · Preview",
     "title": "Whitepaper",
-    "intro": "Fair launch, broad distribution, protected launch liquidity, and transparency through Proof-hub. This website whitepaper is designed for community readers, partners, and exchanges: concise, factual, and easy to verify.",
+    "intro": "Fair launch, broad distribution, planned launch liquidity controls, and transparency through Proof-hub. This website whitepaper is designed for community readers, partners, and exchanges: concise, factual, and easy to verify.",
     "trust": {
       "mintOff": {
         "title": "Mint = OFF",
@@ -481,17 +481,17 @@
       }
     },
     "disclaimerBold": "⚠ PlovCoin is a meme project.",
-    "disclaimerText": "Cryptoassets are unregulated and can fall in value. Capital at risk. No inherent utility. This content is not financial advice. Tax on profits may apply. DYOR.",
+    "disclaimerText": "Cryptoassets can fall in value. Regulation and consumer protections depend on the jurisdiction and the services used. Capital at risk. No inherent utility. This content is not financial advice. Tax on profits may apply. DYOR.",
     "toc": "On this page",
     "overview": {
       "num": "01",
       "title": "Project Overview",
-      "lead": "PlovCoin ($PLOV) is a cultural memecoin on Solana with fixed supply and public launch structure. The project is built around a recognizable cultural symbol, broad community distribution, protected launch liquidity, and transparency through Proof-hub.",
+      "lead": "PlovCoin ($PLOV) is a cultural memecoin on Solana with fixed supply and public launch structure. The project is built around a recognizable cultural symbol, broad community distribution, planned launch liquidity controls, and transparency through Proof-hub.",
       "coreIdeaLabel": "Core idea",
       "coreIdea": [
         "Fair launch — no presale, no private sale",
         "45% distributed through airdrop waves",
-        "Launch liquidity protection with public verification",
+        "Planned launch liquidity controls, with execution evidence on Proof-hub",
         "Monthly #PlovTransparency reporting"
       ],
       "paramsLabel": "Key parameters",
@@ -586,9 +586,9 @@
         }
       ],
       "fairLaunchTitle": "Fair Launch",
-      "fairLaunchText": "For $PLOV, fair launch means: no presale, no private sale, no hidden preferential allocations, and no discounted pricing for early insiders. Token access is available through the public DEX market and officially announced airdrop waves.",
+      "fairLaunchText": "No presale, no private round, no discounted allocations for insiders. Before the public market opens, a capped pro-rata Alpha Vault runs under published rules that are the same for every participant. After activation, the price is set by the open market. Community airdrops follow separately published wave rules.",
       "vestingTitle": "Team & token note",
-      "vestingText": "Team tokens are not unlocked at launch. The unlock begins only after a 12-month cliff, followed by 12 months of linear vesting. All sensitive operations go through Squads multisig and timelock."
+      "vestingText": "The planned team vesting schedule is a 12-month cliff followed by 12 months of linear vesting, with no team unlock at launch. Deployment and funding evidence will be published on Proof-hub. Treasury operations require Squads multisig with role-based thresholds and timelocks."
     },
     "liquidity": {
       "num": "04",
@@ -608,12 +608,12 @@
         {
           "period": "Post-launch through T+90",
           "venue": "Conditional liquidity backstop",
-          "desc": "Liquidity actions target execution quality, depth, and resilience — not price support"
+          "desc": "An additional liquidity backstop may be reviewed no earlier than T+24h and requires separate approval, Squads execution and verification. No rapid backstop is available during the first launch hours. Liquidity actions target execution quality, depth, and resilience — not price support."
         }
       ],
       "protectionTitle": "Launch Liquidity Protection",
       "protectionText": "The production pool address, position, custody controls, and transaction confirmations are published through Proof Hub only after execution and verification. Planned configurations are not presented as completed actions.",
-      "metricsTitle": "KPI targets (30 days post-TGE)",
+      "metricsTitle": "Monitored metrics (first 30 days post-TGE)",
       "metrics": [
         {
           "metric": "Depth ±1%",
@@ -646,12 +646,15 @@
           "source": "CoinGecko / CMC / DEX data"
         }
       ],
-      "cexNote": "CEX listings follow a Tier-2 first approach: gradual expansion based on organic demand, liquidity depth, and community metrics. No paid listings. No market maker wash-trading."
+      "cexNote": "CEX listings follow a Tier-2 first approach: gradual expansion based on organic demand, liquidity depth and community metrics. Exchange fees may be paid. Paying for artificial trading volume and wash-trading are prohibited. Listings are announced only after confirmation.",
+      "metricsReferenceHeader": "Reference value",
+      "metricsNote": "The values below are provisional planning references, not measured results or guarantees. Measurement methodology will be published together with the first monitoring report.",
+      "launchPricePrinciple": "The starting pool configuration, including the initial price, is fixed in the Liquidity Policy and published in Proof-hub at launch. It is not a guaranteed price, a price floor or a promise of value."
     },
     "airdrops": {
       "num": "05",
       "title": "Airdrops & Hold-to-Earn",
-      "lead": "45% of supply is distributed to the community through four airdrop waves; timing and rules for each wave are set by the approved Wave Policy. Every wave is verified on-chain with SHA-256 hashes published on Proof-hub.",
+      "lead": "45% of supply is allocated to PlovDrop across four planned community waves. Each wave requires approved rules covering allocation, eligibility, unlocks and claim timing. Wave 1 readiness review may begin no earlier than T+24h after public activation; this is not an automatic claim opening. Proof-hub will publish dataset hashes and distribution evidence as the relevant stages are completed.",
       "waves": [
         {
           "wave": "Wave 1",
@@ -679,8 +682,8 @@
         }
       ],
       "antiSybilTitle": "Anti-Sybil",
-      "antiSybilText": "Address deduplication, minimum on-chain SOL balance, on-chain activity thresholds for later waves, and public SHA-256 / IPFS CIDs on Proof-hub. The only official claim domain is claim.plovcoin.com.",
-      "loyaltyTitle": "Hold-to-Earn Loyalty Program",
+      "antiSybilText": "Anti-Sybil checks follow the published rules of each wave. Minimum SOL balance and activity thresholds apply only when specified in that Wave Policy. Duplicate records, exclusions and appeals are reviewed under those rules. Proof-hub will publish verification evidence without requiring public disclosure of every participant record. The only official claim hostname is claim.plovcoin.com; use HTTPS.",
+      "loyaltyTitle": "Hold-to-Earn — Planned Loyalty Program",
       "tiers": [
         {
           "tier": "Bronze",
@@ -703,17 +706,19 @@
           "reward": "+35% bonus + access to future phases"
         }
       ],
-      "loyaltyNote": "Important: this is not a staking contract and not a lockup. Tokens stay in your wallet; the bonus is calculated through on-chain snapshots."
+      "loyaltyNote": "Hold-to-Earn is a planned snapshot-based loyalty program funded from the separate 5% reserve (650,650,150 PLOV). It is not staking or a token deposit: tokens remain in your wallet. Eligibility, eligible balances, observation periods, reward calculations, caps and distribution procedures must be approved and published before the program opens. Holding tokens does not by itself guarantee a reward or an APY.",
+      "loyaltyAllocationNote": "PlovDrop tokens may count toward holding tenure, but do not automatically qualify for rewards from the separate Loyalty reserve."
     },
     "marketing": {
       "num": "06",
       "title": "Marketing & Community",
       "armyTitle": "PlovArmy",
       "armyChannels": [
-        "Telegram announcements channel",
-        "X / Twitter",
-        "TikTok",
-        "Instagram"
+        "Announcements · English — @PlovCoinAnnouncements",
+        "Announcements · Русский — @PlovCoinRU",
+        "PlovCoin Kitchen — @PlovCoinKitchen",
+        "Official Telegram folder — t.me/addlist/7D9l7QTHcY9mMjdh",
+        "PlovCoin on X — @PlovTeam"
       ],
       "challengeTitle": "Community participation",
       "challengePoints": [
@@ -785,22 +790,22 @@
         {
           "risk": "MEV / bots",
           "manifestation": "Snipe / sandwich",
-          "mitigation": "Jito bundles + quiet windows"
+          "mitigation": "Published Alpha and launch-fee rules; verify deployed settings on Proof-hub. Complete protection from bots is not guaranteed."
         },
         {
           "risk": "Phishing",
           "manifestation": "Fake sites / fake claims",
-          "mitigation": "Only claim.plovcoin.com + Proof-hub"
+          "mitigation": "HTTPS and exact claim hostname claim.plovcoin.com; cross-check official announcements and Proof-hub"
         },
         {
           "risk": "Rug risk",
           "manifestation": "Draining launch liquidity",
-          "mitigation": "Launch Liquidity Protection + public verification"
+          "mitigation": "Planned Squads custody controls; verify deployed controls and execution evidence on Proof-hub"
         },
         {
           "risk": "Sybil",
           "manifestation": "Bots / multi-wallets",
-          "mitigation": "Deduplication + min SOL + on-chain activity"
+          "mitigation": "Wave-specific eligibility rules, duplicate checks, documented review and appeals"
         },
         {
           "risk": "Regulatory",
@@ -878,80 +883,7 @@
           "role": "Liquidity analytics"
         }
       ],
-      "contactsTitle": "Official entry points",
-      "contacts": [
-        {
-          "label": "Website",
-          "value": "plovcoin.com",
-          "href": "https://plovcoin.com"
-        },
-        {
-          "label": "Proof-hub",
-          "value": "plovcoin.com/proof",
-          "href": "https://plovcoin.com/proof"
-        },
-        {
-          "label": "Claim",
-          "value": "claim.plovcoin.com",
-          "href": "https://claim.plovcoin.com"
-        },
-        {
-          "label": "Telegram",
-          "value": "t.me/PlovCoinAnnouncements",
-          "href": "https://t.me/PlovCoinAnnouncements"
-        },
-        {
-          "label": "X",
-          "value": "x.com/PlovTeam",
-          "href": "https://x.com/PlovTeam"
-        },
-        {
-          "label": "Security",
-          "value": "security@plovcoin.com",
-          "href": "mailto:security@plovcoin.com"
-        }
-      ]
-    },
-    "faq": {
-      "title": "Frequently Asked Questions",
-      "items": [
-        {
-          "q": "Is mint enabled?",
-          "a": "No. Mint = OFF. New tokens cannot be created."
-        },
-        {
-          "q": "Is freeze enabled?",
-          "a": "No. Freeze = OFF. Addresses cannot be frozen."
-        },
-        {
-          "q": "Is there a presale?",
-          "a": "No. Fair launch through DEX and airdrop waves only."
-        },
-        {
-          "q": "Where to claim airdrops?",
-          "a": "Only claim.plovcoin.com. Any other URL is a phishing attempt."
-        },
-        {
-          "q": "Where can I buy $PLOV?",
-          "a": "Live trading is not open during the pre-TGE stage. At public activation, the primary PLOV/SOL market is planned on Meteora DAMM v2, with Jupiter routing after activation. No fixed Raydium or Orca launch schedule is announced."
-        },
-        {
-          "q": "When is the TGE?",
-          "a": "We are preparing for a Q4 2026 public launch. The exact date will be announced through official channels only after communications readiness and the final Go/No-Go. The launch will be postponed if any critical requirement remains unmet."
-        },
-        {
-          "q": "Is there a tax on buy/sell?",
-          "a": "No. $PLOV is a standard SPL token with zero transfer fees."
-        },
-        {
-          "q": "Is this staking?",
-          "a": "No. Hold-to-Earn is based on on-chain snapshots. Tokens stay in your wallet — no contract interaction required."
-        },
-        {
-          "q": "Can I see the team?",
-          "a": "Yes — team members use consistent pseudonyms. Core operations require Squads multisig approval (Treasury: 3/5 threshold, 48h timelock; operational safes: 2/3, 12h)."
-        }
-      ]
+      "contactsTitle": "Official entry points"
     },
     "footerTagline": "PlovCoin — bringing people together through plov and blockchain"
   },
@@ -1000,8 +932,8 @@
     "homeDesc": "PlovCoin is the first universal cultural memecoin on Solana. A dish loved across the world. Now on-chain. Fair launch, 45% to community, no presale, no VC.",
     "proofTitle": "Proof-hub — On-Chain Verification",
     "proofDesc": "Verify every PlovCoin operation on-chain. Addresses, liquidity, airdrops, burns, vesting, advertising, security, incidents — all public, all verifiable on Solana.",
-    "whitepaperTitle": "Whitepaper v8.1 — Fair Launch, Transparent Tokenomics",
-    "whitepaperDesc": "PlovCoin Whitepaper v8.1: tokenomics, launch structure, airdrops, governance, and risks. Cultural memecoin on Solana. Fair launch, 45% to community, Proof Hub transparency.",
+    "whitepaperTitle": "Whitepaper — Website Edition | Fair Launch, Transparent Tokenomics",
+    "whitepaperDesc": "PlovCoin Whitepaper — website edition: tokenomics, launch structure, airdrops, governance, and risks. Cultural memecoin on Solana. Fair launch, 45% to community, Proof Hub transparency.",
     "plovdropTitle": "PlovDrop — 45% to Community",
     "plovdropDesc": "PlovDrop is the largest allocation in $PLOV — 45% of supply distributed across four airdrop waves to the community.",
     "faqTitle": "FAQ — PlovCoin Help Center",
@@ -1140,18 +1072,20 @@
             "a": "We are preparing for a Q4 2026 public launch. The exact date will be announced through official channels only after communications readiness and the final Go/No-Go. The launch will be postponed if any critical requirement remains unmet."
           },
           {
-            "q": "Is there a tax on buy/sell?",
-            "a": "No. $PLOV is a standard SPL token with zero transfer fees."
+            "q": "What fees apply when buying, selling or transferring $PLOV?",
+            "a": "The $PLOV token itself has no transfer fee. Solana network fees still apply; swaps may also incur pool and trading-service fees. The launch pool fee may start higher and then decrease under the published rules. Check fees, slippage and the final amount before confirming. See the Whitepaper for launch parameters and Proof-hub for the verified configuration.",
+            "proofLabel": "Whitepaper · Liquidity & Launch",
+            "proofHref": "/whitepaper#liquidity"
           },
           {
             "q": "What about slippage?",
-            "a": "Our 30-day post-TGE target is p90 slippage under 1.0% on $1,000 trades. Full liquidity KPIs in Whitepaper.",
+            "a": "The metric is p90 slippage for $1,000 trades. The provisional planning reference for the first 30 days after TGE is under 1.0%; this is not a measured result or guarantee. Measurement methodology will be published with the first monitoring report. See the Whitepaper for monitored liquidity metrics.",
             "proofLabel": "Whitepaper → Liquidity",
             "proofHref": "/whitepaper#liquidity"
           },
           {
             "q": "What CEX will list $PLOV?",
-            "a": "We follow a Tier-2 first approach: gradual expansion based on organic demand. No paid listings. No market maker wash-trading. Listings announced officially when confirmed.",
+            "a": "Listings are announced only after confirmation. Exchange fees may be paid; paying for artificial trading volume and wash-trading are prohibited.",
             "proofLabel": "Whitepaper → Liquidity",
             "proofHref": "/whitepaper#liquidity"
           }
@@ -1181,7 +1115,7 @@
           },
           {
             "q": "How does anti-Sybil protection work?",
-            "a": "We use address deduplication, minimum on-chain SOL balance, on-chain activity thresholds for later waves, and publish SHA-256 / IPFS hashes on Proof-hub.",
+            "a": "Anti-Sybil checks follow the published rules of each wave. Minimum SOL balance and activity thresholds apply only when specified in that Wave Policy. Duplicate records, exclusions and appeals are reviewed under those rules. Proof-hub will publish verification evidence without requiring public disclosure of every participant record.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           }
@@ -1193,21 +1127,21 @@
         "items": [
           {
             "q": "Is Hold-to-Earn the same as staking?",
-            "a": "No. No staking contract, no lockup, no token deposit. Tokens stay in your wallet — you just need to hold them. Bonuses are calculated through on-chain snapshots."
+            "a": "No. The planned program uses on-chain snapshots without a staking lockup or token deposit. Tokens remain in your wallet. Participation and reward distribution will follow the published Loyalty Policy."
           },
           {
             "q": "How do tiers work?",
-            "a": "Bronze (30+ days): +5%. Silver (90+ days): +10%. Gold (180+ days): +20% + priority. Diamond (365+ days): +35% + access to future phases.",
+            "a": "Tier conditions and reward calculations will be published in the approved Loyalty Policy before the program opens. Previously displayed percentages should not be treated as active reward terms or a promised return.",
             "proofLabel": "Whitepaper → Airdrops",
             "proofHref": "/whitepaper#airdrops"
           },
           {
             "q": "What do I need to do to earn bonuses?",
-            "a": "Nothing — just hold $PLOV in your wallet. Snapshots track holding duration automatically."
+            "a": "Follow the official announcement and published Loyalty Policy when the program opens. The rules will specify eligibility, eligible balances, observation periods, caps and how to receive any reward. Holding PLOV alone does not guarantee eligibility or automatic payment."
           },
           {
             "q": "Where do Hold-to-Earn bonuses come from?",
-            "a": "From the 5% Loyalty Rewards allocation (650,650,150 tokens) — reserved specifically for this program."
+            "a": "The program has a separate 5% Loyalty reserve (650,650,150 PLOV). PlovDrop is funded from its own 45% allocation. Airdropped tokens may count toward holding tenure, but receiving or holding them does not automatically create entitlement to Loyalty rewards. Eligible reward balances are defined by the Loyalty Policy."
           }
         ]
       },
@@ -1229,7 +1163,7 @@
           },
           {
             "q": "What about MEV and sniper bots?",
-            "a": "We use Jito bundles and quiet windows during launch to mitigate MEV. Operational details are documented on Proof-hub as they are finalized.",
+            "a": "Planned measures are described in the Alpha and launch-fee rules. The actual configuration is published on Proof-hub after verification. These measures do not guarantee the absence of bots, MEV or advantages held by other participants.",
             "proofLabel": "Proof-hub",
             "proofHref": "/proof"
           },

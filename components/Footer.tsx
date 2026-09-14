@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useI18n } from "./I18nProvider";
 import { localePath } from "@/lib/i18n";
+import { websiteEditionLabel } from "@/lib/website-edition";
 import { official } from "@/lib/official-config.mjs";
 import { MintAddressBlock } from "./MintAddressBlock";
 
@@ -19,7 +20,7 @@ export function Footer() {
       { href: `${home}#security`, label: t.footer.links.security },
     ],
     [t.footer.sectionResources]: [
-      { href: localePath(locale, "/whitepaper"), label: t.footer.links.whitepaper },
+      { href: localePath(locale, "/whitepaper"), label: `Whitepaper · ${websiteEditionLabel(locale)}` },
       { href: localePath(locale, "/faq"), label: t.footer.links.faq },
       { href: localePath(locale, "/proof"), label: t.footer.links.proof },
       { href: localePath(locale, "/plovdrop"), label: t.footer.links.plovdrop },
