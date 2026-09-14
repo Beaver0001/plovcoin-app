@@ -1,0 +1,665 @@
+{
+  "categories": [
+    {
+      "id": "about",
+      "ru": "Знакомство",
+      "en": "Getting started"
+    },
+    {
+      "id": "launch",
+      "ru": "Запуск и покупка",
+      "en": "Launch and buying"
+    },
+    {
+      "id": "token",
+      "ru": "Токен и распределение",
+      "en": "Token and allocation"
+    },
+    {
+      "id": "drop",
+      "ru": "PlovDrop",
+      "en": "PlovDrop"
+    },
+    {
+      "id": "loyalty",
+      "ru": "Лояльность — планируется",
+      "en": "Loyalty — planned"
+    },
+    {
+      "id": "safety",
+      "ru": "Проверка и безопасность",
+      "en": "Verification and safety"
+    },
+    {
+      "id": "governance",
+      "ru": "Команда и подотчётность",
+      "en": "Team and accountability"
+    }
+  ],
+  "quickSets": {
+    "first-time": [
+      "about",
+      "why-plov",
+      "contribute",
+      "risks",
+      "token-address",
+      "authenticity"
+    ],
+    "crypto": [
+      "launch-date",
+      "alpha",
+      "launch-price",
+      "token-address",
+      "security-review",
+      "fees"
+    ]
+  },
+  "whitepaperAnswerIds": [
+    "about",
+    "launch-date",
+    "alpha",
+    "launch-price"
+  ],
+  "questions": [
+    {
+      "id": "about",
+      "category": "about",
+      "ru": {
+        "question": "Что такое PlovCoin?",
+        "short": "PlovCoin ($PLOV) — культурный мемкоин в сети Solana, объединяющий людей вокруг плова, творчества и общения.",
+        "details": "Участие в сообществе не требует покупки токенов. Покупка PLOV не означает долю в компании или обещание дохода."
+      },
+      "en": {
+        "question": "What is PlovCoin?",
+        "short": "PlovCoin ($PLOV) is a cultural memecoin on Solana, bringing people together around plov, creativity and conversation.",
+        "details": "You do not need to buy tokens to join the community. Buying PLOV does not give you an ownership stake in a company or a promise of income."
+      },
+      "evidenceRef": "whitepaper"
+    },
+    {
+      "id": "why-plov",
+      "category": "about",
+      "ru": {
+        "question": "Почему плов?",
+        "short": "Плов собирает людей за одним столом. Нам близка эта идея: разные традиции и истории могут стать поводом познакомиться и сделать что-то вместе.",
+        "details": "Культурная идея объясняет название и голос проекта. Она не определяет стоимость токена."
+      },
+      "en": {
+        "question": "Why plov?",
+        "short": "Plov brings people together around one table. We like that idea: different traditions and stories can become a reason to meet and create something together.",
+        "details": "This cultural idea explains the project’s name and voice. It does not determine the token’s value."
+      },
+      "evidenceRef": "whitepaper"
+    },
+    {
+      "id": "meme-and-responsibility",
+      "category": "about",
+      "ru": {
+        "question": "Это серьёзный проект или просто мем?",
+        "short": "По характеру PlovCoin — мем: про плов, людей и чувство юмора. К деньгам, правилам участия и публичным обещаниям мы относимся серьёзно.",
+        "details": "Оценивать выполнение обещаний можно по опубликованным правилам, отчётам и записям Proof-hub. Ни название проекта, ни наличие документов не устраняют риски покупки."
+      },
+      "en": {
+        "question": "Is this a serious project or just a meme?",
+        "short": "PlovCoin is a meme at heart: plov, people and a sense of humour. We take funds, participation rules and public commitments seriously.",
+        "details": "Use published rules, reports and Proof-hub records to assess what has been delivered. A project name or a set of documents does not remove the risks of buying a token."
+      },
+      "evidenceRef": "proof"
+    },
+    {
+      "id": "plovarmy",
+      "category": "about",
+      "ru": {
+        "question": "Что такое PlovArmy?",
+        "short": "PlovArmy — сообщество людей, которым близка идея PlovCoin. Присоединиться можно ради общения и творчества, без покупки токенов.",
+        "details": "Участие в чате или сообществе само по себе не даёт права на аирдроп, оплату или награды программы лояльности. У программ распределения отдельные правила."
+      },
+      "en": {
+        "question": "What is PlovArmy?",
+        "short": "PlovArmy is the community around PlovCoin. You can join for conversation and creativity without buying tokens.",
+        "details": "Membership of a chat or community does not by itself entitle you to an airdrop, payment or loyalty rewards. Distribution programmes have separate rules."
+      },
+      "evidenceRef": "channels"
+    },
+    {
+      "id": "official-channels",
+      "category": "about",
+      "ru": {
+        "question": "Где читать официальные новости и общаться?",
+        "short": "Новости публикуются в @PlovCoinAnnouncements на английском и @PlovCoinRU на русском. Для общения есть группа PlovCoin Kitchen.",
+        "details": "Официальный X — @PlovTeam. Ссылки на каналы, группу и общую папку Telegram приведены ниже. Проверяйте точное написание адреса: похожее название и логотип не подтверждают подлинность."
+      },
+      "en": {
+        "question": "Where can I find official news and join the conversation?",
+        "short": "News is published in @PlovCoinAnnouncements in English and @PlovCoinRU in Russian. PlovCoin Kitchen is the community chat.",
+        "details": "The official X account is @PlovTeam. Links to the channels, chat and Telegram folder are listed below. Check the exact address: a similar name or logo does not prove authenticity."
+      },
+      "evidenceRef": "channels"
+    },
+    {
+      "id": "contribute",
+      "category": "about",
+      "ru": {
+        "question": "Как присоединиться и помочь без покупки токенов?",
+        "short": "Приходите в PlovCoin Kitchen: делитесь творчеством, обсуждайте идеи и сообщайте о том, что можно улучшить.",
+        "details": "Для предложений о партнёрстве используйте hello@plovcoin.com. Добровольное участие не подразумевает оплату, аирдроп или последующее вознаграждение."
+      },
+      "en": {
+        "question": "How can I join and help without buying tokens?",
+        "short": "Join PlovCoin Kitchen to share creative work, discuss ideas and suggest improvements.",
+        "details": "Send partnership proposals to hello@plovcoin.com. Voluntary participation does not imply payment, an airdrop or a future reward."
+      },
+      "evidenceRef": "channels"
+    },
+    {
+      "id": "launch-date",
+      "category": "launch",
+      "ru": {
+        "question": "Когда состоится публичный запуск?",
+        "short": "Публичный ориентир — Q4 2026, при условии готовности. Точная дата объявляется через официальные каналы после итогового решения о запуске.",
+        "details": "Если критические требования не выполнены, запуск переносится. Ориентир по кварталу не является подтверждённой датой; проверяйте последнее официальное объявление."
+      },
+      "en": {
+        "question": "When is the public launch?",
+        "short": "The public target is Q4 2026, subject to readiness. The exact date will be announced through official channels after the final launch decision.",
+        "details": "The launch will be postponed if critical requirements remain unmet. A quarterly target is not a confirmed date; check the latest official announcement."
+      },
+      "evidenceRef": "launch-announcement"
+    },
+    {
+      "id": "buy",
+      "category": "launch",
+      "ru": {
+        "question": "Где можно купить $PLOV?",
+        "short": "Публичная торговля пока не открыта. Запуск планируется на Meteora DAMM v2 с последующей маршрутизацией через Jupiter.",
+        "details": "Планируемая площадка не означает, что торговля уже доступна. После запуска используйте подтверждённые ссылки на пул и проверяйте адрес токена; доступность маршрута Jupiter проверяется отдельно."
+      },
+      "en": {
+        "question": "Where can I buy $PLOV?",
+        "short": "Public trading is not open yet. The planned launch is on Meteora DAMM v2, followed by routing through Jupiter.",
+        "details": "A planned venue does not mean trading is already available. After launch, use confirmed pool links and check the token address; Jupiter route availability must be verified separately."
+      },
+      "evidenceRef": "launch-announcement"
+    },
+    {
+      "id": "alpha",
+      "category": "launch",
+      "ru": {
+        "question": "Что такое Alpha — это пресейл для своих?",
+        "short": "Alpha — ограниченное участие до открытия торговли по заранее опубликованным правилам, а не пресейл или приватная продажа. Купленные таким способом токены становятся доступны постепенно в течение 72 часов. Условия участия — на странице Alpha.",
+        "details": ""
+      },
+      "en": {
+        "question": "What is Alpha — an insider presale?",
+        "short": "Alpha is limited participation before trading opens under rules published in advance, not a presale or private sale. Tokens purchased this way become available gradually over 72 hours. Participation terms are on the Alpha page.",
+        "details": ""
+      },
+      "evidenceRef": "alpha"
+    },
+    {
+      "id": "launch-price",
+      "category": "launch",
+      "ru": {
+        "question": "Какая цена будет на запуске?",
+        "short": "Цену определяет рынок. Стартовые параметры пула описаны в Whitepaper, раздел Liquidity & Launch; фактическая конфигурация публикуется в Proof-hub после запуска. Цена не гарантируется и не поддерживается командой.",
+        "details": "Перед открытием Alpha стартовая конфигурация будет раскрыта в датированной инструкции для участников. Она не является гарантированной ценой, нижней границей цены или обещанием стоимости."
+      },
+      "en": {
+        "question": "What will the launch price be?",
+        "short": "The market determines the price. Starting pool parameters are described in the Whitepaper’s Liquidity & Launch section; the actual configuration is published in Proof-hub after launch. The price is neither guaranteed nor supported by the team.",
+        "details": "Before Alpha opens, the starting configuration will be disclosed in a dated participant guide. It is not a guaranteed price, a price floor or a promise of value."
+      },
+      "evidenceRef": "liquidity-proof"
+    },
+    {
+      "id": "wallet",
+      "category": "launch",
+      "ru": {
+        "question": "Какой кошелёк нужен и нужно ли подключать его сейчас?",
+        "short": "Для $PLOV нужен кошелёк, поддерживающий токены Solana. Для чтения сайта и участия в сообществе подключать кошелёк не требуется.",
+        "details": "Список поддерживаемых кошельков для Alpha и клейма публикуется с инструкциями соответствующей функции. Для сетевых комиссий нужен SOL. Проверяйте адрес сайта и содержание запроса на подпись; никому не передавайте секретную фразу."
+      },
+      "en": {
+        "question": "Which wallet do I need, and do I need to connect it now?",
+        "short": "You need a wallet that supports Solana tokens to hold $PLOV. Reading the website and joining the community do not require a wallet connection.",
+        "details": "Supported wallets for Alpha and claims will be listed in the instructions for each feature. Network fees require SOL. Check the website address and the signing request; never share your recovery phrase."
+      },
+      "evidenceRef": "claim"
+    },
+    {
+      "id": "fees",
+      "category": "launch",
+      "ru": {
+        "question": "Какие комиссии возникают при покупке, продаже и переводе?",
+        "short": "У самого токена нет комиссии с перевода, но сеть и торговый сервис могут взимать свои комиссии. При запуске предусмотрена повышенная комиссия пула с последующим снижением.",
+        "details": "Стартовая комиссия входит в меры против ботов и не делает сделки защищёнными от них. Точные параметры публикуются в инструкции запуска и подтверждаются конфигурацией пула в Proof-hub. Перед подтверждением обмена смотрите полную стоимость; отсутствие комиссии токена не означает бесплатную сделку."
+      },
+      "en": {
+        "question": "What fees apply to buying, selling and transfers?",
+        "short": "The token itself has no transfer fee, but network and trading-service fees may apply. The launch plan includes a higher initial pool fee that decreases afterwards.",
+        "details": "The initial fee is part of the measures against bots and does not make trading bot-proof. Exact parameters are published in the launch guide and confirmed by the pool configuration in Proof-hub. Review the total cost before confirming a swap; no token fee does not mean a free trade."
+      },
+      "evidenceRef": "liquidity-proof"
+    },
+    {
+      "id": "slippage",
+      "category": "launch",
+      "ru": {
+        "question": "Почему итоговая сумма обмена может отличаться?",
+        "short": "Цена может измениться между расчётом обмена и его выполнением. На результат также влияют размер сделки, доступная ликвидность и комиссии.",
+        "details": "Проскальзывание — отклонение цены исполнения от ожидаемой; ценовое влияние самой сделки — отдельный фактор. Метрика — p90 slippage для сделок на $1 000. Предварительный плановый ориентир на первые 30 дней после TGE — менее 1,0%; это не фактический результат и не гарантия. Методика измерения будет опубликована вместе с первым отчётом мониторинга. Отслеживаемые метрики ликвидности приведены в Whitepaper."
+      },
+      "en": {
+        "question": "Why can the final swap amount differ?",
+        "short": "The price can move between the quote and execution. Trade size, available liquidity and fees also affect the result.",
+        "details": "Slippage is the difference between the expected and executed price; the trade’s own price impact is a separate factor. The metric is p90 slippage for $1,000 trades. The provisional planning reference for the first 30 days after TGE is under 1.0%; this is not a measured result or guarantee. Measurement methodology will be published with the first monitoring report. See the Whitepaper for monitored liquidity metrics."
+      },
+      "evidenceRef": "monitoring"
+    },
+    {
+      "id": "cex-listings",
+      "category": "launch",
+      "ru": {
+        "question": "Есть ли подтверждённые листинги на централизованных биржах?",
+        "short": "Листинги объявляются только после подтверждения. Биржевые сборы возможны; оплата искусственного торгового объёма и wash-trading запрещены.",
+        "details": "План — поэтапное расширение по схеме Tier-2 first на основе органического спроса, глубины ликвидности и показателей сообщества. Переговоры и планы не являются подтверждённым листингом."
+      },
+      "en": {
+        "question": "Are any centralised-exchange listings confirmed?",
+        "short": "Listings are announced only after confirmation. Exchange fees may be paid; paying for artificial trading volume and wash-trading are prohibited.",
+        "details": "The plan is gradual expansion with a Tier-2 first approach, based on organic demand, liquidity depth and community metrics. Discussions and plans are not confirmed listings."
+      },
+      "evidenceRef": "launch-announcement"
+    },
+    {
+      "id": "supply",
+      "category": "token",
+      "ru": {
+        "question": "Какая эмиссия $PLOV и можно ли выпустить дополнительные токены?",
+        "short": "Общая эмиссия — 13 013 003 000 PLOV. Полномочие дополнительного выпуска отключено.",
+        "details": "Проверяйте официальный mint в Solana: поле mint authority отсутствует. Если токены сжигаются, оставшаяся эмиссия уменьшается; выключенный выпуск не означает, что все токены уже находятся в обращении."
+      },
+      "en": {
+        "question": "What is the $PLOV supply, and can more tokens be minted?",
+        "short": "The total supply is 13,013,003,000 PLOV. The authority to mint additional tokens has been revoked.",
+        "details": "Check the official Solana mint: mint authority is unset. Burns reduce the remaining supply; disabled minting does not mean every token is already circulating."
+      },
+      "evidenceRef": "mint"
+    },
+    {
+      "id": "allocation",
+      "category": "token",
+      "ru": {
+        "question": "Как распределена эмиссия?",
+        "short": "План распределения: 45% — PlovDrop, 20% — ликвидность, 15% — маркетинг, 8% — команда, 7% — резерв сжигания, 5% — программа лояльности.",
+        "details": "Это назначение долей эмиссии, а не подтверждение их распределения или разблокировки. Фактические переводы, остатки и ограничения проверяются отдельно в Proof-hub."
+      },
+      "en": {
+        "question": "How is the supply allocated?",
+        "short": "The allocation plan is 45% PlovDrop, 20% liquidity, 15% marketing, 8% team, 7% burn reserve and 5% loyalty.",
+        "details": "These are designated allocations, not proof that tokens have been distributed or unlocked. Actual transfers, balances and restrictions are verified separately in Proof-hub."
+      },
+      "evidenceRef": "whitepaper"
+    },
+    {
+      "id": "freeze",
+      "category": "token",
+      "ru": {
+        "question": "Может ли команда заморозить мои $PLOV?",
+        "short": "У официального $PLOV отключено полномочие заморозки токен-счетов. Команда не может использовать эту функцию для заморозки ваших PLOV.",
+        "details": "Это относится к официальному токену Solana. Это не гарантия работы кошелька, доступности биржи или сохранности других активов: у сторонних сервисов собственные ограничения."
+      },
+      "en": {
+        "question": "Can the team freeze my $PLOV?",
+        "short": "The official $PLOV mint has no freeze authority. The team cannot use this function to freeze your PLOV token accounts.",
+        "details": "This applies to the official token on Solana. It does not guarantee wallet operation, exchange availability or the safety of other assets; third-party services have their own restrictions."
+      },
+      "evidenceRef": "mint"
+    },
+    {
+      "id": "burns",
+      "category": "token",
+      "ru": {
+        "question": "Будут ли токены сжигаться?",
+        "short": "Для сжигания предусмотрен отдельный резерв. Наличие резерва не означает, что токены уже сожжены.",
+        "details": "Выполненные сжигания подтверждаются транзакциями в журнале Proof-hub. Сжигание уменьшает эмиссию, но не гарантирует рост цены."
+      },
+      "en": {
+        "question": "Will tokens be burned?",
+        "short": "A separate reserve is designated for burns. Having a burn reserve does not mean those tokens have already been burned.",
+        "details": "Completed burns are documented by transactions in the Proof-hub log. Burning reduces supply but does not guarantee a price increase."
+      },
+      "evidenceRef": "burn-proof"
+    },
+    {
+      "id": "plovdrop",
+      "category": "drop",
+      "ru": {
+        "question": "Что такое PlovDrop?",
+        "short": "PlovDrop — программа распределения токенов сообществу, для которой выделено 45% эмиссии. Предусмотрены четыре планируемые волны.",
+        "details": "У каждой волны свои опубликованные правила: участники, проверки, сроки клейма и доступность токенов. Наличие программы в плане не означает, что участие или получение уже открыты."
+      },
+      "en": {
+        "question": "What is PlovDrop?",
+        "short": "PlovDrop is the community token-distribution programme, with 45% of the supply allocated to it. Four waves are planned.",
+        "details": "Each wave has its own published rules covering participants, checks, claim windows and token availability. A planned programme does not mean participation or claims are already open."
+      },
+      "evidenceRef": "wave-policy"
+    },
+    {
+      "id": "claim-status",
+      "category": "drop",
+      "ru": {
+        "question": "Открыт ли клейм, когда он откроется и где получать токены?",
+        "short": "Клейм пока закрыт. Его открытие объявляется через официальные каналы; получать токены нужно только через claim.plovcoin.com.",
+        "details": "Открытие может идти по группам участников — когортам. Если другая группа уже получила доступ, это само по себе не означает ошибку в вашей заявке. Правила формирования групп и их окна публикуются для волны. T+24ч — самое раннее начало рассмотрения готовности, а не автоматическое открытие клейма."
+      },
+      "en": {
+        "question": "Are claims open, when will they open, and where do I claim?",
+        "short": "Claims are not open yet. Opening is announced through official channels; claim tokens only through claim.plovcoin.com.",
+        "details": "Access may open by participant groups, or cohorts. Another group receiving access does not by itself mean there is an error with your application. Grouping rules and windows are published for the wave. T+24h is the earliest start of a readiness review, not an automatic claim opening."
+      },
+      "evidenceRef": "claim"
+    },
+    {
+      "id": "eligibility",
+      "category": "drop",
+      "ru": {
+        "question": "Как попасть в аирдроп?",
+        "short": "Нужно соответствовать правилам конкретной волны и пройти предусмотренные проверки. Подписка, участие в чате или хранение PLOV сами по себе не гарантируют получение.",
+        "details": "Проверяйте опубликованную Wave Policy. Не существует универсального требования ко всем волнам по остатку SOL, возрасту кошелька или числу транзакций."
+      },
+      "en": {
+        "question": "How do I qualify for an airdrop?",
+        "short": "You must meet the rules of the relevant wave and pass its required checks. Following an account, joining a chat or holding PLOV does not by itself guarantee an allocation.",
+        "details": "Check the published Wave Policy. There is no universal minimum SOL balance, wallet age or transaction count for all waves."
+      },
+      "evidenceRef": "wave-policy"
+    },
+    {
+      "id": "checks-and-appeals",
+      "category": "drop",
+      "ru": {
+        "question": "Как проверяют участников и что делать при отказе или ошибке?",
+        "short": "Проверки помогают выявлять дублирующие и недобросовестные заявки. Порядок обращения при отказе и технической ошибке указывается в правилах волны.",
+        "details": "Отказ по критериям и ошибка портала — разные случаи. Для обращения используйте официальный канал из Wave Policy; не передавайте секретную фразу. Проверка обращения не означает автоматического включения или выплаты. Публикация полного списка кошельков в CSV не является универсальным требованием."
+      },
+      "en": {
+        "question": "How are participants checked, and what if I am rejected or get an error?",
+        "short": "Checks help identify duplicate and abusive applications. The wave rules explain how to report an eligibility rejection or a technical error.",
+        "details": "An eligibility rejection and a portal error are different cases. Use the official contact in the Wave Policy and never share your recovery phrase. Reviewing a request does not guarantee inclusion or payment. Publishing a full wallet CSV is not a universal requirement."
+      },
+      "evidenceRef": "wave-policy"
+    },
+    {
+      "id": "unlocks",
+      "category": "drop",
+      "ru": {
+        "question": "Будет ли весь аирдроп доступен сразу?",
+        "short": "Это зависит от правил вашей волны. Право на аирдроп, открытие клейма и возможность распоряжаться всеми токенами — разные этапы.",
+        "details": "График доступности и ограничения публикуются в Wave Policy до участия. Проверяйте именно свою волну и когорту; универсальный график для всех волн здесь не устанавливается."
+      },
+      "en": {
+        "question": "Will the entire airdrop be available immediately?",
+        "short": "That depends on your wave’s rules. Eligibility, an open claim window and access to all tokens are separate stages.",
+        "details": "Availability schedules and restrictions are published in the Wave Policy before participation. Check your own wave and cohort; there is no universal schedule established here."
+      },
+      "evidenceRef": "wave-policy"
+    },
+    {
+      "id": "claim-deadline",
+      "category": "drop",
+      "ru": {
+        "question": "Что будет, если я пропущу клейм или портал не будет работать?",
+        "short": "У клейма есть срок, указанный в правилах волны. Во время официально объявленной приостановки отсчёт окна приостанавливается по правилам волны.",
+        "details": "Проверяйте обновлённый дедлайн и объявление о возобновлении. Проблема с вашим интернетом или устройством сама по себе не означает общей паузы. После дедлайна применяется правило о невостребованных токенах из Wave Policy; автоматическое восстановление права не обещается."
+      },
+      "en": {
+        "question": "What if I miss the claim deadline or the portal is unavailable?",
+        "short": "Claims have a deadline specified in the wave rules. During an officially declared pause, the claim-window clock pauses under those rules.",
+        "details": "Check the revised deadline and resumption announcement. A problem with your connection or device does not by itself mean a general pause. After the deadline, the Wave Policy’s unclaimed-token rule applies; reinstatement is not automatic."
+      },
+      "evidenceRef": "wave-policy"
+    },
+    {
+      "id": "loyalty-status",
+      "category": "loyalty",
+      "ru": {
+        "question": "Что такое Hold-to-Earn и запущена ли программа?",
+        "short": "Hold-to-Earn — планируемая программа лояльности, а не действующее обещание доходности. Токены остаются в кошельке: депозит или блокировка в staking-контракте не предусмотрены.",
+        "details": "Планируется учитывать состояние балансов в сети на определённые моменты — snapshots. Критерии участия, периоды наблюдения и расчёт наград должны быть утверждены и опубликованы в Loyalty Policy до открытия программы."
+      },
+      "en": {
+        "question": "What is Hold-to-Earn, and is it live?",
+        "short": "Hold-to-Earn is a planned loyalty programme, not an active promise of returns. Tokens stay in your wallet; no staking deposit or staking-contract lockup is planned.",
+        "details": "The plan uses on-chain balance snapshots at specified times. Eligibility, observation periods and reward calculations must be approved and published in the Loyalty Policy before the programme opens."
+      },
+      "evidenceRef": "loyalty-policy"
+    },
+    {
+      "id": "loyalty-eligibility",
+      "category": "loyalty",
+      "ru": {
+        "question": "Достаточно ли держать PLOV, чтобы автоматически получать награды?",
+        "short": "Нет. Для программы выделен отдельный резерв 5%, но само хранение PLOV или получение PlovDrop не создаёт автоматического права на награду.",
+        "details": "PlovDrop финансируется из собственной доли 45%. Токены аирдропа могут учитываться в стаже удержания, а участвующие в расчёте балансы определит Loyalty Policy. Ранее показанные проценты не следует считать действующими условиями начисления или обещанием доходности. Условия уровней, лимиты и порядок получения публикуются до открытия программы."
+      },
+      "en": {
+        "question": "Is holding PLOV enough to receive rewards automatically?",
+        "short": "No. A separate 5% reserve is allocated to loyalty, but holding PLOV or receiving PlovDrop does not create an automatic entitlement to rewards.",
+        "details": "PlovDrop is funded from its own 45% allocation. Airdropped tokens may count towards holding tenure, while eligible reward balances will be defined by the Loyalty Policy. Previously displayed percentages should not be treated as active reward terms or a promised return. Tier conditions, caps and distribution procedures are published before the programme opens."
+      },
+      "evidenceRef": "loyalty-policy"
+    },
+    {
+      "id": "risks",
+      "category": "safety",
+      "ru": {
+        "question": "Какие риски есть у $PLOV — можно ли потерять деньги?",
+        "short": "Да, можно потерять всю потраченную сумму. Цена может сильно меняться, а продать токены в нужный момент и по ожидаемой цене может не получиться.",
+        "details": "Существуют риски ликвидности, ошибок программ, мошеннических сайтов, потери доступа к кошельку и сбоев сервисов. Аудит, отключённые полномочия токена и публичные документы не устраняют эти риски."
+      },
+      "en": {
+        "question": "What are the risks of $PLOV — can I lose money?",
+        "short": "Yes, you can lose the entire amount spent. Prices can move sharply, and you may be unable to sell when you want or at the price you expect.",
+        "details": "Risks include limited liquidity, software errors, fraudulent websites, loss of wallet access and service outages. Audits, revoked token authorities and public documents do not eliminate these risks."
+      },
+      "evidenceRef": "whitepaper"
+    },
+    {
+      "id": "token-address",
+      "category": "safety",
+      "ru": {
+        "question": "Какой официальный адрес токена?",
+        "short": "$PLOV существует только в сети Solana. Официальный адрес токена приведён ниже; сверяйте его целиком.",
+        "details": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x. Токены с таким названием в Ethereum, BSC или TON, включая якобы bridged-версии, не являются официальным $PLOV."
+      },
+      "en": {
+        "question": "What is the official token address?",
+        "short": "$PLOV exists only on Solana. The official token address is shown below; compare the full address.",
+        "details": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x. Tokens with this name on Ethereum, BSC or TON, including purported bridged versions, are not official $PLOV."
+      },
+      "evidenceRef": "mint"
+    },
+    {
+      "id": "authenticity",
+      "category": "safety",
+      "ru": {
+        "question": "Как проверить официальный сайт, ссылки и токен?",
+        "short": "Начинайте с plovcoin.com и ссылок из официальных каналов. Название, логотип и первое место в поиске не доказывают подлинность.",
+        "details": "Сверяйте домен, сеть Solana и полный адрес токена. Клейм проводится только через claim.plovcoin.com. Не передавайте секретную фразу и проверяйте каждую подпись. Подлинность ссылки не означает отсутствие всех рисков проекта."
+      },
+      "en": {
+        "question": "How do I verify the official website, links and token?",
+        "short": "Start with plovcoin.com and links from official channels. A name, logo or top search result does not prove authenticity.",
+        "details": "Check the domain, Solana network and full token address. Claims take place only through claim.plovcoin.com. Never share your recovery phrase, and inspect every signing request. An authentic link does not mean the project is risk-free."
+      },
+      "evidenceRef": "channels"
+    },
+    {
+      "id": "proof-hub",
+      "category": "safety",
+      "ru": {
+        "question": "Где проверить, что уже сделано, а что остаётся планом?",
+        "short": "В Proof-hub собраны опубликованные адреса, транзакции и материалы проверки. Для каждой записи смотрите, что именно она подтверждает и к какому моменту относится.",
+        "details": "План или правило не доказывает выполнение. Отсутствие опубликованной записи также не доказывает, что события не было. Если подтверждения или актуальной даты нет, соответствующее утверждение нельзя считать проверенным по этой странице."
+      },
+      "en": {
+        "question": "Where can I check what is completed and what is still planned?",
+        "short": "Proof-hub brings together published addresses, transactions and verification materials. Check what each record proves and the time it refers to.",
+        "details": "A plan or rule is not proof of execution. A missing public record also does not prove that an event never happened. Without supporting evidence or a current timestamp, that claim cannot be treated as verified by this page."
+      },
+      "evidenceRef": "proof"
+    },
+    {
+      "id": "security-review",
+      "category": "safety",
+      "ru": {
+        "question": "Что проверено и где посмотреть результаты?",
+        "short": "Проверка Hacken VPS, архитектуры хранения средств и кода фронтенда завершена.",
+        "details": "Все 12 замечаний отмечены Fixed. Проверенная ссылка на публичный отчёт будет добавлена в Proof-hub. Будущие функции подключения кошелька, регистрации и клейма в эту проверку не входят."
+      },
+      "en": {
+        "question": "What has been checked, and where can I see the results?",
+        "short": "Hacken’s review of VPS infrastructure, custody architecture and frontend code is complete.",
+        "details": "All 12 findings are marked Fixed. A verified public-report link will be added to Proof-hub. Future wallet-connect, registration and claim functionality is outside this review’s scope."
+      },
+      "evidenceRef": "security-proof"
+    },
+    {
+      "id": "liquidity-control",
+      "category": "safety",
+      "ru": {
+        "question": "Кто контролирует ликвидность и какие ограничения на её вывод?",
+        "short": "Правила контроля ликвидности описаны в Liquidity Policy. Фактические ограничения нужно проверять по конкретной позиции пула и её владельцу.",
+        "details": "Адрес мультисиг-кошелька сам по себе не доказывает блокировку ликвидности. В Proof-hub должны быть опубликованы позиция, владелец, полномочия на вывод, задержки и подтверждающие операции. Планируемые меры не следует считать уже действующими."
+      },
+      "en": {
+        "question": "Who controls liquidity, and what restricts withdrawals?",
+        "short": "Liquidity control rules are described in the Liquidity Policy. Actual restrictions must be checked against the specific pool position and its owner.",
+        "details": "A multisig address alone does not prove that liquidity is locked. Proof-hub should identify the position, owner, withdrawal permissions, delays and supporting operations. Planned controls should not be treated as already active."
+      },
+      "evidenceRef": "liquidity-proof"
+    },
+    {
+      "id": "price-support",
+      "category": "safety",
+      "ru": {
+        "question": "Будет ли команда гарантировать цену или выкупать токены?",
+        "short": "Гарантии цены, её нижней границы и обязательного выкупа нет. Возможность продать токены зависит от рынка и доступной ликвидности.",
+        "details": "Условные операции с ликвидностью по политике не являются обещанием поддерживать курс. В первые часы не предусмотрен быстрый автоматический backstop; начало рассмотрения готовности после T+24ч не означает автоматической операции."
+      },
+      "en": {
+        "question": "Will the team guarantee the price or buy tokens back?",
+        "short": "There is no guaranteed price, price floor or mandatory buyback. Your ability to sell depends on the market and available liquidity.",
+        "details": "Conditional liquidity operations under the policy are not a promise to support the price. No fast automatic backstop is planned for the first hours; a readiness review after T+24h does not mean an operation happens automatically."
+      },
+      "evidenceRef": "liquidity-proof"
+    },
+    {
+      "id": "report-security",
+      "category": "safety",
+      "ru": {
+        "question": "Как сообщить об уязвимости или мошенническом сайте?",
+        "short": "Напишите на security@plovcoin.com и опишите проблему. Не отправляйте секретную фразу, приватные ключи или данные для доступа к кошельку.",
+        "details": "Укажите адрес страницы, время и безопасные шаги воспроизведения; для подозрительной операции — её публичный идентификатор. Не публикуйте детали уязвимости, позволяющие навредить пользователям. Вознаграждение не обещается без отдельных опубликованных условий."
+      },
+      "en": {
+        "question": "How do I report a vulnerability or fraudulent website?",
+        "short": "Email security@plovcoin.com with a description of the issue. Do not send recovery phrases, private keys or wallet access credentials.",
+        "details": "Include the page address, time and safe reproduction steps; for a suspicious transaction, include its public identifier. Avoid publishing exploit details that could harm users. No reward is promised without separately published terms."
+      },
+      "evidenceRef": "security-contact"
+    },
+    {
+      "id": "governance",
+      "category": "governance",
+      "ru": {
+        "question": "Кто принимает решения в PlovCoin?",
+        "short": "Текущие решения принимает команда в рамках опубликованных правил. Сообщество может обсуждать предложения, но это не равнозначно обязательному голосованию.",
+        "details": "Денежные операции должны соответствовать полномочиям и процедурам управления казной. Проверяйте действующие правила, роли и доказательства исполнения; планы будущего управления не описывают текущие права."
+      },
+      "en": {
+        "question": "Who makes decisions at PlovCoin?",
+        "short": "The team currently makes decisions under the published rules. The community can discuss proposals, but discussion is not a binding vote.",
+        "details": "Financial operations must follow treasury permissions and procedures. Check current rules, roles and execution evidence; future governance plans do not describe present rights."
+      },
+      "evidenceRef": "whitepaper"
+    },
+    {
+      "id": "pseudonyms",
+      "category": "governance",
+      "ru": {
+        "question": "Почему команда использует псевдонимы?",
+        "short": "Псевдонимы — часть выбранного публичного образа команды. Они не заменяют подотчётность за решения и средства.",
+        "details": "Проверять проект помогают мультисиг-управление, независимая проверка в пределах её охвата, Proof-hub и предусмотренный вестинг команды. Наличие каждой меры и её фактическое исполнение подтверждаются отдельно; псевдоним не снимает необходимость таких проверок."
+      },
+      "en": {
+        "question": "Why does the team use pseudonyms?",
+        "short": "Pseudonyms are part of the team’s chosen public identity. They do not replace accountability for decisions and funds.",
+        "details": "Multisig controls, independent review within its scope, Proof-hub and planned team vesting help assess accountability. Each measure and its actual implementation must be verified separately; a pseudonym does not remove that need."
+      },
+      "evidenceRef": "security-proof"
+    },
+    {
+      "id": "treasury",
+      "category": "governance",
+      "ru": {
+        "question": "Как устроено управление казной?",
+        "short": "Для казны предусмотрено управление через мультисиг: операция требует нескольких подтверждений. В Proof-hub опубликованы адреса казны и управляющей конфигурации.",
+        "details": "Проверять нужно актуальный порог подписей, задержку исполнения и разрешения, а не только название кошелька. Остаток казны и общая эмиссия — разные показатели. Несколько подписей снижают зависимость от одного ключа, но не гарантируют сохранность средств."
+      },
+      "en": {
+        "question": "How is the treasury managed?",
+        "short": "The treasury uses a multisig model, requiring multiple approvals for an operation. Proof-hub lists the treasury vault and its configuration address.",
+        "details": "Check the current signature threshold, execution delay and permissions, not just the wallet label. Treasury balance and total supply are different metrics. Multiple approvals reduce dependence on one key but do not guarantee that funds are safe."
+      },
+      "evidenceRef": "treasury-proof"
+    },
+    {
+      "id": "team-vesting",
+      "category": "governance",
+      "ru": {
+        "question": "Разблокируются ли токены команды на запуске?",
+        "short": "По утверждённому графику — нет: предусмотрены 12 месяцев cliff, затем 12 месяцев постепенной разблокировки. Сам график ещё не доказывает, что вестинг развёрнут и профинансирован.",
+        "details": "Фактическую дату начала, адрес программы, объём и ограничения нужно проверять в Proof-hub. До появления таких подтверждений это утверждённые условия, а не доказательство работающего ограничения."
+      },
+      "en": {
+        "question": "Do team tokens unlock at launch?",
+        "short": "Under the approved schedule, no: there is a 12-month cliff followed by 12 months of gradual unlocking. The schedule alone does not prove that vesting has been deployed and funded.",
+        "details": "Check the actual start date, programme address, amount and restrictions in Proof-hub. Until that evidence is published, these are approved terms rather than proof of an active restriction."
+      },
+      "evidenceRef": "vesting-proof"
+    },
+    {
+      "id": "dao",
+      "category": "governance",
+      "ru": {
+        "question": "Есть ли DAO и право голоса у держателей?",
+        "short": "Действующее управление через DAO пока не заявлено. Хранение PLOV само по себе не даёт права на обязательное голосование по решениям команды.",
+        "details": "Если модель управления изменится, отдельно публикуются правила голосования, полномочия и порядок исполнения решений. Обсуждение будущего DAO не создаёт этих прав сейчас."
+      },
+      "en": {
+        "question": "Is there a DAO, and do holders have voting rights?",
+        "short": "An operating DAO governance model has not been announced. Holding PLOV does not by itself confer a binding vote over team decisions.",
+        "details": "If governance changes, voting rules, powers and execution procedures will be published separately. Discussing a future DAO does not create those rights today."
+      },
+      "evidenceRef": "whitepaper"
+    },
+    {
+      "id": "paid-promotion",
+      "category": "governance",
+      "ru": {
+        "question": "Платите ли вы инфлюенсерам и где это будет видно?",
+        "short": "Платные размещения возможны и должны обозначаться как реклама. Сведения о них будут публиковаться в Ad Registry в Proof-hub.",
+        "details": "В реестре указываются размещение, площадка, характер и сумма вознаграждения, а также доступное подтверждение оплаты. Вознаграждение инфлюенсерам не считается PlovDrop. Пустой реестр не является доказательством отсутствия оплаченных размещений."
+      },
+      "en": {
+        "question": "Do you pay influencers, and where will this be disclosed?",
+        "short": "Paid placements are possible and must be identified as advertising. Details will be published in the Ad Registry in Proof-hub.",
+        "details": "The registry will identify the placement, platform, type and amount of compensation, and available payment evidence. Influencer compensation is not counted as PlovDrop. An empty registry is not proof that no paid placements have occurred."
+      },
+      "evidenceRef": "advertising-proof"
+    }
+  ]
+}
