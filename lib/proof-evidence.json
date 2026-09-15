@@ -1,5 +1,5 @@
 {
-  "copyReviewedOn": "2026-09-14",
+  "copyReviewedOn": "2026-09-15",
   "observedAt": "2026-09-14T00:27:46.933461+00:00",
   "commitment": "finalized",
   "slot": 446839525,
@@ -45,9 +45,12 @@
     }
   ],
   "review": {
-    "reportDate": "2026-08-31",
-    "finalRevisionDate": "2026-08-21",
     "findings": 12,
-    "fixed": 12
+    "fixed": 12,
+    "coverDate": "2026-08-31",
+    "changelogFinalReportDate": "2026-08-21",
+    "updatedPdfCreatedOn": "2026-09-14",
+    "critical": 0,
+    "high": 0
   }
 }

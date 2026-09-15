@@ -108,9 +108,29 @@
 :focus-visible { outline: 2px solid #F5C842; outline-offset: 4px; }
 .faq-page summary::-webkit-details-marker { display: none; }
 .faq-answer:target { border-color: #FF6B1A; }
+.proof-page { overflow-wrap: anywhere; }
+.proof-group { @apply mt-14 scroll-mt-24 border-t border-fire/20 pt-10 sm:mt-20 sm:pt-12; }
+.proof-grid { @apply grid items-start gap-5 md:grid-cols-2; }
+.proof-card { @apply min-w-0 scroll-mt-24 rounded-2xl border border-fire/20 bg-bg-soft p-5 sm:p-7; }
+.proof-card:target { @apply border-fire; }
+.proof-address { @apply mt-2 block min-w-0 break-all font-mono text-sm leading-relaxed text-rice; }
+.proof-source { @apply inline-flex max-w-full items-center gap-2 py-1 text-sm leading-relaxed text-fire-glow underline decoration-fire/40 underline-offset-4 hover:decoration-fire; }
+.proof-source span { min-width: 0; }
+.proof-permalink { @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-fire-glow hover:bg-fire/10; }
+.proof-nav-link { @apply flex min-h-14 min-w-0 items-center gap-3 rounded-xl border border-fire/20 bg-bg-soft px-4 py-3 text-sm text-rice hover:border-fire/60; }
+.proof-details { @apply mt-5 border-t border-fire/15; }
+.proof-details > summary { @apply flex min-h-12 cursor-pointer list-none items-center gap-2 py-3 text-sm text-rice; }
+.proof-details > summary::-webkit-details-marker { display: none; }
+.proof-chevron { @apply shrink-0 text-fire-glow; }
+.proof-details[open] > summary .proof-chevron { transform: rotate(180deg); }
+.proof-detail-body { @apply min-w-0 pb-1 text-sm leading-relaxed text-rice-soft; }
+.proof-status-grid { @apply grid gap-5 border-y border-fire/20 py-6 md:grid-cols-3 md:gap-8; }
 @media (hover: hover) and (pointer: fine) {
   .faq-permalink { opacity: 0; }
   .faq-answer:hover .faq-permalink, .faq-answer:focus-within .faq-permalink { opacity: 1; }
+  .proof-permalink { opacity: 0; }
+  .proof-card:hover > div > .proof-permalink, .proof-card:focus-within > div > .proof-permalink,
+  .proof-group:hover > div > .proof-permalink, .proof-group:focus-within > div > .proof-permalink { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

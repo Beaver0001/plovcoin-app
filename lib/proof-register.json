@@ -1,0 +1,82 @@
+{
+  "roles": [
+    {
+      "id": "treasury",
+      "vault": "3w5DmerxzYfMhVLHsdjHn5BU194u3R9DD5HaD7rr5VRm",
+      "multisig": "Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz"
+    },
+    {
+      "id": "lp-ops",
+      "vault": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+      "multisig": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B"
+    },
+    {
+      "id": "marketing",
+      "vault": "79cVRibjjHzQZALUgLbhDtzNrkYbzbCF7Cz5qWfu4UZi",
+      "multisig": "6QHLZE4sq58Zd44gKZDxGRoPbHyDHjHhxbhqy1X2XFFm"
+    },
+    {
+      "id": "update-auth",
+      "vault": "Dyy5d1X7MhvhByK2JcDRFoTaj52pvDHH9vg9pwvzUGNF",
+      "multisig": "DkG6HuPbSxSSiem19LhFbtjZk2SEhoZqQ1Wc9KxuaegY"
+    },
+    {
+      "id": "burn-ops",
+      "vault": "6E5C6JvpURy45dTGXhbbXuze4b4r27ShR9pSzX1SD6o7",
+      "multisig": "E9GY1DF26gjLXegDG7UX6BjmzMN1CrTHDLHgp3wEv6fH"
+    }
+  ],
+  "archive": {
+    "creator": "CeAF9ZHmaNrvjh31jKcdcPjtyoNYhhU9sJb2j8pjSZwD"
+  },
+  "transactions": [
+    {
+      "id": "metadata-transfer",
+      "signature": "4CFfhwrmHacSMjpPtwuvxbMb7qGqfUFzh24mw6cetdDw6xmyFk6ir1Gu7pzSqgPB8THipzuvzM4PSXpcuN7zbrKj",
+      "amountRaw": null,
+      "executedOn": "2026-07-28"
+    },
+    {
+      "id": "canary-transfer",
+      "signature": "1QDPF33SNw8yGH1WWX6aaF8tiJAC4ad3F1KjjdmPUcb9Np574bVsKGeFzQdFt1RUUfs8B2svc7vSPhYJsziWBkk",
+      "amountRaw": "1000000000000",
+      "executedOn": null
+    },
+    {
+      "id": "treasury-transfer",
+      "signature": "2txPSX8XxxegcYiLRvkLTztUKPJ8z9g1tvk6q2ofo3rH4e9i4egsdGtKYiwPfufXurvdiqvjzWoTMvMitZzBeJAL",
+      "amountRaw": "13013001940000000000",
+      "executedOn": null
+    }
+  ],
+  "registers": [
+    {
+      "id": "liquidity",
+      "publicationStatus": "not-published"
+    },
+    {
+      "id": "airdrop",
+      "publicationStatus": "not-published"
+    },
+    {
+      "id": "vesting",
+      "publicationStatus": "not-published"
+    },
+    {
+      "id": "incidents",
+      "publicationStatus": "not-published"
+    },
+    {
+      "id": "transparency",
+      "publicationStatus": "not-published"
+    },
+    {
+      "id": "advertising",
+      "publicationStatus": "not-published"
+    },
+    {
+      "id": "burn-log",
+      "publicationStatus": "not-published"
+    }
+  ]
+}
