@@ -247,216 +247,153 @@
     "auditedOn": "Security review on"
   },
   "proof": {
-    "chapter": "Verifiable on Solana",
-    "titleStart": "Proof-",
-    "titleAccent": "Hub",
-    "intro": "Verified production addresses, transactions, and control evidence are published here after execution. Planned values are never presented as completed facts.",
-    "placeholder": "— no verified production transaction published yet —",
-    "placeholderNote": "Production addresses and transactions are published here only after they exist and are verified. Planned values are never presented as completed execution.",
-    "verifyTitle": "Verify everything yourself",
-    "verifyText": "Once published, every address and transaction here links directly to Solscan. You don't need to trust us — verify on-chain.",
-    "verifyCta1": "Open Solscan ↗",
-    "verifyCta2": "Read Whitepaper",
-    "sections": [
-      {
-        "id": "addresses",
-        "title": "Addresses",
-        "note": "Custody addresses and Squads v4 multisig configurations are listed below. Signer identities are not disclosed; public keys are visible in the multisig configuration.",
-        "items": [
-          {
-            "label": "$PLOV mint",
-            "value": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
-            "href": "https://solscan.io/token/B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
-            "tag": "SPL"
-          },
-          {
-            "label": "Treasury v2 — vault",
-            "value": "3w5DmerxzYfMhVLHsdjHn5BU194u3R9DD5HaD7rr5VRm",
-            "href": "https://solscan.io/account/3w5DmerxzYfMhVLHsdjHn5BU194u3R9DD5HaD7rr5VRm",
-            "tag": "3/5 · 48h"
-          },
-          {
-            "label": "Treasury v2 — multisig",
-            "value": "Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz",
-            "href": "https://solscan.io/account/Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz",
-            "tag": "Squads v4"
-          },
-          {
-            "label": "LP Ops v2 — vault",
-            "value": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
-            "href": "https://solscan.io/account/2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
-            "tag": "2/3 · 12h"
-          },
-          {
-            "label": "LP Ops v2 — multisig",
-            "value": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
-            "href": "https://solscan.io/account/9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
-            "tag": "Squads v4"
-          },
-          {
-            "label": "Marketing v2 — vault",
-            "value": "79cVRibjjHzQZALUgLbhDtzNrkYbzbCF7Cz5qWfu4UZi",
-            "href": "https://solscan.io/account/79cVRibjjHzQZALUgLbhDtzNrkYbzbCF7Cz5qWfu4UZi",
-            "tag": "2/3 · 12h"
-          },
-          {
-            "label": "Marketing v2 — multisig",
-            "value": "6QHLZE4sq58Zd44gKZDxGRoPbHyDHjHhxbhqy1X2XFFm",
-            "href": "https://solscan.io/account/6QHLZE4sq58Zd44gKZDxGRoPbHyDHjHhxbhqy1X2XFFm",
-            "tag": "Squads v4"
-          },
-          {
-            "label": "Update Auth v2 — vault",
-            "value": "Dyy5d1X7MhvhByK2JcDRFoTaj52pvDHH9vg9pwvzUGNF",
-            "href": "https://solscan.io/account/Dyy5d1X7MhvhByK2JcDRFoTaj52pvDHH9vg9pwvzUGNF",
-            "tag": "2/3 · 12h"
-          },
-          {
-            "label": "Update Auth v2 — multisig",
-            "value": "DkG6HuPbSxSSiem19LhFbtjZk2SEhoZqQ1Wc9KxuaegY",
-            "href": "https://solscan.io/account/DkG6HuPbSxSSiem19LhFbtjZk2SEhoZqQ1Wc9KxuaegY",
-            "tag": "Squads v4"
-          },
-          {
-            "label": "Burn Ops v2 — vault",
-            "value": "6E5C6JvpURy45dTGXhbbXuze4b4r27ShR9pSzX1SD6o7",
-            "href": "https://solscan.io/account/6E5C6JvpURy45dTGXhbbXuze4b4r27ShR9pSzX1SD6o7",
-            "tag": "2/3 · 12h"
-          },
-          {
-            "label": "Burn Ops v2 — multisig",
-            "value": "E9GY1DF26gjLXegDG7UX6BjmzMN1CrTHDLHgp3wEv6fH",
-            "href": "https://solscan.io/account/E9GY1DF26gjLXegDG7UX6BjmzMN1CrTHDLHgp3wEv6fH",
-            "tag": "Squads v4"
-          },
-          {
-            "label": "Creator wallet (retired)",
-            "value": "CeAF9ZHmaNrvjh31jKcdcPjtyoNYhhU9sJb2j8pjSZwD",
-            "href": "https://solscan.io/account/CeAF9ZHmaNrvjh31jKcdcPjtyoNYhhU9sJb2j8pjSZwD",
-            "tag": "Historical address"
-          }
-        ]
+    "chapter": "Facts and evidence",
+    "intro": "What is confirmed, as of when, and where to verify it. Open the source or explore the technical details.",
+    "copyReviewedLabel": "Copy reviewed",
+    "browse": "What would you like to verify?",
+    "mintLabel": "Official token address",
+    "statusTitle": "Launch status",
+    "teamUpdate": "Team update",
+    "statusUnknown": "A fresh status needs confirmation",
+    "observedLabel": "State snapshot",
+    "details": "Technical details",
+    "permalink": "Link to this record",
+    "source": "Source",
+    "snapshot": "Confirmed at the snapshot",
+    "historical": "Historical transaction",
+    "pending": "Awaiting publication",
+    "archived": "Historical address",
+    "snapshotNote": "The snapshot describes the stated time. A historical transaction does not establish the current balance or unchanged permissions.",
+    "groups": {
+      "token": {
+        "title": "Token",
+        "intro": "Supply, mint and freeze authorities, and metadata."
       },
-      {
-        "id": "liquidity",
+      "addresses": {
+        "title": "Funds and control",
+        "intro": "Account roles, multisig settings and published transactions."
+      },
+      "liquidity": {
+        "title": "Launch and liquidity",
+        "intro": "Participation terms and execution evidence as they are published."
+      },
+      "airdrop": {
+        "title": "PlovDrop",
+        "intro": "Wave rules and stage-specific evidence: dataset hashes, claim links and distribution transactions as published. Full participant-data publication is not required for every wave."
+      },
+      "security": {
+        "title": "Reviews and incidents",
+        "intro": "The scope of the independent review, findings and incident reports."
+      },
+      "transparency": {
+        "title": "Reports and disclosures",
+        "intro": "Monitoring, paid placements and the record of completed burns."
+      }
+    },
+    "token": {
+      "supply": "$PLOV supply",
+      "decimals": "Decimals",
+      "mint": "Additional issuance",
+      "freeze": "Token-account freezing",
+      "revoked": "Authority revoked",
+      "retained": "Authority retained",
+      "mintLimit": "No additional issuance does not guarantee token liquidity or price.",
+      "freezeLimit": "Applies to official $PLOV token accounts, not to every wallet asset or exchange restrictions.",
+      "metadata": "Metadata authority",
+      "metadataAccount": "Metadata account",
+      "metadataLimit": "Updating metadata is a separate authority. It does not restore the ability to mint or freeze $PLOV.",
+      "onchainFields": "Mint account fields"
+    },
+    "funds": {
+      "balance": "Treasury v2 token-account balance",
+      "balanceNote": "The balance of this token account only. It is not the total across all addresses or the supply allocation by category.",
+      "tokenAccount": "Treasury token account",
+      "vault": "Custody address · vault",
+      "multisig": "Configuration · multisig",
+      "threshold": "Signature threshold",
+      "timelock": "Execution delay",
+      "hours": "h",
+      "seconds": "s",
+      "custodyNote": "Public keys and permissions are visible in the configuration. Signers’ identities are not disclosed. An address alone does not prove hardware-key storage.",
+      "history": "Published transactions",
+      "historyNote": "Individual historical events. The state at the snapshot time is shown in the cards above.",
+      "amount": "Amount",
+      "transactionDate": "Transaction date — in the Solscan record",
+      "roles": {
+        "treasury": "Treasury v2",
+        "lp-ops": "LP Ops v2",
+        "marketing": "Marketing v2",
+        "update-auth": "Update Auth v2",
+        "burn-ops": "Burn Ops v2"
+      },
+      "transactions": {
+        "metadata-transfer": "Metadata authority transfer",
+        "canary-transfer": "Canary transfer to Treasury v2",
+        "treasury-transfer": "Main transfer to Treasury v2"
+      }
+    },
+    "registries": {
+      "liquidity": {
         "title": "Liquidity",
-        "note": "Pool addresses, seed transactions, lock/timelock status.",
-        "items": [],
-        "emptyState": "No verified pool-launch transactions have been published yet."
+        "note": "Pool and position addresses, launch transactions and actual restrictions are published after verification. The LP Ops multisig alone does not prove that a position is locked.",
+        "empty": "No verified pool-launch transactions have been published yet."
       },
-      {
-        "id": "airdrop",
+      "airdrop": {
         "title": "Airdrop / PlovDrop",
         "note": "Wave rules and stage-specific evidence: dataset hashes, claim links and distribution transactions as published. Full participant-data publication is not required for every wave.",
-        "items": [],
-        "emptyState": "No wave-distribution evidence has been published yet."
+        "empty": "No wave-distribution evidence has been published yet."
       },
-      {
-        "id": "burn-log",
-        "title": "Burn Log",
-        "note": "Date, amount, reason, transaction hash for every burn.",
-        "items": [],
-        "emptyState": "No verified burn transactions have been published yet."
-      },
-      {
-        "id": "vesting",
+      "vesting": {
         "title": "Vesting",
-        "note": "Vesting stream IDs for every team member.",
-        "items": [],
-        "emptyState": "No vesting deployment or funding evidence has been published yet."
+        "note": "Program deployment and token funding require separate evidence. A planned schedule does not prove a lock.",
+        "empty": "No vesting deployment or funding evidence has been published yet."
       },
-      {
-        "id": "advertising",
-        "title": "Advertising / KOL",
-        "note": "A paid-placement register will be published here: partner, platform, compensation and available evidence. KOL compensation is not counted as PlovDrop.",
-        "items": [],
-        "emptyState": "No paid-placement records have been published yet."
-      },
-      {
-        "id": "security",
-        "title": "Security",
-        "note": "The $PLOV mint and freeze authorities are revoked. Below are dated observations of supply, the specific treasury token-account balance and the current metadata update authority. The balance covers only the named token account.",
-        "items": [
-          {
-            "label": "Mint authority",
-            "value": "revoked — no new tokens can ever be minted",
-            "href": "https://solscan.io/token/B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
-            "tag": ""
-          },
-          {
-            "label": "Freeze authority",
-            "value": "revoked — the team cannot freeze official $PLOV token accounts; this does not describe every asset in a wallet",
-            "href": "https://solscan.io/token/B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
-            "tag": ""
-          },
-          {
-            "label": "Update authority → Update Auth v2 (28.07.2026)",
-            "value": "4CFfhwrmHacSMjpPtwuvxbMb7qGqfUFzh24mw6cetdDw6xmyFk6ir1Gu7pzSqgPB8THipzuvzM4PSXpcuN7zbrKj",
-            "href": "https://solscan.io/tx/4CFfhwrmHacSMjpPtwuvxbMb7qGqfUFzh24mw6cetdDw6xmyFk6ir1Gu7pzSqgPB8THipzuvzM4PSXpcuN7zbrKj",
-            "tag": "Historical transaction"
-          },
-          {
-            "label": "Canary transfer, 1,000 PLOV → Treasury v2",
-            "value": "1QDPF33SNw8yGH1WWX6aaF8tiJAC4ad3F1KjjdmPUcb9Np574bVsKGeFzQdFt1RUUfs8B2svc7vSPhYJsziWBkk",
-            "href": "https://solscan.io/tx/1QDPF33SNw8yGH1WWX6aaF8tiJAC4ad3F1KjjdmPUcb9Np574bVsKGeFzQdFt1RUUfs8B2svc7vSPhYJsziWBkk",
-            "tag": "Historical transaction"
-          },
-          {
-            "label": "Main transfer, 13,013,001,940 PLOV → Treasury v2",
-            "value": "2txPSX8XxxegcYiLRvkLTztUKPJ8z9g1tvk6q2ofo3rH4e9i4egsdGtKYiwPfufXurvdiqvjzWoTMvMitZzBeJAL",
-            "href": "https://solscan.io/tx/2txPSX8XxxegcYiLRvkLTztUKPJ8z9g1tvk6q2ofo3rH4e9i4egsdGtKYiwPfufXurvdiqvjzWoTMvMitZzBeJAL",
-            "tag": "Historical transaction"
-          }
-        ]
-      },
-      {
-        "id": "incidents",
+      "incidents": {
         "title": "Incidents",
         "note": "P0/P1 incident notes within 24h. Post-mortems published.",
-        "items": [],
-        "emptyState": "No incident records have been published yet. This does not establish that no incidents occurred."
+        "empty": "No incident records have been published yet. This does not establish that no incidents occurred."
       },
-      {
-        "id": "transparency",
+      "transparency": {
         "title": "Transparency Reports",
         "note": "The first monitoring report will be published together with its measurement methodology no later than T+30 days after public activation.",
-        "items": [],
-        "emptyState": "No monitoring reports have been published yet."
+        "empty": "No monitoring reports have been published yet."
+      },
+      "advertising": {
+        "title": "Advertising / KOL",
+        "note": "A paid-placement register will be published here: partner, platform, compensation and available evidence. KOL compensation is not counted as PlovDrop.",
+        "empty": "No paid-placement records have been published yet."
+      },
+      "burn-log": {
+        "title": "Burn Log",
+        "note": "Date, amount, reason, transaction hash for every burn.",
+        "empty": "No verified burn transactions have been published yet."
       }
-    ],
-    "copyReviewedLabel": "Copy reviewed",
-    "observedLabel": "On-chain state checked",
-    "observationNote": "Dated values are a snapshot, not live data. The transactions below show individual historical operations.",
-    "snapshotLabels": {
-      "supply": "$PLOV supply",
-      "balance": "Treasury v2 token-account balance",
-      "updateAuthority": "Current metadata update authority — Update Auth v2",
-      "metadataAccount": "Metadata account"
     },
-    "reviewFields": [
-      {
-        "label": "Scope",
-        "value": "VPS infrastructure, custody architecture and the reviewed frontend source code."
-      },
-      {
-        "label": "Report revision",
-        "value": "Final report: 21 August 2026; cover date: 31 August 2026."
-      },
-      {
-        "label": "Code version",
-        "value": "The repository and commit were shared privately with the reviewer and are not disclosed in the public report. Later website changes are not automatically covered."
-      },
-      {
-        "label": "Result",
-        "value": "All 12 findings are marked Fixed; no Critical or High findings."
-      },
-      {
-        "label": "Exclusions",
-        "value": "Future wallet-connect, registration and claim functionality is outside this review’s scope."
-      }
-    ],
-    "reportLinkLabel": "Hacken public report",
-    "reportLinkPending": "A verified link to the public report will be added here."
+    "audit": {
+      "title": "Hacken · security review",
+      "result": "Findings marked Fixed",
+      "critical": "Critical",
+      "high": "High",
+      "scope": "VPS infrastructure, custody architecture and the reviewed frontend source code.",
+      "version": "The repository and commit were shared privately with the reviewer and are not disclosed in the public report. Later website changes are not automatically covered.",
+      "exclusions": "Future wallet-connect, registration and claim functionality is outside this review’s scope.",
+      "scopeLabel": "Reviewed",
+      "exclusionsLabel": "Outside the review",
+      "coverDate": "Report cover date",
+      "pdfDate": "Updated PDF created",
+      "changelogDate": "Final Report changelog entry",
+      "reportLink": "Hacken public report",
+      "reportPending": "A verified link to the public report will be added here.",
+      "tokenLink": "Token authorities and dated snapshot",
+      "reportState": "Statuses from the reviewed report"
+    },
+    "archiveTitle": "Archive",
+    "archiveNote": "The historical creator address. Listing it does not confirm its current balance or authorities.",
+    "creator": "Creator wallet",
+    "readFaq": "Questions in plain language",
+    "readWhitepaper": "Read the Whitepaper",
+    "verifyTitle": "Verify the specific source",
+    "verifyText": "Links beside the facts lead to the relevant account, transaction or document. Check the date, subject and limits of each observation."
   },
   "whitepaper": {
     "badge": "Website edition · Preview",

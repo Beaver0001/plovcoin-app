@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { I18nProvider } from "@/components/I18nProvider";
 import { getDictionary } from "@/lib/i18n";
-import { ProofView } from "@/components/views/ProofView";
+import { ProofHubView } from "@/components/views/ProofHubView";
 
 const dict = getDictionary("ru");
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <I18nProvider locale="ru" dict={dict}>
-      <ProofView />
+      <ProofHubView locale="ru" />
     </I18nProvider>
   );
 }
