@@ -16,6 +16,7 @@ import { MultisigTable } from "../whitepaper/MultisigTable";
 import { localePath } from "@/lib/i18n";
 import { official } from "@/lib/official-config.mjs";
 import { websiteEditionLabel } from "@/lib/website-edition";
+import { getFaqQuestion, whitepaperAnswerIds } from "@/lib/faq";
 import { AlertTriangle, ExternalLink, ArrowRight } from "lucide-react";
 
 const SECTION_IDS = [
@@ -542,15 +543,14 @@ export function WhitepaperView() {
 
                 <div className="space-y-3">
                   {(() => {
-                    // Use first 4 questions from featured FAQ
-                    const quickQs = t.faq.featured.slice(0, 4);
-                    return quickQs.map((item, i) => (
+                    const quickQs = whitepaperAnswerIds.map(getFaqQuestion);
+                    return quickQs.map(item => (
                       <div
-                        key={i}
+                        key={item.id}
                         className="rounded-xl border border-fire/15 bg-bg-soft/40 p-4"
                       >
-                        <div className="font-display text-sm text-rice">{item.q}</div>
-                        <p className="mt-2 break-words text-sm leading-relaxed text-rice-soft">{item.a}</p>
+                        <Link href={`${localePath(locale, "/faq")}#${item.id}`} className="text-base font-semibold text-rice underline-offset-4 hover:underline">{item[locale].question}</Link>
+                        <p className="mt-2 break-words text-base leading-relaxed text-rice-soft">{item[locale].short}</p>
                       </div>
                     ));
                   })()}

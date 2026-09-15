@@ -1,0 +1,11 @@
+export const faqGlossary = [
+  { term: "TGE", en: "Token Generation Event; this FAQ uses T to refer to the public launch. An announced plan is not a confirmed launch date.", ru: "Token Generation Event; в этом FAQ T обозначает публичный запуск. План не равен подтверждённой дате." },
+  { term: "mint authority", en: "The authority that can issue additional units of a token. Revoking it does not mean all tokens are circulating.", ru: "Полномочие выпускать дополнительные единицы токена. Его отзыв не означает, что все токены находятся в обращении." },
+  { term: "freeze authority", en: "The authority to freeze token accounts for a particular mint. It does not control every asset in a wallet.", ru: "Полномочие замораживать токен-счета конкретного mint. Оно не управляет всеми активами кошелька." },
+  { term: "vesting", en: "A schedule under which tokens become available over time. A cliff is an initial period before unlocking begins.", ru: "График постепенной доступности токенов. Cliff — начальный период до начала разблокировки." },
+  { term: "slippage", en: "The difference between the expected price and the execution price. The price impact of your own trade is a separate factor.", ru: "Разница между ожидаемой ценой и ценой исполнения. Влияние самой сделки на цену — отдельный фактор." },
+  { term: "Merkle", en: "A way to use hashes to verify that a record belongs to a dataset without publishing the entire dataset with each proof.", ru: "Способ с помощью хэшей проверить принадлежность записи набору данных, не публикуя весь набор с каждым доказательством." },
+  { term: "cohort", en: "A group of participants. A wave may give different groups different claim windows under its published rules.", ru: "Группа участников. По правилам волны у разных групп могут быть разные окна клейма." },
+  { term: "snapshot", en: "A record of balances or another state at a particular point in time; it is not a live balance.", ru: "Снимок балансов или другого состояния на определённый момент; это не баланс в реальном времени." },
+  { term: "multisig", en: "A control model requiring multiple approvals for an operation. Check the actual threshold, permissions and any delay.", ru: "Модель управления, в которой для операции нужны несколько подтверждений. Проверяйте фактический порог, полномочия и задержку." },
+];

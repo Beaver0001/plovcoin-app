@@ -106,6 +106,12 @@
 
 /* Keep keyboard focus visible on dark/gradient surfaces. */
 :focus-visible { outline: 2px solid #F5C842; outline-offset: 4px; }
+.faq-page summary::-webkit-details-marker { display: none; }
+.faq-answer:target { border-color: #FF6B1A; }
+@media (hover: hover) and (pointer: fine) {
+  .faq-permalink { opacity: 0; }
+  .faq-answer:hover .faq-permalink, .faq-answer:focus-within .faq-permalink { opacity: 1; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
