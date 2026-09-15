@@ -75,13 +75,19 @@ function Answer({ question, open, toggle }: { question: FaqQuestion; open: boole
 function StatusSources() {
   const { locale } = useI18n();
   return <aside aria-label={locale === "ru" ? "Источники статуса запуска" : "Launch status sources"} className="mt-7 grid gap-3 border-y border-fire/15 py-4 sm:grid-cols-3">
-    {faqStatuses.map(status => <div key={status.id} className="min-w-0">
+    {faqStatuses.map(status => {
+      const text = status.confirmedText && ((status.checkedAt && status.sourceUrl) || status.teamConfirmedOn)
+        ? status.confirmedText[locale] : null;
+      return <div key={status.id} className="min-w-0">
       <p className="flex items-center gap-2 text-sm font-semibold text-rice"><span className="h-1.5 w-1.5 rounded-full bg-gold" aria-hidden="true" />{status[locale]}</p>
-      <p className="mt-1 text-sm text-rice-soft">{status.checkedAt && status.sourceUrl && status.confirmedText ? status.confirmedText[locale] : locale === "ru" ? "Свежий статус требует подтверждения" : "Current status needs confirmation"}</p>
-      {status.checkedAt && status.sourceUrl && status.confirmedText
+      <p className="mt-1 text-sm text-rice-soft">{text ?? (locale === "ru" ? "Свежий статус требует подтверждения" : "Current status needs confirmation")}</p>
+      {text && status.teamConfirmedOn && !(status.checkedAt && status.sourceUrl) && <p className="mt-1 text-xs text-rice-soft">
+        {locale === "ru" ? "По информации команды · " : "Team update · "}<time dateTime={status.teamConfirmedOn}>{status.teamConfirmedOn}</time>
+      </p>}
+      {text && status.checkedAt && status.sourceUrl
         ? <a href={status.sourceUrl} className="text-sm text-fire-glow underline"><time dateTime={status.checkedAt}>{status.checkedAt}</time></a>
         : <Evidence reference={status.evidenceRef} />}
-    </div>)}
+    </div>;})}
   </aside>;
 }
 
