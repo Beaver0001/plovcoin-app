@@ -1,3 +1,4 @@
+﻿import { official } from "@/lib/official-config.mjs";
 "use client";
 
 import { motion } from "framer-motion";
@@ -93,7 +94,7 @@ export function Hero() {
           </span>
         </motion.div>
 
-        {/* Main title — logo + $PLOV side by side */}
+        {/* Main title вЂ” logo + $PLOV side by side */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -144,10 +145,21 @@ export function Hero() {
           </Link>
         </motion.div>
 
-        {/* Official mint address block — anti-phishing */}
+        {/* Official mint address block вЂ” anti-phishing */}
         <div className="mx-auto mt-12 max-w-2xl">
           <MintAddressBlock variant="hero" />
         </div>
+
+        
+        {/* Hacken security review — badge */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.9 }} className="mx-auto mt-8 flex max-w-2xl flex-col items-center gap-3 sm:flex-row sm:gap-5 sm:text-left">
+          <a href={official.hacken.projectUrl} target="_blank" rel="noopener noreferrer" className="inline-block shrink-0">
+            <img src={official.hacken.badgeAsset} alt={t.security.badgeAlt} width={174} height={64} style={{ width: 174, height: "auto", maxWidth: "100%" }} />
+          </a>
+          <p className="text-xs leading-relaxed text-rice-soft">
+            {t.security.scopeLine} · <a href={official.hacken.reportUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{t.security.viewReport}</a>
+          </p>
+        </motion.div>
 
         {/* Trust bar */}
         <motion.div
@@ -170,3 +182,4 @@ export function Hero() {
     </section>
   );
 }
+
