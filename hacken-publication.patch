@@ -1,0 +1,485 @@
+From 171d18c3b6db0dbfa0ebe0970cc681b6d9b6d4ae Mon Sep 17 00:00:00 2001
+From: Claude <claude@plovcoin.local>
+Date: Fri, 18 Sep 2026 10:07:44 +0000
+Subject: [PATCH] =?UTF-8?q?Hacken=20security=20review:=20public=20report?=
+ =?UTF-8?q?=20published=202026-09-17=20=E2=80=94=20badge,=20links,=20scope?=
+ =?UTF-8?q?=20line,=20incident=20stages,=20Proof-hub=20spelling?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ components/sections/Security.tsx     | 16 +++++-
+ components/views/ProofHubView.tsx    |  9 +++-
+ lib/dictionaries/en.json             | 33 ++++++++-----
+ lib/dictionaries/ru.json             | 35 ++++++++-----
+ lib/faq-content.json                 | 12 ++---
+ lib/official-config.d.mts            | 10 ++--
+ lib/official-config.mjs              | 12 +++--
+ lib/proof-evidence.json              | 10 +++-
+ lib/website-edition.json             |  4 +-
+ public/badges/hacken-badge-color.svg | 73 ++++++++++++++++++++++++++++
+ 10 files changed, 168 insertions(+), 46 deletions(-)
+ create mode 100644 public/badges/hacken-badge-color.svg
+
+diff --git a/components/sections/Security.tsx b/components/sections/Security.tsx
+index 613fa83..dba6147 100644
+--- a/components/sections/Security.tsx
++++ b/components/sections/Security.tsx
+@@ -5,6 +5,7 @@ import Link from "next/link";
+ import { ShieldCheck, Eye, FileCheck, ArrowUpRight } from "lucide-react";
+ import { useI18n } from "../I18nProvider";
+ import { localePath } from "@/lib/i18n";
++import { official } from "@/lib/official-config.mjs";
+ 
+ const ICONS = [ShieldCheck, Eye, FileCheck];
+ 
+@@ -14,7 +15,7 @@ export function Security() {
+   const hrefs = [
+     localePath(locale, "/proof") + "#addresses",
+     localePath(locale, "/proof"),
+-    localePath(locale, "/proof") + "#security",
++    localePath(locale, "/proof") + "#hacken-review",
+   ];
+ 
+   return (
+@@ -55,6 +56,17 @@ export function Security() {
+                 </div>
+                 <h3 className="font-display text-2xl text-rice">{card.title}</h3>
+                 <p className="mt-3 flex-1 text-sm leading-relaxed text-rice-soft">{card.body}</p>
++                {i === 2 && (
++                  <div className="mt-5">
++                    <a href={official.hacken.projectUrl} target="_blank" rel="noopener noreferrer" className="inline-block">
++                      <img src={official.hacken.badgeAsset} alt={t.security.badgeAlt} width={174} height={64} style={{ width: 174, height: "auto", maxWidth: "100%" }} />
++                    </a>
++                    <p className="mt-3 text-xs leading-relaxed text-rice-soft">
++                      {t.security.scopeLine} ·{" "}
++                      <a href={official.hacken.reportUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{t.security.viewReport}</a>
++                    </p>
++                  </div>
++                )}
+                 <Link
+                   href={hrefs[i] ?? localePath(locale, "/proof")}
+                   className="mt-5 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-fire transition-all hover:gap-2.5"
+@@ -83,7 +95,7 @@ export function Security() {
+               <div className="mt-1 text-sm text-rice">
+                 <span className="font-bold">{t.security.bannerBold}</span>{" "}
+                 {t.security.bannerRest}{" "}
+-                <Link href={`${localePath(locale, "/proof")}#security`} className="text-fire underline">
++                <Link href={`${localePath(locale, "/proof")}#hacken-review`} className="text-fire underline">
+                   {t.security.bannerProofLink}
+                 </Link>{" "}
+                 {t.security.bannerTail}
+diff --git a/components/views/ProofHubView.tsx b/components/views/ProofHubView.tsx
+index cd674f4..26dce06 100644
+--- a/components/views/ProofHubView.tsx
++++ b/components/views/ProofHubView.tsx
+@@ -176,13 +176,18 @@ export function ProofHubView({ locale }: { locale: Locale }) {
+         </Group>
+         <Group id="security" index={5} copy={copy}>
+           <Card id="hacken-review" title={copy.audit.title} status={copy.audit.reportState} copy={copy}>
++            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
++              <a href={official.hacken.projectUrl} target="_blank" rel="noopener noreferrer" className="inline-block shrink-0"><img src={official.hacken.badgeAsset} alt={copy.audit.badgeAlt} width={174} height={64} style={{ width: 174, height: "auto", maxWidth: "100%" }} /></a>
++              <p className="text-sm leading-relaxed text-rice">{copy.audit.scopeLine} · <a href={official.hacken.reportUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{copy.audit.reportLink}</a></p>
++            </div>
+             <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-5"><div><dt className="text-sm text-rice-soft">{copy.audit.result}</dt><dd className="mt-2 font-display text-3xl text-rice">{evidence.review.fixed} / {evidence.review.findings}</dd></div><div><dt className="text-sm text-rice-soft">{copy.audit.critical}</dt><dd className="mt-2 font-display text-3xl text-rice">{evidence.review.critical}</dd></div><div><dt className="text-sm text-rice-soft">{copy.audit.high}</dt><dd className="mt-2 font-display text-3xl text-rice">{evidence.review.high}</dd></div></dl>
+             <p className="mt-6 text-sm leading-relaxed text-rice"><strong>{copy.audit.scopeLabel}: </strong>{copy.audit.scope}</p>
+             <p className="mt-3 text-sm leading-relaxed text-rice-soft"><strong>{copy.audit.exclusionsLabel}: </strong>{copy.audit.exclusions}</p>
+             <p className="mt-3 text-sm leading-relaxed text-rice-soft">{copy.audit.version}</p>
+             <p className="mt-5 text-xs text-rice-soft">{copy.audit.coverDate}: <time dateTime={evidence.review.coverDate}>{evidence.review.coverDate}</time></p>
+-            <div className="mt-4">{official.hacken.reportUrl ? <SourceLink href={official.hacken.reportUrl}>{copy.audit.reportLink}</SourceLink> : <p className="text-sm leading-relaxed text-gold">{copy.audit.reportPending}</p>}</div>
+-            <Details copy={copy} title={copy.audit.title}><p>{copy.audit.pdfDate}: <time dateTime={evidence.review.updatedPdfCreatedOn}>{evidence.review.updatedPdfCreatedOn}</time></p><p className="mt-3">{copy.audit.changelogDate}: <time dateTime={evidence.review.changelogFinalReportDate}>{evidence.review.changelogFinalReportDate}</time></p></Details>
++            <p className="mt-2 text-xs text-rice-soft">{copy.audit.publishedOn}: <time dateTime={official.hacken.publishedOn}>{official.hacken.publishedOn}</time></p>
++            <div className="mt-4 flex flex-col items-start gap-3 sm:flex-row sm:gap-8"><SourceLink href={official.hacken.reportUrl}>{copy.audit.reportLink}</SourceLink><SourceLink href={official.hacken.projectUrl}>{copy.audit.projectLink}</SourceLink></div>
++            <Details copy={copy} title={copy.audit.title}><p>{copy.audit.pdfSha}: <code className="break-all">{official.hacken.publicPdfSha256}</code> · {official.hacken.publicPdfBytes.toLocaleString("en-US")} bytes</p><p className="mt-3">{copy.audit.pdfVerified}.</p><p className="mt-3">{copy.audit.pdfDate}: <time dateTime={evidence.review.updatedPdfCreatedOn}>{evidence.review.updatedPdfCreatedOn}</time></p><p className="mt-3">{copy.audit.changelogDate}: <time dateTime={evidence.review.changelogFinalReportDate}>{evidence.review.changelogFinalReportDate}</time></p></Details>
+           </Card>
+           <div className="my-5"><SourceLink href="#token">{copy.audit.tokenLink}</SourceLink></div>
+           <EmptyRegister kind="incidents" copy={copy}><div className="mt-5"><SourceLink href={`mailto:${official.securityEmail}`}>{official.securityEmail}</SourceLink></div></EmptyRegister>
+diff --git a/lib/dictionaries/en.json b/lib/dictionaries/en.json
+index f63f84e..3f1534a 100644
+--- a/lib/dictionaries/en.json
++++ b/lib/dictionaries/en.json
+@@ -134,8 +134,8 @@
+         "items": [
+           "Token deployed on Solana (mint & freeze disabled)",
+           "Squads multisig treasury setup",
+-          "Hacken review complete; all 12 findings Fixed; public report awaiting publication",
+-          "Proof Hub live with verified production facts"
++          "Hacken security review complete; all 12 findings Fixed; public report published 17 Sep 2026",
++          "Proof-hub live with verified production facts"
+         ]
+       },
+       {
+@@ -202,15 +202,18 @@
+       },
+       {
+         "title": "Hacken Security Review",
+-        "body": "Hacken’s review of VPS infrastructure, custody architecture and frontend code is complete. All 12 findings are marked Fixed. A verified public-report link will be added to Proof-hub. Future wallet-connect, registration and claim functionality is outside this review’s scope.",
+-        "ctaLabel": "Status & Reports"
++        "body": "Hacken’s security review of VPS infrastructure, custody architecture and frontend source code is complete and published. All 12 findings are marked Fixed (2 Medium, 2 Low, 8 Info; no Critical or High). Future wallet-connect, registration and claim functionality is outside this review’s scope.",
++        "ctaLabel": "Scope & evidence on Proof-hub"
+       }
+     ],
+     "bannerLabel": "Security Status",
+-    "bannerBold": "Hacken review complete. Verified public-report link pending.",
+-    "bannerRest": "Scope and current evidence are described on",
++    "bannerBold": "Hacken security review complete and published (17 Sep 2026).",
++    "bannerRest": "Scope and evidence are on",
+     "bannerProofLink": "Proof-hub",
+-    "bannerTail": "Future claim functionality requires a separate review."
++    "bannerTail": "Future claim functionality requires a separate review.",
++    "badgeAlt": "Hacken badge — Audited by Hacken",
++    "scopeLine": "Hacken security review: VPS infrastructure, custody architecture, frontend source code · 12/12 findings fixed",
++    "viewReport": "View report"
+   },
+   "community": {
+     "chapter": "PlovArmy",
+@@ -350,7 +353,7 @@
+       },
+       "incidents": {
+         "title": "Incidents",
+-        "note": "P0/P1 incident notes within 24h. Post-mortems published.",
++        "note": "First public message within 60 minutes of confirming a P0/P1 incident; a structured incident note within 24 hours; post-mortem published afterwards.",
+         "empty": "No incident records have been published yet. This does not establish that no incidents occurred."
+       },
+       "transparency": {
+@@ -385,7 +388,13 @@
+       "reportLink": "Hacken public report",
+       "reportPending": "A verified link to the public report will be added here.",
+       "tokenLink": "Token authorities and dated snapshot",
+-      "reportState": "Statuses from the reviewed report"
++      "reportState": "Statuses from the published report",
++      "projectLink": "Hacken project page",
++      "publishedOn": "Published on hacken.io",
++      "pdfSha": "Public PDF SHA-256",
++      "pdfVerified": "Verified 2026-09-17: byte-identical to the edition approved for publication on 2026-09-14",
++      "badgeAlt": "Hacken badge — Audited by Hacken",
++      "scopeLine": "Hacken security review: VPS infrastructure, custody architecture, frontend source code · 12/12 findings fixed"
+     },
+     "archiveTitle": "Archive",
+     "archiveNote": "The historical creator address. Listing it does not confirm its current balance or authorities.",
+@@ -549,7 +558,7 @@
+         }
+       ],
+       "protectionTitle": "Launch Liquidity Protection",
+-      "protectionText": "The production pool address, position, custody controls, and transaction confirmations are published through Proof Hub only after execution and verification. Planned configurations are not presented as completed actions.",
++      "protectionText": "The production pool address, position, custody controls, and transaction confirmations are published through Proof-hub only after execution and verification. Planned configurations are not presented as completed actions.",
+       "metricsTitle": "Monitored metrics (first 30 days post-TGE)",
+       "metrics": [
+         {
+@@ -759,7 +768,7 @@
+       "rows": [
+         {
+           "period": "Pre-TGE",
+-          "goals": "Launch readiness, completed Hacken review, public report publication, communications readiness, Proof Hub, DAMM v2 and Alpha Vault preparation"
++          "goals": "Launch readiness, completed Hacken security review, public report published 17 Sep 2026, communications readiness, Proof-hub, DAMM v2 and Alpha Vault preparation"
+         },
+         {
+           "period": "Target Q4 2026",
+@@ -870,7 +879,7 @@
+     "proofTitle": "Proof-hub — On-Chain Verification",
+     "proofDesc": "Verify every PlovCoin operation on-chain. Addresses, liquidity, airdrops, burns, vesting, advertising, security, incidents — all public, all verifiable on Solana.",
+     "whitepaperTitle": "Whitepaper — Website Edition | Fair Launch, Transparent Tokenomics",
+-    "whitepaperDesc": "PlovCoin Whitepaper — website edition: tokenomics, launch structure, airdrops, governance, and risks. Cultural memecoin on Solana. Fair launch, 45% to community, Proof Hub transparency.",
++    "whitepaperDesc": "PlovCoin Whitepaper — website edition: tokenomics, launch structure, airdrops, governance, and risks. Cultural memecoin on Solana. Fair launch, 45% to community, Proof-hub transparency.",
+     "plovdropTitle": "PlovDrop — 45% to Community",
+     "plovdropDesc": "PlovDrop is the largest allocation in $PLOV — 45% of supply distributed across four airdrop waves to the community.",
+     "faqTitle": "FAQ — PlovCoin Help Center",
+diff --git a/lib/dictionaries/ru.json b/lib/dictionaries/ru.json
+index f80d5cc..45c45de 100644
+--- a/lib/dictionaries/ru.json
++++ b/lib/dictionaries/ru.json
+@@ -134,8 +134,8 @@
+         "items": [
+           "Токен развёрнут на Solana (mint и freeze отключены)",
+           "Squads multisig для казны",
+-          "Проверка Hacken завершена; все 12 замечаний Fixed; ожидается публикация отчёта",
+-          "Proof Hub публикует проверенные факты о продакшене"
++          "Hacken security review завершён; все 12 замечаний Fixed; публичный отчёт опубликован 17.09.2026",
++          "Proof-hub публикует проверенные факты о продакшене"
+         ]
+       },
+       {
+@@ -201,16 +201,19 @@
+         "ctaLabel": "Открыть Proof-hub"
+       },
+       {
+-        "title": "Проверка безопасности Hacken",
+-        "body": "Проверка Hacken VPS, архитектуры хранения средств и кода фронтенда завершена. Все 12 замечаний отмечены Fixed. Проверенная ссылка на публичный отчёт будет добавлена в Proof-hub. Будущие функции подключения кошелька, регистрации и клейма в эту проверку не входят.",
+-        "ctaLabel": "Статус и отчёты"
++        "title": "Hacken Security Review",
++        "body": "Hacken security review инфраструктуры VPS, архитектуры кастоди и исходного кода фронтенда завершён и опубликован. Все 12 замечаний отмечены как исправленные (2 Medium, 2 Low, 8 Info; Critical и High не выявлены). Будущие функции подключения кошелька, регистрации и клейма в объём проверки не входят.",
++        "ctaLabel": "Объём и доказательства на Proof-hub"
+       }
+     ],
+     "bannerLabel": "Статус безопасности",
+-    "bannerBold": "Проверка Hacken завершена. Ожидается проверенная ссылка на публичный отчёт.",
+-    "bannerRest": "Область проверки и текущие доказательства описаны в",
++    "bannerBold": "Hacken security review завершён и опубликован (17.09.2026).",
++    "bannerRest": "Объём и доказательства — на",
+     "bannerProofLink": "Proof-hub",
+-    "bannerTail": "Будущие функции клейма требуют отдельной проверки."
++    "bannerTail": "Будущие функции клейма требуют отдельной проверки.",
++    "badgeAlt": "Бейдж Hacken — Audited by Hacken",
++    "scopeLine": "Hacken security review: инфраструктура VPS, архитектура кастоди, исходный код фронтенда · 12/12 замечаний исправлены",
++    "viewReport": "Открыть отчёт"
+   },
+   "community": {
+     "chapter": "PlovArmy",
+@@ -350,7 +353,7 @@
+       },
+       "incidents": {
+         "title": "Инциденты",
+-        "note": "Заметки по P0/P1-инцидентам в течение 24ч. Post-mortem публикуется.",
++        "note": "Первое публичное сообщение — в течение 60 минут после подтверждения инцидента P0/P1; структурированная запись об инциденте — в течение 24 часов; затем публикуется post-mortem.",
+         "empty": "Записи об инцидентах пока не опубликованы. Это не подтверждение отсутствия инцидентов."
+       },
+       "transparency": {
+@@ -385,7 +388,13 @@
+       "reportLink": "Публичный отчёт Hacken",
+       "reportPending": "Проверенная ссылка на публичный отчёт будет добавлена здесь.",
+       "tokenLink": "Полномочия токена и датированный снимок",
+-      "reportState": "Статусы из проверенного отчёта"
++      "reportState": "Статусы из опубликованного отчёта",
++      "projectLink": "Страница проекта на Hacken",
++      "publishedOn": "Опубликовано на hacken.io",
++      "pdfSha": "SHA-256 публичного PDF",
++      "pdfVerified": "Проверено 2026-09-17: побайтно совпадает с редакцией, одобренной к публикации 2026-09-14",
++      "badgeAlt": "Бейдж Hacken — Audited by Hacken",
++      "scopeLine": "Hacken security review: инфраструктура VPS, архитектура кастоди, исходный код фронтенда · 12/12 замечаний исправлены"
+     },
+     "archiveTitle": "Архив",
+     "archiveNote": "Исторический адрес создателя. Публикация адреса не является подтверждением его текущего остатка или полномочий.",
+@@ -549,7 +558,7 @@
+         }
+       ],
+       "protectionTitle": "Защита стартовой ликвидности",
+-      "protectionText": "Адрес продакшен-пула, позиция, механизмы custody-контроля и подтверждения транзакций публикуются через Proof Hub только после исполнения и проверки. Плановые конфигурации не выдаются за завершённые действия.",
++      "protectionText": "Адрес продакшен-пула, позиция, механизмы custody-контроля и подтверждения транзакций публикуются через Proof-hub только после исполнения и проверки. Плановые конфигурации не выдаются за завершённые действия.",
+       "metricsTitle": "Отслеживаемые метрики (первые 30 дней после TGE)",
+       "metrics": [
+         {
+@@ -759,7 +768,7 @@
+       "rows": [
+         {
+           "period": "До TGE",
+-          "goals": "Подготовка запуска, завершённая проверка Hacken, публикация публичного отчёта, готовность коммуникаций, Proof Hub, подготовка DAMM v2 и Alpha Vault"
++          "goals": "Подготовка запуска, завершённый Hacken security review, публичный отчёт опубликован 17.09.2026, готовность коммуникаций, Proof-hub, подготовка DAMM v2 и Alpha Vault"
+         },
+         {
+           "period": "Цель: Q4 2026",
+@@ -870,7 +879,7 @@
+     "proofTitle": "Proof-hub — Проверка в блокчейне",
+     "proofDesc": "Проверь каждую операцию PlovCoin в блокчейне. Адреса, ликвидность, аирдропы, сжигания, вестинг, реклама, безопасность, инциденты — всё публично, всё проверяемо на Solana.",
+     "whitepaperTitle": "Whitepaper — версия для сайта | Честный запуск, прозрачная токеномика",
+-    "whitepaperDesc": "PlovCoin Whitepaper — версия для сайта: токеномика, структура запуска, аирдропы, управление и риски. Культурный мемкоин на Solana. Честный запуск, 45% сообществу, прозрачность через Proof Hub.",
++    "whitepaperDesc": "PlovCoin Whitepaper — версия для сайта: токеномика, структура запуска, аирдропы, управление и риски. Культурный мемкоин на Solana. Честный запуск, 45% сообществу, прозрачность через Proof-hub.",
+     "plovdropTitle": "PlovDrop — 45% сообществу",
+     "plovdropDesc": "PlovDrop — самая крупная доля в $PLOV: 45% эмиссии распределяется между четырьмя волнами аирдропа сообществу.",
+     "faqTitle": "FAQ — Центр помощи PlovCoin",
+diff --git a/lib/faq-content.json b/lib/faq-content.json
+index 17676d6..1e1a9c8 100644
+--- a/lib/faq-content.json
++++ b/lib/faq-content.json
+@@ -457,12 +457,12 @@
+       "ru": {
+         "question": "Какие риски есть у $PLOV — можно ли потерять деньги?",
+         "short": "Да, можно потерять всю потраченную сумму. Цена может сильно меняться, а продать токены в нужный момент и по ожидаемой цене может не получиться.",
+-        "details": "Существуют риски ликвидности, ошибок программ, мошеннических сайтов, потери доступа к кошельку и сбоев сервисов. Аудит, отключённые полномочия токена и публичные документы не устраняют эти риски."
++        "details": "Существуют риски ликвидности, ошибок программ, мошеннических сайтов, потери доступа к кошельку и сбоев сервисов. Проверки безопасности, отключённые полномочия токена и публичные документы не устраняют эти риски."
+       },
+       "en": {
+         "question": "What are the risks of $PLOV — can I lose money?",
+         "short": "Yes, you can lose the entire amount spent. Prices can move sharply, and you may be unable to sell when you want or at the price you expect.",
+-        "details": "Risks include limited liquidity, software errors, fraudulent websites, loss of wallet access and service outages. Audits, revoked token authorities and public documents do not eliminate these risks."
++        "details": "Risks include limited liquidity, software errors, fraudulent websites, loss of wallet access and service outages. Security reviews, revoked token authorities and public documents do not eliminate these risks."
+       },
+       "evidenceRef": "whitepaper"
+     },
+@@ -516,13 +516,13 @@
+       "category": "safety",
+       "ru": {
+         "question": "Что проверено и где посмотреть результаты?",
+-        "short": "Проверка Hacken VPS, архитектуры хранения средств и кода фронтенда завершена.",
+-        "details": "Все 12 замечаний отмечены Fixed. Проверенная ссылка на публичный отчёт будет добавлена в Proof-hub. Будущие функции подключения кошелька, регистрации и клейма в эту проверку не входят."
++        "short": "Hacken security review инфраструктуры VPS, архитектуры кастоди и исходного кода фронтенда завершён и опубликован.",
++        "details": "Все 12 замечаний отмечены Fixed (2 Medium, 2 Low, 8 Info; Critical и High не выявлены). Публичный отчёт опубликован на hacken.io 17 сентября 2026 — ссылка и объём проверки на Proof-hub. Будущие функции подключения кошелька, регистрации и клейма в эту проверку не входят."
+       },
+       "en": {
+         "question": "What has been checked, and where can I see the results?",
+-        "short": "Hacken’s review of VPS infrastructure, custody architecture and frontend code is complete.",
+-        "details": "All 12 findings are marked Fixed. A verified public-report link will be added to Proof-hub. Future wallet-connect, registration and claim functionality is outside this review’s scope."
++        "short": "Hacken’s security review of VPS infrastructure, custody architecture and frontend source code is complete and published.",
++        "details": "All 12 findings are marked Fixed (2 Medium, 2 Low, 8 Info; no Critical or High). The public report was published on hacken.io on 17 September 2026 — the link and scope are on Proof-hub. Future wallet-connect, registration and claim functionality is outside this review’s scope."
+       },
+       "evidenceRef": "security-proof"
+     },
+diff --git a/lib/official-config.d.mts b/lib/official-config.d.mts
+index 1474313..7bde03c 100644
+--- a/lib/official-config.d.mts
++++ b/lib/official-config.d.mts
+@@ -14,9 +14,13 @@ export const official: {
+   readonly securityEmail: string;
+   readonly channels: readonly OfficialChannel[];
+   readonly hacken: {
+-    readonly status: 'COMPLETE_AWAITING_REPORT_LINK';
+-    readonly reportUrl: null;
+-    readonly badgeAsset: null;
++    readonly status: 'PUBLISHED';
++    readonly projectUrl: string;
++    readonly reportUrl: string;
++    readonly publishedOn: string;
++    readonly publicPdfSha256: string;
++    readonly publicPdfBytes: number;
++    readonly badgeAsset: string;
+     readonly scope: readonly string[];
+     readonly excludes: readonly string[];
+   };
+diff --git a/lib/official-config.mjs b/lib/official-config.mjs
+index 3460f75..4dd3999 100644
+--- a/lib/official-config.mjs
++++ b/lib/official-config.mjs
+@@ -5,7 +5,7 @@ function freeze(value) {
+   return Object.freeze(value);
+ }
+ export const official = freeze({
+-  version: '2026-09-12-owner-confirmed',
++  version: '2026-09-18-hacken-published',
+   website: 'https://plovcoin.com',
+   claim: 'https://claim.plovcoin.com',
+   claimStatus: 'CLOSED',
+@@ -19,9 +19,13 @@ export const official = freeze({
+     { id: 'x', href: 'https://x.com/PlovTeam', en: 'PlovCoin on X', ru: 'PlovCoin в X' }
+   ],
+   hacken: {
+-    status: 'COMPLETE_AWAITING_REPORT_LINK',
+-    reportUrl: null,
+-    badgeAsset: null,
++    status: 'PUBLISHED',
++    projectUrl: 'https://hacken.io/audits/plovcoin/',
++    reportUrl: 'https://hacken.io/audits/plovcoin/pt-plovcoin-multisig-jul2026-2/',
++    publishedOn: '2026-09-17',
++    publicPdfSha256: 'e668be7000e913fdd4096bb42f56444690de64f94efb95e3e33602fa6f44666f',
++    publicPdfBytes: 1565767,
++    badgeAsset: '/badges/hacken-badge-color.svg',
+     scope: ['VPS infrastructure', 'custody architecture', 'frontend source code'],
+     excludes: ['future wallet-connect', 'future registration', 'future claim functionality']
+   }
+diff --git a/lib/proof-evidence.json b/lib/proof-evidence.json
+index dcfe842..07de762 100644
+--- a/lib/proof-evidence.json
++++ b/lib/proof-evidence.json
+@@ -1,5 +1,5 @@
+ {
+-  "copyReviewedOn": "2026-09-15",
++  "copyReviewedOn": "2026-09-18",
+   "observedAt": "2026-09-14T00:27:46.933461+00:00",
+   "commitment": "finalized",
+   "slot": 446839525,
+@@ -51,6 +51,12 @@
+     "changelogFinalReportDate": "2026-08-21",
+     "updatedPdfCreatedOn": "2026-09-14",
+     "critical": 0,
+-    "high": 0
++    "high": 0,
++    "publishedOn": "2026-09-17",
++    "publicPdfSha256": "e668be7000e913fdd4096bb42f56444690de64f94efb95e3e33602fa6f44666f",
++    "publicPdfBytes": 1565767,
++    "medium": 2,
++    "low": 2,
++    "info": 8
+   }
+ }
+diff --git a/lib/website-edition.json b/lib/website-edition.json
+index c736abe..5d80c15 100644
+--- a/lib/website-edition.json
++++ b/lib/website-edition.json
+@@ -1,4 +1,4 @@
+ {
+-  "contentRevision": "release2-reviewed-revision3-with-owner-amendments",
+-  "publishedOn": "2026-09-14"
++  "contentRevision": "release2-reviewed-revision3-with-owner-amendments-hacken-published",
++  "publishedOn": "2026-09-18"
+ }
+diff --git a/public/badges/hacken-badge-color.svg b/public/badges/hacken-badge-color.svg
+new file mode 100644
+index 0000000..40f1104
+--- /dev/null
++++ b/public/badges/hacken-badge-color.svg
+@@ -0,0 +1,73 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<svg role="img" aria-label="Audited by Hacken" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="174" height="64" viewBox="870 508 174 64" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpjYjYwMjRmYS0xNDIxLTRjZWQtOTQ5NC1kYWRkYjBkMmYzYzgAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaFrJF1GNA4hbXQBfvW3R5YsAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDo3ZmI1YjdhMi01ZmUzLTRhN2YtYmY2Yy03OTA3ZTNkNzA5MzhscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNorI+4PjD7FMeLhsOOkQNDCQAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggAhgMxbVvjUS86QA1gnMWEwo3vJ0q5g/iJPlY1OGNEfukZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaJkXQoTF8hJ09tFTta6B+kwAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIN2vbTv5RIgfosqP3SiIvdsrN3BmysMffKkNdHtt6erUZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GQEUZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmNiNjAyNGZhLTE0MjEtNGNlZC05NDk0LWRhZGRiMGQyZjNjOC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmE4MTI4NDJlLTU4ODUtNDJlMS1iMWUxLTcyNzQxMmMzMGQ3YXJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCACGAzFtW+NRLzpADWCcxYTCje8nSrmD+Ik+VjU4Y0R+6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggZDeA0QEqGmUbb2yprKEHJbaakDrNhzM5CR5iH/Jrn9GiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggcMYWcPpFVxqL+R8trBGsSQfT1l5/zShOALZTThvXs850Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQA6pQ2YV9JtfXGdnyOkol1pVAmGtEQuS4UYV8ZT+485DQ++VZy9Irr0sQgrX8mrYhCAP9QEJIaDBO89mA5b6554=</c2pa:manifest></metadata>
++<defs>
++<clipPath id="clip-0">
++<path clip-rule="nonzero" d="M 865 498 L 1055 498 L 1055 582 L 865 582 Z M 865 498 "/>
++</clipPath>
++<clipPath id="clip-1">
++<path clip-rule="nonzero" d="M 870 508 L 1044 508 L 1044 572 L 870 572 Z M 870 508 "/>
++</clipPath>
++<clipPath id="clip-2">
++<path clip-rule="nonzero" d="M 1036 508 L 878 508 C 873.582031 508 870 511.582031 870 516 L 870 564 C 870 568.417969 873.582031 572 878 572 L 1036 572 C 1040.417969 572 1044 568.417969 1044 564 L 1044 516 C 1044 511.582031 1040.417969 508 1036 508 Z M 1036 508 "/>
++</clipPath>
++<linearGradient id="linear-pattern-0" gradientUnits="userSpaceOnUse" x1="-0.0328227" y1="0" x2="1.030242" y2="0" gradientTransform="matrix(166.98999, 48.889992, 48.889992, -166.98999, 826.591064, 676.594727)">
++<stop offset="0" stop-color="rgb(24.313354%, 94.902039%, 81.568909%)" stop-opacity="1"/>
++<stop offset="0.03125" stop-color="rgb(24.313354%, 94.902039%, 81.568909%)" stop-opacity="1"/>
++<stop offset="0.046875" stop-color="rgb(24.313354%, 94.902039%, 81.568909%)" stop-opacity="1"/>
++<stop offset="0.0625" stop-color="rgb(24.705505%, 95.294189%, 81.176758%)" stop-opacity="1"/>
++<stop offset="0.078125" stop-color="rgb(25.097656%, 95.294189%, 81.176758%)" stop-opacity="1"/>
++<stop offset="0.09375" stop-color="rgb(25.097656%, 95.294189%, 80.784607%)" stop-opacity="1"/>
++<stop offset="0.109375" stop-color="rgb(25.489807%, 95.68634%, 80.392456%)" stop-opacity="1"/>
++<stop offset="0.125" stop-color="rgb(25.881958%, 95.68634%, 80.392456%)" stop-opacity="1"/>
++<stop offset="0.140625" stop-color="rgb(25.881958%, 95.68634%, 80.000305%)" stop-opacity="1"/>
++<stop offset="0.15625" stop-color="rgb(26.274109%, 96.078491%, 80.000305%)" stop-opacity="1"/>
++<stop offset="0.171875" stop-color="rgb(26.66626%, 96.078491%, 79.608154%)" stop-opacity="1"/>
++<stop offset="0.1875" stop-color="rgb(26.66626%, 96.470642%, 79.608154%)" stop-opacity="1"/>
++<stop offset="0.203125" stop-color="rgb(27.058411%, 96.470642%, 79.216003%)" stop-opacity="1"/>
++<stop offset="0.21875" stop-color="rgb(27.058411%, 96.470642%, 79.216003%)" stop-opacity="1"/>
++<stop offset="0.25" stop-color="rgb(27.450562%, 96.862793%, 78.823853%)" stop-opacity="1"/>
++<stop offset="0.28125" stop-color="rgb(27.842712%, 96.862793%, 78.431702%)" stop-opacity="1"/>
++<stop offset="0.3125" stop-color="rgb(28.234863%, 97.254944%, 78.431702%)" stop-opacity="1"/>
++<stop offset="0.34375" stop-color="rgb(28.627014%, 97.254944%, 78.039551%)" stop-opacity="1"/>
++<stop offset="0.375" stop-color="rgb(29.019165%, 97.647095%, 77.6474%)" stop-opacity="1"/>
++<stop offset="0.390625" stop-color="rgb(29.411316%, 97.647095%, 77.6474%)" stop-opacity="1"/>
++<stop offset="0.40625" stop-color="rgb(29.411316%, 97.647095%, 77.255249%)" stop-opacity="1"/>
++<stop offset="0.4375" stop-color="rgb(29.803467%, 98.039246%, 77.255249%)" stop-opacity="1"/>
++<stop offset="0.46875" stop-color="rgb(30.195618%, 98.039246%, 76.863098%)" stop-opacity="1"/>
++<stop offset="0.5" stop-color="rgb(30.587769%, 98.431396%, 76.470947%)" stop-opacity="1"/>
++<stop offset="0.53125" stop-color="rgb(30.979919%, 98.431396%, 76.078796%)" stop-opacity="1"/>
++<stop offset="0.5625" stop-color="rgb(31.37207%, 98.823547%, 76.078796%)" stop-opacity="1"/>
++<stop offset="0.625" stop-color="rgb(31.764221%, 98.823547%, 75.686646%)" stop-opacity="1"/>
++<stop offset="0.6875" stop-color="rgb(32.156372%, 99.215698%, 75.686646%)" stop-opacity="1"/>
++<stop offset="0.75" stop-color="rgb(32.156372%, 99.215698%, 75.294495%)" stop-opacity="1"/>
++<stop offset="0.8125" stop-color="rgb(32.548523%, 99.607849%, 75.294495%)" stop-opacity="1"/>
++<stop offset="0.875" stop-color="rgb(32.940674%, 99.607849%, 75.294495%)" stop-opacity="1"/>
++<stop offset="1" stop-color="rgb(33.332825%, 100%, 74.902344%)" stop-opacity="1"/>
++</linearGradient>
++</defs>
++<g clip-path="url(#clip-0)">
++
++
++</g>
++<g clip-path="url(#clip-1)">
++<g clip-path="url(#clip-2)">
++<path fill-rule="nonzero" fill="url(#linear-pattern-0)" d="M 852.742188 566.949219 L 883.738281 461.078125 L 1061.257812 513.050781 L 1030.261719 618.921875 Z M 852.742188 566.949219 "/>
++</g>
++</g>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 955.660156 538.140625 L 954.589844 535.550781 L 950.179688 535.550781 L 949.109375 538.140625 L 947.03125 538.140625 L 951.398438 527.441406 L 953.328125 527.441406 L 957.71875 538.140625 L 955.640625 538.140625 Z M 953.871094 533.761719 L 952.398438 530.128906 L 950.910156 533.761719 Z M 953.871094 533.761719 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 961.390625 538.371094 C 959.519531 538.371094 958.308594 537.191406 958.308594 535.359375 L 958.308594 530 L 960.28125 530 L 960.28125 535.289062 C 960.28125 536.109375 960.851562 536.621094 961.75 536.621094 C 962.839844 536.621094 963.589844 535.929688 963.601562 534.898438 L 963.601562 530 L 965.570312 530 L 965.570312 538.148438 L 963.960938 538.148438 L 963.851562 537.191406 C 963.328125 537.941406 962.429688 538.371094 961.398438 538.371094 Z M 961.390625 538.371094 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 970.539062 538.371094 C 968.308594 538.371094 966.75 536.578125 966.75 534.03125 C 966.75 531.480469 968.28125 529.761719 970.480469 529.761719 C 971.488281 529.761719 972.390625 530.128906 972.988281 530.800781 L 972.988281 526.699219 L 974.960938 526.699219 L 974.960938 538.148438 L 973.351562 538.148438 L 973.210938 536.980469 C 972.679688 537.859375 971.710938 538.378906 970.539062 538.378906 Z M 970.898438 531.441406 C 969.640625 531.441406 968.761719 532.511719 968.761719 534.039062 C 968.761719 535.570312 969.628906 536.671875 970.871094 536.671875 C 972.109375 536.671875 972.988281 535.578125 972.988281 534.011719 C 972.988281 532.441406 972.128906 531.441406 970.898438 531.441406 Z M 970.898438 531.441406 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 976.589844 538.140625 L 976.589844 529.988281 L 978.558594 529.988281 L 978.558594 538.140625 Z M 977.570312 529.128906 C 976.871094 529.128906 976.328125 528.578125 976.328125 527.878906 C 976.328125 527.179688 976.871094 526.640625 977.570312 526.640625 C 978.269531 526.640625 978.808594 527.171875 978.808594 527.878906 C 978.808594 528.589844 978.28125 529.128906 977.570312 529.128906 Z M 977.570312 529.128906 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 983.800781 538.140625 C 982.019531 538.140625 981.050781 537.238281 981.050781 535.609375 L 981.050781 531.691406 L 979.648438 531.691406 L 979.648438 529.988281 L 981.050781 529.988281 L 981.050781 527.269531 L 983.019531 527.269531 L 983.019531 529.988281 L 985.070312 529.988281 L 985.070312 531.691406 L 983.019531 531.691406 L 983.019531 535.488281 C 983.019531 536.121094 983.320312 536.441406 983.929688 536.441406 L 984.929688 536.441406 L 984.929688 538.140625 Z M 983.800781 538.140625 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 989.769531 538.371094 C 987.300781 538.371094 985.570312 536.609375 985.570312 534.101562 C 985.570312 531.589844 987.230469 529.761719 989.609375 529.761719 C 991.988281 529.761719 993.460938 531.429688 993.5 534.011719 L 993.5 534.53125 L 987.539062 534.53125 C 987.691406 535.851562 988.539062 536.671875 989.769531 536.671875 C 990.648438 536.671875 991.300781 536.238281 991.550781 535.488281 L 991.570312 535.421875 L 993.488281 535.421875 L 993.460938 535.539062 C 993.039062 537.308594 991.648438 538.359375 989.75 538.359375 Z M 991.460938 533.078125 C 991.21875 532.039062 990.550781 531.449219 989.621094 531.449219 C 988.691406 531.449219 987.929688 532.058594 987.648438 533.078125 Z M 991.460938 533.078125 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 998.058594 538.371094 C 995.828125 538.371094 994.269531 536.578125 994.269531 534.03125 C 994.269531 531.480469 995.800781 529.761719 998 529.761719 C 999.011719 529.761719 999.910156 530.128906 1000.511719 530.800781 L 1000.511719 526.699219 L 1002.480469 526.699219 L 1002.480469 538.148438 L 1000.871094 538.148438 L 1000.730469 536.980469 C 1000.199219 537.859375 999.230469 538.378906 998.058594 538.378906 Z M 998.421875 531.441406 C 997.160156 531.441406 996.28125 532.511719 996.28125 534.039062 C 996.28125 535.570312 997.148438 536.671875 998.390625 536.671875 C 999.628906 536.671875 1000.511719 535.578125 1000.511719 534.011719 C 1000.511719 532.441406 999.648438 531.441406 998.421875 531.441406 Z M 998.421875 531.441406 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 1011.910156 538.371094 C 1010.730469 538.371094 1009.730469 537.851562 1009.171875 536.949219 L 1009.03125 538.140625 L 1007.421875 538.140625 L 1007.421875 526.691406 L 1009.390625 526.691406 L 1009.390625 530.839844 C 1010.011719 530.140625 1010.921875 529.75 1011.929688 529.75 C 1014.101562 529.75 1015.609375 531.511719 1015.609375 534.019531 C 1015.609375 536.53125 1014.089844 538.359375 1011.910156 538.359375 Z M 1011.519531 531.449219 C 1010.261719 531.449219 1009.390625 532.488281 1009.390625 533.980469 C 1009.390625 535.558594 1010.269531 536.671875 1011.519531 536.671875 C 1012.769531 536.671875 1013.601562 535.578125 1013.601562 534.03125 C 1013.601562 532.480469 1012.75 531.460938 1011.519531 531.460938 Z M 1011.519531 531.449219 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 1016.289062 541.140625 L 1016.289062 539.441406 L 1017.828125 539.441406 C 1018.410156 539.441406 1018.761719 539.25 1018.910156 538.851562 L 1019.171875 538.140625 L 1018.921875 538.140625 L 1015.691406 529.988281 L 1017.808594 529.988281 L 1020.019531 535.828125 L 1022.191406 529.988281 L 1024.25 529.988281 L 1020.738281 539.441406 C 1020.300781 540.601562 1019.378906 541.140625 1017.839844 541.140625 Z M 1016.289062 541.140625 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 955.480469 553.140625 L 955.480469 548.578125 L 949.921875 548.578125 L 949.921875 553.140625 L 947.921875 553.140625 L 947.921875 542.441406 L 949.921875 542.441406 L 949.921875 546.761719 L 955.480469 546.761719 L 955.480469 542.441406 L 957.480469 542.441406 L 957.480469 553.140625 Z M 955.480469 553.140625 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 961.988281 553.308594 C 960.910156 553.308594 960.050781 553.019531 959.5 552.460938 C 959.078125 552.039062 958.871094 551.480469 958.878906 550.839844 C 958.898438 548.96875 960.648438 548.511719 962.371094 548.308594 L 962.640625 548.28125 C 963.75 548.160156 964.371094 548.070312 964.378906 547.601562 C 964.371094 546.859375 963.789062 546.410156 962.839844 546.410156 C 961.890625 546.410156 961.128906 546.941406 961.03125 547.71875 L 961.03125 547.808594 L 959.039062 547.808594 L 959.039062 547.699219 C 959.21875 545.96875 960.789062 544.761719 962.871094 544.761719 C 964.949219 544.761719 966.300781 545.898438 966.300781 547.71875 L 966.300781 551.320312 C 966.300781 551.46875 966.351562 551.570312 966.589844 551.570312 L 967.121094 551.570312 L 967.121094 553.148438 L 966.179688 553.148438 C 965.339844 553.148438 964.789062 552.789062 964.640625 552.140625 C 964.640625 552.128906 964.640625 552.121094 964.628906 552.101562 C 964.101562 552.898438 963.210938 553.308594 961.980469 553.308594 Z M 964.378906 549.210938 C 963.980469 549.550781 963.269531 549.640625 962.589844 549.71875 C 961.550781 549.851562 960.859375 549.980469 960.859375 550.71875 C 960.859375 551.359375 961.390625 551.71875 962.351562 551.71875 C 963.550781 551.71875 964.378906 551.039062 964.378906 550.058594 Z M 964.378906 549.210938 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 971.890625 553.371094 C 969.371094 553.371094 967.679688 551.621094 967.679688 549.011719 C 967.679688 546.398438 969.351562 544.761719 971.851562 544.761719 C 974.058594 544.761719 975.589844 546.101562 975.738281 548.171875 L 975.738281 548.28125 L 973.808594 548.28125 L 973.808594 548.199219 C 973.640625 547.140625 972.878906 546.488281 971.828125 546.488281 C 970.519531 546.488281 969.679688 547.488281 969.679688 549.03125 C 969.679688 550.570312 970.550781 551.679688 971.890625 551.679688 C 972.910156 551.679688 973.628906 551.03125 973.800781 549.929688 L 973.800781 549.851562 L 975.75 549.851562 L 975.75 549.960938 C 975.519531 552.078125 974.050781 553.390625 971.890625 553.390625 Z M 971.890625 553.371094 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 982.699219 553.140625 L 980.238281 549.351562 L 978.890625 550.699219 L 978.921875 553.140625 L 976.949219 553.140625 L 976.949219 541.691406 L 978.921875 541.691406 L 978.921875 548.300781 L 982.140625 545.019531 L 984.609375 544.988281 L 981.621094 547.96875 L 984.941406 553.140625 Z M 982.699219 553.140625 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 988.808594 553.371094 C 986.339844 553.371094 984.621094 551.609375 984.621094 549.101562 C 984.621094 546.589844 986.28125 544.761719 988.660156 544.761719 C 991.039062 544.761719 992.511719 546.429688 992.550781 549.011719 L 992.550781 549.53125 L 986.589844 549.53125 C 986.738281 550.851562 987.589844 551.671875 988.820312 551.671875 C 989.699219 551.671875 990.351562 551.238281 990.601562 550.488281 L 990.621094 550.421875 L 992.539062 550.421875 L 992.511719 550.539062 C 992.089844 552.308594 990.699219 553.359375 988.800781 553.359375 Z M 990.5 548.078125 C 990.261719 547.039062 989.589844 546.449219 988.660156 546.449219 C 987.730469 546.449219 986.96875 547.058594 986.691406 548.078125 Z M 990.5 548.078125 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 999.03125 553.140625 L 999.03125 547.871094 C 999.03125 547.03125 998.460938 546.5 997.558594 546.5 C 996.480469 546.5 995.71875 547.210938 995.710938 548.230469 L 995.710938 553.140625 L 993.738281 553.140625 L 993.738281 544.988281 L 995.351562 544.988281 L 995.480469 545.980469 C 996.050781 545.210938 997.03125 544.75 998.101562 544.75 C 999.859375 544.75 1001 545.941406 1001 547.769531 L 1001 553.128906 L 999.03125 553.128906 Z M 999.03125 553.140625 "/>
++<path fill-rule="nonzero" fill="rgb(13.33313%, 13.33313%, 13.725281%)" fill-opacity="1" d="M 928.71875 524.339844 L 928.71875 532.878906 L 925.941406 532.878906 L 925.941406 524.339844 L 923.160156 524.339844 L 923.160156 532.878906 L 920.378906 532.878906 L 920.378906 524.339844 L 917.601562 524.339844 L 917.601562 532.878906 L 903.679688 532.878906 L 903.679688 524.339844 L 900.898438 524.339844 L 900.898438 535.730469 L 928.730469 535.730469 L 928.730469 538.578125 L 898.109375 538.578125 L 898.109375 524.351562 L 895.328125 524.351562 L 895.328125 538.578125 L 892.550781 538.578125 L 892.550781 524.351562 L 889.769531 524.351562 L 889.769531 555.660156 L 892.550781 555.660156 L 892.550781 547.121094 L 895.328125 547.121094 L 895.328125 555.660156 L 898.109375 555.660156 L 898.109375 547.121094 L 900.890625 547.121094 L 900.890625 555.660156 L 903.671875 555.660156 L 903.671875 547.121094 L 917.589844 547.121094 L 917.589844 555.660156 L 920.371094 555.660156 L 920.371094 544.269531 L 892.539062 544.269531 L 892.539062 541.421875 L 923.160156 541.421875 L 923.160156 555.648438 L 925.941406 555.648438 L 925.941406 541.421875 L 928.71875 541.421875 L 928.71875 555.648438 L 931.5 555.648438 L 931.5 524.339844 Z M 928.71875 524.339844 "/>
++</svg>
+-- 
+2.43.0
+
