@@ -1,5 +1,5 @@
 {
-  "copyReviewedOn": "2026-09-15",
+  "copyReviewedOn": "2026-09-18",
   "observedAt": "2026-09-14T00:27:46.933461+00:00",
   "commitment": "finalized",
   "slot": 446839525,
@@ -51,6 +51,12 @@
     "changelogFinalReportDate": "2026-08-21",
     "updatedPdfCreatedOn": "2026-09-14",
     "critical": 0,
-    "high": 0
+    "high": 0,
+    "publishedOn": "2026-09-17",
+    "publicPdfSha256": "e668be7000e913fdd4096bb42f56444690de64f94efb95e3e33602fa6f44666f",
+    "publicPdfBytes": 1565767,
+    "medium": 2,
+    "low": 2,
+    "info": 8
   }
 }

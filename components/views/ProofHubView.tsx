@@ -176,13 +176,18 @@ export function ProofHubView({ locale }: { locale: Locale }) {
         </Group>
         <Group id="security" index={5} copy={copy}>
           <Card id="hacken-review" title={copy.audit.title} status={copy.audit.reportState} copy={copy}>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+              <a href={official.hacken.projectUrl} target="_blank" rel="noopener noreferrer" className="inline-block shrink-0"><img src={official.hacken.badgeAsset} alt={copy.audit.badgeAlt} width={174} height={64} style={{ width: 174, height: "auto", maxWidth: "100%" }} /></a>
+              <p className="text-sm leading-relaxed text-rice">{copy.audit.scopeLine} · <a href={official.hacken.reportUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{copy.audit.reportLink}</a></p>
+            </div>
             <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-5"><div><dt className="text-sm text-rice-soft">{copy.audit.result}</dt><dd className="mt-2 font-display text-3xl text-rice">{evidence.review.fixed} / {evidence.review.findings}</dd></div><div><dt className="text-sm text-rice-soft">{copy.audit.critical}</dt><dd className="mt-2 font-display text-3xl text-rice">{evidence.review.critical}</dd></div><div><dt className="text-sm text-rice-soft">{copy.audit.high}</dt><dd className="mt-2 font-display text-3xl text-rice">{evidence.review.high}</dd></div></dl>
             <p className="mt-6 text-sm leading-relaxed text-rice"><strong>{copy.audit.scopeLabel}: </strong>{copy.audit.scope}</p>
             <p className="mt-3 text-sm leading-relaxed text-rice-soft"><strong>{copy.audit.exclusionsLabel}: </strong>{copy.audit.exclusions}</p>
             <p className="mt-3 text-sm leading-relaxed text-rice-soft">{copy.audit.version}</p>
             <p className="mt-5 text-xs text-rice-soft">{copy.audit.coverDate}: <time dateTime={evidence.review.coverDate}>{evidence.review.coverDate}</time></p>
-            <div className="mt-4">{official.hacken.reportUrl ? <SourceLink href={official.hacken.reportUrl}>{copy.audit.reportLink}</SourceLink> : <p className="text-sm leading-relaxed text-gold">{copy.audit.reportPending}</p>}</div>
-            <Details copy={copy} title={copy.audit.title}><p>{copy.audit.pdfDate}: <time dateTime={evidence.review.updatedPdfCreatedOn}>{evidence.review.updatedPdfCreatedOn}</time></p><p className="mt-3">{copy.audit.changelogDate}: <time dateTime={evidence.review.changelogFinalReportDate}>{evidence.review.changelogFinalReportDate}</time></p></Details>
+            <p className="mt-2 text-xs text-rice-soft">{copy.audit.publishedOn}: <time dateTime={official.hacken.publishedOn}>{official.hacken.publishedOn}</time></p>
+            <div className="mt-4 flex flex-col items-start gap-3 sm:flex-row sm:gap-8"><SourceLink href={official.hacken.reportUrl}>{copy.audit.reportLink}</SourceLink><SourceLink href={official.hacken.projectUrl}>{copy.audit.projectLink}</SourceLink></div>
+            <Details copy={copy} title={copy.audit.title}><p>{copy.audit.pdfSha}: <code className="break-all">{official.hacken.publicPdfSha256}</code> · {official.hacken.publicPdfBytes.toLocaleString("en-US")} bytes</p><p className="mt-3">{copy.audit.pdfVerified}.</p><p className="mt-3">{copy.audit.pdfDate}: <time dateTime={evidence.review.updatedPdfCreatedOn}>{evidence.review.updatedPdfCreatedOn}</time></p><p className="mt-3">{copy.audit.changelogDate}: <time dateTime={evidence.review.changelogFinalReportDate}>{evidence.review.changelogFinalReportDate}</time></p></Details>
           </Card>
           <div className="my-5"><SourceLink href="#token">{copy.audit.tokenLink}</SourceLink></div>
           <EmptyRegister kind="incidents" copy={copy}><div className="mt-5"><SourceLink href={`mailto:${official.securityEmail}`}>{official.securityEmail}</SourceLink></div></EmptyRegister>

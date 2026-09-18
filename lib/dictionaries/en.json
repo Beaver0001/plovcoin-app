@@ -134,8 +134,8 @@
         "items": [
           "Token deployed on Solana (mint & freeze disabled)",
           "Squads multisig treasury setup",
-          "Hacken review complete; all 12 findings Fixed; public report awaiting publication",
-          "Proof Hub live with verified production facts"
+          "Hacken security review complete; all 12 findings Fixed; public report published 17 Sep 2026",
+          "Proof-hub live with verified production facts"
         ]
       },
       {
@@ -202,15 +202,18 @@
       },
       {
         "title": "Hacken Security Review",
-        "body": "Hacken’s review of VPS infrastructure, custody architecture and frontend code is complete. All 12 findings are marked Fixed. A verified public-report link will be added to Proof-hub. Future wallet-connect, registration and claim functionality is outside this review’s scope.",
-        "ctaLabel": "Status & Reports"
+        "body": "Hacken’s security review of VPS infrastructure, custody architecture and frontend source code is complete and published. All 12 findings are marked Fixed (2 Medium, 2 Low, 8 Info; no Critical or High). Future wallet-connect, registration and claim functionality is outside this review’s scope.",
+        "ctaLabel": "Scope & evidence on Proof-hub"
       }
     ],
     "bannerLabel": "Security Status",
-    "bannerBold": "Hacken review complete. Verified public-report link pending.",
-    "bannerRest": "Scope and current evidence are described on",
+    "bannerBold": "Hacken security review complete and published (17 Sep 2026).",
+    "bannerRest": "Scope and evidence are on",
     "bannerProofLink": "Proof-hub",
-    "bannerTail": "Future claim functionality requires a separate review."
+    "bannerTail": "Future claim functionality requires a separate review.",
+    "badgeAlt": "Hacken badge — Audited by Hacken",
+    "scopeLine": "Hacken security review: VPS infrastructure, custody architecture, frontend source code · 12/12 findings fixed",
+    "viewReport": "View report"
   },
   "community": {
     "chapter": "PlovArmy",
@@ -350,7 +353,7 @@
       },
       "incidents": {
         "title": "Incidents",
-        "note": "P0/P1 incident notes within 24h. Post-mortems published.",
+        "note": "First public message within 60 minutes of confirming a P0/P1 incident; a structured incident note within 24 hours; post-mortem published afterwards.",
         "empty": "No incident records have been published yet. This does not establish that no incidents occurred."
       },
       "transparency": {
@@ -385,7 +388,13 @@
       "reportLink": "Hacken public report",
       "reportPending": "A verified link to the public report will be added here.",
       "tokenLink": "Token authorities and dated snapshot",
-      "reportState": "Statuses from the reviewed report"
+      "reportState": "Statuses from the published report",
+      "projectLink": "Hacken project page",
+      "publishedOn": "Published on hacken.io",
+      "pdfSha": "Public PDF SHA-256",
+      "pdfVerified": "Verified 2026-09-17: byte-identical to the edition approved for publication on 2026-09-14",
+      "badgeAlt": "Hacken badge — Audited by Hacken",
+      "scopeLine": "Hacken security review: VPS infrastructure, custody architecture, frontend source code · 12/12 findings fixed"
     },
     "archiveTitle": "Archive",
     "archiveNote": "The historical creator address. Listing it does not confirm its current balance or authorities.",
@@ -549,7 +558,7 @@
         }
       ],
       "protectionTitle": "Launch Liquidity Protection",
-      "protectionText": "The production pool address, position, custody controls, and transaction confirmations are published through Proof Hub only after execution and verification. Planned configurations are not presented as completed actions.",
+      "protectionText": "The production pool address, position, custody controls, and transaction confirmations are published through Proof-hub only after execution and verification. Planned configurations are not presented as completed actions.",
       "metricsTitle": "Monitored metrics (first 30 days post-TGE)",
       "metrics": [
         {
@@ -759,7 +768,7 @@
       "rows": [
         {
           "period": "Pre-TGE",
-          "goals": "Launch readiness, completed Hacken review, public report publication, communications readiness, Proof Hub, DAMM v2 and Alpha Vault preparation"
+          "goals": "Launch readiness, completed Hacken security review, public report published 17 Sep 2026, communications readiness, Proof-hub, DAMM v2 and Alpha Vault preparation"
         },
         {
           "period": "Target Q4 2026",
@@ -870,7 +879,7 @@
     "proofTitle": "Proof-hub — On-Chain Verification",
     "proofDesc": "Verify every PlovCoin operation on-chain. Addresses, liquidity, airdrops, burns, vesting, advertising, security, incidents — all public, all verifiable on Solana.",
     "whitepaperTitle": "Whitepaper — Website Edition | Fair Launch, Transparent Tokenomics",
-    "whitepaperDesc": "PlovCoin Whitepaper — website edition: tokenomics, launch structure, airdrops, governance, and risks. Cultural memecoin on Solana. Fair launch, 45% to community, Proof Hub transparency.",
+    "whitepaperDesc": "PlovCoin Whitepaper — website edition: tokenomics, launch structure, airdrops, governance, and risks. Cultural memecoin on Solana. Fair launch, 45% to community, Proof-hub transparency.",
     "plovdropTitle": "PlovDrop — 45% to Community",
     "plovdropDesc": "PlovDrop is the largest allocation in $PLOV — 45% of supply distributed across four airdrop waves to the community.",
     "faqTitle": "FAQ — PlovCoin Help Center",

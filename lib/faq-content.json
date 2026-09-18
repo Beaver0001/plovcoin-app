@@ -457,12 +457,12 @@
       "ru": {
         "question": "Какие риски есть у $PLOV — можно ли потерять деньги?",
         "short": "Да, можно потерять всю потраченную сумму. Цена может сильно меняться, а продать токены в нужный момент и по ожидаемой цене может не получиться.",
-        "details": "Существуют риски ликвидности, ошибок программ, мошеннических сайтов, потери доступа к кошельку и сбоев сервисов. Аудит, отключённые полномочия токена и публичные документы не устраняют эти риски."
+        "details": "Существуют риски ликвидности, ошибок программ, мошеннических сайтов, потери доступа к кошельку и сбоев сервисов. Проверки безопасности, отключённые полномочия токена и публичные документы не устраняют эти риски."
       },
       "en": {
         "question": "What are the risks of $PLOV — can I lose money?",
         "short": "Yes, you can lose the entire amount spent. Prices can move sharply, and you may be unable to sell when you want or at the price you expect.",
-        "details": "Risks include limited liquidity, software errors, fraudulent websites, loss of wallet access and service outages. Audits, revoked token authorities and public documents do not eliminate these risks."
+        "details": "Risks include limited liquidity, software errors, fraudulent websites, loss of wallet access and service outages. Security reviews, revoked token authorities and public documents do not eliminate these risks."
       },
       "evidenceRef": "whitepaper"
     },
@@ -516,13 +516,13 @@
       "category": "safety",
       "ru": {
         "question": "Что проверено и где посмотреть результаты?",
-        "short": "Проверка Hacken VPS, архитектуры хранения средств и кода фронтенда завершена.",
-        "details": "Все 12 замечаний отмечены Fixed. Проверенная ссылка на публичный отчёт будет добавлена в Proof-hub. Будущие функции подключения кошелька, регистрации и клейма в эту проверку не входят."
+        "short": "Hacken security review инфраструктуры VPS, архитектуры кастоди и исходного кода фронтенда завершён и опубликован.",
+        "details": "Все 12 замечаний отмечены Fixed (2 Medium, 2 Low, 8 Info; Critical и High не выявлены). Публичный отчёт опубликован на hacken.io 17 сентября 2026 — ссылка и объём проверки на Proof-hub. Будущие функции подключения кошелька, регистрации и клейма в эту проверку не входят."
       },
       "en": {
         "question": "What has been checked, and where can I see the results?",
-        "short": "Hacken’s review of VPS infrastructure, custody architecture and frontend code is complete.",
-        "details": "All 12 findings are marked Fixed. A verified public-report link will be added to Proof-hub. Future wallet-connect, registration and claim functionality is outside this review’s scope."
+        "short": "Hacken’s security review of VPS infrastructure, custody architecture and frontend source code is complete and published.",
+        "details": "All 12 findings are marked Fixed (2 Medium, 2 Low, 8 Info; no Critical or High). The public report was published on hacken.io on 17 September 2026 — the link and scope are on Proof-hub. Future wallet-connect, registration and claim functionality is outside this review’s scope."
       },
       "evidenceRef": "security-proof"
     },

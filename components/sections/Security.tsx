@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ShieldCheck, Eye, FileCheck, ArrowUpRight } from "lucide-react";
 import { useI18n } from "../I18nProvider";
 import { localePath } from "@/lib/i18n";
+import { official } from "@/lib/official-config.mjs";
 
 const ICONS = [ShieldCheck, Eye, FileCheck];
 
@@ -14,7 +15,7 @@ export function Security() {
   const hrefs = [
     localePath(locale, "/proof") + "#addresses",
     localePath(locale, "/proof"),
-    localePath(locale, "/proof") + "#security",
+    localePath(locale, "/proof") + "#hacken-review",
   ];
 
   return (
@@ -55,6 +56,17 @@ export function Security() {
                 </div>
                 <h3 className="font-display text-2xl text-rice">{card.title}</h3>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-rice-soft">{card.body}</p>
+                {i === 2 && (
+                  <div className="mt-5">
+                    <a href={official.hacken.projectUrl} target="_blank" rel="noopener noreferrer" className="inline-block">
+                      <img src={official.hacken.badgeAsset} alt={t.security.badgeAlt} width={174} height={64} style={{ width: 174, height: "auto", maxWidth: "100%" }} />
+                    </a>
+                    <p className="mt-3 text-xs leading-relaxed text-rice-soft">
+                      {t.security.scopeLine} ·{" "}
+                      <a href={official.hacken.reportUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{t.security.viewReport}</a>
+                    </p>
+                  </div>
+                )}
                 <Link
                   href={hrefs[i] ?? localePath(locale, "/proof")}
                   className="mt-5 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-fire transition-all hover:gap-2.5"
@@ -83,7 +95,7 @@ export function Security() {
               <div className="mt-1 text-sm text-rice">
                 <span className="font-bold">{t.security.bannerBold}</span>{" "}
                 {t.security.bannerRest}{" "}
-                <Link href={`${localePath(locale, "/proof")}#security`} className="text-fire underline">
+                <Link href={`${localePath(locale, "/proof")}#hacken-review`} className="text-fire underline">
                   {t.security.bannerProofLink}
                 </Link>{" "}
                 {t.security.bannerTail}
