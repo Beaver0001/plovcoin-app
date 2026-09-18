@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+﻿import type { ReactNode } from "react";
 import { ArrowUpRight, ChevronDown, Link2, ArrowDown } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -87,8 +87,8 @@ export function ProofHubView({ locale }: { locale: Locale }) {
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-rice-soft sm:text-xl">{copy.intro}</p>
           <p className="mt-4 text-xs text-rice-soft">{copy.copyReviewedLabel}: <time dateTime={evidence.copyReviewedOn}>{evidence.copyReviewedOn}</time></p>
           <div className="mt-7 rounded-2xl border border-fire/20 bg-bg-soft p-5 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-6">
-            <div className="min-w-0"><p className="mb-2 text-xs text-rice-soft">{copy.mintLabel} · Solana · SPL</p><Address value={official.mint} /></div>
-            <div className="mt-4 shrink-0 sm:mt-0"><SourceLink href={mintUrl}>Mint · Solscan</SourceLink></div>
+            <div className="min-w-0"><p className="mb-2 text-xs text-rice-soft">{copy.mintLabel} В· Solana В· SPL</p><Address value={official.mint} /></div>
+            <div className="mt-4 shrink-0 sm:mt-0"><SourceLink href={mintUrl}>Mint В· Solscan</SourceLink></div>
           </div>
         </header>
 
@@ -96,7 +96,7 @@ export function ProofHubView({ locale }: { locale: Locale }) {
           {faqStatuses.map(status => <div key={status.id} className="min-w-0">
             <p className="mb-2 font-mono text-xs text-fire-glow">{status[locale]}</p>
             <p className="font-semibold leading-snug text-rice">{(status.teamConfirmedOn || (status.checkedAt && status.sourceUrl)) && status.confirmedText ? status.confirmedText[locale] : copy.statusUnknown}</p>
-            {status.checkedAt && status.sourceUrl ? <p className="mt-2 text-xs text-rice-soft"><time dateTime={status.checkedAt}>{status.checkedAt}</time></p> : status.teamConfirmedOn ? <p className="mt-2 text-xs leading-relaxed text-rice-soft">{copy.teamUpdate} · <time dateTime={status.teamConfirmedOn}>{status.teamConfirmedOn}</time></p> : null}
+            {status.checkedAt && status.sourceUrl ? <p className="mt-2 text-xs text-rice-soft"><time dateTime={status.checkedAt}>{status.checkedAt}</time></p> : status.teamConfirmedOn ? <p className="mt-2 text-xs leading-relaxed text-rice-soft">{copy.teamUpdate} В· <time dateTime={status.teamConfirmedOn}>{status.teamConfirmedOn}</time></p> : null}
             <div className="mt-3">{status.sourceUrl ? <SourceLink href={status.sourceUrl}>{copy.source}</SourceLink> : evidenceLink(status.evidenceRef)}</div>
           </div>)}
         </aside>
@@ -113,23 +113,23 @@ export function ProofHubView({ locale }: { locale: Locale }) {
             <Card id="token-supply" title={copy.token.supply} status={copy.snapshot} copy={copy}>
               <p className="mt-5 break-words font-display text-2xl text-rice sm:text-3xl">{formatProofTokens(evidence.supply, locale)}</p>
               <p className="mt-3 text-sm text-rice-soft">{copy.token.decimals}: {evidence.decimals}</p>
-              <Observation copy={copy} /><div className="mt-4"><SourceLink href={mintUrl}>Mint · Solscan</SourceLink></div>
-              <Details copy={copy} title={copy.token.supply}><p>{copy.snapshotNote}</p><p className="mt-3 font-mono text-xs">{evidence.commitment} · slot {evidence.slot}</p></Details>
+              <Observation copy={copy} /><div className="mt-4"><SourceLink href={mintUrl}>Mint В· Solscan</SourceLink></div>
+              <Details copy={copy} title={copy.token.supply}><p>{copy.snapshotNote}</p><p className="mt-3 font-mono text-xs">{evidence.commitment} В· slot {evidence.slot}</p></Details>
             </Card>
             {(["mint", "freeze"] as const).map(kind => {
               const value = kind === "mint" ? evidence.mintAuthority : evidence.freezeAuthority;
               return <Card key={kind} id={`token-${kind}-authority`} title={copy.token[kind]} status={copy.snapshot} copy={copy}>
                 <p className="mt-5 font-display text-2xl text-rice">{value === null ? copy.token.revoked : copy.token.retained}</p>
                 <p className="mt-3 text-sm leading-relaxed text-rice-soft">{kind === "mint" ? copy.token.mintLimit : copy.token.freezeLimit}</p>
-                <Observation copy={copy} /><div className="mt-4"><SourceLink href={mintUrl}>Mint · Solscan</SourceLink></div>
-                <Details copy={copy} title={copy.token[kind]}><p>{copy.token.onchainFields}</p><p className="mt-2 font-mono text-xs">{kind}Authority: {value ?? "null"}</p><p className="mt-3 font-mono text-xs">{evidence.commitment} · slot {evidence.slot}</p></Details>
+                <Observation copy={copy} /><div className="mt-4"><SourceLink href={mintUrl}>Mint В· Solscan</SourceLink></div>
+                <Details copy={copy} title={copy.token[kind]}><p>{copy.token.onchainFields}</p><p className="mt-2 font-mono text-xs">{kind}Authority: {value ?? "null"}</p><p className="mt-3 font-mono text-xs">{evidence.commitment} В· slot {evidence.slot}</p></Details>
               </Card>;
             })}
             <Card id="token-metadata" title={copy.token.metadata} status={copy.snapshot} copy={copy}>
               <p className="mt-5 font-display text-2xl text-rice">{metadataRole ? copy.funds.roles[metadataRole.id as keyof Copy["funds"]["roles"]] : copy.token.metadata}</p>
               <p className="mt-3 text-sm leading-relaxed text-rice-soft">{copy.token.metadataLimit}</p>
-              <Observation copy={copy} /><div className="mt-4"><SourceLink href={account(evidence.metadataAccount)}>{copy.token.metadataAccount} · Solscan</SourceLink></div>
-              <Details copy={copy} title={copy.token.metadata}><p>Update authority</p><Address value={evidence.updateAuthority} /><div className="mt-3"><SourceLink href={account(evidence.updateAuthority)}>Update authority · Solscan</SourceLink></div><p className="mt-5">{copy.token.metadataAccount}</p><Address value={evidence.metadataAccount} /><p className="mt-3 font-mono text-xs">{evidence.commitment} · slot {evidence.slot}</p></Details>
+              <Observation copy={copy} /><div className="mt-4"><SourceLink href={account(evidence.metadataAccount)}>{copy.token.metadataAccount} В· Solscan</SourceLink></div>
+              <Details copy={copy} title={copy.token.metadata}><p>Update authority</p><Address value={evidence.updateAuthority} /><div className="mt-3"><SourceLink href={account(evidence.updateAuthority)}>Update authority В· Solscan</SourceLink></div><p className="mt-5">{copy.token.metadataAccount}</p><Address value={evidence.metadataAccount} /><p className="mt-3 font-mono text-xs">{evidence.commitment} В· slot {evidence.slot}</p></Details>
             </Card>
           </div>
         </Group>
@@ -138,8 +138,8 @@ export function ProofHubView({ locale }: { locale: Locale }) {
           <Card id="treasury-balance" title={copy.funds.balance} status={copy.snapshot} copy={copy} className="mb-5">
             <p className="mt-5 break-words font-display text-2xl text-rice sm:text-4xl">{formatProofTokens(evidence.treasuryBalance, locale)}</p>
             <p className="mt-4 max-w-3xl text-sm leading-relaxed text-rice-soft">{copy.funds.balanceNote}</p>
-            <Observation copy={copy} /><div className="mt-4"><SourceLink href={account(evidence.treasuryTokenAccount)}>{copy.funds.tokenAccount} · Solscan</SourceLink></div>
-            <Details copy={copy} title={copy.funds.balance}><Address value={evidence.treasuryTokenAccount} /><p className="mt-3 font-mono text-xs">{evidence.commitment} · slot {evidence.slot}</p></Details>
+            <Observation copy={copy} /><div className="mt-4"><SourceLink href={account(evidence.treasuryTokenAccount)}>{copy.funds.tokenAccount} В· Solscan</SourceLink></div>
+            <Details copy={copy} title={copy.funds.balance}><Address value={evidence.treasuryTokenAccount} /><p className="mt-3 font-mono text-xs">{evidence.commitment} В· slot {evidence.slot}</p></Details>
           </Card>
           <div className="proof-grid">
             {register.roles.map(role => {
@@ -150,7 +150,7 @@ export function ProofHubView({ locale }: { locale: Locale }) {
                 <dl className="my-5 flex flex-wrap gap-x-7 gap-y-3 text-sm"><div><dt className="text-xs text-rice-soft">{copy.funds.threshold}</dt><dd className="mt-1 font-mono text-lg text-rice">{observed.threshold} / {observed.memberCount}</dd></div><div><dt className="text-xs text-rice-soft">{copy.funds.timelock}</dt><dd className="mt-1 font-mono text-lg text-rice">{delay}</dd></div></dl>
                 <Address value={role.vault} /><Observation copy={copy} />
                 <div className="mt-4 flex flex-col items-start gap-2"><SourceLink href={account(role.vault)}>{copy.funds.vault}</SourceLink><SourceLink href={account(role.multisig)}>{copy.funds.multisig}</SourceLink></div>
-                <Details copy={copy} title={title}><p>{copy.funds.multisig} · Squads v4</p><Address value={role.multisig} /><p className="mt-4">{copy.funds.custodyNote}</p><p className="mt-3 font-mono text-xs">{evidence.commitment} · slot {evidence.slot}</p></Details>
+                <Details copy={copy} title={title}><p>{copy.funds.multisig} В· Squads v4</p><Address value={role.multisig} /><p className="mt-4">{copy.funds.custodyNote}</p><p className="mt-3 font-mono text-xs">{evidence.commitment} В· slot {evidence.slot}</p></Details>
               </Card>;
             })}
             <EmptyRegister kind="vesting" copy={copy} />
@@ -161,7 +161,7 @@ export function ProofHubView({ locale }: { locale: Locale }) {
               {register.transactions.map(tx => <Card key={tx.id} id={tx.id} title={copy.funds.transactions[tx.id as keyof Copy["funds"]["transactions"]]} status={copy.historical} copy={copy}>
                 {tx.amountRaw && <p className="mt-4 break-words font-mono text-sm text-rice">{copy.funds.amount}: {formatProofTokens(tx.amountRaw, locale)}</p>}
                 <p className="mt-3 text-xs text-rice-soft">{tx.executedOn ? <time dateTime={tx.executedOn}>{tx.executedOn}</time> : copy.funds.transactionDate}</p>
-                <div className="mt-4"><SourceLink href={solscan("tx", tx.signature)}>{copy.historical} · Solscan</SourceLink></div>
+                <div className="mt-4"><SourceLink href={solscan("tx", tx.signature)}>{copy.historical} В· Solscan</SourceLink></div>
                 <Details copy={copy} title={copy.funds.transactions[tx.id as keyof Copy["funds"]["transactions"]]}><Address value={tx.signature} /><p className="mt-4">{copy.snapshotNote}</p></Details>
               </Card>)}
             </div>
@@ -169,7 +169,7 @@ export function ProofHubView({ locale }: { locale: Locale }) {
         </Group>
 
         <Group id="liquidity" index={3} copy={copy}>
-          <EmptyRegister kind="liquidity" id="liquidity-record" copy={copy}><div className="mt-5 space-y-3">{evidenceLink("alpha")}{evidenceLink("launch-announcement")}<SourceLink href={`${localePath(locale, "/faq")}#fees`}>{getDictionary(locale).nav.faq} · {copy.groups.liquidity.title}</SourceLink></div></EmptyRegister>
+          <EmptyRegister kind="liquidity" id="liquidity-record" copy={copy}><div className="mt-5 space-y-3">{evidenceLink("alpha")}{evidenceLink("launch-announcement")}<SourceLink href={`${localePath(locale, "/faq")}#fees`}>{getDictionary(locale).nav.faq} В· {copy.groups.liquidity.title}</SourceLink></div></EmptyRegister>
         </Group>
         <Group id="airdrop" index={4} copy={copy}>
           <EmptyRegister kind="airdrop" id="airdrop-record" copy={copy}><div className="mt-5 space-y-3">{evidenceLink("wave-policy")}{evidenceLink("claim")}</div></EmptyRegister>
@@ -178,7 +178,7 @@ export function ProofHubView({ locale }: { locale: Locale }) {
           <Card id="hacken-review" title={copy.audit.title} status={copy.audit.reportState} copy={copy}>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
               <a href={official.hacken.projectUrl} target="_blank" rel="noopener noreferrer" className="inline-block shrink-0"><img src={official.hacken.badgeAsset} alt={copy.audit.badgeAlt} width={174} height={64} style={{ width: 174, height: "auto", maxWidth: "100%" }} /></a>
-              <p className="text-sm leading-relaxed text-rice">{copy.audit.scopeLine} · <a href={official.hacken.reportUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{copy.audit.reportLink}</a></p>
+              <p className="text-sm leading-relaxed text-rice">{copy.audit.scopeLine} В· <a href={official.hacken.reportUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{copy.audit.reportLink}</a> · <a href={official.hacken.projectUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{copy.audit.projectLink}</a></p>
             </div>
             <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-5"><div><dt className="text-sm text-rice-soft">{copy.audit.result}</dt><dd className="mt-2 font-display text-3xl text-rice">{evidence.review.fixed} / {evidence.review.findings}</dd></div><div><dt className="text-sm text-rice-soft">{copy.audit.critical}</dt><dd className="mt-2 font-display text-3xl text-rice">{evidence.review.critical}</dd></div><div><dt className="text-sm text-rice-soft">{copy.audit.high}</dt><dd className="mt-2 font-display text-3xl text-rice">{evidence.review.high}</dd></div></dl>
             <p className="mt-6 text-sm leading-relaxed text-rice"><strong>{copy.audit.scopeLabel}: </strong>{copy.audit.scope}</p>
@@ -187,7 +187,7 @@ export function ProofHubView({ locale }: { locale: Locale }) {
             <p className="mt-5 text-xs text-rice-soft">{copy.audit.coverDate}: <time dateTime={evidence.review.coverDate}>{evidence.review.coverDate}</time></p>
             <p className="mt-2 text-xs text-rice-soft">{copy.audit.publishedOn}: <time dateTime={official.hacken.publishedOn}>{official.hacken.publishedOn}</time></p>
             <div className="mt-4 flex flex-col items-start gap-3 sm:flex-row sm:gap-8"><SourceLink href={official.hacken.reportUrl}>{copy.audit.reportLink}</SourceLink><SourceLink href={official.hacken.projectUrl}>{copy.audit.projectLink}</SourceLink></div>
-            <Details copy={copy} title={copy.audit.title}><p>{copy.audit.pdfSha}: <code className="break-all">{official.hacken.publicPdfSha256}</code> · {official.hacken.publicPdfBytes.toLocaleString("en-US")} bytes</p><p className="mt-3">{copy.audit.pdfVerified}.</p><p className="mt-3">{copy.audit.pdfDate}: <time dateTime={evidence.review.updatedPdfCreatedOn}>{evidence.review.updatedPdfCreatedOn}</time></p><p className="mt-3">{copy.audit.changelogDate}: <time dateTime={evidence.review.changelogFinalReportDate}>{evidence.review.changelogFinalReportDate}</time></p></Details>
+            <Details copy={copy} title={copy.audit.title}><p>{copy.audit.pdfSha}: <code className="break-all">{official.hacken.publicPdfSha256}</code> В· {official.hacken.publicPdfBytes.toLocaleString("en-US")} bytes</p><p className="mt-3">{copy.audit.pdfVerified}.</p><p className="mt-3">{copy.audit.pdfDate}: <time dateTime={evidence.review.updatedPdfCreatedOn}>{evidence.review.updatedPdfCreatedOn}</time></p><p className="mt-3">{copy.audit.changelogDate}: <time dateTime={evidence.review.changelogFinalReportDate}>{evidence.review.changelogFinalReportDate}</time></p></Details>
           </Card>
           <div className="my-5"><SourceLink href="#token">{copy.audit.tokenLink}</SourceLink></div>
           <EmptyRegister kind="incidents" copy={copy}><div className="mt-5"><SourceLink href={`mailto:${official.securityEmail}`}>{official.securityEmail}</SourceLink></div></EmptyRegister>
@@ -197,7 +197,7 @@ export function ProofHubView({ locale }: { locale: Locale }) {
         </Group>
         <section id="archive" aria-labelledby="archive-heading" className="proof-group">
           <h2 id="archive-heading" className="mb-5 font-display text-2xl text-rice">{copy.archiveTitle}</h2>
-          <Card id="creator-archive" title={copy.creator} status={copy.archived} copy={copy}><p className="my-4 text-sm leading-relaxed text-rice-soft">{copy.archiveNote}</p><Address value={register.archive.creator} /><div className="mt-4"><SourceLink href={account(register.archive.creator)}>{copy.creator} · Solscan</SourceLink></div></Card>
+          <Card id="creator-archive" title={copy.creator} status={copy.archived} copy={copy}><p className="my-4 text-sm leading-relaxed text-rice-soft">{copy.archiveNote}</p><Address value={register.archive.creator} /><div className="mt-4"><SourceLink href={account(register.archive.creator)}>{copy.creator} В· Solscan</SourceLink></div></Card>
         </section>
         <div className="mt-16 rounded-2xl border border-fire/25 bg-bg-soft p-6 sm:p-8">
           <h2 className="font-display text-2xl text-rice">{copy.verifyTitle}</h2><p className="mt-4 max-w-3xl text-sm leading-relaxed text-rice-soft">{copy.verifyText}</p>
@@ -208,3 +208,4 @@ export function ProofHubView({ locale }: { locale: Locale }) {
     <Footer />
   </>;
 }
+
