@@ -157,7 +157,7 @@ export function Hero() {
             <img src={official.hacken.badgeAsset} alt={t.security.badgeAlt} width={174} height={64} style={{ width: 174, height: "auto", maxWidth: "100%" }} />
           </a>
           <p className="text-xs leading-relaxed text-rice-soft">
-            {t.security.scopeLine} · <a href={official.hacken.reportUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{t.security.viewReport}</a> · <a href={official.hacken.projectUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{t.proof.audit.projectLink}</a>
+            {t.security.scopeLine} · <span className="inline-flex flex-wrap items-center gap-2 mt-1 sm:mt-0"><a href={official.hacken.reportUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded px-2 py-0.5 text-xs font-mono text-fire bg-fire/10 border border-fire/20 hover:bg-fire/20 transition-colors">{t.security.viewReport} ↗</a><a href={official.hacken.projectUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded px-2 py-0.5 text-xs font-mono text-fire bg-fire/10 border border-fire/20 hover:bg-fire/20 transition-colors">{t.proof.audit.projectLink} ↗</a></span>
           </p>
         </motion.div>
 
