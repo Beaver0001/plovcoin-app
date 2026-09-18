@@ -1,5 +1,5 @@
-﻿import { official } from "@/lib/official-config.mjs";
-"use client";
+﻿"use client";
+import { official } from "@/lib/official-config.mjs";
 
 import { motion } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
@@ -182,4 +182,5 @@ export function Hero() {
     </section>
   );
 }
+
 
