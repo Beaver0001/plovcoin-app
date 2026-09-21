@@ -1,5 +1,6 @@
 "use client";
 
+import { Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useI18n } from "../I18nProvider";
@@ -21,17 +22,16 @@ const channelStyles = [
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
       </svg>
     ),
-  }
-  
-  
+  },
+  { color: "from-[#F58529] via-[#DD2A7B] to-[#8134AF]", icon: <Instagram size={20} aria-hidden="true" /> }
 ];
 
 export function Community() {
   const { locale, t } = useI18n();
   const channels = official.channels.map(channel => ({
-    ...channelStyles[channel.id === "x" ? 1 : 0],
+    ...channelStyles[channel.id.startsWith("instagram_") ? 2 : channel.id === "x" ? 1 : 0],
     name: channel[locale], href: channel.href,
-    handle: channel.id === "telegram_folder" ? channel.href.replace(/^https:\/\//, "") : `@${channel.href.split("/").pop()}`,
+    handle: channel.id === "telegram_folder" ? channel.href.replace(/^https:\/\//, "") : `@${channel.href.replace(/\/$/, "").split("/").pop()}`,
   }));
 
   return (
