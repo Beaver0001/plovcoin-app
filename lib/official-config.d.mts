@@ -1,4 +1,4 @@
-export type ChannelId = 'announcements_en' | 'announcements_ru' | 'community' | 'telegram_folder' | 'x';
+export type ChannelId = 'announcements_en' | 'announcements_ru' | 'community' | 'telegram_folder' | 'x' | 'instagram_en' | 'instagram_ru';
 export interface OfficialChannel {
   readonly id: ChannelId;
   readonly href: string;
