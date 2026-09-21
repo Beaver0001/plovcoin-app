@@ -28,10 +28,15 @@ const channelStyles = [
 
 export function Community() {
   const { locale, t } = useI18n();
-  const channels = official.channels.map(channel => ({
+  const channelOrder = ["announcements_en", "announcements_ru", "community", "instagram_en", "instagram_ru", "x"];
+  const telegramFolder = official.channels.find(channel => channel.id === "telegram_folder");
+  const channels = official.channels
+    .filter(channel => channel.id !== "telegram_folder")
+    .sort((a, b) => channelOrder.indexOf(a.id) - channelOrder.indexOf(b.id))
+    .map(channel => ({
     ...channelStyles[channel.id.startsWith("instagram_") ? 2 : channel.id === "x" ? 1 : 0],
     name: channel[locale], href: channel.href,
-    handle: channel.id === "telegram_folder" ? channel.href.replace(/^https:\/\//, "") : `@${channel.href.replace(/\/$/, "").split("/").pop()}`,
+    handle: `@${channel.href.replace(/\/$/, "").split("/").pop()}`,
   }));
 
   return (
@@ -78,6 +83,20 @@ export function Community() {
             </motion.a>
           ))}
         </div>
+
+        {telegramFolder && (
+          <div className="mt-6 text-center">
+            <a
+              href={telegramFolder.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg px-4 py-3 text-sm text-rice-soft underline underline-offset-4 transition-colors hover:text-rice focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fire"
+            >
+              {telegramFolder[locale]}
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        )}
 
         {/* Final CTA */}
         <motion.div
