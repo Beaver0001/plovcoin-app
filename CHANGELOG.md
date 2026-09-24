@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased — approved no-Alpha website copy
+## 2026-09-24 — approved no-Alpha website copy
 
-Approved by the project owner on 2026-09-24. This revision is a preview until deployed; set `lib/website-edition.json` → `publishedOn` to the actual UTC release date when publishing. Previous website edition: 2026-09-18 (`release2-reviewed-revision3-with-owner-amendments-hacken-published`), preserved in Git history.
+Approved by the project owner on 2026-09-24, including explicit authorization to publish. Previous website edition: 2026-09-18 (`release2-reviewed-revision3-with-owner-amendments-hacken-published`), preserved in Git history.
 
 - Replace eight EN/RU dictionary entries and three FAQ answers with the approved no-Alpha copy.
 - Remove the retired Alpha status card and pending-terms evidence from FAQ and Proof-hub.
