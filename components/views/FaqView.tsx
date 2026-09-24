@@ -74,7 +74,7 @@ function Answer({ question, open, toggle }: { question: FaqQuestion; open: boole
 
 function StatusSources() {
   const { locale } = useI18n();
-  return <aside aria-label={locale === "ru" ? "Источники статуса запуска" : "Launch status sources"} className="mt-7 grid gap-3 border-y border-fire/15 py-4 sm:grid-cols-3">
+  return <aside aria-label={locale === "ru" ? "Источники статуса запуска" : "Launch status sources"} className="mt-7 grid gap-3 border-y border-fire/15 py-4 sm:grid-cols-2">
     {faqStatuses.map(status => {
       const text = status.confirmedText && ((status.checkedAt && status.sourceUrl) || status.teamConfirmedOn)
         ? status.confirmedText[locale] : null;

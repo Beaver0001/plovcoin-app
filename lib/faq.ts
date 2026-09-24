@@ -35,7 +35,8 @@ export function searchFaq(query: string) {
     synonyms.find(group => group.includes(word)) ?? [word]);
   return faqQuestions.flatMap(question => {
     // Both languages remain searchable when the reader switches EN/RU.
-    const summary = normalizeFaqSearch([question.ru.question, question.ru.short, question.en.question, question.en.short].join(" "));
+    // Include stable IDs so historical queries such as alpha/presale still resolve.
+    const summary = normalizeFaqSearch([question.id, question.ru.question, question.ru.short, question.en.question, question.en.short].join(" "));
     const details = normalizeFaqSearch(`${question.ru.details} ${question.en.details}`);
     const matches = groups.every(group => group.some(term => `${summary} ${details}`.includes(term)));
     return matches ? [{ question, detailsMatch: groups.some(group => group.some(term => details.includes(term) && !summary.includes(term))) }] : [];
@@ -63,7 +64,6 @@ export function faqEvidence(ref: string, locale: Locale): { label: string; href:
     "vesting-proof": ["Vesting evidence", "Подтверждения вестинга"],
     "advertising-proof": ["Ad Registry", "Реестр рекламы"],
     monitoring: ["Monitoring reports", "Отчёты мониторинга"],
-    alpha: ["Alpha · terms not published yet", "Alpha · условия ещё не опубликованы"],
     "wave-policy": ["Wave Policy · not published yet", "Правила волны ещё не опубликованы"],
     "loyalty-policy": ["Loyalty Policy · not published yet", "Условия лояльности ещё не опубликованы"],
   };
@@ -75,7 +75,7 @@ export function faqEvidence(ref: string, locale: Locale): { label: string; href:
     "liquidity-proof": proof("liquidity"), "burn-proof": proof("burn-log"),
     "security-proof": proof("security"), "treasury-proof": proof("addresses"),
     "vesting-proof": proof("vesting"), "advertising-proof": proof("advertising"), monitoring: proof("transparency"),
-    alpha: null, "wave-policy": null, "loyalty-policy": null,
+    "wave-policy": null, "loyalty-policy": null,
   };
   if (!(ref in urls)) throw new Error(`Unknown FAQ evidence: ${ref}`);
   return { label: labels[ref][locale === "ru" ? 1 : 0], href: urls[ref] };
