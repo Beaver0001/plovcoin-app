@@ -185,16 +185,16 @@
       "id": "alpha",
       "category": "launch",
       "ru": {
-        "question": "Что такое Alpha — это пресейл для своих?",
-        "short": "Alpha — ограниченное участие до открытия торговли по заранее опубликованным правилам, а не пресейл или приватная продажа. Купленные таким способом токены становятся доступны постепенно в течение 72 часов. Условия участия — на странице Alpha.",
+        "question": "Как проходит запуск $PLOV?",
+        "short": "Запуск проходит через пул PLOV/SOL на Meteora DAMM v2 с публичной активацией. До активации никто, включая команду, не может покупать через этот пул. PlovDrop — отдельная программа со своими условиями участия и клейма.",
         "details": ""
       },
       "en": {
-        "question": "What is Alpha — an insider presale?",
-        "short": "Alpha is limited participation before trading opens under rules published in advance, not a presale or private sale. Tokens purchased this way become available gradually over 72 hours. Participation terms are on the Alpha page.",
+        "question": "How does the $PLOV launch work?",
+        "short": "The launch uses a PLOV/SOL pool on Meteora DAMM v2 with public activation. No one, including the team, can buy through this pool before activation. PlovDrop is a separate programme with its own eligibility and claim terms.",
         "details": ""
       },
-      "evidenceRef": "alpha"
+      "evidenceRef": "launch-announcement"
     },
     {
       "id": "launch-price",
@@ -202,12 +202,12 @@
       "ru": {
         "question": "Какая цена будет на запуске?",
         "short": "Цену определяет рынок. Стартовые параметры пула описаны в Whitepaper, раздел Liquidity & Launch; фактическая конфигурация публикуется в Proof-hub после запуска. Цена не гарантируется и не поддерживается командой.",
-        "details": "Перед открытием Alpha стартовая конфигурация будет раскрыта в датированной инструкции для участников. Она не является гарантированной ценой, нижней границей цены или обещанием стоимости."
+        "details": "Перед публичной активацией пула стартовая конфигурация будет раскрыта в датированной инструкции для участников. Она не является гарантированной ценой, нижней границей цены или обещанием стоимости."
       },
       "en": {
         "question": "What will the launch price be?",
         "short": "The market determines the price. Starting pool parameters are described in the Whitepaper’s Liquidity & Launch section; the actual configuration is published in Proof-hub after launch. The price is neither guaranteed nor supported by the team.",
-        "details": "Before Alpha opens, the starting configuration will be disclosed in a dated participant guide. It is not a guaranteed price, a price floor or a promise of value."
+        "details": "Before the pool is publicly activated, the starting configuration will be disclosed in a dated participant guide. It is not a guaranteed price, a price floor or a promise of value."
       },
       "evidenceRef": "liquidity-proof"
     },
@@ -217,12 +217,12 @@
       "ru": {
         "question": "Какой кошелёк нужен и нужно ли подключать его сейчас?",
         "short": "Для $PLOV нужен кошелёк, поддерживающий токены Solana. Для чтения сайта и участия в сообществе подключать кошелёк не требуется.",
-        "details": "Список поддерживаемых кошельков для Alpha и клейма публикуется с инструкциями соответствующей функции. Для сетевых комиссий нужен SOL. Проверяйте адрес сайта и содержание запроса на подпись; никому не передавайте секретную фразу."
+        "details": "Список поддерживаемых кошельков для клейма публикуется с инструкциями этой функции. Для сетевых комиссий нужен SOL. Проверяйте адрес сайта и содержание запроса на подпись; никому не передавайте секретную фразу."
       },
       "en": {
         "question": "Which wallet do I need, and do I need to connect it now?",
         "short": "You need a wallet that supports Solana tokens to hold $PLOV. Reading the website and joining the community do not require a wallet connection.",
-        "details": "Supported wallets for Alpha and claims will be listed in the instructions for each feature. Network fees require SOL. Check the website address and the signing request; never share your recovery phrase."
+        "details": "Supported wallets for claims will be listed in the claim instructions. Network fees require SOL. Check the website address and the signing request; never share your recovery phrase."
       },
       "evidenceRef": "claim"
     },

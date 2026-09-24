@@ -169,7 +169,7 @@ export function ProofHubView({ locale }: { locale: Locale }) {
         </Group>
 
         <Group id="liquidity" index={3} copy={copy}>
-          <EmptyRegister kind="liquidity" id="liquidity-record" copy={copy}><div className="mt-5 space-y-3">{evidenceLink("alpha")}{evidenceLink("launch-announcement")}<SourceLink href={`${localePath(locale, "/faq")}#fees`}>{getDictionary(locale).nav.faq} В· {copy.groups.liquidity.title}</SourceLink></div></EmptyRegister>
+          <EmptyRegister kind="liquidity" id="liquidity-record" copy={copy}><div className="mt-5 space-y-3">{evidenceLink("launch-announcement")}<SourceLink href={`${localePath(locale, "/faq")}#fees`}>{getDictionary(locale).nav.faq} В· {copy.groups.liquidity.title}</SourceLink></div></EmptyRegister>
         </Group>
         <Group id="airdrop" index={4} copy={copy}>
           <EmptyRegister kind="airdrop" id="airdrop-record" copy={copy}><div className="mt-5 space-y-3">{evidenceLink("wave-policy")}{evidenceLink("claim")}</div></EmptyRegister>

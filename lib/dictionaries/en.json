@@ -67,7 +67,7 @@
       {
         "no": "02",
         "title": "Fair Launch",
-        "body": "No presale. No private round. No discounted VC seats. Before the market opens, a capped pro-rata Alpha Vault runs under published rules — the same rules for everyone who shows up. After that, the market sets the price, not us.",
+        "body": "No presale. No private round. No discounted VC seats. Trading through the launch pool starts after public activation, with the same access conditions for everyone. After that, the market sets the price, not us.",
         "quote": "Same fire, same kazan, same chance."
       },
       {
@@ -144,7 +144,7 @@
         "subtitle": "TGE Launch",
         "items": [
           "Primary PLOV/SOL market on Meteora DAMM v2",
-          "Capped Pro-Rata Alpha Vault before public activation",
+          "PLOV/SOL pool preparation for public activation",
           "Public activation only after the final Go/No-Go",
           "Wave 1 review no earlier than T+24h"
         ]
@@ -500,7 +500,7 @@
           "label": "Liquidity",
           "pct": "20%",
           "tokens": "2,602,600,600",
-          "logic": "Primary PLOV/SOL market on Meteora DAMM v2; capped Pro-Rata Alpha Vault; Jupiter routing after activation; conditional post-launch liquidity backstop"
+          "logic": "Primary PLOV/SOL market on Meteora DAMM v2; Jupiter routing after activation; conditional post-launch liquidity backstop"
         },
         {
           "emoji": "🎨",
@@ -532,7 +532,7 @@
         }
       ],
       "fairLaunchTitle": "Fair Launch",
-      "fairLaunchText": "No presale, no private round, no discounted allocations for insiders. Before the public market opens, a capped pro-rata Alpha Vault runs under published rules that are the same for every participant. After activation, the price is set by the open market. Community airdrops follow separately published wave rules.",
+      "fairLaunchText": "No presale, no private round, no discounted allocations for insiders. The launch uses a PLOV/SOL pool on Meteora DAMM v2 with public activation. No one, including the team, can buy through this pool before activation. PlovDrop is a separate programme with its own eligibility and claim terms. After activation, the price is set by the open market. Community airdrops follow separately published wave rules.",
       "vestingTitle": "Team & token note",
       "vestingText": "The planned team vesting schedule is a 12-month cliff followed by 12 months of linear vesting, with no team unlock at launch. Deployment and funding evidence will be published on Proof-hub. Treasury operations require Squads multisig with role-based thresholds and timelocks."
     },
@@ -544,7 +544,7 @@
         {
           "period": "Pre-activation",
           "venue": "Meteora DAMM v2 · PLOV/SOL",
-          "desc": "One-sided PLOV liquidity and capped Pro-Rata Alpha Vault; fill completes before public activation"
+          "desc": "Prepare the PLOV/SOL pool on Meteora DAMM v2 for public activation; final parameters undergo a separate readiness review"
         },
         {
           "period": "Public activation",
@@ -736,7 +736,7 @@
         {
           "risk": "MEV / bots",
           "manifestation": "Snipe / sandwich",
-          "mitigation": "Published Alpha and launch-fee rules; verify deployed settings on Proof-hub. Complete protection from bots is not guaranteed."
+          "mitigation": "Published launch and initial-fee rules; verify deployed settings on Proof-hub. Complete protection from bots is not guaranteed."
         },
         {
           "risk": "Phishing",
@@ -768,11 +768,11 @@
       "rows": [
         {
           "period": "Pre-TGE",
-          "goals": "Launch readiness, completed Hacken security review, public report published 17 Sep 2026, communications readiness, Proof-hub, DAMM v2 and Alpha Vault preparation"
+          "goals": "Launch readiness, completed Hacken security review, public report published 17 Sep 2026, communications readiness, Proof-hub, DAMM v2 preparation"
         },
         {
           "period": "Target Q4 2026",
-          "goals": "Final Go/No-Go, capped Pro-Rata Alpha Vault fill, PLOV/SOL public activation on Meteora DAMM v2, Jupiter routing"
+          "goals": "Final Go/No-Go, PLOV/SOL public activation on Meteora DAMM v2, Jupiter routing"
         },
         {
           "period": "Post-TGE",
