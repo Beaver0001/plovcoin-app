@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -62,7 +62,7 @@ export function Security() {
                       <img src={official.hacken.badgeAsset} alt={t.security.badgeAlt} width={174} height={64} style={{ width: 174, height: "auto", maxWidth: "100%" }} />
                     </a>
                     <p className="mt-3 text-xs leading-relaxed text-rice-soft">
-                      {t.security.scopeLine} В·{" "}
+                      {t.security.scopeLine} ·{" "}
                       <a href={official.hacken.reportUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{t.security.viewReport}</a> · <a href={official.hacken.projectUrl} target="_blank" rel="noopener noreferrer" className="text-fire underline">{t.proof.audit.projectLink}</a>
                     </p>
                   </div>
