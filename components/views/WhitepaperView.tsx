@@ -441,7 +441,7 @@ export function WhitepaperView() {
                 <SectionHeader num={wp.risks.num} title={wp.risks.title} />
                 <RiskMatrix />
 
-                <div className="mt-6 card-warm !p-5">
+                <div id="security-desk" className="mt-6 scroll-mt-24 card-warm !p-5">
                   <div className="font-display text-base text-fire">{wp.risks.deskTitle}</div>
                   <p className="mt-2 text-sm leading-relaxed text-rice-soft">
                     {wp.risks.deskText}

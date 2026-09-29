@@ -5,6 +5,17 @@ const nextConfig = {
   compress: true,
   async redirects() {
     return [
+      // Keep old policy links working; the existing Security Desk owns the text.
+      {
+        source: "/security",
+        destination: "/whitepaper#security-desk",
+        permanent: true,
+      },
+      {
+        source: "/ru/security",
+        destination: "/ru/whitepaper#security-desk",
+        permanent: true,
+      },
       // ru.plovcoin.com subdomain -> plovcoin.com/ru (path preserved)
       {
         source: "/:path*",

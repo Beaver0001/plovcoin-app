@@ -8,6 +8,23 @@ const dict = getDictionary("ru");
 export const metadata: Metadata = {
   title: dict.meta.proofTitle,
   description: dict.meta.proofDesc,
+  openGraph: {
+    type: "website",
+    siteName: "PlovCoin",
+    title: dict.meta.proofTitle,
+    description: dict.meta.proofDesc,
+    url: "https://plovcoin.com/ru/proof",
+    locale: "ru_RU",
+    alternateLocale: "en_US",
+    images: [{ url: "/og-proof-ru.png", width: 1200, height: 630, alt: "PlovCoin Proof-hub — датированные факты и доказательства" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@PlovTeam",
+    title: dict.meta.proofTitle,
+    description: dict.meta.proofDesc,
+    images: ["/og-proof-ru.png"],
+  },
   alternates: {
     canonical: "https://plovcoin.com/ru/proof",
     languages: {
