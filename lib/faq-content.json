@@ -126,12 +126,12 @@
       "category": "about",
       "ru": {
         "question": "Где читать официальные новости и общаться?",
-        "short": "Новости публикуются в @PlovCoinAnnouncements на английском и @PlovCoinRU на русском. Для общения есть группа PlovCoin Kitchen.",
+        "short": "Новости публикуются в @PlovCoinAnnouncements на английском и @PlovCoinRU на русском. Для общения — группы «Кухня PlovCoin» на русском (@PlovCoinKitchenRU) и PlovCoin Kitchen на английском (@PlovCoinKitchen).",
         "details": "Официальный X — @PlovTeam. Ссылки на каналы, группу и общую папку Telegram приведены ниже. Проверяйте точное написание адреса: похожее название и логотип не подтверждают подлинность."
       },
       "en": {
         "question": "Where can I find official news and join the conversation?",
-        "short": "News is published in @PlovCoinAnnouncements in English and @PlovCoinRU in Russian. PlovCoin Kitchen is the community chat.",
+        "short": "News is published in @PlovCoinAnnouncements in English and @PlovCoinRU in Russian. PlovCoin Kitchen (@PlovCoinKitchen) is the English community chat; the Russian-speaking chat is @PlovCoinKitchenRU.",
         "details": "The official X account is @PlovTeam. Links to the channels, chat and Telegram folder are listed below. Check the exact address: a similar name or logo does not prove authenticity."
       },
       "evidenceRef": "channels"
@@ -141,7 +141,7 @@
       "category": "about",
       "ru": {
         "question": "Как присоединиться и помочь без покупки токенов?",
-        "short": "Приходите в PlovCoin Kitchen: делитесь творчеством, обсуждайте идеи и сообщайте о том, что можно улучшить.",
+        "short": "Приходите в «Кухню PlovCoin» (@PlovCoinKitchenRU): делитесь творчеством, обсуждайте идеи и сообщайте о том, что можно улучшить.",
         "details": "Для предложений о партнёрстве используйте hello@plovcoin.com. Добровольное участие не подразумевает оплату, аирдроп или последующее вознаграждение."
       },
       "en": {

@@ -254,8 +254,8 @@ export function FaqView() {
         </section>
         <OfficialSources />
         <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-fire/20 pt-6">
-          <p className="text-base text-rice-soft">{locale === "ru" ? "Остались вопросы? Обсудим в PlovCoin Kitchen." : "More questions? Join the conversation in PlovCoin Kitchen."}</p>
-          <div className="flex flex-wrap gap-3"><a href={official.channels.find(channel => channel.id === "community")!.href} className="btn-primary">PlovCoin Kitchen</a><Link href={localePath(locale, "/whitepaper")} className="btn-secondary">Whitepaper</Link></div>
+          <p className="text-base text-rice-soft">{locale === "ru" ? "Остались вопросы? Обсудим в «Кухне PlovCoin»." : "More questions? Join the conversation in PlovCoin Kitchen."}</p>
+          <div className="flex flex-wrap gap-3"><a href={official.channels.find(channel => channel.id === (locale === "ru" ? "community_ru" : "community"))!.href} className="btn-primary">{locale === "ru" ? "Кухня PlovCoin" : "PlovCoin Kitchen"}</a><Link href={localePath(locale, "/whitepaper")} className="btn-secondary">Whitepaper</Link></div>
         </div>
       </div>
     </main>

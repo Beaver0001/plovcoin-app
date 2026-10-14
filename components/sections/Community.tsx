@@ -28,7 +28,7 @@ const channelStyles = [
 
 export function Community() {
   const { locale, t } = useI18n();
-  const channelOrder = ["announcements_en", "announcements_ru", "community", "instagram_en", "instagram_ru", "x"];
+  const channelOrder = ["announcements_en", "announcements_ru", "community", "community_ru", "instagram_en", "instagram_ru", "x"];
   const telegramFolder = official.channels.find(channel => channel.id === "telegram_folder");
   const channels = official.channels
     .filter(channel => channel.id !== "telegram_folder")
