@@ -3,6 +3,13 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  webpack(config, { isServer }) {
+    if (!isServer) {
+      // SDK1.5.1 has one deep CJS import; use Anchor's own browser bytes API.
+      config.resolve.alias["@coral-xyz/anchor/dist/cjs/utils/bytes$"] = require("path").resolve(__dirname, "lib/trading/engine/anchor-browser-bytes.mjs");
+    }
+    return config;
+  },
   async redirects() {
     return [
       // Keep old policy links working; the existing Security Desk owns the text.
