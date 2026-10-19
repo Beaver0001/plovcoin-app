@@ -149,3 +149,14 @@ Run `npm run test:swap-review`, `npm run test:trading-browser`,
 `npx tsc --noEmit`. Browser checks use an isolated VM with
 WebCrypto and no require/process/global Buffer; they are not an installed wallet
 or a full browser UI test. The standalone test forbids network requests.
+
+A separate private Chromium 133 harness has rendered the actual SSR review
+with the built application CSS and fonts: EN/RU, BUY/SELL, 320/390/768/1440px,
+maximum-u64 and one-atom display fixtures. A 320px/200%-text regression exposed
+currency units breaking across lines; the review now keeps each SOL/PLOV token
+indivisible while allowing long numbers and addresses to wrap. Visible text
+and arithmetic are unchanged. The old markup fails the geometric regression;
+the updated markup passes. The same browser also runs the preparation/signing
+pipeline with mock RPC and a synthetic wallet, including closed-gate refusal.
+This is isolated SSR/browser-engine evidence, not a mounted Next route,
+React hydration test, installed wallet integration or mainnet acceptance.

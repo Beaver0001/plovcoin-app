@@ -25,12 +25,17 @@ export function SwapReview({ review, locale = "en" }: { review: SwapReviewData; 
       <h2 className="font-display text-2xl text-fire">{ru ? "Проверка обмена" : "Review swap"}</h2>
       <p role="status" className="mt-3 text-sm text-rice-soft">{ru ? "Торговля ещё не открыта. Подпись и отправка недоступны." : "Trading is not open. Signing and submission are unavailable."}</p>
       <dl className="mt-6 divide-y divide-fire/10">
-        {rows.map(([label, value]) => (
+        {rows.map(([label, value]) => {
+          const amount = /^(\d+(?:\.\d+)?) (SOL|PLOV)$/.exec(value);
+          return (
           <div key={label} className="grid gap-1 py-3 sm:grid-cols-2 sm:gap-5">
             <dt className="text-sm text-rice-soft">{label}</dt>
-            <dd className="break-all font-mono text-sm">{value}</dd>
+            <dd className="break-all font-mono text-sm">
+              {amount ? <><span>{amount[1]}</span>{" "}<span className="inline-block whitespace-nowrap">{amount[2]}</span></> : value}
+            </dd>
           </div>
-        ))}
+          );
+        })}
       </dl>
       <p className="mt-5 text-sm text-rice-soft">{ru ? "При отказе обмен откатывается, но сетевая комиссия может быть удержана. Цена и маршрут могут измениться до исполнения." : "A failed swap rolls back, but the network fee may still be charged. Price and route can change before execution."}</p>
     </section>

@@ -23,7 +23,7 @@ assert.throws(()=>r.upfrontRequired({...review,messageFee:null}));checks++;
  // SSR checks both languages without mounting a public page or wallet provider.
  const original=Module._resolveFilename;Module._resolveFilename=function(name,...args){if(name==='@/lib/trading/review')return path.resolve('lib/trading/review.ts');return original.call(this,name,...args);};
  require.cache[path.resolve('lib/trading/review.ts')]={exports:r};const {SwapReview}=load('components/trading/SwapReview.tsx'),React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
- for(const locale of ['en','ru']){const html=renderToStaticMarkup(React.createElement(SwapReview,{review,locale}));assert(html.includes(r.PLOV_MINT));assert(html.includes('1.00409356 SOL'));assert(!html.includes('<button'));assert(!html.includes('<form'));checks++;}
+ for(const locale of ['en','ru']){const html=renderToStaticMarkup(React.createElement(SwapReview,{review,locale})),text=html.replace(/<[^>]*>/g,'');assert(text.includes(r.PLOV_MINT));assert(text.includes('1.00409356 SOL'));assert(!html.includes('<button'));assert(!html.includes('<form'));checks++;}
  Module._resolveFilename=original;
  console.log(JSON.stringify({status:'PASS',checks,wallet:'fake adapter only',native_sends:0,public_routes_added:0}));
 })().catch(e=>{console.error(e);process.exitCode=1;});
