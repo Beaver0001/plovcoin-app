@@ -49,12 +49,37 @@ quote the exact message fee, finalize the review and simulate the same message.
 Changing blockhash, amounts, route, costs or CU settings requires re-preparation
 or re-finalization as applicable and a newly displayed review.
 
+`loadVerifiedRoute` now provides a read-only account verifier. It requires an
+approved manifest (no built-in invented LOWER address), mainnet genesis, pinned
+program-data address/deployment/full-account SHA256, exact pool PDAs, creators,
+geometry/liquidity/activation and config authority/index. It checks the pool,
+config, mints, derived vaults, Clock, wallet and PLOV ATA in one finalized
+getMultipleAccounts snapshot. Pool state does not contain a config pointer:
+the pool/config relationship is checked by deriving the config-based pool PDA.
+The approved manifest is a separate trust input; never take it from URL fields.
+
+Decoded pool objects stay private in a WeakMap. `prepareVerifiedSwap` only takes
+the verifier's original opaque snapshot, then quotes, builds the native SOL
+transaction, obtains a fresh blockhash/rent/full-message fee, checks contexts
+and expiry, and simulates exactly the same message using VersionedTransaction
+with sigVerify=false and replaceRecentBlockhash=false. This pre-sign simulation
+does not prove wallet ownership or validate the missing user signature. The
+wallet wrapper still verifies every signature after a later authorized prompt.
+The module never calls send/sign RPC. Refresh accounts and simulation before
+the actual signing request; preflight does not freeze chain state.
+
+The verifier targets the pinned 1112-byte pool / 328-byte config / classic SPL
+profile only. Any deployment/hash/layout change fails closed pending a new
+reviewed manifest/decoder. Hash pinning is not source-build parity. The fixture
+in scripts/fixtures/trading-accounts.json is synthetic, including fake program
+bytes, and must never be used as a production manifest.
+
 Do not enable launch, add a public swap route, relax CSP, describe future wallet
 code as covered by the current audit, or reuse synthetic pool addresses based
 on this candidate. Production pool/config checks, simulation, fee quotes,
 blockhash handling, wallet integration and launch authorization remain open.
 
 Run `npm run test:swap-review`, `npm run test:trading-browser`,
-`npx tsc --noEmit`, and `npm run build`. Browser checks use an isolated VM with
+`npm run test:trading-rpc`, `npm run build`, and `npx tsc --noEmit`. Browser checks use an isolated VM with
 WebCrypto and no require/process/global Buffer; they are not an installed wallet
 or a full browser UI test. The standalone test forbids network requests.
