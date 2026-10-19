@@ -46,5 +46,26 @@ function connection(f=clone(fixture),overrides={}){
  await rejectPreflight('expired blockhash',{getBlockHeight:async()=>21});
  await rejectPreflight('SELL beyond balance',{}, {side:'SELL',amountIn:new BN('18446744073709551615')});
  await assert.rejects(()=>prepareVerifiedSwap(c,{...snapshot},args));checks++;
+ // Async boundary regressions: trusted inputs are copied; a snapshot cannot
+ // be moved to another connection or gain a new lifetime after slow RPC.
+ const foreign=connection();await assert.rejects(()=>prepareVerifiedSwap(foreign,snapshot,args),/RPC connection changed/);assert.equal(foreign.calls.length,0);checks++;
+ const altered=connection(),alteredSnapshot=await loadVerifiedRoute(altered,fixture.manifest,fixture.wallet);altered.rpcEndpoint='https://other.invalid';await assert.rejects(()=>prepareVerifiedSwap(altered,alteredSnapshot,args),/RPC connection changed/);assert(!altered.calls.includes('simulateTransaction'));checks++;
+ await rejectPreflight('chain changes before preflight',{getGenesisHash:(()=>{let n=0;return async()=>++n===1?'5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d':'devnet';})()});
+ await rejectPreflight('chain changes during preflight',{getGenesisHash:(()=>{let n=0;return async()=>++n<3?'5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d':'devnet';})()});
+ const switching=connection();switching.getFeeForMessage=async()=>{switching.rpcEndpoint='https://changed.invalid';return {context:{slot:100},value:10000};};const switchingSnapshot=await loadVerifiedRoute(switching,fixture.manifest,fixture.wallet);await assert.rejects(()=>prepareVerifiedSwap(switching,switchingSnapshot,args),/RPC connection changed/);checks++;
+ const mutableManifest=clone(fixture.manifest),mutableWallet=new PublicKey(fixture.wallet),copyConn=connection();copyConn.getGenesisHash=async()=>{mutableManifest.programDataSha256='0'.repeat(64);mutableManifest.pools[1].config.authority=wrong;mutableWallet._bn=new PublicKey(wrong)._bn;return '5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d';};const copied=await loadVerifiedRoute(copyConn,mutableManifest,mutableWallet);assert.equal(copied.wallet,fixture.wallet);checks++;
+ const rawConn=connection(),originalGet=rawConn.getMultipleAccountsInfoAndContext;let returned;
+ rawConn.getMultipleAccountsInfoAndContext=async(...a)=>(returned=await originalGet(...a));
+ const originalDigest=globalThis.crypto.subtle.digest;
+ try {globalThis.crypto.subtle.digest=function(...a){const v=returned.value.find(v=>v&&v.data.length===165);v.data.fill(0,32,64);return originalDigest.apply(this,a);};await loadVerifiedRoute(rawConn,fixture.manifest,fixture.wallet);checks++;} finally {globalThis.crypto.subtle.digest=originalDigest;}
+ const amountConn=connection(),amountSnapshot=await loadVerifiedRoute(amountConn,fixture.manifest,fixture.wallet),mutableAmount=args.amountIn.clone();amountConn.getGenesisHash=async()=>{mutableAmount.iaddn(1);return '5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d';};const amountResult=await prepareVerifiedSwap(amountConn,amountSnapshot,{...args,amountIn:mutableAmount});assert.equal(amountResult.review.amountIn,1000000000n);checks++;
+ const realNow=Date.now;let offset=0;Date.now=()=>realNow()+offset;
+ try {
+  const delayed=connection(),get=delayed.getMultipleAccountsInfoAndContext;delayed.getMultipleAccountsInfoAndContext=async(...a)=>{offset+=1000;return get(...a);};const delayedSnapshot=await loadVerifiedRoute(delayed,fixture.manifest,fixture.wallet);await assert.rejects(()=>prepareVerifiedSwap(delayed,delayedSnapshot,{...args,maxSnapshotAgeMs:500}),/snapshot expired/);assert(!delayed.calls.includes('simulateTransaction'));checks++;
+  offset=0;const backwards=connection(),s=await loadVerifiedRoute(backwards,fixture.manifest,fixture.wallet);offset=-10000;await assert.rejects(()=>prepareVerifiedSwap(backwards,s,args),/clock changed/);checks++;
+ } finally {Date.now=realNow;}
+ const capped=connection(),began=Date.now(),cappedSnapshot=await loadVerifiedRoute(capped,fixture.manifest,fixture.wallet),capResult=await prepareVerifiedSwap(capped,cappedSnapshot,{...args,maxSnapshotAgeMs:5000,quoteLifetimeMs:60000});assert(capResult.review.expiresAtMs<=began+5000);assert(capResult.review.expiresAtMs>Date.now());checks++;
+ const perfDescriptor=Object.getOwnPropertyDescriptor(globalThis.performance,'now');let tick=0;Object.defineProperty(globalThis.performance,'now',{value:()=>tick,configurable:true});
+ try {const monotonic=connection(),s=await loadVerifiedRoute(monotonic,fixture.manifest,fixture.wallet);tick=60001;await assert.rejects(()=>prepareVerifiedSwap(monotonic,s,args),/snapshot expired/);checks++;}finally {if(perfDescriptor)Object.defineProperty(globalThis.performance,'now',perfDescriptor);else delete globalThis.performance.now;}
  console.log(JSON.stringify({status:'PASS',checks,fixture:fixture.scope,accountSnapshotRequests:1,simulation:'mock RPC; exact message; user signature zero',sends:0}));
 })().catch(e=>{console.error(e);process.exitCode=1;});

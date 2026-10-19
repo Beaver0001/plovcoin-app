@@ -1,6 +1,8 @@
 'use strict';
 const assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs'),zlib=require('node:zlib'),{webcrypto}=require('node:crypto');
 const esbuild=require('esbuild');
+// An unresolved async fixture must not let Node exit with status 0 before PASS.
+const watchdog=setTimeout(()=>{console.error('Browser fixture did not complete within 30 seconds');process.exitCode=1;},30000);
 (async()=>{
  const result=await esbuild.build({entryPoints:['lib/trading/engine/index.mjs'],platform:'browser',format:'iife',globalName:'PLOVTradeEngine',bundle:true,minify:true,write:false,metafile:true,alias:{'@coral-xyz/anchor/dist/cjs/utils/bytes':'./lib/trading/engine/anchor-browser-bytes.mjs'},target:'es2022',inject:['scripts/browser-buffer.mjs'],define:{'process.env.NODE_ENV':'"production"'}});
  const code=result.outputFiles[0].text;let requests=0;
@@ -35,4 +37,4 @@ const esbuild=require('esbuild');
  assert.equal(output.buy,'689853198201662');assert.equal(output.signatures,2);assert(output.packet<=1232);assert.equal(output.required,'1004088560');assert.equal(requests,0);
  const imports=Object.values(result.metafile.outputs).flatMap(x=>x.imports);assert.equal(imports.length,0);
  console.log(JSON.stringify({status:'PASS',platform:'browser',vm:'no require/process/global Buffer; WebCrypto supplied',...output,networkRequests:requests,bytes:Buffer.byteLength(code),gzipBytes:zlib.gzipSync(code).length,externalImports:imports.length}));
-})().catch(e=>{console.error(e);process.exitCode=1;});
+})().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>clearTimeout(watchdog));

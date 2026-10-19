@@ -40,12 +40,14 @@ review clone or an earlier review after re-finalization is rejected by
 verifies all real transaction signatures. The wrapper never submits or retries.
 All tests use synthetic keys; no real wallet connection is claimed.
 
-Live account ownership/config/activation, quote freshness, fee RPC, balances,
-block height, simulation and explicit user consent are still caller duties.
+Callers of the low-level preparation functions own account verification,
+freshness, fee RPC, balances, block height and simulation. The verified RPC
+pipeline below performs those preflight checks for its supported profile;
+explicit user consent and the future signing context remain caller duties.
 The review must come from this preparation pipeline; do not accept arbitrary
 amounts from query parameters or manually construct `accountChecksPassed`.
-Future integration should import the engine only when authorized, prepare once,
-quote the exact message fee, finalize the review and simulate the same message.
+Future integration should import the engine only when authorized and display
+the review returned by a successful verified preflight.
 Changing blockhash, amounts, route, costs or CU settings requires re-preparation
 or re-finalization as applicable and a newly displayed review.
 
@@ -68,6 +70,22 @@ wallet wrapper still verifies every signature after a later authorized prompt.
 The module never calls send/sign RPC. Refresh accounts and simulation before
 the actual signing request; preflight does not freeze chain state.
 
+Snapshots are bound to the original connection object and endpoint. A new
+provider/connection requires a new account verification; the pipeline also
+rechecks genesis before quoting and after simulation. Approved JSON manifest,
+wallet public key, returned account bytes/owners and the input BN amount are
+copied before asynchronous work can expose them to caller edits. These guards
+prevent accidental cross-request/provider mixups; an RPC provider remains a
+trusted data source and hostile JavaScript in the same realm is out of scope.
+
+Snapshot age starts before the account-loading RPC, not when verification
+finishes. Both wall-clock and monotonic elapsed time count toward the explicit
+maximum age; a backwards wall clock fails closed. The returned review expiry
+is capped by the remaining snapshot age as well as the quote lifetime. Expiry
+and connection identity are checked again after asynchronous finalization.
+These limits do not make a quote executable against future chain state or
+replace the still-required fresh signing context.
+
 The verifier targets the pinned 1112-byte pool / 328-byte config / classic SPL
 profile only. Any deployment/hash/layout change fails closed pending a new
 reviewed manifest/decoder. Hash pinning is not source-build parity. The fixture
@@ -76,8 +94,8 @@ bytes, and must never be used as a production manifest.
 
 Do not enable launch, add a public swap route, relax CSP, describe future wallet
 code as covered by the current audit, or reuse synthetic pool addresses based
-on this candidate. Production pool/config checks, simulation, fee quotes,
-blockhash handling, wallet integration and launch authorization remain open.
+on this candidate. Execution against real approved pools, real fee/simulation
+responses, wallet integration and launch authorization remain open.
 
 Run `npm run test:swap-review`, `npm run test:trading-browser`,
 `npm run test:trading-rpc`, `npm run build`, and `npx tsc --noEmit`. Browser checks use an isolated VM with
