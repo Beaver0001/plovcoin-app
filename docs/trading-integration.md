@@ -396,7 +396,7 @@ does not re-evaluate the approved pools/instructions or review digest itself.
 Enqueue synchronously copies bytes and validates signature/blockhash/receipt,
 packet length, expiry and safe dispatch slot/height. It enters its one explicit
 HTTP request without an intervening await. The payload uses base64 with
-`skipPreflight:false`, `preflightCommitment:'finalized'`, `maxRetries:0` and the
+`skipPreflight:false`, `preflightCommitment:'confirmed'`, `maxRetries:0` and the
 core's final `minContextSlot`. It does not refresh a blockhash, re-sign, retry or
 follow redirects. Fetch credentials are omitted, cache is disabled. Each intent
 is consumed before fetch; its in-memory latch is supplemental to the durable
@@ -530,6 +530,86 @@ Chromium, including cross-tab ordering/conflicts, strict/abort/quota paths,
 provenance, binding, permissions and SIGKILL/reopen. `test:swap-rpc-browser` now
 also persists and replays the six HTTP integration observations. Browser RPC
 statuses/signers remain synthetic; no real wallet/network acceptance is claimed.
-The application is still unmounted and trading disabled. Production controller,
+The application is still unmounted and trading disabled. Production controller wiring,
 UI, independent connection/epoch/list approval and real wallet/RPC acceptance
 remain open; **LP-15 remains OPEN and MAINNET_GO=NO**.
+
+## Unified lifecycle candidate (v77)
+
+`createSwapLifecycleController({connection, receiptStore, observationStore,
+rpcAdapter, minimumContextSlot})` borrows genuine module-issued handles. The
+companion must bind that exact receipt handle; the adapter must bind the exact
+same connection object and an approved companion RPC identity. Copied API
+objects fail. The initial floor is explicitly supplied by the trusted host,
+including after restart; the controller does not invent or recover a missing
+dispatch-simulation floor. It combines this floor with persisted observation
+maxContextSlot for subsequent explicit queries.
+
+Construction opens no resources and performs no wallet/network requests. The
+host separately opens/validates storage and creates the RPC adapter (whose
+initialization checks genesis). No default provider/connection/manifest/epoch,
+permission flow, wallet discovery/connect, launch authorization or route is added.
+
+`bindSwap({preflight, wallet, readWalletState, subscribe, intentId})` accepts only
+the exact verified preflight from prepareVerifiedSwap and its original
+connection, prepared/review identities, height and slot. It supplies its own
+refreshVerifiedSwapContext, receipt claim and RPC enqueue to the existing core;
+callers cannot substitute readContext/claim/enqueue callbacks through this API.
+Wallet events and receipt/observation/RPC invalidation share the core lifetime.
+Each controller consumes an intent at binding; each bound approval is one-use.
+
+`await attempt.approve()` checks for an existing committed intent before asking
+the wallet. If found it returns EXISTING_INTENT with no new prompt/send. A race
+between different tabs can still prompt both wallets; the durable unique claim
+arbitrates dispatch. A signature/claim interruption returns ATTEMPT_INTERRUPTED
+with the original public receipt and PRESENT/NOT_FOUND/UNACKNOWLEDGED claim
+readback. None of these results permits automatic retry or replacement. A
+rejection before any claim/candidate remains an exception; subscriptions stop.
+
+After core enqueue is entered, the original public receipt is always returned.
+The controller records the delivery outcome and reports ACKNOWLEDGED,
+PRESENT_AFTER_READBACK or UNACKNOWLEDGED. Readback checks identity and conservative
+state rather than blindly repeating a failed write. An already persisted UNKNOWN
+is never presented as PENDING after a later matching ACK. Closed/quota-failed
+storage does not become a definitely-unsent exception. No signed bytes are
+returned or persisted by the controller.
+
+The v77 composition review found that v75 transport preflight used finalized
+while preparation, blockhash and signed simulation use confirmed. Transport
+preflight is now **confirmed**, with preflight still enabled, maxRetries0 and the
+final signed minContextSlot preserved. The loopback test checks all three
+commitments. Finalized status observations/invalid-blockhash checks keep their
+separate confirmation meaning; this change does not claim real RPC acceptance.
+
+`await controller.recover()` reads/joins the original receipt and observation
+stores without signing or network queries. It returns each retained receipt,
+projection (or null), combined minimum floor, RECONCILE state and
+canAutomaticallyDispatch=false. Orphan/corrupt/mismatched evidence fails closed.
+There is no automatic resubmission, release, replacement or polling timer.
+
+`controller.reconcile(intentId)` requires a committed receipt and uses only its
+original signature/network evidence. Same-intent concurrent calls on this
+controller share one in-flight promise. Different controllers/tabs still use
+the companion's atomic history rules. Observation write acknowledgment loss
+triggers one readback: matching evidence must occur after the previously read
+revision. Equivalent concurrent evidence can satisfy this readback; it is not
+an exactly-once write claim. There is no blind retry or second automatic query.
+
+`attempt.dispose()` and `controller.dispose()` detach every available
+subscription even if one unsubscribe throws. Controller disposal prevents new
+commands and disposes bound attempts; it does **not** close borrowed stores or
+the shared RPC adapter. Already-entered send/read operations may finish and
+persist public outcomes. A read operation may include its remaining read-only
+RPC requests after disposal. There is no disposal-driven signature/send/query.
+Post-enqueue cleanup failures remain attached to the receipt. The host owns
+closing the borrowed resources and creating any explicit replacement controller.
+
+`npm run test:swap-lifecycle-browser` exercises actual verified-account preflight,
+signature-preserving core, both real IndexedDBs, HTTP adapter and controller in
+isolated Chromium. Accounts/signer/RPC chain responses are synthetic and the
+test-only fetch bridge targets loopback. It covers wrong identities/floors,
+existing-intent suppression, ambiguity/quota/readback, disposed/closed resources,
+conservative UNKNOWN, coalescing, persisted floors and SIGKILL joined recovery.
+Real wallet acceptance, current approved pools/manifest/RPC, UI, origin bootstrap,
+quota/conflict policy and separate release authorization remain open.
+**LP-15 remains OPEN; MAINNET_GO=NO; TRADE_LAUNCH_ENABLED=false.**

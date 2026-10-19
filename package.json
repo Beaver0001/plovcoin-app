@@ -16,7 +16,8 @@
     "test:swap-rpc": "node scripts/test-swap-rpc.cjs",
     "test:swap-rpc-browser": "node scripts/test-swap-rpc-browser.cjs",
     "test:observation-store": "node scripts/test-observation-store.cjs",
-    "test:observation-store-browser": "node scripts/test-observation-store-browser.cjs"
+    "test:observation-store-browser": "node scripts/test-observation-store-browser.cjs",
+    "test:swap-lifecycle-browser": "node scripts/test-swap-lifecycle-browser.cjs"
   },
   "dependencies": {
     "@meteora-ag/cp-amm-sdk": "1.5.1",
