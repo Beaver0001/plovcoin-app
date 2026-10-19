@@ -43,7 +43,8 @@ All tests use synthetic keys; no real wallet connection is claimed.
 Callers of the low-level preparation functions own account verification,
 freshness, fee RPC, balances, block height and simulation. The verified RPC
 pipeline below performs those preflight checks for its supported profile;
-explicit user consent and the future signing context remain caller duties.
+explicit user consent and the trusted wallet/launch state reader remain caller
+duties. The asynchronous signing context reader below supplies RPC evidence.
 The review must come from this preparation pipeline; do not accept arbitrary
 amounts from query parameters or manually construct `accountChecksPassed`.
 Future integration should import the engine only when authorized and display
@@ -84,7 +85,53 @@ maximum age; a backwards wall clock fails closed. The returned review expiry
 is capped by the remaining snapshot age as well as the quote lifetime. Expiry
 and connection identity are checked again after asynchronous finalization.
 These limits do not make a quote executable against future chain state or
-replace the still-required fresh signing context.
+replace revalidation at signing time.
+
+`refreshVerifiedSwapContext` supplies the asynchronous `readContext` callback
+for `signPreparedSwap`. It accepts only the original opaque preflight receipt
+and reuses its private manifest, canonical message, expiry and connection.
+Each invocation reloads finalized accounts with a nondecreasing account-slot
+floor, rechecks the unchanged full message fee and rent, simulates that exact
+message and checks current block height. ATA availability changes require new
+preparation; no blockhash, instructions, route or slippage are rewritten.
+
+The generic signing adapter awaits a context before the wallet call and again
+after the wallet returns, passing `{phase, transaction}`. Before the prompt,
+simulation uses `sigVerify=false`; after it, every signature is checked locally
+and simulation uses `sigVerify=true` on a copy of the returned transaction.
+It checks signatures again after asynchronous revalidation. The trusted
+synchronous `readWalletState` callback is sampled before RPC and after each
+await, so a wallet/network/launch change rejects the attempt. A post-sign
+failure cannot undo a signature already produced; no signed result is returned
+by the wrapper and no send/retry occurs. User cancellation is propagated.
+Only one signing attempt per preparation may be in flight. Re-finalizing the
+review during RPC or while the wallet prompt is open invalidates the attempt.
+
+Illustrative wiring, only after separate launch authorization and explicit
+user consent (currently unmounted and disabled):
+
+```js
+await signPreparedSwap({
+  prepared: preflight.prepared,
+  review: preflight.review,
+  wallet: trustedWalletAdapter,
+  readContext: input => refreshVerifiedSwapContext(connection, preflight, {
+    ...input,
+    readWalletState: () => ({
+      wallet: trustedWalletAdapter.publicKey.toBase58(),
+      network: selectedNetwork,
+      launchEnabled: TRADE_LAUNCH_ENABLED,
+    }),
+  }),
+});
+```
+
+The returned context is validated RPC evidence for the supported profile,
+not a freeze of future chain state. Both account reads and simulation trust
+the configured RPC; a finalized snapshot may be older than the confirmed
+simulation bank. A successful callback does not authorize a launch or a send.
+Real wallet UI acceptance and execution against actual project pools remain
+open. Signing tests use deterministic synthetic keys and mock RPC responses.
 
 The verifier targets the pinned 1112-byte pool / 328-byte config / classic SPL
 profile only. Any deployment/hash/layout change fails closed pending a new
@@ -98,6 +145,7 @@ on this candidate. Execution against real approved pools, real fee/simulation
 responses, wallet integration and launch authorization remain open.
 
 Run `npm run test:swap-review`, `npm run test:trading-browser`,
-`npm run test:trading-rpc`, `npm run build`, and `npx tsc --noEmit`. Browser checks use an isolated VM with
+`npm run test:trading-rpc`, `npm run test:trading-signing`, `npm run build`, and
+`npx tsc --noEmit`. Browser checks use an isolated VM with
 WebCrypto and no require/process/global Buffer; they are not an installed wallet
 or a full browser UI test. The standalone test forbids network requests.

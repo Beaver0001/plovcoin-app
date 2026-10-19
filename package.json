@@ -9,7 +9,8 @@
     "lint": "next lint",
     "test:swap-review": "node scripts/test-swap-review.cjs",
     "test:trading-browser": "node scripts/test-trading-browser.cjs",
-    "test:trading-rpc": "node scripts/test-trading-rpc.cjs"
+    "test:trading-rpc": "node scripts/test-trading-rpc.cjs",
+    "test:trading-signing": "node scripts/test-trading-signing.cjs"
   },
   "dependencies": {
     "@meteora-ag/cp-amm-sdk": "1.5.1",

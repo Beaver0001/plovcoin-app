@@ -80,16 +80,19 @@ export async function signReviewedTransaction<T>(options: {
   review: SwapReviewData;
   reviewedMessage: Uint8Array;
   transaction: T;
-  readContext: () => SigningContext;
+  readContext: (input: { phase: "before" | "after"; transaction: T }) => SigningContext | Promise<SigningContext>;
   getMessage: (transaction: T) => Uint8Array;
   verifySignedTransaction: (transaction: T) => boolean;
   wallet: { signTransaction: (transaction: T) => Promise<T> };
 }): Promise<T> {
   const reviewMessage = Uint8Array.from(options.reviewedMessage);
   const review = { ...options.review, poolAddresses: [...options.review.poolAddresses] };
-  assertReviewReady(review, reviewMessage, { ...options.readContext(), message: options.getMessage(options.transaction) });
+  const before = await options.readContext({ phase: "before", transaction: options.transaction });
+  assertReviewReady(review, reviewMessage, { ...before, message: options.getMessage(options.transaction) });
   const signed = await options.wallet.signTransaction(options.transaction);
-  assertReviewReady(review, reviewMessage, { ...options.readContext(), message: options.getMessage(signed) });
+  if (!options.verifySignedTransaction(signed)) throw new Error("Missing or invalid transaction signature");
+  const after = await options.readContext({ phase: "after", transaction: signed });
+  assertReviewReady(review, reviewMessage, { ...after, message: options.getMessage(signed) });
   if (!options.verifySignedTransaction(signed)) throw new Error("Missing or invalid transaction signature");
   return signed;
 }
