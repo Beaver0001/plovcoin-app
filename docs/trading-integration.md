@@ -175,7 +175,8 @@ on this candidate. Execution against real approved pools, real fee/simulation
 responses, wallet integration and launch authorization remain open.
 
 Run `npm run test:swap-review`, `npm run test:trading-browser`,
-`npm run test:trading-rpc`, `npm run test:trading-signing`, `npm run build`, and
+`npm run test:trading-rpc`, `npm run test:trading-signing`,
+`npm run test:swap-attempt`, `npm run build`, and
 `npx tsc --noEmit`. Browser checks use an isolated VM with
 WebCrypto and no require/process/global Buffer; they are not an installed wallet
 or a full browser UI test. The standalone test forbids network requests.
@@ -233,3 +234,68 @@ Sources checked 2026-10-20 (Asia/Dushanbe):
 
 No provider SDK dependency, mounted wallet UI, public trading route or submission
 flow is introduced by this candidate.
+
+## Continuous swap attempt core (unmounted candidate)
+
+`createWalletSwapAttempt({prepared,review,wallet,readContext,readWalletState,
+subscribe,intentId,lastValidBlockHeight,claimIntent,enqueue})` adds one explicit
+`approve()` attempt from review binding through a supplied enqueue boundary.
+It shares review-use identity with the sign-only session, so a review cannot
+be rebound between the two APIs. Its other public method is `dispose()`.
+It has no default provider, connection, storage or network transport.
+
+Subscriptions remain active across the wallet response, intent persistence and
+a further signed-context refresh. Every delivered event permanently invalidates
+the attempt before enqueue, including A→B→A. State, current review identity,
+wall-clock rollback and monotonic expiry are rechecked. This cannot recover
+events the trusted publisher never delivers. Use the existing verified-preflight
+reader with the original connection; its account/pinning/slot/fee/simulation
+checks remain mandatory. Arbitrary callbacks or `launchEnabled=true` are not
+independent evidence or release authorization.
+
+The core copies the signed transaction before exposing it to later context
+work, verifies all signatures and byte identity, and returns only a frozen
+public receipt with `PENDING` or `UNKNOWN`. The expected transaction signature
+is encoded with direct pinned bs58 4.0.1, already present in the lockfile; no
+transitive package version changes. Returned receipts contain no signed bytes.
+
+`claimIntent(receipt)` must atomically reserve the stable intent and durably
+persist the receipt before resolving strictly `true`. The receipt contains
+intent/review IDs, expected signature, genesis, original blockhash/last valid
+height and expiry, never private keys or signed transaction bytes. False,
+undefined or rejection prevents enqueue. An ambiguous claim may still have
+committed; reconcile the store before a new user action. Reuse the original
+intent for a pending operation; automatically generating a new intent ID on
+retry would bypass the caller's duplicate-operation protection. No concrete
+storage implementation or cross-tab atomicity is supplied or certified here.
+
+After persistence, the core invokes the signed context reader again, requires
+the original last-valid height and `signatureVerification=true`, verifies the
+returned transaction, then allocates a transport byte copy. A final synchronous
+state/time/latch check immediately precedes the single supplied
+`enqueue(bytes,receipt,{minContextSlot,currentBlockHeight})` invocation. This
+third argument is frozen and preserves the final simulation slot floor.
+
+The trusted enqueue implementation must consume that copy at its actual enqueue
+boundary, without delaying the decision through another await or hidden retry,
+and must preserve all bytes/options. It necessarily receives signed bytes and
+could retain them; this is an integration contract, not confinement against a
+malicious transport or same-realm script. No production enqueue adapter is
+implemented. Tests use in-memory fake enqueue only. A single invocation is not
+an exactly-once network-delivery guarantee, and RPC forwarding behavior remains
+the future transport's responsibility.
+
+Once enqueue is entered, throws/rejections, missing responses and mismatched
+returned signatures yield `UNKNOWN` with the expected receipt. A matching
+signature yields `PENDING`, never confirmation. Events/disposal after entry
+cannot cancel the network or discard that receipt. Listener cleanup failure
+after entry is reported as `cleanupFailed` on the receipt instead of throwing
+an error that might look definitely unsubmitted. No automatic retry occurs.
+Before enqueue, errors reject and listeners are cleaned; the same attempt and
+review remain consumed. Durable storage may already hold DISPATCH_INTENT even
+if a later gate fails, so its recovery policy must handle that safe ambiguity.
+
+Persistent outcome updates, actual status lookup, crash recovery/reconciliation,
+transport errors/retry configuration, concrete injected-provider wiring and
+production UI are still open. The application remains unmounted with launch
+false. This core is not a completed submission feature or launch approval.
