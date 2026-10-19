@@ -190,3 +190,46 @@ the updated markup passes. The same browser also runs the preparation/signing
 pipeline with mock RPC and a synthetic wallet, including closed-gate refusal.
 This is isolated SSR/browser-engine evidence, not a mounted Next route,
 React hydration test, installed wallet integration or mainnet acceptance.
+
+## Injected Phantom compatibility candidate
+
+`createInjectedPhantomReviewSession({provider, connection, preflight,
+readAppState, subscribeAppState})` supplies the session wiring for a traditional
+injected Phantom-compatible provider. It requires an already connected provider
+with `signTransaction`, `on` and `removeListener`; the `isPhantom` flag is only
+a compatibility check, not proof of provider authenticity. The trusted host
+supplies the provider. This code never searches window globals, connects,
+reconnects or uses a sign-and-send fallback.
+
+It subscribes to `connect`, `accountChanged` (including null) and `disconnect`.
+Every event latches invalidation even when the public key is unchanged. The
+application separately supplies its selected RPC/network and launch flag via
+`readAppState`, and synchronously publishes every change through
+`subscribeAppState(callback)`, returning an unsubscribe function. Network comes
+from that app/RPC selection; this adapter does not infer a network from the
+Solana provider or assume an undocumented network-change event. Verified RPC
+genesis/connection checks still run in `refreshVerifiedSwapContext`.
+
+The returned session exposes only `sign()` and `dispose()`. Bind it while showing
+the review; invoke `sign()` only on explicit approval. Dispose on unmount,
+provider/RPC replacement or review replacement. Provider and app listeners are
+removed on all completed attempts and on explicit disposal. Partial registration
+failure rolls back already attempted registrations. Cleanup attempts all
+listeners even if one removal fails, and propagates the failure.
+
+This is a narrow legacy capability, not Wallet Standard or embedded-wallet
+support. Phantom's current traditional-provider documentation says sign-only
+methods are outside its Wallet Standard implementation and may be removed.
+If `signTransaction` is absent or rejects, this adapter fails closed. Do not
+replace it with `signAndSendTransaction`: that would bypass our post-sign,
+pre-submission checks and requires a separate architecture/security decision.
+Actual installed-extension preservation of the temporary WSOL signature,
+provider event delivery and signing behavior remain acceptance requirements.
+
+Sources checked 2026-10-20 (Asia/Dushanbe):
+- https://docs.phantom.com/solana/establishing-a-connection
+- https://docs.phantom.com/solana/sending-a-transaction
+- https://github.com/anza-xyz/wallet-adapter/blob/master/packages/wallets/phantom/src/adapter.ts
+
+No provider SDK dependency, mounted wallet UI, public trading route or submission
+flow is introduced by this candidate.

@@ -35,7 +35,7 @@ function connection(f){
 (async()=>{
  const output=await esbuild.build({entryPoints:['lib/trading/engine/index.mjs'],bundle:true,platform:'node',packages:'external',format:'cjs',write:false});
  const m=new Module(path.resolve('scripts/signing-fixture-module.cjs'),module);m.filename=path.resolve('scripts/signing-fixture-module.cjs');m.paths=module.paths;m._compile(output.outputFiles[0].text,m.filename);
- const {loadVerifiedRoute,prepareVerifiedSwap,refreshVerifiedSwapContext,signPreparedSwap,finalizeWalletReview,createWalletReviewSession}=m.exports;
+ const {loadVerifiedRoute,prepareVerifiedSwap,refreshVerifiedSwapContext,signPreparedSwap,finalizeWalletReview,createWalletReviewSession,createInjectedPhantomReviewSession}=m.exports;
  async function setup(side='BUY'){
   const f=accounts(),c=connection(f),snapshot=await loadVerifiedRoute(c,f.manifest,f.wallet);
   const p=await prepareVerifiedSwap(c,snapshot,{side,amountIn:new BN(side==='BUY'?'1000000000':'1000000000000'),slippageBps:50,computeUnitLimit:200000,computeUnitPriceMicroLamports:0n,extraReserveLamports:0n,maxSnapshotAgeMs:60000,quoteLifetimeMs:15000});
@@ -106,5 +106,25 @@ function connection(f){
  const rebound=await setup(),reboundSession=bind(rebound);reboundSession.session.dispose();assert.throws(()=>bind(rebound),/Review already bound/);assert.equal(reboundSession.stops,1);checks++;
  const bindFailure=await setup();let bindFailureStops=0;bindFailure.state.wallet='other';assert.throws(()=>createWalletReviewSession({prepared:bindFailure.p.prepared,review:bindFailure.p.review,wallet:{signTransaction:async tx=>tx},readContext:bindFailure.readContext,readWalletState:()=>bindFailure.state,subscribe:()=>()=>bindFailureStops++}),/Wallet session changed/);assert.equal(bindFailureStops,1);checks++;
  const newReview=await setup(),newReviewSession=bind(newReview);assert((await newReviewSession.session.sign()).verifySignatures(true));checks++;
+ function phantom(h){
+  const handlers=new Map(),appHandlers=new Set();const counts={connect:0,send:0,sign:0,removed:0,appStopped:0};
+  const provider={isPhantom:true,isConnected:true,publicKey:key.publicKey,on(event,fn){if(!handlers.has(event))handlers.set(event,new Set());handlers.get(event).add(fn);return this;},removeListener(event,fn){counts.removed++;handlers.get(event)?.delete(fn);return this;},emit(event,value){for(const fn of [...(handlers.get(event)||[])])fn(value);},connect(){counts.connect++;throw Error('Unexpected connect');},signAndSendTransaction(){counts.send++;throw Error('Unexpected send');},async signTransaction(tx){assert.equal(this,provider);counts.sign++;h.prompts++;tx.partialSign(key);return Transaction.from(tx.serialize());}};
+  const options={provider,connection:h.c,preflight:h.p,readAppState:()=>h.state,subscribeAppState:fn=>{appHandlers.add(fn);return ()=>{counts.appStopped++;appHandlers.delete(fn);};}};
+  return {provider,options,counts,handlers,appHandlers,emitApp:()=>{for(const fn of [...appHandlers])fn();},listeners:()=>[...handlers.values()].reduce((n,x)=>n+x.size,0)};
+ }
+ const providerStable=await setup(),ps=phantom(providerStable),psSession=createInjectedPhantomReviewSession(ps.options);assert.equal(ps.listeners(),3);assert.equal(ps.counts.sign,0);assert((await psSession.sign()).verifySignatures(true));assert.equal(ps.counts.sign,1);assert.equal(ps.counts.connect+ps.counts.send,0);assert.equal(ps.listeners(),0);assert.equal(ps.counts.removed,3);assert.equal(ps.counts.appStopped,1);checks++;
+ for(const event of ['connect','accountChanged','disconnect']){
+  const h=await setup(),p=phantom(h),session=createInjectedPhantomReviewSession(p.options);p.provider.emit(event,event==='accountChanged'?null:key.publicKey);await assert.rejects(()=>session.sign(),/Wallet session changed/);assert.equal(h.prompts,0);assert.equal(p.listeners(),0);assert.equal(p.appHandlers.size,0);assert.equal(p.counts.connect+p.counts.send,0);checks++;
+ }
+ for(const field of ['network','launchEnabled']){
+  const h=await setup(),p=phantom(h),session=createInjectedPhantomReviewSession(p.options),old=h.state[field];h.state[field]=field==='network'?'devnet':false;p.emitApp();h.state[field]=old;p.emitApp();await assert.rejects(()=>session.sign(),/Wallet session changed/);assert.equal(h.prompts,0);assert.equal(p.listeners(),0);checks++;
+ }
+ const disconnectedProvider=await setup(),dp=phantom(disconnectedProvider);dp.provider.isConnected=false;assert.throws(()=>createInjectedPhantomReviewSession(dp.options),/Wallet session changed/);assert.equal(dp.listeners(),0);assert.equal(dp.appHandlers.size,0);assert.equal(dp.counts.connect,0);checks++;
+ const noSignOnly=await setup(),ns=phantom(noSignOnly);delete ns.provider.signTransaction;assert.throws(()=>createInjectedPhantomReviewSession(ns.options),/sign-only provider required/);assert.equal(ns.listeners(),0);assert.equal(ns.counts.send,0);checks++;
+ const badRegistration=await setup(),br=phantom(badRegistration),on=br.provider.on;br.provider.on=function(event,fn){on.call(this,event,fn);if(event==='accountChanged')throw Error('Registration failed');return this;};assert.throws(()=>createInjectedPhantomReviewSession(br.options),/Registration failed/);assert.equal(br.listeners(),0);checks++;
+ const badAppSubscription=await setup(),ba=phantom(badAppSubscription);ba.options.subscribeAppState=()=>{throw Error('App subscription failed');};assert.throws(()=>createInjectedPhantomReviewSession(ba.options),/App subscription failed/);assert.equal(ba.listeners(),0);checks++;
+ const nullKey=await setup(),nk=phantom(nullKey);nk.provider.publicKey=null;assert.throws(()=>createInjectedPhantomReviewSession(nk.options),/Wallet session changed/);assert.equal(nk.listeners(),0);checks++;
+ const providerReject=await setup(),pr=phantom(providerReject),reason=Object.assign(Error('Phantom fixture reject'),{code:4001});pr.provider.signTransaction=async()=>{pr.counts.sign++;throw reason;};const prSession=createInjectedPhantomReviewSession(pr.options);await assert.rejects(()=>prSession.sign(),e=>e===reason&&e.code===4001);assert.equal(pr.listeners(),0);assert.equal(pr.counts.connect+pr.counts.send,0);checks++;
+ const partialCleanup=await setup(),pc=phantom(partialCleanup),remove=pc.provider.removeListener;pc.provider.removeListener=function(event,fn){remove.call(this,event,fn);if(event==='connect')throw Error('Removal failed');};const pcSession=createInjectedPhantomReviewSession(pc.options);assert.throws(()=>pcSession.dispose(),/cleanup failed/);assert.equal(pc.listeners(),0);assert.equal(pc.appHandlers.size,0);checks++;
  console.log(JSON.stringify({status:'PASS',checks,wallet:'synthetic deterministic key only',simulation:'mock RPC before/after; sigVerify false/true; no actual network execution',userSignatures:0,sends:0}));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>clearTimeout(watchdog));
