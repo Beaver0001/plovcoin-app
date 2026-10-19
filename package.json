@@ -11,7 +11,8 @@
     "test:trading-browser": "node scripts/test-trading-browser.cjs",
     "test:trading-rpc": "node scripts/test-trading-rpc.cjs",
     "test:trading-signing": "node scripts/test-trading-signing.cjs",
-    "test:swap-attempt": "node scripts/test-swap-attempt.cjs"
+    "test:swap-attempt": "node scripts/test-swap-attempt.cjs",
+    "test:receipt-store-browser": "node scripts/test-receipt-store-browser.cjs"
   },
   "dependencies": {
     "@meteora-ag/cp-amm-sdk": "1.5.1",

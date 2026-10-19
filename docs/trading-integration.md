@@ -266,8 +266,9 @@ height and expiry, never private keys or signed transaction bytes. False,
 undefined or rejection prevents enqueue. An ambiguous claim may still have
 committed; reconcile the store before a new user action. Reuse the original
 intent for a pending operation; automatically generating a new intent ID on
-retry would bypass the caller's duplicate-operation protection. No concrete
-storage implementation or cross-tab atomicity is supplied or certified here.
+retry would bypass the caller's duplicate-operation protection. This generic
+core alone does not certify storage. The optional IndexedDB adapter below
+supplies a separately tested implementation.
 
 After persistence, the core invokes the signed context reader again, requires
 the original last-valid height and `signatureVerification=true`, verifies the
@@ -295,7 +296,81 @@ Before enqueue, errors reject and listeners are cleaned; the same attempt and
 review remain consumed. Durable storage may already hold DISPATCH_INTENT even
 if a later gate fails, so its recovery policy must handle that safe ambiguity.
 
-Persistent outcome updates, actual status lookup, crash recovery/reconciliation,
-transport errors/retry configuration, concrete injected-provider wiring and
-production UI are still open. The application remains unmounted with launch
-false. This core is not a completed submission feature or launch approval.
+Actual status lookup, on-chain reconciliation, transport errors/retry
+configuration, concrete injected-provider wiring and production UI are still
+open. Local receipt storage and recovery are described below. The application
+remains unmounted with launch false; this is not a completed submission feature
+or launch approval.
+
+## Explicit IndexedDB receipt storage candidate
+
+`openSwapReceiptStore({indexedDB,storageManager,databaseName,epochId,
+initialize:false})` opens an expected version1 database. It never discovers a
+wallet, sends, requests persistent-storage permission, or accesses storage on
+import. Both browser dependencies and stable database/epoch identities are
+explicit trusted-host inputs. Public APIs are `claim`, `get`, `recordOutcome`,
+`recover`, `isOpen`, `subscribeInvalidation` and `close`.
+
+First initialization requires a separately authorized `initialize:true` and an
+already persistent storage bucket (`storageManager.persisted()===true`).
+Normal opening defaults to refusing a missing DB, unknown schema or mismatched
+epoch; it does not silently recreate lost history. Do not retry opening with
+initialize:true after data loss. The host must preserve the expected epoch
+independently of that database and perform reconciliation before any reset.
+
+`claim` validates and copies exactly the public receipt fields before its first
+await. Extra fields, invalid encodings and unsupported states are rejected;
+private keys, full signed bytes/base64 and arbitrary payloads are never stored.
+It uses a unique-key `add`, not an application read-then-write. Concurrent
+readwrite transactions serialize competing claims; only one receives true.
+ConstraintError yields false without replacing the original. Other errors and
+transaction abort reject. True is resolved only after `complete`, never merely
+after request success, and persistence policy is checked before and after.
+
+All writes request `durability:'strict'` and reject when the transaction does
+not report strict. Initial metadata is also rewritten through a strict
+readwrite transaction. This is the browser's durability hint, not a guarantee
+against power loss, hardware failure, user/origin deletion or hostile same-realm
+scripts. No relaxed/default durability fallback is used. Reads/recovery remain
+available when persistence permission is absent, but claims/outcome writes fail.
+
+`recordOutcome` accepts only matching PENDING/UNKNOWN public receipts, preserving
+all original identity fields. UNKNOWN cannot be overwritten by a late PENDING
+ack. Terminal network outcomes are deliberately unsupported until the chain
+status/reconciliation adapter exists. There is no deletion, expiry purge,
+reset, automatic intent release or retransmission API.
+
+`recover` validates all rows and returns frozen public snapshots marked
+`recoveryState:'RECONCILE',canAutomaticallyDispatch:false`, including expired
+receipts. Corruption rejects instead of silently skipping a record. Close,
+unexpected connection close and versionchange invalidate the handle. The host
+must compose `store.subscribeInvalidation(callback)` with wallet/app events
+when constructing the continuous attempt. A closed handle cannot acknowledge
+a later successful claim. `isOpen()` alone does not prove continued persistence
+permission or absence of future deletion.
+
+An isolated persistent Chromium133 profile exercised 20 storage scenarios,
+including a two-tab claim race, request success followed by real transaction
+abort, strict-mode refusal, injected quota exception, metadata mismatch,
+post-commit acknowledgement failure, abrupt browser-process SIGKILL/restart and
+missing/deleted DB refusal. Five continuous-core cases used actual IndexedDB
+claims/outcomes with a synthetic signer/context and fake enqueue, including
+storage-close invalidation before enqueue. Persistent-storage permission was
+granted only to the isolated test origin by the test harness. This does not
+verify the owner's Edge/profile, OS power loss, real quota exhaustion, network
+status recovery or installed Phantom.
+
+Run `npm run test:receipt-store-browser` with the optional developer browser
+runtime. `PLOV_BROWSER_RUNTIME` identifies the directory containing the pinned
+Playwright package and extracted Chromium (the existing v58 runtime is the
+local default); `PLOV_CHROMIUM` can override its executable. Set
+`PLOV_RECEIPT_RESULTS` for logs/results. The runner uses its own temporary
+profile, grants only its origin, and kills only its own browser process for the
+recovery case. It never uses a real wallet or sends to a network.
+
+Sources checked2026-10-20: https://www.w3.org/TR/IndexedDB/ (API3 working draft,
+strict durability is a hint) and https://storage.spec.whatwg.org/ (bucket
+persistence, permission and user/origin removal). Browser-policy handling is
+this candidate's design; it is not new owner-approved launch policy. Production
+initialization/consent, retention, status reconciliation and UI wiring remain
+open. MAINNET_GO=NO.
