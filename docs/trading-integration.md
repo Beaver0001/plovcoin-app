@@ -107,23 +107,53 @@ by the wrapper and no send/retry occurs. User cancellation is propagated.
 Only one signing attempt per preparation may be in flight. Re-finalizing the
 review during RPC or while the wallet prompt is open invalidates the attempt.
 
-Illustrative wiring, only after separate launch authorization and explicit
-user consent (currently unmounted and disabled):
+`createWalletReviewSession` adds an event lifetime around this lower-level
+pipeline. Bind it when displaying/approving one review. Its mandatory synchronous
+subscription must report every account, network, disconnect, reconnect and
+launch-policy event, including a switch away and back to identical values.
+Any event permanently invalidates that session. Snapshot checks alone cannot
+observe such transient history. The event source must not debounce/coalesce
+those events away; an extension that does not expose them cannot be certified
+by this wrapper.
+
+The session checks state and its event latch around asynchronous context reads
+and the wallet call, and before returning a signed result. It permits only one
+attempt and rejects rebinding the same review object, including after dispose
+or failure. Cancellation/error requires a newly prepared/displayed review;
+there is no automatic retry. Listeners are removed when the attempt finishes
+or `dispose()` is called. Dispose on review replacement and component unmount,
+including while a wallet response is pending. No wallet provider is discovered
+or connected by this module, and no listener is attached until explicitly bound.
+
+Illustrative wiring, only after separate launch authorization. Creating a
+session does not request a signature; call `sign()` only on explicit user
+consent. The event publisher and actual wallet integration remain to be supplied
+and tested; they are not implemented by this example:
 
 ```js
-await signPreparedSwap({
+const readWalletState = () => ({
+  wallet: trustedWalletAdapter.publicKey?.toBase58() ?? null,
+  network: selectedNetwork,
+  launchEnabled: TRADE_LAUNCH_ENABLED,
+});
+const session = createWalletReviewSession({
   prepared: preflight.prepared,
   review: preflight.review,
   wallet: trustedWalletAdapter,
+  readWalletState,
+  subscribe: subscribeWalletAndLaunchEvents, // callback => synchronous unsubscribe
   readContext: input => refreshVerifiedSwapContext(connection, preflight, {
-    ...input,
-    readWalletState: () => ({
-      wallet: trustedWalletAdapter.publicKey.toBase58(),
-      network: selectedNetwork,
-      launchEnabled: TRADE_LAUNCH_ENABLED,
-    }),
+    ...input, readWalletState,
   }),
 });
+// In the explicit approval handler:
+try {
+  const signed = await session.sign();
+  // A separately authorized submission flow still needs its own current gates.
+} finally {
+  session.dispose();
+}
+// Also dispose on unmount or replacement, even before the approval handler runs.
 ```
 
 The returned context is validated RPC evidence for the supported profile,

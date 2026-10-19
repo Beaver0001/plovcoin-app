@@ -35,7 +35,7 @@ function connection(f){
 (async()=>{
  const output=await esbuild.build({entryPoints:['lib/trading/engine/index.mjs'],bundle:true,platform:'node',packages:'external',format:'cjs',write:false});
  const m=new Module(path.resolve('scripts/signing-fixture-module.cjs'),module);m.filename=path.resolve('scripts/signing-fixture-module.cjs');m.paths=module.paths;m._compile(output.outputFiles[0].text,m.filename);
- const {loadVerifiedRoute,prepareVerifiedSwap,refreshVerifiedSwapContext,signPreparedSwap,finalizeWalletReview}=m.exports;
+ const {loadVerifiedRoute,prepareVerifiedSwap,refreshVerifiedSwapContext,signPreparedSwap,finalizeWalletReview,createWalletReviewSession}=m.exports;
  async function setup(side='BUY'){
   const f=accounts(),c=connection(f),snapshot=await loadVerifiedRoute(c,f.manifest,f.wallet);
   const p=await prepareVerifiedSwap(c,snapshot,{side,amountIn:new BN(side==='BUY'?'1000000000':'1000000000000'),slippageBps:50,computeUnitLimit:200000,computeUnitPriceMicroLamports:0n,extraReserveLamports:0n,maxSnapshotAgeMs:60000,quoteLifetimeMs:15000});
@@ -79,5 +79,32 @@ function connection(f){
  const refinalize=h=>finalizeWalletReview(h.p.prepared,{messageFeeLamports:h.p.review.messageFee,extraReserveLamports:h.p.review.extraReserve,walletBalanceLamports:BigInt(h.f.accounts[h.f.wallet].lamports),expiresAtMs:h.p.review.expiresAtMs});
  const superseded=await setup();superseded.c.hooks.fee=async()=>{await refinalize(superseded);return {context:{slot:100},value:10000};};await assert.rejects(()=>superseded.sign(),/Review changed/);assert.equal(superseded.prompts,0);checks++;
  const changedReview=await setup();await assert.rejects(()=>changedReview.sign({signTransaction:async tx=>{changedReview.prompts++;tx.partialSign(key);await refinalize(changedReview);return tx;}}),/Review changed/);assert.equal(changedReview.prompts,1);checks++;
+ // Event lifetime regression: returning to identical values cannot revive a review.
+ function bind(h,options={}){
+  const listeners=new Set();let stops=0;
+  const emit=()=>{for(const fn of [...listeners])fn();};
+  const reader=options.readContext||h.readContext;
+  const session=createWalletReviewSession({prepared:h.p.prepared,review:h.p.review,wallet:options.wallet||{signTransaction:async tx=>{h.prompts++;tx.partialSign(key);return tx;}},readContext:reader,readWalletState:options.readWalletState||(()=>h.state),subscribe:fn=>{listeners.add(fn);if(options.onSubscribe)options.onSubscribe(fn);return ()=>{stops++;listeners.delete(fn);};}});
+  return {session,emit,listeners,get stops(){return stops;}};
+ }
+ for(const field of ['wallet','network','launchEnabled'])for(const timing of ['before','beforeRpc','signer','afterRpc']){
+  const h=await setup();let b,fees=0;
+  const roundTrip=()=>{const old=h.state[field];h.state[field]=field==='launchEnabled'?false:'other';b.emit();h.state[field]=old;};
+  b=bind(h,{wallet:{signTransaction:async tx=>{h.prompts++;tx.partialSign(key);if(timing==='signer')roundTrip();return tx;}}});
+  if(timing==='before')roundTrip();
+  h.c.hooks.fee=()=>{fees++;if((timing==='beforeRpc'&&fees===1)||(timing==='afterRpc'&&fees===2))roundTrip();return {context:{slot:100},value:10000};};
+  await assert.rejects(()=>b.session.sign(),/Wallet session changed/);assert.equal(h.prompts,['before','beforeRpc'].includes(timing)?0:1);assert.equal(b.listeners.size,0);assert.equal(b.stops,1);await assert.rejects(()=>b.session.sign(),/already used/);checks++;
+ }
+ const stableSession=await setup(),stableBound=bind(stableSession);assert((await stableBound.session.sign()).verifySignatures(true));assert.equal(stableBound.listeners.size,0);assert.equal(stableBound.stops,1);await assert.rejects(()=>stableBound.session.sign(),/already used/);stableBound.session.dispose();assert.equal(stableBound.stops,1);checks++;
+ const disposed=await setup(),disposedBound=bind(disposed);disposedBound.session.dispose();await assert.rejects(()=>disposedBound.session.sign(),/Wallet session changed/);assert.equal(disposed.prompts,0);assert.equal(disposedBound.stops,1);checks++;
+ const eventAtBind=await setup();assert.throws(()=>bind(eventAtBind,{onSubscribe:fn=>fn()}),/Wallet session changed/);assert.equal(eventAtBind.prompts,0);checks++;
+ const eventInReader=await setup();let callback,stopped=0;assert.throws(()=>createWalletReviewSession({prepared:eventInReader.p.prepared,review:eventInReader.p.review,wallet:{signTransaction:async tx=>tx},readContext:eventInReader.readContext,subscribe:fn=>{callback=fn;return ()=>stopped++;},readWalletState:()=>{callback();return eventInReader.state;}}),/Wallet session changed/);assert.equal(stopped,1);checks++;
+ const pendingSession=await setup();let enter,releaseSession;const enteredSession=new Promise(r=>enter=r),waitSession=new Promise(r=>releaseSession=r),pendingBound=bind(pendingSession,{wallet:{signTransaction:async tx=>{pendingSession.prompts++;enter();await waitSession;tx.partialSign(key);return tx;}}});
+ const waiting=pendingBound.session.sign();await enteredSession;await assert.rejects(()=>pendingBound.session.sign(),/already used/);pendingBound.emit();releaseSession();await assert.rejects(()=>waiting,/Wallet session changed/);assert.equal(pendingBound.stops,1);checks++;
+ const failureSession=await setup(),failureBound=bind(failureSession,{wallet:{signTransaction:async()=>{failureSession.prompts++;throw Error('User rejected session');}}});await assert.rejects(()=>failureBound.session.sign(),/User rejected session/);assert.equal(failureBound.listeners.size,0);assert.equal(failureBound.stops,1);checks++;
+ const staleSession=await setup(),staleBound=bind(staleSession);staleSession.state.wallet='other';await assert.rejects(()=>staleBound.session.sign(),/Wallet session changed/);assert.equal(staleSession.prompts,0);assert.equal(staleBound.stops,1);checks++;
+ const rebound=await setup(),reboundSession=bind(rebound);reboundSession.session.dispose();assert.throws(()=>bind(rebound),/Review already bound/);assert.equal(reboundSession.stops,1);checks++;
+ const bindFailure=await setup();let bindFailureStops=0;bindFailure.state.wallet='other';assert.throws(()=>createWalletReviewSession({prepared:bindFailure.p.prepared,review:bindFailure.p.review,wallet:{signTransaction:async tx=>tx},readContext:bindFailure.readContext,readWalletState:()=>bindFailure.state,subscribe:()=>()=>bindFailureStops++}),/Wallet session changed/);assert.equal(bindFailureStops,1);checks++;
+ const newReview=await setup(),newReviewSession=bind(newReview);assert((await newReviewSession.session.sign()).verifySignatures(true));checks++;
  console.log(JSON.stringify({status:'PASS',checks,wallet:'synthetic deterministic key only',simulation:'mock RPC before/after; sigVerify false/true; no actual network execution',userSignatures:0,sends:0}));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>clearTimeout(watchdog));
