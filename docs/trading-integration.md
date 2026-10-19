@@ -374,3 +374,78 @@ persistence, permission and user/origin removal). Browser-policy handling is
 this candidate's design; it is not new owner-approved launch policy. Production
 initialization/consent, retention, status reconciliation and UI wiring remain
 open. MAINNET_GO=NO.
+## Explicit RPC adapter and recovery observations (v75)
+
+`await createSwapRpcAdapter({connection, fetch, timeoutMs})` creates an unmounted
+candidate. Pass the **same connection used for verified preparation/refresh** and
+an explicitly trusted fetch implementation. The adapter pins its HTTPS endpoint,
+rejects URL credentials/fragments, checks genesis on initialization, and rejects
+later endpoint changes. No default fetch, wallet, storage, route or RPC is selected.
+Initialization performs a read-only genesis request; importing does nothing.
+Host wiring must still establish connection identity across the loader, core and
+adapter. Genesis/JSON-RPC responses are trusted RPC evidence, not cryptographic
+proof of a server's network; same-origin hostile JS/fetch is outside this model.
+
+Bind `adapter.enqueue` to the core's enqueue contract only after the host has
+opened/validated the receipt store. The core remains responsible for durable
+claim, review/message identity, continuous wallet/storage events and final live
+signed refresh. The adapter is not an independent authorization API: it verifies
+signatures, canonical bytes, expected first signature and original blockhash, but
+does not re-evaluate the approved pools/instructions or review digest itself.
+
+Enqueue synchronously copies bytes and validates signature/blockhash/receipt,
+packet length, expiry and safe dispatch slot/height. It enters its one explicit
+HTTP request without an intervening await. The payload uses base64 with
+`skipPreflight:false`, `preflightCommitment:'finalized'`, `maxRetries:0` and the
+core's final `minContextSlot`. It does not refresh a blockhash, re-sign, retry or
+follow redirects. Fetch credentials are omitted, cache is disabled. Each intent
+is consumed before fetch; its in-memory latch is supplemental to the durable
+store and does **not** survive reload. Do not infer a network exactly-once
+guarantee from either latch or `maxRetries:0`.
+
+A bounded timer aborts the request and settles the caller even if an injected
+fetch ignores AbortSignal. The HTTP server can still receive/process bytes after
+timeout/abort. A wrong RPC signature, RPC/HTTP/JSON error, close, changed endpoint
+or timeout rejects; once core enqueue is entered these become UNKNOWN with the
+original signature. Never interpret them as a safe reason to release the intent.
+Late results do not cause another submission. The adapter never logs signed
+bytes; the trusted transport/server necessarily sees and may retain them.
+
+`await adapter.reconcile(receipt, {minContextSlot})` performs one read-only
+observation of the original receipt. The host supplies a trusted slot floor (also
+on recovery; the v74 receipt does not persist this floor). It checks genesis
+again, queries the exact original signature with `searchTransactionHistory:true`,
+and rejects stale/malformed status evidence as `UNRESOLVED_RPC`. Processed or
+confirmed success/error produces a **nonfinal observation**; finalized produces
+`FINALIZED_SUCCESS_OBSERVED` or `FINALIZED_ERROR_OBSERVED`.
+
+For null history it checks the original blockhash at finalized commitment, with
+a floor at least the returned status context slot. Results remain
+`UNRESOLVED_VALID_BLOCKHASH` or `UNRESOLVED_EXPIRED_BLOCKHASH`. A pruned/partial RPC
+can return null for an executed transaction; an invalid hash proves no absence
+of past execution. No observation releases or replaces an intent, even after
+the local quote deadline. Every result preserves the original receipt state and
+signature and has `canAutomaticallyDispatch:false`.
+
+Observations are not yet persisted as terminal store states: v74 schema still
+accepts only DISPATCH_INTENT/PENDING/UNKNOWN. Host must persist the core's public
+outcome using `store.recordOutcome`; if that fails the earlier committed intent
+must remain available for reconciliation. No polling scheduler, status merge,
+terminal-state storage migration, UI or production composition is implemented.
+**LP-15 remains OPEN and MAINNET_GO=NO.**
+
+Validation: `npm run test:swap-rpc` covers 44 synthetic/mock-fetch cases.
+`npm run test:swap-rpc-browser` uses a fresh isolated Chromium persistent profile,
+real IndexedDB and actual HTTP to a loopback fixture through an explicit
+test-only HTTPS-to-loopback fetch bridge. Its six scenarios cover ACK, claim
+event suppression, lost send response, post-dispatch wallet event, wrong returned
+signature and HTTP429. The server verifies both signatures and byte digest;
+there are zero external requests and no real wallet/mainnet activity. A synthetic
+finalized status after a lost response demonstrates reconciliation mechanics,
+not actual chain confirmation. Test RPC payloads are ephemeral; delivered
+evidence contains public signature/digest/options, never raw signed bytes.
+
+Primary API references (checked 20 October 2026, Dushanbe):
+https://solana.com/docs/rpc/http/sendtransaction
+https://solana.com/docs/rpc/http/getsignaturestatuses
+https://solana.com/docs/rpc/http/isblockhashvalid
