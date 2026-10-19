@@ -38,6 +38,7 @@ let browserContext,server,origin;const save=()=>fs.writeFileSync(path.join(dir,'
  replaceOnce("['stable','claimEvent','transportError','postDispatchEvent']","['stable','claimEvent','transportError','postDispatchEvent','differentSignature','http429']");
  replaceOnce('const listeners=new Set();let enqueues=0,claims=0;',`const rpcConnection={rpcEndpoint:'https://fixture.invalid/rpc'};
    const adapter=await PLOVTradeEngine.createSwapRpcAdapter({connection:rpcConnection,timeoutMs:1000,fetch:(url,init)=>{if(url!==rpcConnection.rpcEndpoint)throw Error('RPC endpoint mismatch');return fetch('/rpc?mode='+mode,init);}});
+   if(!window.observationStore)window.observationStore=await PLOVTradeEngine.openSwapObservationStore({indexedDB,storageManager:navigator.storage,databaseName:'rpc_observations',receiptStore:store,rpcIdentities:[adapter.identity.rpcIdentity],initialize:true});
    let expectedBytes;const listeners=new Set();let enqueues=0,claims=0;`);
  replaceOnce("claimIntent:async receipt=>{claims++;if(mode==='claimEvent')emit();return true;}","claimIntent:async receipt=>{claims++;const ok=await store.claim(receipt);if(mode==='claimEvent')emit();return ok;}");
  replaceOnce("subscribe:fn=>{listeners.add(fn);return ()=>listeners.delete(fn);}","subscribe:fn=>{listeners.add(fn);const stop=store.subscribeInvalidation(fn);return ()=>{listeners.delete(fn);stop();};}");
@@ -49,6 +50,9 @@ let browserContext,server,origin;const save=()=>fs.writeFileSync(path.join(dir,'
    const recovered=(await store.recover()).find(x=>x.intentId===stored.intentId);if(!recovered||recovered.canAutomaticallyDispatch!==false||recovered.signature!==stored.signature)throw Error('Unsafe recovery');
    if(await store.claim({...stored,state:'DISPATCH_INTENT'})!==false)throw Error('Durable duplicate accepted');
    const observation=await adapter.reconcile(result||stored,{minContextSlot:100});
+   const savedObservation=await observationStore.recordObservation(observation);
+   const replayedObservation=await observationStore.get(stored.intentId);
+   if(savedObservation.revision!==1||replayedObservation.observation!==observation.observation||replayedObservation.canAutomaticallyDispatch!==false)throw Error('Observation persistence/replay mismatch');
    const expectedObservation=['stable','transportError','postDispatchEvent'].includes(mode)?'FINALIZED_SUCCESS_OBSERVED':(mode==='claimEvent'?'UNRESOLVED_VALID_BLOCKHASH':'UNRESOLVED_EXPIRED_BLOCKHASH');
    if(observation.observation!==expectedObservation||observation.canAutomaticallyDispatch!==false)throw Error('Bad recovery observation');
    let duplicateBlocked=false;try{if(expectedBytes)await adapter.enqueue(expectedBytes,stored,{minContextSlot:100,currentBlockHeight:10});else duplicateBlocked=true;}catch{duplicateBlocked=true;}if(!duplicateBlocked)throw Error('Duplicate dispatched');

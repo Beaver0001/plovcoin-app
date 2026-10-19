@@ -427,11 +427,13 @@ of past execution. No observation releases or replaces an intent, even after
 the local quote deadline. Every result preserves the original receipt state and
 signature and has `canAutomaticallyDispatch:false`.
 
-Observations are not yet persisted as terminal store states: v74 schema still
-accepts only DISPATCH_INTENT/PENDING/UNKNOWN. Host must persist the core's public
+In v75 observations were not persisted as terminal store states. The v76
+companion described below adds persistent evidence without changing the v74
+receipt schema, which still accepts only DISPATCH_INTENT/PENDING/UNKNOWN.
+Host must persist the core's public
 outcome using `store.recordOutcome`; if that fails the earlier committed intent
-must remain available for reconciliation. No polling scheduler, status merge,
-terminal-state storage migration, UI or production composition is implemented.
+must remain available for reconciliation. No polling scheduler,
+receipt-schema migration, UI or production composition is implemented.
 **LP-15 remains OPEN and MAINNET_GO=NO.**
 
 Validation: `npm run test:swap-rpc` covers 44 synthetic/mock-fetch cases.
@@ -449,3 +451,85 @@ Primary API references (checked 20 October 2026, Dushanbe):
 https://solana.com/docs/rpc/http/sendtransaction
 https://solana.com/docs/rpc/http/getsignaturestatuses
 https://solana.com/docs/rpc/http/isblockhashvalid
+
+## Persistent observation history and replay (v76)
+
+`await openSwapObservationStore({indexedDB, storageManager, databaseName,
+receiptStore, rpcIdentities, initialize:false})` opens a **separate companion
+database**, not a new version of the receipt DB. `receiptStore` must be the
+original module-issued open handle. The companion identity binds its schema,
+mainnet genesis, receipt database name/epoch and a copied/sorted approved list of
+RPC endpoint SHA-256 identities. It cannot use the receipt database's name.
+Missing DB, changed epoch/list/schema/version fail closed. Initialization is an
+explicit first-time operation requiring an existing persistent-storage grant;
+there is no permission prompt, automatic migration/reset or history import.
+
+`createSwapRpcAdapter` now exposes a frozen `identity` with `rpcIdentity` and
+genesis. The digest covers the normalized HTTPS URL, including any query; only
+the digest is persisted, never raw endpoint/API credentials. The host must
+obtain its allowed identities from the approved connection configuration.
+Hash/genesis matching is not cryptographic verification of an RPC server.
+
+`await observations.recordObservation(originalObservation)` requires the exact
+frozen object issued by `adapter.reconcile`, validated through a module-private
+WeakMap. JSON, a spread clone and fabricated terminal fields are rejected. The
+adapter includes its endpoint digest and execution slot in each observation.
+Persisted history is read through validation/replay; it is not re-imported as a
+new RPC proof. These mechanisms do not constrain hostile same-realm JavaScript.
+
+Before writing, the companion checks the original committed receipt and every
+immutable identity field. Dispatch state can differ because delivery outcomes
+continue to be stored separately. The companion stores that initial receipt
+snapshot and an append-only logical history with sequence, observation,
+contextSlot, executionSlot and rpcIdentity. Its `receipt.state` is a snapshot,
+not a substitute for `receiptStore.get()` when displaying current delivery state.
+There is no two-database transaction; this relies on the receipt API having no
+delete/release/identity-replacement operation. Reads/recovery check the original
+claim again; missing/mismatched claims reject. Closing the receipt handle closes
+the dependent companion.
+
+Each update reads the row, validates/replays its history, appends one event and
+puts it in **one strict readwrite transaction**. Concurrent tabs serialize on the
+same records store; sequence numbers and both events survive. A result resolves
+only on complete and a post-commit policy check. Abort/quota/unsupported strict
+reject; an acknowledgment failure after commit may leave the event persisted.
+Read before deciding how to recover an ambiguous write; there is no automatic
+retry. Strict durability remains a browser hint, not a power-loss guarantee.
+
+Replay rules:
+
+- Context below the highest observed context is retained as STALE and does not
+  replace the current projection. Null-context RPC failures remain in history
+  without erasing prior evidence. Sequence determines commit order, not wall time.
+- The first accepted finalized result is retained through later nonfinal,
+  missing-history, timeout or agreeing finalized observations.
+- Any finalized success/error contradiction, or a different finalized execution
+  slot, latches FINALIZED_CONFLICT. This includes finalized evidence previously
+  classified STALE and an older contrary response. All evidence remains visible;
+  neither a higher slot nor a third agreeing response clears the conflict.
+- A null history/expired blockhash remains unresolved, never definitely absent.
+  Every projection and recovered row has canAutomaticallyDispatch=false.
+
+`get(intentId)` and `recover()` return frozen validated projections/history:
+receipt snapshot, revision, maxContextSlot, observation, terminalEvidence,
+conflict and history with derived dispositions. There is no persisted cached
+projection to override contradictory events. Corruption fails the operation;
+rows are never silently skipped. A host can combine a trusted initial floor
+with the recovered maxContextSlot for its next explicit status query. Reading
+is permitted without a writable grant; writing still requires persistence.
+
+Repeated observations are separate sequenced events, not de-duplicated sends.
+History has no automatic truncation/purge/retention reset; growth and browser
+quota remain production integration concerns. A missing/deleted companion never
+releases the receipt claim, and even a finalized observation does not authorize
+replacement or new spend. No conflict-resolution API is included.
+
+`npm run test:observation-store` checks 26 pure replay/schema cases.
+`npm run test:observation-store-browser` checks real IndexedDB in isolated
+Chromium, including cross-tab ordering/conflicts, strict/abort/quota paths,
+provenance, binding, permissions and SIGKILL/reopen. `test:swap-rpc-browser` now
+also persists and replays the six HTTP integration observations. Browser RPC
+statuses/signers remain synthetic; no real wallet/network acceptance is claimed.
+The application is still unmounted and trading disabled. Production controller,
+UI, independent connection/epoch/list approval and real wallet/RPC acceptance
+remain open; **LP-15 remains OPEN and MAINNET_GO=NO**.
