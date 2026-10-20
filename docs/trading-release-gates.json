@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "v106",
+  "version": "v107",
   "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
   "dateDushanbe": "2026-10-21",
@@ -214,7 +214,10 @@
     "TreasuryLPFundingHandoff": "LOCAL_SYNTHETIC_PASS_REAL_FUNDING_OPEN",
     "TreasuryLPFundingReview": "research/lower-squads-offline/v29-funding-review.json",
     "productionFundingApproved": false,
-    "productionAcceptancePacket": "docs/lp-production-acceptance-v106-ru.md",
-    "productionAcceptancePacketStatus": "REVIEW_PACKET_COMPLETE_PRODUCTION_BLOCKED"
+    "productionAcceptancePacket": "docs/lower-config-issuance-request-v107-ru.md",
+    "productionAcceptancePacketStatus": "AUTHORITY_SELECTED_ACTUAL_CONFIG_OPEN",
+    "configPoolCreatorAuthorityApproved": true,
+    "approvedConfigPoolCreatorAuthority": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+    "configAuthorityApprovalReference": "docs/lp-config-authority-approval-v107.json"
   }
 }

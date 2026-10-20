@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "version": 107,
+  "kind": "OWNER_CONFIG_AUTHORITY_SELECTION",
+  "status": "APPROVED_IDENTITY_ONLY",
+  "dateDushanbe": "2026-10-21",
+  "decisionSource": {
+    "kind": "OWNER_REPLY_IN_THIS_CONVERSATION",
+    "precedingQuestion": "Утверждаем LP vault2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK как poolCreatorAuthority для LOWER config?",
+    "replyExcerpt": "давай",
+    "precedingReview": "docs/lp-production-acceptance-v106-ru.md",
+    "interpretation": "Approval of the single config authority selection question; not expanded to issuance, signatures, payment or sending messages."
+  },
+  "approvedPoolCreatorAuthority": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+  "multisig": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+  "vaultIndex": 0,
+  "network": "mainnet-beta",
+  "meteoraProgram": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+  "expectedConfigType": 1,
+  "expectedPermissionU128": "0",
+  "intendedUse": "LOWER_NOT_AN_ONCHAIN_MINT_PAIR_RESTRICTION",
+  "scope": {
+    "authoritySelectionApproved": true,
+    "issuanceAuthorized": false,
+    "externalMessageAuthorized": false,
+    "paymentAuthorized": false,
+    "realSigningAuthorized": false,
+    "networkSendAuthorized": false,
+    "productionAtomicDesignApproved": false,
+    "productionBudgetApproved": false,
+    "launchAuthorized": false,
+    "mintAuthorityChange": false,
+    "freezeAuthorityChange": false
+  },
+  "actualConfigAccepted": false,
+  "MAINNET_GO": "NO"
+}

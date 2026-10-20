@@ -1,5 +1,6 @@
 {
-  "version": 91,
+  "version": 107,
+  "verifierLineage": 91,
   "status": "OFFLINE_CONFIG_ACCOUNT_REVIEW_PASS",
   "checks": 30,
   "results": [
@@ -32,11 +33,12 @@
     "High u128 permission bit",
     "Unrecognized snapshot field",
     "Unrecognized expectation field",
-    "Actual project inquiry remains unapproved/null and NOT_RUN"
+    "Owner authority selection recorded; actual config remains NOT_RUN/null with issuance/send disabled"
   ],
   "rpcCalls": 0,
   "walletPrompts": 0,
   "networkSends": 0,
+  "authoritySelectionApproved": true,
   "actualConfigAccepted": false,
   "MAINNET_GO": "NO"
 }

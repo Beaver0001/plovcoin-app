@@ -1,0 +1,24 @@
+{
+  "version": 107,
+  "status": "AUTHORITY_SELECTION_CONSISTENT_ACTUAL_CONFIG_NOT_ACCEPTED",
+  "authority": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+  "approvalSource": "Owner reply to v106 question",
+  "scope": "IDENTITY_ONLY",
+  "historicalV106Unchanged": true,
+  "historicalSourceHashesVerified": 28,
+  "configReviewChecks": 30,
+  "actualConfigAccepted": false,
+  "issuanceAuthorized": false,
+  "externalMessagesSent": 0,
+  "realWalletPrompts": 0,
+  "networkSends": 0,
+  "MAINNET_GO": "NO",
+  "currentSourcesSHA256": {
+    "docs/lp-config-authority-approval-v107.json": "a1702ceb877a23bf9480981188dc673db85d58617f982fb092fb13a0635fb019",
+    "docs/lp-production-acceptance-v107.json": "e5cd2d6f05bd99c8c8f96c0061218342e1b33387a7118ac2c2b73877e52e075d",
+    "docs/lower-config-inquiry.json": "b08cf197d66ab991e6865c0da27eefe71e7e2e88b87cb454569d4d26c579c42d",
+    "docs/lower-config-issuance-request-v107-ru.md": "60ef05b1e17b50d46f8f99985fa7eba280234b27fd531f1cc429faec56b42746",
+    "research/lower-squads-offline/check-config-account.cjs": "530a829e17fe20978f8623783674314a18ffdcfd6892e1d946c8d904a4323c8c",
+    "research/lower-squads-offline/config-account-check-result.json": "42423ae2b48a4baa54695b6cc8b9e9cd088aeae969f6096da4a0187597612c05"
+  }
+}

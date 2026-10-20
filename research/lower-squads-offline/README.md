@@ -985,3 +985,37 @@ Assembler пишет только два фиксированных докуме
 и не подписывает транзакций. production-review-v106.json содержит hash/readback
 результат. Root app/deps/lock/routes/flags прежние, realwallet/network/external
 messages0, MAINNET_GO=NO.
+
+### v107 — выбор config authority утверждён (21.10.2026)
+
+Владелец ответил «давай» на отдельный вопрос v106 о LP vault
+2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK как poolCreatorAuthority LOWER config.
+Решение записано в docs/lp-config-authority-approval-v107.json. Текущая карточка
+lower-config-inquiry.json содержит authorityApproved=true и выбранный адрес.
+Это выбор identity, не выдача config, платежа, подписи, внешнего сообщения или GO.
+acceptanceRecord остаётся NOT_RUN, фактические config/index/issuer/transaction/
+readback — null, readyForIssuance/send=false, MAINNET_GO=NO.
+
+Новый v107 overlay закрывает только A01 и наследует13 открытых групп v106.
+Исторические JSON/MD/assembler v106 не менялись:28 source/application hashes
+проверены по его sourceBaselineCommit; исходный v106 воспроизводится на commit
+160777108ba8d8e11bd0d3c1c69c02de71f855d0. Старый assembler ожидает authority=false,
+поэтому его нельзя запускать поверх новой согласованной карточки как current status.
+
+Подготовлен docs/lower-config-issuance-request-v107-ru.md с RU/EN текстом только
+о конкретной доступности/условиях/стоимости/плательщике/сроках выдачи type1,
+permission0 для утверждённого vault. Official get-started и Discord invite
+повторно просмотрены21.10; invite ведёт в discord.com/invite/meteora.
+Recipient/ticket/service availability неизвестны, ничего не отправлено.
+
+В существующем check-config-account.cjs обновлён последний guard: owner identity
+может быть утверждена, а actual config должен оставаться NOT_RUN/null и send
+запрещён. Оставшиеся account/schema/freshness/permission проверки прежние.
+30 offline проверок PASS; checker implementation config-account-check.cjs не менялся.
+Новых native/runtime/app проверок не требовалось. authority-selection-review-v107.json
+фиксирует текущие source hashes и узкую область решения.
+
+Root app/deps/lock/routes/flags/whitepaper/токеномика/балансы/mint authority прежние.
+On-chain issuance/sign/send/funding/governance changes/внешние сообщения0;
+публичный web просмотр не является свежим RPC. Бюджет/геометрия/T0/60PLOV
+остаются перед запуском, production atomic adoption не принято.

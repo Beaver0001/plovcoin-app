@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "version": 91,
-  "kind": "TECHNICAL_INQUIRY_NOT_ISSUANCE_AUTHORIZATION",
+  "version": 107,
+  "kind": "TECHNICAL_INQUIRY_WITH_APPROVED_AUTHORITY_NOT_ISSUANCE_AUTHORIZATION",
   "status": "DRAFT_NOT_SENT",
-  "dateDushanbe": "2026-10-20",
+  "dateDushanbe": "2026-10-21",
   "MAINNET_GO": "NO",
   "program": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
   "network": "mainnet-beta",
@@ -25,13 +25,14 @@
     "skipMintValidation": false,
     "requestedOperatorRoleForProject": false,
     "intendedProjectUse": "LOWER_ONLY_NOT_A_PROTOCOL_ENFORCED_LABEL_OR_MINT_RESTRICTION",
-    "finalPoolCreatorAuthority": null,
+    "finalPoolCreatorAuthority": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
     "authorityCandidate": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
     "authorityCandidateMultisig": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
-    "authorityApproved": false,
+    "authorityApproved": true,
     "index": null,
     "configAddress": null,
-    "issuer": null
+    "issuer": null,
+    "authorityApprovalReference": "docs/lp-config-authority-approval-v107.json"
   },
   "poolCandidateNotConfigFields": {
     "baseFeeNumerator": "2500004",
@@ -77,7 +78,9 @@
     "specificRecipient": null,
     "ticketNumber": null,
     "sent": false,
-    "serviceAvailabilityConfirmed": false
+    "serviceAvailabilityConfirmed": false,
+    "checkedDateDushanbe": "2026-10-21",
+    "verification": "Official docs get-started links Discord; invite redirects to discord.com/invite/meteora. No recipient/ticket/service availability confirmed."
   },
   "expectedResponse": [
     "project_specific_availability_of_authorized_dynamic_config_issuance",
@@ -86,8 +89,8 @@
   ],
   "acceptanceRecord": {
     "status": "NOT_RUN",
-    "ownerApprovalReference": null,
-    "approvedAuthority": null,
+    "ownerApprovalReference": "docs/lp-config-authority-approval-v107.json",
+    "approvedAuthority": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
     "configAddress": null,
     "index": null,
     "permission": null,
@@ -119,5 +122,7 @@
     "accountReadbackTool": "research/lower-squads-offline/config-account-check.cjs",
     "accountReadbackScope": "OFFLINE_EXPECTED_FIELDS_ONLY_NOT_ISSUANCE_OR_AUTHORIZATION",
     "accountReadbackTests": "V91_30_CHECKS_PASS_NO_ACTUAL_CONFIG_ACCEPTED"
-  }
+  },
+  "requestDraft": "docs/lower-config-issuance-request-v107-ru.md",
+  "authoritySelectionScope": "OWNER_IDENTITY_SELECTION_ONLY_NO_ISSUANCE_PAYMENT_SIGNING_SEND_OR_EXTERNAL_MESSAGE_AUTHORIZATION"
 }
