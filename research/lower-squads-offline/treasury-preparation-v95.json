@@ -1,6 +1,6 @@
 {
   "version": 95,
-  "status": "PREPARED_LIVE_READ_BLOCKED",
+  "status": "LIVE_READ_COMPLETED_AFTER_AUTHORIZED_RETRY",
   "dateDushanbe": "2026-10-20",
   "subject": "treasury",
   "multisig": "Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz",
@@ -18,23 +18,30 @@
     "source": "https://drive.google.com/file/d/1Cnx1zXxTdIApaSc3KA-awnGzjTpTlMnA/view",
     "freshness": "HISTORICAL_V34_PROFILE_REUSED_IN_V43_NOT_FRESH_TREASURY_READ"
   },
-  "currentThreshold": null,
-  "currentMembers": null,
-  "currentTimeLockSeconds": null,
-  "currentProposalStatuses": null,
-  "currentSpendingLimits": null,
-  "currentConfigAuthority": null,
-  "rpcSnapshot": null,
-  "readFailure": {
+  "snapshotCapturedAt": "2026-10-20T17:08:39.884Z",
+  "firstSlot": 459307036,
+  "lastSlot": 459307215,
+  "currentThreshold": 3,
+  "currentMembers": 5,
+  "currentTimeLockSeconds": 172800,
+  "currentProposalStatuses": [
+    { "index": "1", "kind": "ConfigTransaction", "status": "Executed" },
+    { "index": "2", "kind": "VaultTransaction", "status": "Executed" }
+  ],
+  "currentSpendingLimits": [],
+  "currentConfigAuthority": "11111111111111111111111111111111",
+  "rpcSnapshot": "treasury-snapshot-v95.json",
+  "offlineReview": "treasury-review-v95.json",
+  "previousReadFailure": {
     "stage": "WAITING_FOR_EXEC_RESULT",
     "message": "Unified exec process failed: network approval was cancelled before a decision was returned",
-    "meaning": "No completed fresh RPC snapshot available; permission cancellation is not an on-chain failure or a governance finding."
+    "meaning": "Historical first attempt was interrupted by permission cancellation. The user authorized continuation and the later public read completed; this is not an on-chain failure."
   },
   "verification": {
     "fixedProjectPdaDerivation": "PASS",
     "readerAndReviewerSyntax": "PASS",
     "previousV94OfflineReadback": "UNCHANGED_PASS",
-    "freshTreasuryReadback": "NOT_RUN"
+    "freshTreasuryReadback": "PASS"
   },
   "signerAvailability": "NOT_CONFIRMED",
   "walletPrompts": 0,

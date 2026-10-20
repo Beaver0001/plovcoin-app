@@ -1,31 +1,58 @@
 # LOWER через Squads: локальные проверки v88–v95
 
 Исторический этап v88,20.10.2026: **OFFLINE_SDK_CONTRACT_PASS**.
-Актуальная публичная сверка v94 и локальные этапы v92/v93 описаны ниже;
+Публичные сверки LP v94 и Treasury v95, локальные этапы v92/v93 описаны ниже;
 исторические v90/v91 и ограничения — далее.
-Это сборка и анализ инструкций, без исполнения программ. **MAINNET_GO=NO**.
+В v88 выполнялись сборка и анализ инструкций, без исполнения программ. **MAINNET_GO=NO**.
 
-## v95: подготовка публичной сверки Treasury
+## v95: завершённая публичная сверка Treasury
 
 Treasury адрес восстановлен по сохранённому `read_snapshot.py` из v34:
 multisig `Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz`.
 SDK вывел vault index0 `3w5DmerxzYfMhVLHsdjHn5BU194u3R9DD5HaD7rr5VRm`;
-этот же owner Treasury ATA указан в отчёте v45. Исторический профиль v34/v43 —
-3/5/172800 секунд (48h); свежим наблюдением Treasury он не стал.
+этот же owner Treasury ATA указан в отчёте v45.
+
+20.10.2026 22:08:39 Asia/Dushanbe получен finalized-срез Treasury
+459307036–459307215. Настройки3/5/172800 секунд (48h) подтвердились свежими bytes.
+Все5 участников имеют mask7 (initiate/vote/execute), configAuthority default;
+SpendingLimit accounts0 в известном layout/filter. transactionIndex2/staleIndex1.
+Среди2 retained proposals: Config1 Executed:SetTimeLock172800 и Vault2 Executed.
+Незавершённых/Approved vault proposals в этой выборке0; готового нового funding
+предложения не найдено. SOL баланс vault на первом слоте20001000lamports,
+то есть0.020001SOL; это не утверждённая смета и не готовность финансирования.
+
+Свежий Squads ELF1470416bytes/hashdec8d3e0… совпал с v90 и LP v94;
+source/build parity по-прежнему не доказана. Genesis проверен до/после,
+контексты finalized с монотонным floor, multisig bytes до/после одинаковы.
+Raw ответы/запросы сохранены в `treasury-snapshot-v95.json`, отдельный офлайн
+SDK/fixed-offset/PDA/hash readback PASS — `treasury-review-v95.json`.
+
+| Контур | Публичный срез | Порог | Timelock |
+|---|---|---|---|
+| Treasury |20.10 22:08 Душанбе,459307036–459307215|3/5|48h|
+| LP Operations |20.10 21:30 Душанбе,459296308–459296533|2/3|12h|
+
+Три ключа участников LP входят в список пяти Treasury. Это сопоставление
+публичных адресов, а не подтверждение их доступности или независимости людей.
+Параллельная модель v43 использовала такие же пороги/задержки; реальный отсчёт
+для новых операций требует новых одобрений, конкретных сообщений и funding.
+48h остаётся модельной частью пути, а не обещанием календарного T0.
 
 Reader расширен фиксированным target `treasury`, сохраняя прежний LP default.
 Reviewer понимает новый target и нормализует большие числа config actions
 в десятичные строки. Офлайн-readback сохранённого LP v94 полностью совпал с
 прежним результатом; синтаксис обоих скриптов проверен.
 
-Попытка текущего чтения Treasury завершилась остановкой среды:
+Первая попытка чтения Treasury была остановлена средой:
 `network approval was cancelled before a decision was returned`.
-Свежего RPC snapshot нет; текущие threshold/members/timelock/configAuthority/
-proposal/spending-limit поля сохранены как null в `treasury-preparation-v95.json`.
-Это не сетевой отказ Solana и не результат проверки governance. Повторный сетевой
-вызов после отмены разрешения не выполнялся. LP-08 остаётся OPEN.
+После подтверждённого пользователем продолжения публичное чтение завершилось.
+В `treasury-preparation-v95.json` заполнены фактические поля и ссылки на snapshot/
+review; предыдущая остановка сохранена как история. LP-08 остаётся OPEN:
+доступность подписантов и актуальное состояние старых контроллеров v45 здесь
+не подтверждены. Один RPC, разные слоты и retained known-layout accounts не
+доказывают полноту истории закрытых аккаунтов и неизменность состояния в будущем.
 
-После возобновления разрешённого сетевого чтения подготовлены команды:
+Выполненные команды (при повторе выбирать новые output filenames):
 
 ```
 node read-lp-governance.cjs --live treasury-snapshot-v95.json --target treasury
@@ -35,7 +62,7 @@ node review-lp-governance.cjs treasury-snapshot-v95.json treasury-review-v95.jso
 Reader ограничен публичными методами чтения и не создаёт транзакции.
 Проверка адреса/PDA не подтверждает доступ к подписантам или разрешение funding.
 Источники адресов и исторического профиля перечислены в preparation JSON.
-Запись v94 ниже остаётся свежим срезом только LP Operations на указанных слотах.
+Новые реальные подписи, транзакции, funding и governance changes0. MAINNET_GO=NO.
 
 ## v94: реальные настройки LP Operations
 
