@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "v96",
+  "version": "v97",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
   "dateDushanbe": "2026-10-20",
   "codeBaseline": "b7f06a0ec556ef874968c9427cd7fb0980f90994",
@@ -182,7 +182,7 @@
   },
   "newOwnerResearchRequest": {
     "intake": "docs/lp-v29-request-intake.json",
-    "status": "READ_AND_SCOPED_NOT_RECALCULATED",
+    "status": "BASELINE_RESTORED_ZERO_CERTIFIED_ONE_DEFINITION_OPEN",
     "estimatedDeadlineDushanbe": "2026-10-21T18:00:00+05:00",
     "productionBudgetOrGeometryApproved": false
   }

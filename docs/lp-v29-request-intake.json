@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "READ_AND_SCOPED_NOT_RECALCULATED",
+  "status": "BASELINE_RESTORED_ZERO_CERTIFIED_ONE_DEFINITION_OPEN",
   "reviewDateDushanbe": "2026-10-20",
   "request": {
     "title": "Запрос на LP v29 — геометрия диапазона по канону (владелец, 20.10.2026)",
@@ -44,7 +44,7 @@
       "v28ExactPLOV": "1101170270/3",
       "v28ApproxPLOV": "367056756.6666666667",
       "issue": "The request table rounds to367M but also requires unchanged v28 inputs. Do not silently substitute one for the other.",
-      "resolution": "NOT_YET_ADOPTED; disclose and resolve against request/canon before final controlled comparison"
+      "resolution": "Exact v28 value preserved for primary proof; rounded367M evaluated as separately labelled sensitivity. ZERO result agrees in both."
     },
     {
       "id": "ONE_LOWER_COUPLING",
@@ -56,11 +56,42 @@
       "v28ONE": "lower=upper",
       "v28TWOLower": "100B except MIN/50 percent:16B/14.4B/8.5B for minus30/current/plus30 FX",
       "issue": "Changing only upper while retaining old ONE lower creates a piecewise curve. It cannot silently be labelled the same uniform ONE class.",
-      "resolution": "NOT_YET_ADOPTED; preserve explicit architecture distinction and document lower treatment"
+      "resolution": "MATHEMATICAL_CONFLICT_CONFIRMED; owner direction needed for canonical uniform ONE with derived lower versus separately labelled upper-only piecewise sensitivity"
     }
   ],
   "repositoryLocation": "V28_GIT_REPOSITORY_NOT_CONFIRMED_FROM_READ_SOURCES; portable Drive sources confirmed",
-  "baselineSummary": "27 rows with ONE/TWO columns;9 current-FX rows represent18 architecture cases. Regenerate baseline before diff.",
+  "baselineSummary": "Reproduced27 rows,45 constructive paths,9 infeasibility certificates;6310 checks PASS. summary.csv29929bytes/SHA2568e1a30a765983ec55f7028ef419fa97a55e9ed9586232f4e4ac08b200626c62c matches historical manifest.",
+  "checkpoint": {
+    "kind": "PARTIAL_MATHEMATICAL_RESULT_NOT_FINAL_V29",
+    "artifact": "PLOV_v29_CHECKPOINT.zip",
+    "libraryFileId": "libfile_d87c579f4f4481918debe11499b8fa60",
+    "bytes": 92366,
+    "sha256": "5b51934aa65ace4af87f5afe662b29e0426c6b0889ea7d20aefc34f00b523edc",
+    "manifestMatchedFiles": 59,
+    "originalProvenanceFilesNotRestored": ["fx_snapshot.json", "provenance.json", "reproduction.json"],
+    "ZERO": {
+      "status": "INFEASIBLE_CERTIFIED_BY_NECESSARY_D14_DROP",
+      "minimumDropPctLowerBoundExactV28D14Approx": "53.93397164018",
+      "allowedDropPct": "45",
+      "exactD14CasesAcrossAllFX": 18,
+      "roundedD14SensitivityCasesAcrossAllFX": 18,
+      "mainFX103_80Cases": 6,
+      "independentProof": "1.142B<lambda*<1.143B; price ratio<602176/1306449<0.55",
+      "assumptions": "Preserved v28 4-buy/claim/return class; LP fees not reinvested into principal; no interventions."
+    },
+    "MIN_IDEAL": "NOT_RECALCULATED_IN_THIS_CHECKPOINT",
+    "fullRowComparisonComplete": false,
+    "fullV29Accepted": false
+  },
+  "ownerDirectionNeeded": {
+    "subject": "ONE_GEOMETRY_DEFINITION",
+    "canonicalUniformONE": "upper approx0.001; same X/P0/Q; lower derived from the same lambda",
+    "upperOnlySensitivity": "old lower retained; label piecewise sensitivity from v28 ONE, not uniform ONE",
+    "MINPhysicalLowerOldUSDApprox": "0.000149310544990126",
+    "MINPhysicalLowerCanonicalUniformUSDApprox": "0.0000956669450737702",
+    "selected": null,
+    "launchAuthorization": false
+  },
   "actualLaunchBudgetOrGeometryApproved": false,
   "MAINNET_GO": "NO",
   "networkTransactionSends": 0,
