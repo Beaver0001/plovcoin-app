@@ -1,0 +1,47 @@
+{
+  "version": 109,
+  "capturedAt": "2026-10-20T21:17:33.229Z",
+  "endpoint": "https://api.mainnet-beta.solana.com",
+  "genesisBefore": "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d",
+  "genesisAfter": "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d",
+  "program": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+  "programData": "AUh8bm2XsMfex3KjYGcM3G4uBqUNSDw6HEhWaWMYnyPH",
+  "programSlot": 459376266,
+  "programDataSlot": 459376266,
+  "finalHeaderSlot": 459376269,
+  "deploymentSlot": "457080014",
+  "programAccountResponse": {
+    "context": {
+      "apiVersion": "4.3.2",
+      "slot": 459376266
+    },
+    "value": {
+      "data": [
+        "AgAAAIzRPY+wyFuhSu/8pu7IeZ90WBbMZjY4MGAVjuDHRwQk",
+        "base64"
+      ],
+      "executable": true,
+      "lamports": 11823514,
+      "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+      "rentEpoch": 18446744073709552000,
+      "space": 36
+    }
+  },
+  "programDataHeaderBase64": "AwAAAM58PhsAAAAAAf7zIERSwsjzdXXYp+ML0Up9cSrp+/GpLweE+SsvY2H6",
+  "programDataBytes": 2174397,
+  "programDataSHA256": "69d693fb7554fbfb21c50d7bb6327b284563347391a4f94056e029363863f810",
+  "elfBytes": 2174352,
+  "elfSHA256": "967ff9fb161eec2e62f66d2c899100739fb747c445f697b8625c86b31b9a2022",
+  "zeroTrimmedElfBytes": 1430777,
+  "zeroTrimmedElfSHA256": "0712ca6d350757b9a71a0ea40da8fe9d5b48fca044f2deae0b65a33320e6a59b",
+  "matchesV90Elf": true,
+  "upgradeAuthorityOption": 1,
+  "upgradeAuthority": "JADaUV8kvDpDbJr55wxXJHVaBS3VCj8thZZHjfeuCVLd",
+  "pointerAndHeaderUnchangedAtFinalRead": true,
+  "independentSourceBuildPerformed": false,
+  "MAINNET_GO": "NO",
+  "limitations": [
+    "Single RPC; final reread checks pointer/header, not a second full binary read.",
+    "Live bytes hash equality is not source/build parity."
+  ]
+}

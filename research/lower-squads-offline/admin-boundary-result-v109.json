@@ -1,0 +1,28 @@
+{
+  "version": 109,
+  "status": "LOCAL_NON_ADMIN_OPERATOR_CREATION_REJECTED",
+  "elfSHA256": "967ff9fb161eec2e62f66d2c899100739fb747c445f697b8625c86b31b9a2022",
+  "syntheticSigner": "7Qb6eFh89FmiHXEsRDtNem4QWvYmPs7XUZRHRdaomT9j",
+  "syntheticOperator": "6s1GfgjikSL8axUMhoknSrQNArvwDxoyRBTTXjUQdGX6",
+  "localProgramTransactions": 1,
+  "separateSyntheticAirdrops": 1,
+  "error": "TransactionErrorInstructionError { index: 0, error: InstructionErrorCustom { code: 6005 } }",
+  "logs": [
+    "Program cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG invoke [1]",
+    "Program log: Instruction: CreateOperatorAccount",
+    "Program 11111111111111111111111111111111 invoke [2]",
+    "Program 11111111111111111111111111111111 success",
+    "Program log: AnchorError thrown in programs/cp-amm/src/access_control.rs:8. Error Code: InvalidAdmin. Error Number: 6005. Error Message: Invalid admin.",
+    "Program cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG consumed 14942 of 200000 compute units",
+    "Program cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG failed: custom program error: 0x1775"
+  ],
+  "operatorExistsAfter": false,
+  "payerFeeLamports": "5000",
+  "sourceBuildParityProven": false,
+  "localFeatureAbsenceProven": false,
+  "scope": "One deployed-ELF behavior boundary; no exhaustive feature-set or source identity proof",
+  "rpcCalls": 0,
+  "networkSends": 0,
+  "realWalletPrompts": 0,
+  "MAINNET_GO": "NO"
+}
