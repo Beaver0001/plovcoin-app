@@ -861,3 +861,92 @@ Uint8Array→Array при native message reserialization; поздний T0 вы
 Root app/dependencies/lock/routes/flags прежние. Только синтетические локальные
 подписи; real wallet/network sends0. Production T0=null, бюджет/геометрия/60PLOV
 остаются перед запуском. MAINNET_GO=NO.
+
+### v105 — Treasury → LP: финансирование перед атомарным созданием (21.10.2026)
+
+**Локальная передача SOL+PLOV и последующее создание обоих пулов проверены.**
+Параметры ранее наблюдённой governance воспроизведены на новых синтетических
+аккаунтах: Treasury3/5+172800сек и LP2/3+43200сек. Это не новое чтение состояния
+реальных кошельков и не подтверждение доступа их подписантов. Три участника LP
+входят в пять Treasury, как в сохранённых наблюдениях; независимость людей
+из этого не следует.
+
+Изначально LP vault вообще отсутствует и получает0 SOL/PLOV напрямую из faucet.
+700M тестовых PLOV выпускаются в ATA синтетического Treasury. LP ATA заранее
+создаёт внешний участник; он же оплачивает governance/ALT и комиссии. Внешние
+участники и Treasury получают отдельные тестовые airdrops. Прямого airdrop LP
+нет. Реальная mint authority, эмиссия и токеномика не меняются.
+
+Одна Treasury VaultTransaction последовательно содержит System transfer SOL и
+SPL transferChecked PLOV. Нативное исполнение требует три голоса и48ч. Если
+поздний перевод PLOV не проходит, уже прошедший SOL transfer откатывается:
+оба LP-баланса остаются нулевыми. Недостаток SOL в Treasury тоже не приводит
+к частичному переводу. Replay исполненной заявки отклоняется.
+
+| Порядок одобрений | Время от Treasury threshold approval до создания обоих пулов в fixture |
+|---|---|
+| LP получает два голоса заранее, до финансирования | 172801сек, то есть48ч+1сек. В12ч+1сек LP уже выдержал свой timelock, но без Treasury funding execute отклоняется. После финансирования применяется та же ранее одобренная LP-заявка. |
+| Второй голос LP появляется только после Treasury funding | 216002сек, то есть60ч+2сек. Новый12ч timelock начинается с достижения LP quorum. |
+
+Это два проверенных расписания, а не обещание календарного срока или правило,
+что все запуски обязаны ждать60ч. Перекрытие задержек возможно только при заранее
+зафиксированных точных сообщениях, известных config/адресах/ALT/T0 и доступных
+подписантах. Финансирование и создание — **две отдельные транзакции**: после
+успешного Treasury funding ошибка LP не возвращает средства автоматически в
+Treasury; они сохраняются у LP. Атомарность относится отдельно к паре переводов
+и отдельно к паре инициализаций. Семантическую правильность получателя/сумм
+задаёт рассмотренное сообщение; Squads не знает деловую цель перевода.
+
+В каждом из12 вариантов v29 проверены оба расписания —24 VM и48 созданных
+пулов/NFT. Отдельно введён недостаток PLOV/SOL у LP после финансирования. Он не
+оставляет частичную пару;24 поздних SOL-отказа откатывают уже полностью успешный
+UPPER CPI. Все24 отслеживаемых аккаунта, включая Treasury governance и balances,
+сверяются по hash/lamports; внешний плательщик теряет5000lamports комиссии.
+CPI успех распознаётся по завершению depth2 вызова, исключая self-CPI event.
+При дополнительной read-only сверке raw v104 все96 ранее заявленных успешных
+UPPER перед поздними отказами также подтверждены на depth2; исторические
+исходники/результаты v104 не изменены.
+
+Тестовый размер SOL финансирования состоит из seed v29,47251441lamport
+инициализации (rent новых аккаунтов и отдельный1lamport UPPER surplus) и890880
+lamports минимального rent для пустого LP system account. Сумма выведена из
+закреплённого v104 native readback и проверяется против нового фактического
+дебета/созданных аккаунтов. После создания у LP остаётся ровно890880lamports,
+а свободных тестовых PLOV —0. Это rent floor, **не операционный бюджет**.
+Внешние fee/rent payers заранее обильно профинансированы в VM: доступность их
+реальных средств и производственная политика плательщиков остаются открытыми.
+
+792native TX/run:456успехов/336ожидаемых отказов,168отдельных localairdrops.
+2794 независимые stdlib Python-проверки PASS: две ledger conservation identities,
+timelock timestamps, quorums, depth2 CPI, rollback, native message hash readback,
+floor/ceil geometry, NFT custody и начальный principal. Второй полный прогон
+побайтно воспроизвёл3 JSON/CSV выхода. Макс862байта/329346CU в VM; это не оценка
+mainnet fees/priority.48 сообщений (24 funding+24 LP) совпали с native accounts.
+В обоих расписаниях24×2 попытки публичного swap доT0 отклонены.
+
+Пять retained ELF v90 hash-pinned, не свежие mainnet данные; ALT Program остаётся
+LiteSVM builtin, не отдельным mainnet-read ELF. Source/build parity не доказана.
+Реальные config/authority/manifest/ALT, подписанты, payer policy, финансирование,
+Phantom/network acceptance и GO не приняты. Производственные бюджет/геометрия/T0
+и60PLOV остаются отложенными до запуска. Это init/funding suite, не D0–D90
+replay и не атомарный swap/Jupiter route.
+
+Следующий блок — единый конкретный пакет приёмки real config/authority/manifest,
+frozen ALT и signer/payer policy. Локальные handoff и atomic init повторять без
+изменения входов не требуется; выдача config/подписи/реальное финансирование
+остаются самостоятельными незакрытыми условиями.
+
+```sh
+node v29-funding.cjs /absolute/path/to/continuation_v90/fixtures
+python3 verify-v29-funding.py
+```
+
+В Git: `v29-funding.cjs`, `verify-v29-funding.py`,
+`v29-funding-review.json`, `v29-funding-summary.csv`,
+`v29-funding-reproduction.json`. Raw отдельно:
+PLOV_v105_FUNDING_TRANSCRIPT.json, 1915880bytes,
+SHA25621f8a32e98c17ea7e445a0c00f2e90f2fe7033233f64a9f92b3d38da1e956205,
+Library libfile_d67963bcd7c88191b8901d9f6474141c.
+
+Root app/dependencies/lock/routes/flags прежние. Только синтетические локальные
+подписи; real wallet/network sends0, Wave1Inputs=null, MAINNET_GO=NO.

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "v104",
+  "version": "v105",
   "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
   "dateDushanbe": "2026-10-21",
@@ -210,6 +210,9 @@
     "safePrestartAbortProven": false,
     "independentCreatorOnlyStopDesign": "BLOCKED_AS_DOCUMENTED_V103",
     "atomicDualInitializationReview": "research/lower-squads-offline/v29-atomic-review.json",
-    "productionAtomicDesignApproved": false
+    "productionAtomicDesignApproved": false,
+    "TreasuryLPFundingHandoff": "LOCAL_SYNTHETIC_PASS_REAL_FUNDING_OPEN",
+    "TreasuryLPFundingReview": "research/lower-squads-offline/v29-funding-review.json",
+    "productionFundingApproved": false
   }
 }

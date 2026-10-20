@@ -75,7 +75,7 @@
     "interpretation": "Witnesses sit close to the mathematical10SOL floor. Principal inside pools is not the separately unknown operating budget B; neither the10SOL reserve nor the0.001SOL headroom establishes available config/rent/transaction funding.",
     "researchGeometryApproved": true,
     "productionCandidateSelected": false,
-    "nextUncompletedTechnicalGate": "Local atomic alternative is proven in v104; independently funded creator-only timer design remains blocked by v103. Next: Treasury-to-LP funding handoff rehearsal and acceptance of real project config/authority/manifest plus frozen ALT contents/owner/program and production atomic design. Production budget/geometry/T0 remain owner-deferred and unapproved.",
+    "nextUncompletedTechnicalGate": "Local funding handoff plus atomic initialization is proven in v105, without establishing operating budget or authorizing real funding. Next: assemble and verify one concrete production config/authority/manifest/frozen-ALT acceptance packet and signer/payer policy. Actual config issuance/access, source/build parity, installed Phantom, real network acceptance and GO remain open; budget/geometry/T0/60PLOV remain owner-deferred.",
     "exactCandidateSquadsReview": {
       "status": "LOCAL_SYNTHETIC_INITIALIZATION_AND_FEE_CUSTODY_PASS",
       "review": "research/lower-squads-offline/v29-squads-review.json",
@@ -196,6 +196,33 @@
       "transcriptLibraryFileId": "libfile_5996379c50448191aff970105772f183",
       "transcriptBytes": 2626599,
       "transcriptSHA256": "3cb8a7867f92b765c39650c27b34fa901f70381cbf1deaaa095dab5bbaf926bc"
+    },
+    "TreasuryLPFundingHandoff": {
+      "status": "LOCAL_TREASURY_LP_HANDOFF_PASS_REAL_FUNDING_OPEN",
+      "review": "research/lower-squads-offline/v29-funding-review.json",
+      "reproduction": "research/lower-squads-offline/v29-funding-reproduction.json",
+      "candidateCases": 12,
+      "schedules": 2,
+      "VMcases": 24,
+      "poolsCreated": 48,
+      "nativeFundingTransfers": 24,
+      "transactionsPerRun": 792,
+      "successesPerRun": 456,
+      "expectedFailuresPerRun": 336,
+      "independentChecks": 2794,
+      "storedMessagesMatchedNativeAccount": 48,
+      "SOLTransferRolledBackAfterPLOVFailure": 24,
+      "LPIncompleteFundingRollbacksAfterUPPER": 24,
+      "overlapElapsedSeconds": 172801,
+      "serialElapsedSeconds": 216002,
+      "LPVaultFinalRentLamports": 890880,
+      "operatingBudgetEstablished": false,
+      "productionFundingApproved": false,
+      "twoRunsByteIdentical": true,
+      "transcriptArtifact": "PLOV_v105_FUNDING_TRANSCRIPT.json",
+      "transcriptLibraryFileId": "libfile_d67963bcd7c88191b8901d9f6474141c",
+      "transcriptBytes": 1915880,
+      "transcriptSHA256": "21f8a32e98c17ea7e445a0c00f2e90f2fe7033233f64a9f92b3d38da1e956205"
     }
   },
   "request": {

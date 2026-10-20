@@ -1,0 +1,19 @@
+{
+  "status": "PASS_BYTE_IDENTICAL_SECOND_RUN",
+  "outputsSHA256": {
+    "v29-funding-result.json": "21f8a32e98c17ea7e445a0c00f2e90f2fe7033233f64a9f92b3d38da1e956205",
+    "v29-funding-review.json": "67d4ba626d164ab9a1624f21bcab7b89dfb2082fa44e7d17834c4232c3670320",
+    "v29-funding-summary.csv": "d80b3347a3303cacc03b175b77bfd0bf43b248aa7c13fe68130d1e40f55fc023"
+  },
+  "sourcesSHA256": {
+    "v29-funding.cjs": "eacf31c5eae8050053b98dc578329c63f5a01afe6830894583dde5052950066e",
+    "verify-v29-funding.py": "28f4506294ddbaaa695db5388113e56b1bb9325e44bdd93a537cc8c0e5dd7a0f",
+    "v29-geometry-result.json": "346e58abfcf6f7629da0d86f978bbd795fb457bd83407a3903c73da13fa595ee",
+    "program-pins-v90.json": "f12656a55549bb228c83081f31e7036d24389f309dcc98ceadddb30af5e2dc1d",
+    "package-lock.json": "ad977c65ee6961f46ea749cab7d6ec401dc4cdc1bd39ae6db52744bd21c89458"
+  },
+  "nativeTransactionsPerRun": 792,
+  "networkSends": 0,
+  "realWalletPrompts": 0,
+  "MAINNET_GO": "NO"
+}
