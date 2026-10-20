@@ -26,7 +26,8 @@
     "test:observation-policy-browser": "node scripts/test-observation-policy-browser.cjs",
     "test:recovery-evidence": "node scripts/test-recovery-evidence.cjs",
     "test:recovery-evidence-browser": "node scripts/test-recovery-evidence-browser.cjs",
-    "test:phantom-session-browser": "node scripts/test-phantom-session-browser.cjs"
+    "test:phantom-session-browser": "node scripts/test-phantom-session-browser.cjs",
+    "test:phantom-controller-browser": "node scripts/test-phantom-controller-browser.cjs"
   },
   "dependencies": {
     "@meteora-ag/cp-amm-sdk": "1.5.1",

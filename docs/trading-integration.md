@@ -852,3 +852,48 @@ The isPhantom compatibility flag is not authentication. The target record remain
 NOT_RUN/null; production manifest/origin/storage policy, provider/controller
 wiring, real sign/send, audit and release remain open. Retired v67 stays retired.
 **LP-15 OPEN; MAINNET_GO=NO.**
+
+
+### v84: shared injected-provider lifetime through the full lifecycle
+
+`bindInjectedPhantomSwapAttempt` binds an explicitly supplied injected provider
+and app state events to a trusted, already configured lifecycle controller. It
+shares the private provider validation, state reader, event registration and
+cleanup with `createInjectedPhantomReviewSession`. The sign-only API is unchanged.
+Neither entry discovers/connects a wallet or mounts a route. The new dispatch
+binding's **approve() signs, claims and sends**; it is never a wallet diagnostic
+or a replacement for separately authorized sign-only acceptance. The caller
+supplies the trusted controller and genuine verified preflight; this wrapper
+does not authenticate the provider/controller or authorize launch.
+
+`npm run test:phantom-controller-browser` exercises 23 new Chromium scenarios
+through actual account verification, both-signature checks, native two-DB
+storage, genuine controller/RPC adapter and loopback HTTP. Binding itself does
+no signature, simulation, persistence check or dispatch. The stable path runs
+three simulations (before signing, after signing, after durable claim), sends
+once, suppresses a new prompt for a recovered existing intent using a fresh
+controller, and reconciles the original signature.
+
+connect/accountChanged/disconnect before approval or during signing stop before
+claim/send. At native claim commit, they retain DISPATCH_INTENT without sending.
+Null-account and app network/launch round trips remain latched invalid. An event
+during final post-claim simulation retains the intent without dispatch. After
+transport entry, disconnect, disposal, cleanup failure and a lost acknowledgment
+preserve PENDING/UNKNOWN and original signature; explicit reconciliation never
+resends. Missing WSOL signature, 4001 rejection, shared sign-only/dispatch review
+binding, partial registration and unsupported providers also reject safely.
+
+The combined browser run repeats the prior121 checks: total144 PASS in isolated
+Chromium133, with15 loopback sends (legacy10 + new5), no external browser requests,
+page errors, installed-wallet prompts or mainnet sends. Node signing67 and core
+swap-attempt42, TypeScript, production build and diff checks pass; local production
+/ and /ru return200 and the server is stopped. No clean npm-ci rerun.
+
+This changes application adapter source and engine exports; dependencies, lock,
+public routes and TRADE_LAUNCH_ENABLED=false remain unchanged. The v82 source-pinned
+inventory remains historical: its phantom-session.mjs hash no longer matches this
+candidate (11/12 old pins match). It must not be treated as current build approval.
+The target installed-Phantom record remains NOT_RUN/null; real manifest/config,
+production host/provider selection, storage policy, full production wiring,
+real-chain acceptance, applicable audit and release GO remain open. Synthetic
+provider events do not prove installed extension behavior. **LP-15 OPEN; MAINNET_GO=NO.**
