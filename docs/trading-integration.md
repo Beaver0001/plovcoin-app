@@ -931,3 +931,27 @@ was sent. The v85 RPC snapshot is explicitly historical, not re-queried in v86.
 No application code/dependency/route/launch flag or prior acceptance is changed.
 [Packet and review evidence](https://drive.google.com/drive/folders/1UY1Qb62t72VnJ8HCWTGavDNdBK2-eKKe).
 **LP-03/09/15 OPEN; MAINNET_GO=NO.**
+
+
+### v87: remove public technical questions from the operator inquiry
+
+The v86 broad question list is superseded. Official Meteora documentation publishes
+config creation and permission rules, SDK instruction mappings and mainnet/devnet
+program IDs. Squads v4 documents vault transactions and ephemeral signers. Solana
+publishes transaction fee rules. These are our research/implementation tasks;
+our exact Squads transaction still needs rehearsal, and current docs do not prove
+parity with the recorded deployed ELF or compatibility of a concrete message.
+
+The revised [inquiry specification](lower-config-inquiry.json) asks only whether an
+authorized operator can arrange this project's dynamic config (including a devnet
+config if offered), and the applicable service terms, charges/payer and timing.
+No published project-specific offer was established in the reviewed sources.
+GitHub issue78 has no comments at this check; its author's question is not a
+maintainer answer. On-chain rent/fees are calculated independently for the actual
+accounts/message; receipt/account/transaction verification stays in our acceptance
+checklist rather than a generic support question.
+
+[The existing RU/EN packet](https://drive.google.com/file/d/12divC8YUoW83vHyVjDLsmsdnoBQFlIO0/view)
+is revised in place. No new chain scan, runtime test, signature, send or external
+message. Acceptance remains NOT_RUN; authority/index/address stay unapproved.
+**LP-03/09/15 OPEN; MAINNET_GO=NO.**

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": 86,
+  "version": 87,
   "kind": "TECHNICAL_INQUIRY_NOT_ISSUANCE_AUTHORIZATION",
   "status": "DRAFT_NOT_SENT",
   "dateDushanbe": "2026-10-20",
@@ -80,13 +80,9 @@
     "serviceAvailabilityConfirmed": false
   },
   "expectedResponse": [
-    "feasibility_and_restrictions",
-    "devnet_equivalent_process",
-    "Squads_CPI_and_NFT_signer_process",
-    "separate_service_fee_and_onchain_costs_and_payer",
-    "lead_time_and_quote_validity",
-    "after_separate_approval_config_address_index_authority_permission",
-    "issuance_signature_finalized_slot_and_operator_path"
+    "project_specific_availability_of_authorized_dynamic_config_issuance",
+    "project_specific_devnet_config_availability_if_offered",
+    "applicable_service_terms_charges_payer_lead_time_and_quote_validity"
   ],
   "acceptanceRecord": {
     "status": "NOT_RUN",
@@ -106,5 +102,19 @@
   "readyForIssuance": false,
   "readyForWalletTest": false,
   "readyForNetworkSend": false,
-  "externalMessagesSent": 0
+  "externalMessagesSent": 0,
+  "publicResearch": {
+    "checkedDate": "2026-10-20",
+    "protocolInstructions": "https://docs.meteora.ag/developer-guides/damm-v2/program/instructions",
+    "networkProgramIds": "https://docs.meteora.ag/developer-guides/damm-v2",
+    "squadsVaultTransactions": "https://docs.squads.so/main/development/typescript/instructions/create-vault-transaction",
+    "solanaFees": "https://solana.com/docs/core/fees",
+    "genericDevnetProcedure": "PUBLIC_NOT_AN_OPERATOR_QUESTION",
+    "squadsSignerMechanism": "PUBLIC_EPHEMERAL_SIGNERS_CONCRETE_INTEGRATION_NOT_YET_VERIFIED",
+    "feeEncodingAndDeployedCompatibility": "OUR_SOURCE_IDL_AND_PINNED_SDK_VERIFICATION_NOT_AN_OPERATOR_QUESTION",
+    "onchainRentAndTransactionFee": "CALCULATE_FOR_ACTUAL_ACCOUNTS_AND_MESSAGE_NOT_A_SERVICE_QUOTE",
+    "issuanceEvidence": "OUR_READBACK_AND_TRANSACTION_ACCEPTANCE_CHECKLIST",
+    "issue78": "NO_COMMENTS_AT_CHECK_NOT_A_MAINTAINER_ANSWER",
+    "freshChainScan": false
+  }
 }
