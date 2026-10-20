@@ -610,6 +610,40 @@ isolated Chromium. Accounts/signer/RPC chain responses are synthetic and the
 test-only fetch bridge targets loopback. It covers wrong identities/floors,
 existing-intent suppression, ambiguity/quota/readback, disposed/closed resources,
 conservative UNKNOWN, coalescing, persisted floors and SIGKILL joined recovery.
-Real wallet acceptance, current approved pools/manifest/RPC, UI, origin bootstrap,
+Real wallet acceptance, current approved pools/manifest/RPC, production UI wiring, origin bootstrap,
 quota/conflict policy and separate release authorization remain open.
 **LP-15 remains OPEN; MAINNET_GO=NO; TRADE_LAUNCH_ENABLED=false.**
+
+### v78: read-only recovery panel (unmounted)
+
+`SwapRecoveryPanel` accepts only the controller's `recover` and `reconcile`
+methods. Mounting, SSR/hydration and React StrictMode do not read history or
+query RPC. The user explicitly loads local history and checks an original
+signature. There are no wallet, signing, send, replacement, reset or release
+controls. The panel is not imported by application routes.
+
+The presentation session copies public values and history fingerprints into
+immutable snapshots. Shape validation is a presentation guard, not proof of
+source authenticity: the host must supply the genuine lifecycle controller.
+History-prefix rollback/rewrite, unrelated receipts and acknowledgments without
+matching saved evidence are rejected. A failed reread retains cards as stale;
+a missing previously loaded row stays visible. Neither appears as empty history.
+An unacknowledged observation masks the old successful display, and a local
+history reload cannot clear that warning. Saved finalized conflicts remain
+explicit. Local quote expiry never implies transaction failure.
+
+The session locks actions synchronously and ignores responses from an obsolete
+subscription generation, changed source or unmounted component. It never closes
+or disposes the borrowed controller. Error details are replaced by fixed RU/EN
+messages. Full original signatures wrap on mobile; status messages use live
+regions and the history action supports keyboard operation.
+
+`npm run test:swap-recovery-panel` covers the presentation session and RU/EN SSR.
+`npm run test:swap-recovery-panel-browser` runs the actual lifecycle harness plus
+React hydration/StrictMode, both IndexedDBs, explicit reconciliation persistence,
+read failures, missing rows, duplicate actions, source replacement, unmount and
+mobile/keyboard rendering. The browser uses synthetic accounts/signatures and
+loopback RPC; its test-only durable-storage grant is not production bootstrap.
+These checks do not establish real Phantom acceptance or production browser,
+approved-pool, origin/quota/conflict-policy readiness. Production wiring and
+separate launch authorization remain open. **LP-15 remains OPEN.**
