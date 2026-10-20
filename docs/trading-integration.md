@@ -911,3 +911,23 @@ single-RPC observations, not future/global absence or crypto-proof of completene
 The deployed ELF hash still matches the recorded historical ELF; source/build
 parity is unproved. Actual authority/config issuance, market manifest and launch
 remain open. No runtime change/build/test/sign/simulate/send occurs in v85.
+
+
+### v86: LOWER configuration inquiry and acceptance inputs
+
+The [inquiry specification](lower-config-inquiry.json) records one prospective
+dynamic config, permission0 and an unapproved Squads authority candidate. Final
+authority/index/address/issuer/cost/approval and acceptance remain null/NOT_RUN.
+Dynamic configuration and dynamic trading fees are different: the existing pool
+candidate uses constant2500004/1e9, OnlyB, dynamic-fee0, compounding0 and no alpha.
+Pool geometry/liquidity/fees are not frozen by issuing a dynamic config.
+
+The human RU/EN packet requests feasibility/devnet/CPI/costs/timing and identifies
+which account/transaction/readback evidence to verify after any separately
+approved issuance. It is an inquiry, not a creation order, delegated custody,
+payment permission or release GO. Official docs link Discord developer support;
+specific recipient/ticket/service availability remains unconfirmed. No message
+was sent. The v85 RPC snapshot is explicitly historical, not re-queried in v86.
+No application code/dependency/route/launch flag or prior acceptance is changed.
+[Packet and review evidence](https://drive.google.com/drive/folders/1UY1Qb62t72VnJ8HCWTGavDNdBK2-eKKe).
+**LP-03/09/15 OPEN; MAINNET_GO=NO.**
