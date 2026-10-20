@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "status": "READ_AND_SCOPED_NOT_RECALCULATED",
+  "reviewDateDushanbe": "2026-10-20",
+  "request": {
+    "title": "Запрос на LP v29 — геометрия диапазона по канону (владелец, 20.10.2026)",
+    "url": "https://docs.google.com/document/d/17n4N8FwG3xu903plmNKJQC_iK3qxsml-r_rE7O7OF_k/edit",
+    "modifiedAt": "2026-10-20T17:05:22.075Z",
+    "folder": "https://drive.google.com/drive/folders/1Z8dye8IOyIujLsSVOM3jb82E2OzRADyv",
+    "deadlineSpecifiedByOwner": false
+  },
+  "estimate": {
+    "deadlineDushanbe": "2026-10-21T18:00:00+05:00",
+    "kind": "WORKING_ESTIMATE_FOR_RESTORE_RECALCULATE_COMPARE_VERIFY",
+    "basis": "v28 model/analyze/capacity/verify are available as text and use Python standard library. Reconstruct baseline before changing geometry; document exact lower/D14 treatment before final claims.",
+    "backgroundJobScheduled": false,
+    "dependsOnWalletOrOperator": false,
+    "guaranteesPass": false
+  },
+  "requestedInputs": {
+    "T0PLOV": "700000000",
+    "P0USD": "0.00015",
+    "upperPriceUSDApprox": "0.001",
+    "D14InRequestPLOV": "367000000",
+    "frozenSOLUSD": "103.80",
+    "architectures": ["ONE", "TWO"],
+    "scenarios": ["ZERO", "MIN", "IDEAL"],
+    "retentionPercent": [50, 90, 100],
+    "wave1Inputs": null,
+    "otherInputsAndThresholds": "PRESERVE_V28_WITH_EXPLICIT_SOURCE_COMPARISON"
+  },
+  "requiredOutputs": [
+    "same portable structure: README, PROOFS_RU, summary.csv, model/analyze/capacity/verify scripts",
+    "quote SOL/USD, post-D14 liquidity, terminal price and same-threshold outcome for each architecture/scenario/retention",
+    "row-by-row v28 to requested-v29 comparison isolating the upper change",
+    "explicit lower bound/coefficient and rationale; no geometry tuning to obtain PASS",
+    "keep primary FX103.80 and separately identify existing v28 +/-30 percent control rows when preserving all27 summary rows"
+  ],
+  "sourceDiscrepancies": [
+    {
+      "id": "EXACT_D14",
+      "source": "https://drive.google.com/file/d/1U_hdKq4XAZT7NqtNC80ac6and2jatylw/view",
+      "v28Formula": "C=(1171170270-70000000)/3",
+      "v28ExactPLOV": "1101170270/3",
+      "v28ApproxPLOV": "367056756.6666666667",
+      "issue": "The request table rounds to367M but also requires unchanged v28 inputs. Do not silently substitute one for the other.",
+      "resolution": "NOT_YET_ADOPTED; disclose and resolve against request/canon before final controlled comparison"
+    },
+    {
+      "id": "ONE_LOWER_COUPLING",
+      "sources": [
+        "https://drive.google.com/file/d/1_pTShu1_RTuwvS3MCrOJqi5mBRQJM_eq/view",
+        "https://drive.google.com/file/d/1v_sTcqHdcMQi6qDz0tdtyTxE7jL56QKl/view"
+      ],
+      "v28UpperCoefficientPLOV": "100000000000",
+      "v28ONE": "lower=upper",
+      "v28TWOLower": "100B except MIN/50 percent:16B/14.4B/8.5B for minus30/current/plus30 FX",
+      "issue": "Changing only upper while retaining old ONE lower creates a piecewise curve. It cannot silently be labelled the same uniform ONE class.",
+      "resolution": "NOT_YET_ADOPTED; preserve explicit architecture distinction and document lower treatment"
+    }
+  ],
+  "repositoryLocation": "V28_GIT_REPOSITORY_NOT_CONFIRMED_FROM_READ_SOURCES; portable Drive sources confirmed",
+  "baselineSummary": "27 rows with ONE/TWO columns;9 current-FX rows represent18 architecture cases. Regenerate baseline before diff.",
+  "actualLaunchBudgetOrGeometryApproved": false,
+  "MAINNET_GO": "NO",
+  "networkTransactionSends": 0,
+  "walletPrompts": 0
+}

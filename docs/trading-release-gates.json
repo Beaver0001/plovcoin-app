@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "v90",
+  "version": "v96",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
   "dateDushanbe": "2026-10-20",
   "codeBaseline": "b7f06a0ec556ef874968c9427cd7fb0980f90994",
@@ -135,7 +135,7 @@
     "Retired v67 probe is never retried or funded."
   ],
   "plan": "docs/phantom-acceptance-plan-ru.md",
-  "supersedes": "v82 readiness inventory; historical runtime tests are not rerun by this review",
+  "supersedes": "v90 readiness inventory; adds recorded v94/v95 governance observations and new owner research request; no real acceptance promoted",
   "researchBaselineBeforeReview": "f9a4c7816f62fe95638ce297dcffb07cc2f9fce3",
   "localProtocolEvidence": {
     "version": 90,
@@ -150,6 +150,40 @@
     "realWalletPrompts": 0,
     "sourceBuildParityProven": false,
     "actualConfigAccessProven": false,
+    "productionBudgetOrGeometryApproved": false
+  },
+  "governanceReadback": {
+    "journalId": "LP-08",
+    "status": "PUBLIC_STATE_RECORDED_SIGNER_ACCESS_NOT_CONFIRMED",
+    "lpOperations": {
+      "snapshot": "research/lower-squads-offline/governance-snapshot-v94.json",
+      "review": "research/lower-squads-offline/governance-review-v94.json",
+      "multisig": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+      "threshold": 2,
+      "members": 3,
+      "timeLockSeconds": 43200,
+      "firstSlot": 459296308,
+      "lastSlot": 459296533
+    },
+    "treasury": {
+      "snapshot": "research/lower-squads-offline/treasury-snapshot-v95.json",
+      "review": "research/lower-squads-offline/treasury-review-v95.json",
+      "multisig": "Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz",
+      "threshold": 3,
+      "members": 5,
+      "timeLockSeconds": 172800,
+      "firstSlot": 459307036,
+      "lastSlot": 459307215
+    },
+    "signerAccessConfirmed": false,
+    "oldReturnControllersRefreshed": false,
+    "realFundingApproved": false,
+    "observationScope": "Single RPC, recorded finalized slots and known retained account layouts; not live signer availability or future execution permission."
+  },
+  "newOwnerResearchRequest": {
+    "intake": "docs/lp-v29-request-intake.json",
+    "status": "READ_AND_SCOPED_NOT_RECALCULATED",
+    "estimatedDeadlineDushanbe": "2026-10-21T18:00:00+05:00",
     "productionBudgetOrGeometryApproved": false
   }
 }
