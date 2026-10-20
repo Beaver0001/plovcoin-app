@@ -971,3 +971,23 @@ This is offline message inspection, not runtime execution or Operator access.
 No real project index/config/authority/geometry is selected. RPC/signatures/send0.
 Root app dependencies/lock/routes/launch flag are unchanged. Runtime CPI/binary
 parity/real config and the existing LP-03/09/15 gates remain OPEN; MAINNET_GO=NO.
+
+
+### v89: local SBF LOWER creation through Squads
+
+The research suite now executes freshly read mainnet Meteora/Squads ELF in
+LiteSVM1.4.1 with synthetic state.19 local program transactions:8 successes and
+11 expected failures;5 additional local funding airdrops. Real wallet/network0.
+Meteora/Squads pins and finalized contexts are retained with the binary evidence.
+Bundled SPL/Token2022/ATA are not mainnet-pinned, and source/build parity is unproved.
+
+Synthetic2/3 governance and12h timelock lead to successful dynamic-config pool
+creation, correct NFT ownership and constant-fee readback. Missing quorum/timelock,
+wrong authority/type, insufficient inventory/SOL, missing/foreign ephemeral state,
+CU exhaustion and replay reject. Tracked accounts roll back, excluding external
+fee payer; synthetic Operator permission0 cannot issue a config. Synthetic Operator
+permission injection does not establish project mainnet access. Funding/debit
+identities hold for this fixture; they do not approve a launch budget.
+
+See [procedure, results and limits](../research/lower-squads-offline/README.md).
+Root app dependencies/lock/routes/flag unchanged. LP-03/09/15 OPEN; MAINNET_GO=NO.

@@ -106,3 +106,66 @@ Squads source: commit `af94153ff77a28b6effe46b9c94baaa93742b48c`, SDK package.js
 Из этой папки: `npm ci --ignore-scripts --no-audit --no-fund`, затем `npm run check`.
 Запуск не требует кошелька, SOL, config аккаунта или RPC доступа.
 При установке без native build используется pure-JS bigint; проверка прошла в этом режиме.
+
+
+# v89 — исполнение программ в LiteSVM
+
+Локальная проверка завершена: **LOCAL_SBF_SUITE_PASS**, 19 транзакций программы:
+8 успешных, 11 ожидаемых отказов. Дополнительно5 локальных airdrop для тестового
+фондирования. Все ключи, mint, multisig, Operator state и config — синтетические.
+Реальные кошельки/сеть: prompts0, sends0. **MAINNET_GO=NO**.
+
+Загружены свежие mainnet ELF Meteora/Squads (finalized read09:32UTC /14:32Dushanbe):
+program read459181440, ProgramData read459181480; genesis проверен до/после.
+Meteora deployment457080014, ELF SHA256967ff9fb…a2022 (совпадает с v85).
+Squads deployment302582236, ELF SHA256dec8d3e0…01d34c.
+Полные хеши и адреса — `program-pins.json` в сохранённом пакете бинарников.
+Это чтение одного RPC в разных контекстах, без доказательства source/build parity.
+SPL Token/Token-2022/ATA взяты из LiteSVM1.4.1; они не закреплены по mainnet ELF.
+Обычный native mint state создан в fixture вручную. Положительный тест — исполнение
+реальных Meteora/Squads ELF с тестовым состоянием, не полная копия mainnet.
+
+| Сценарий | Результат |
+|---|---|
+| Создание synthetic Squads 2/3 с timelock43200 | PASS |
+| Operator permission0 / CreateConfigKey отсутствует | InvalidPermission6054; config не появилась |
+| Создание dynamic config с synthetic CreateConfigKey | PASS; type1, нужный vault authority |
+| Test mint/инвентарь, vault transaction, proposal, два голоса | PASS |
+| Один голос / задержка не вышла | InvalidProposalStatus / TimeLockNotReleased |
+| Config с другим authority / static type | ConstraintHasOne / InvalidConfigType |
+| Недостаточно SOL / токенов | ожидаемый отказ; полный откат проверяемого состояния |
+| Нет ephemeral signer / NFT от другого transaction PDA | InvalidAccount |
+| Лимит100000CU | ожидаемое исчерпание; полный откат |
+| Исполнение после2 голосов и12h | PASS;173304CU в данной локальной среде |
+| Повтор исполненного proposal | InvalidProposalStatus; повторного списания нет |
+
+Для10 отказов на исполнение до/после успешного create сравниваются данные, owner,
+lamports и наличие12 аккаунтов; тест чужого ephemeral дополнительно проверяет13-й.
+Отдельно отсутствие config/неизменность Operator проверены при отказе issuance.
+Исполнитель платит локальную tx fee и исключён из сравнения отката. Ошибки после
+начала Meteora init также откатывают создание pool/position/NFT, wrap и переводы.
+Missing/foreign ephemeral, wrong authority/type и недостаточные балансы внесены
+через локальное изменение fixture state. Это fault injection, не утверждение,
+что такое изменение approved proposal доступно злоумышленнику в реальной сети.
+
+Readback успешного пула: NFT supply1/decimals0, token account owner=vault;
+base fee2500004/1e9 постоянная, protocol20%, dynamic0, compounding0, OnlyB,
+timestamp activation, Alpha Vault отсутствует. Тестовые1e9 token units и1e9 lamports
+поступили в соответствующие резервы; остаток WSOL ATA0. Vault debit1024645360lamports
+равен principal1e9 + сумме lamports новых аккаунтов24645360. Это расходы тестового
+создания, **не полный бюджет запуска**: внешние fees/proposal/config/сервис оператора
+и реальная выбранная конфигурация оцениваются отдельно. Значения не меняют бюджет.
+
+Воспроизведение: установить зависимости из lockfile; распаковать сохранённый пакет
+и задать `PLOV_LOCAL_FIXTURES` на папку `fixtures`; запустить `npm run check:runtime`.
+Скрипт проверит SHA256 обеих ELF из соседнего `program-pins.json`. Подписи создаются
+только детерминированными тестовыми keypairs и отправляются только в локальную VM;
+HTTP RPC в runtime отсутствует. При необходимости **нового** read-only среза:
+`python download-program-fixtures.py --output /absolute/scratch/path`.
+Новый срез может содержать другой код и потребует отдельной оценки результата.
+
+Первый прогон выявил отсутствующий native mint в fixture; он явно добавлен в setup.
+При доработке теста исправлены Uint8Array для сериализации и ожидаемый код
+InvalidPermission6054. После исправлений полная suite и7 offline checks прошли.
+Не проводились installed Phantom, devnet/mainnet execution, source/build audit,
+production wiring или утверждение настоящего config/manifest. LP-03/09/15 Открыто.
