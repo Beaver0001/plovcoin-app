@@ -110,7 +110,7 @@ export function Community() {
             {t.community.finalTitle}
           </div>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href={official.channels.find(channel => channel.id === "x")!.href} target="_blank" rel="noopener noreferrer" className="btn-primary">
+            <Link href={`${localePath(locale, "/")}#community`} className="btn-primary">
               {t.community.ctaPrimary}
             </Link>
             <Link href={localePath(locale, "/whitepaper")} className="btn-secondary">
