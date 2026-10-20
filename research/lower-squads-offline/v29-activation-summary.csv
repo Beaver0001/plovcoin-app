@@ -1,0 +1,13 @@
+id,mode,lower_proposal,ready_minus_T0_seconds,pre_T0_withdrawal,at_or_after_T0_abort,prior_public_buy,withdrawn_PLOV_atoms,safe_prestart_abort_proven,MAINNET_GO
+TWO_MIN_90_current_on-time,on-time,Cancelled,-301,PoolDisabled,Executed,False,699999999999999999,False,NO
+TWO_MIN_90_current_late-no-trade,late-no-trade,Cancelled,42900,TimelockNotReleased,Executed,False,699999999999999999,False,NO
+TWO_MIN_90_current_late-trade,late-trade,Cancelled,42900,TimelockNotReleased,Approved,True,,False,NO
+TWO_MIN_100_current_on-time,on-time,Cancelled,-301,PoolDisabled,Executed,False,699999999999999999,False,NO
+TWO_MIN_100_current_late-no-trade,late-no-trade,Cancelled,42900,TimelockNotReleased,Executed,False,699999999999999999,False,NO
+TWO_MIN_100_current_late-trade,late-trade,Cancelled,42900,TimelockNotReleased,Approved,True,,False,NO
+TWO_IDEAL_90_current_on-time,on-time,Cancelled,-301,PoolDisabled,Executed,False,699999999999999999,False,NO
+TWO_IDEAL_90_current_late-no-trade,late-no-trade,Cancelled,42900,TimelockNotReleased,Executed,False,699999999999999999,False,NO
+TWO_IDEAL_90_current_late-trade,late-trade,Cancelled,42900,TimelockNotReleased,Approved,True,,False,NO
+TWO_IDEAL_100_current_on-time,on-time,Cancelled,-301,PoolDisabled,Executed,False,699999999999999999,False,NO
+TWO_IDEAL_100_current_late-no-trade,late-no-trade,Cancelled,42900,TimelockNotReleased,Executed,False,699999999999999999,False,NO
+TWO_IDEAL_100_current_late-trade,late-trade,Cancelled,42900,TimelockNotReleased,Approved,True,,False,NO

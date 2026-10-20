@@ -75,7 +75,7 @@
     "interpretation": "Witnesses sit close to the mathematical10SOL floor. Principal inside pools is not the separately unknown operating budget B; neither the10SOL reserve nor the0.001SOL headroom establishes available config/rent/transaction funding.",
     "researchGeometryApproved": true,
     "productionCandidateSelected": false,
-    "nextUncompletedTechnicalGate": "Production activation failure/late-second-pool procedure, Treasury funding handoff and real project config/authority/manifest acceptance. v102 closes local exact-candidate Squads initialization and fee custody only, not mainnet readiness.",
+    "nextUncompletedTechnicalGate": "Remove the independent funded-UPPER timer hazard before production: verify atomic both-pool initialization feasibility or a genuinely authorized stop design. Pinned creator-only design cannot postpone activation or withdraw before T0; cancellation of pending LOWER does not stop UPPER. Treasury funding handoff and actual config/authority/manifest acceptance remain open.",
     "exactCandidateSquadsReview": {
       "status": "LOCAL_SYNTHETIC_INITIALIZATION_AND_FEE_CUSTODY_PASS",
       "review": "research/lower-squads-offline/v29-squads-review.json",
@@ -139,7 +139,33 @@
       "fullAtomicPathReplay": "NOT_RUN",
       "productionConfigAccepted": false
     },
-    "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json"
+    "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json",
+    "activationFailureReview": {
+      "status": "LOCAL_BOUNDARY_TESTS_PASS_PRESTART_ABORT_BLOCKED",
+      "review": "research/lower-squads-offline/v29-activation-review.json",
+      "reproduction": "research/lower-squads-offline/v29-activation-reproduction.json",
+      "currentFXCandidates": 4,
+      "timingOrderings": 3,
+      "cases": 12,
+      "transactionsPerRun": 388,
+      "successesPerRun": 276,
+      "expectedFailuresPerRun": 112,
+      "independentChecks": 762,
+      "twoRunsByteIdentical": true,
+      "activationUpdateInstructionPresent": false,
+      "preActivationMatureWithdrawalRejections": 4,
+      "postActivationWithdrawals": 8,
+      "staleWithdrawalRejectionsAfterPublicBuy": 4,
+      "creatorOnlyDisableRejections": 12,
+      "cancelledLOWERProposalsDoNotStopUPPER": 12,
+      "safePrestartAbortProven": false,
+      "operatorAuthorizationProven": false,
+      "productionActivationPoint": null,
+      "transcriptArtifact": "PLOV_v103_ACTIVATION_TRANSCRIPT.json",
+      "transcriptLibraryFileId": "libfile_bbde135abc34819191fad0db358ae6de",
+      "transcriptBytes": 716096,
+      "transcriptSHA256": "3f75cc62a1d308c80b466590bb1d9a1c3812510218c1b6746020c20c65c86d7e"
+    }
   },
   "request": {
     "title": "Запрос на LP v29 — геометрия диапазона по канону (владелец, 20.10.2026)",

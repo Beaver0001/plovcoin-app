@@ -700,3 +700,77 @@ sourcebuildparity, atomic/Jupiterrouting, mainnetконкуренция иreleas
 Бюджет/60PLOV отложены владельцем. Rootapp/deps/lock/routes/flags прежние;
 networkrequests/sends/realwallet0, есть localsyntheticsignatures.
 Wave1inputs=null; MAINNET_GO=NO.
+
+### v103 — missing LOWER: postponement and stop boundaries
+
+The pinned SDK1.5.1 IDL exposes **no activation-time update instruction**. Its
+`setPoolStatus` requires an Operator account; pool creation/NFT ownership alone
+does not provide that permission. This suite does not establish project Operator
+access. The native absent-Operator test fails `AccountOwnedByWrongProgram`,
+without modifying the pool or governance state.
+
+Twelve fresh synthetic VMs cover four current-FX v29 candidates (MIN/IDEAL,
+90/100% retention) and three deterministic orderings. Each creates exact UPPER
+through Squads2/3+12h, stores the real LOWER creation message and cancels it with
+two votes. LOWER remains absent; cancellation leaves UPPER bytes and T0 unchanged.
+Separately approved full-withdrawal and disable messages are read back from the
+native stored message account. No v102 runner, geometry or budget was modified.
+
+| Ordering | Native result |
+|---|---|
+| Abort timelock matures301s before T0 | Withdrawal at T0−301s rejects `PoolDisabled`, despite mature approval; retry at T0 succeeds if executed before any trade. |
+| Abort becomes executable42900s after T0, no intervening trade | Timelock prevents earlier execution; full withdrawal at maturity succeeds. |
+| Same late abort, public1SOL buy at T0 lands first | UPPER trades with LOWER absent; unchanged-price withdrawal floor then rejects `ExceededSlippage`, remaining Approved. |
+| Creator vault attempts pool disable without an Operator account | Rejected in all12 VMs; ordinary creator custody is insufficient. |
+
+The preactivation rejection is **a protocol boundary**, not a harness failure:
+even preapproving an abort more than12h ahead does not let the creator withdraw
+before pool activation. Successful postactivation withdrawals return the
+independently calculated floor PLOV amount, set pool/position liquidity to0 and
+return the existing2039280lamport WSOL account rent separately from principal.
+The tested buy then fails. Pool account, NFT custody and original T0 remain;
+this is not pool deletion or a clock reset.
+
+There is **no proven safe prestart abort** for the current independently funded,
+creator-only two-timer design. An at-T0 withdrawal is exposed to transaction
+ordering. Requoting after an intervening trade needs a new approved message and
+its applicable timelock; zero thresholds are not approved production policy.
+Cancelling LOWER cannot stop an already created UPPER. Do not treat a larger
+calendar buffer or one cancellation vote as an automatic readiness guard.
+
+Next technical gate: verify whether both exact initializations can execute
+atomically in one governance operation, or establish and test a genuinely
+authorized stop mechanism before adopting any independently funded UPPER timer.
+Neither alternative is accepted by this suite. Actual project config, approved
+manifest, signer access, Treasury funding, production budget/geometry, Phantom
+acceptance and launch GO remain open.
+
+Per final run:388 native transactions (276 success/112 expected failures), plus
+60 separate local funding airdrops.762 independent stdlib Python checks verify
+coverage, timelock inequalities, floor amounts, native logs, message hashes,
+tracked-account rollback, separate rent refund and zero-liquidity readback.
+Second complete run preserves3 outputs byte-for-byte. Max1194serialized bytes,
+183041CU in this VM; not a mainnet cost/priority estimate. Only four frozen
+current-FX candidates are covered here; historical v101/v102 wider coverage is
+unchanged. Five retained v90 ELF are hash-pinned, not freshly fetched, and
+source/build parity remains unproved.
+
+Reproduce from this directory using retained fixtures:
+```sh
+node v29-activation.cjs /absolute/path/to/continuation_v90/fixtures
+python3 verify-v29-activation.py
+```
+
+Sources: `v29-activation.cjs`, `verify-v29-activation.py`.
+Versioned results: `v29-activation-review.json`,
+`v29-activation-summary.csv`, `v29-activation-reproduction.json`.
+The ignored raw transcript is retained separately as
+PLOV_v103_ACTIVATION_TRANSCRIPT.json (716096bytes,
+SHA2563f75cc62a1d308c80b466590bb1d9a1c3812510218c1b6746020c20c65c86d7e,
+Library libfile_bbde135abc34819191fad0db358ae6de). Initial diagnostic expectations were corrected
+to the actual absent-Operator error and the observed preactivation prohibition;
+the final suite records these boundaries as expected failures.
+
+Root application/dependencies/lock/routes/launch flag unchanged; no real keys,
+wallet prompts, chain sends, operator contact, funding, merge or deployment.
+Only synthetic local signatures/transactions. Wave1Inputs=null; MAINNET_GO=NO.

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "v102",
+  "version": "v103",
   "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
   "dateDushanbe": "2026-10-20",
@@ -200,11 +200,13 @@
     "exactV29SquadsReview": "research/lower-squads-offline/v29-squads-review.json",
     "productionActivationPoint": null,
     "automaticBothPoolsReadyGuard": false,
-    "productionActivationFailureProcedure": "OPEN_BEFORE_LAUNCH",
+    "productionActivationFailureProcedure": "BLOCKED_CURRENT_CREATOR_ONLY_DESIGN",
     "exactV29NativeTransactions": 246,
     "exactV29NativeExpectedFailures": 12,
     "runtimeOrLaunchAcceptanceGranted": false,
     "estimatedDeadlineDushanbe": "2026-10-21T18:00:00+05:00",
-    "productionBudgetOrGeometryApproved": false
+    "productionBudgetOrGeometryApproved": false,
+    "activationFailureReview": "research/lower-squads-offline/v29-activation-review.json",
+    "safePrestartAbortProven": false
   }
 }
