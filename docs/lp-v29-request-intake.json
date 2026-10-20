@@ -1,6 +1,69 @@
 {
   "schema": 1,
-  "status": "BASELINE_RESTORED_ZERO_CERTIFIED_ONE_DEFINITION_OPEN",
+  "status": "V29_MATHEMATICAL_CLASSIFICATION_COMPLETE_OWNER_ONE_POLICY_APPLIED",
+  "finalResult": {
+    "kind": "COMPLETED_MATHEMATICAL_RESEARCH_NOT_LAUNCH_ACCEPTANCE",
+    "artifact": "PLOV_v29_FINAL.zip",
+    "libraryFileId": "libfile_9a85ab822e2c8191ad42bdb09d6d9881",
+    "bytes": 130606,
+    "sha256": "92ecd7abf674d772c2d29ccd858f761c88b79a95bbc896b0624f3c66b2508989",
+    "summaryRows": 27,
+    "architectureCases": 54,
+    "constructivePaths": 12,
+    "infeasibilityCertificates": 42,
+    "currentFXCases": 18,
+    "currentFXFeasible": 4,
+    "currentFXInfeasible": 14,
+    "ONEFeasible": 0,
+    "TWOFeasible": 12,
+    "independentReplayChecks": 2427,
+    "independentComparisonAndManifestChecks": 1726,
+    "analyzerChecks": 366,
+    "cleanReproductionByteIdenticalFiles": 93,
+    "fullRowComparisonComplete": true,
+    "mathematicalClassificationComplete": true,
+    "historicalProvenanceComplete": false,
+    "demandMinimumProved": false,
+    "Wave1Inputs": null,
+    "MAINNET_GO": "NO",
+    "interpretation": "ONE uniform derived lower as approved; TWO unchanged lower; exact v28 claims. Feasible TWO controls are identical token buys to v28.",
+    "primaryFXResults": [
+      {
+        "scenario": "MIN",
+        "retention": 90,
+        "seedSOL": "332.4899243102421",
+        "D_witness_USD": "173917.21911089755",
+        "maxDropPct": "36.06573677993343"
+      },
+      {
+        "scenario": "MIN",
+        "retention": 100,
+        "seedSOL": "332.4899243102421",
+        "D_witness_USD": "151609.72521373029",
+        "maxDropPct": "23.86804414854124"
+      },
+      {
+        "scenario": "IDEAL",
+        "retention": 90,
+        "seedSOL": "457.7155724179192",
+        "D_witness_USD": "147470.36979246058",
+        "maxDropPct": "23.29894149696527"
+      },
+      {
+        "scenario": "IDEAL",
+        "retention": 100,
+        "seedSOL": "457.7155724179192",
+        "D_witness_USD": "130400.15026611967",
+        "maxDropPct": "10.1680426092312"
+      }
+    ],
+    "proofs": {
+      "ZERO": "D14 price drop necessarily >53.93397%; allowed45%",
+      "ONE_MIN_IDEAL": "D14 drop forces y_after>1.23. Divergence>5989.66USD while LP fees<2555.51USD and IL tolerance<289.78USD. Contradicts downside IL.",
+      "TWO_50_MIN_IDEAL": "D14 drop forces B01<367180000; terminal excess>327318513 1/3 PLOV exceeds reserve-backed lower capacity at every frozenFX."
+    },
+    "launchAuthorized": false
+  },
   "reviewDateDushanbe": "2026-10-20",
   "request": {
     "title": "Запрос на LP v29 — геометрия диапазона по канону (владелец, 20.10.2026)",
@@ -56,7 +119,7 @@
       "v28ONE": "lower=upper",
       "v28TWOLower": "100B except MIN/50 percent:16B/14.4B/8.5B for minus30/current/plus30 FX",
       "issue": "Changing only upper while retaining old ONE lower creates a piecewise curve. It cannot silently be labelled the same uniform ONE class.",
-      "resolution": "MATHEMATICAL_CONFLICT_CONFIRMED; owner direction needed for canonical uniform ONE with derived lower versus separately labelled upper-only piecewise sensitivity"
+      "resolution": "Owner approved canonical uniform ONE with derived lower on2026-10-20T22:42:22+05:00; TWO retains old lower. Applied in finalv29; no launch budget or production geometry approval."
     }
   ],
   "repositoryLocation": "V28_GIT_REPOSITORY_NOT_CONFIRMED_FROM_READ_SOURCES; portable Drive sources confirmed",
@@ -89,7 +152,10 @@
     "upperOnlySensitivity": "old lower retained; label piecewise sensitivity from v28 ONE, not uniform ONE",
     "MINPhysicalLowerOldUSDApprox": "0.000149310544990126",
     "MINPhysicalLowerCanonicalUniformUSDApprox": "0.0000956669450737702",
-    "selected": null,
+    "selected": "CANONICAL_UNIFORM_ONE_DERIVED_LOWER",
+    "stillNeeded": false,
+    "approvedAtDushanbe": "2026-10-20T22:42:22+05:00",
+    "approvalText": "добро",
     "launchAuthorization": false
   },
   "actualLaunchBudgetOrGeometryApproved": false,
