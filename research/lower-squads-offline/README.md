@@ -625,3 +625,78 @@ source/buildparity, mainnet features/ordering/Jupiter/walletacceptance,
 операционный бюджет и фактический спрос. Это не новый mainsnapshot и не
 выбор бюджета/productionгеометрии. Networkrequests/sends/realwalletprompts0;
 есть только localsyntheticsignatures. Wave1inputs=null;MAINNET_GO=NO.
+
+## v102 — точные кандидаты через Squads и закрытый старт
+
+20.10.2026. Проверены те же12 исследовательских сочетаний и24 poolinitializations,
+теперь через synthetic2/3+12h Squads, на пяти retainedELFv90. Настоящие
+config/authority/vault/кошельки проекта не используются.
+
+```bash
+node v29-squads.cjs /absolute/path/to/v90/fixtures
+python3 -S verify-v29-squads.py
+```
+
+UPPER иLOWER создаются двумя отдельными предложениями. Для каждогоmessage
+ephemeralSigners=1; NFTmint PDA зависит от конкретного transactionindex.
+Внутренниеsigners — только vault иNFT PDA.36 messageбайт (24initializations+
+12feeclaims) заново сериализованы из nativeVaultTransaction и совпали с
+проверенными доstore. При добавлении этой проверки тестовый decoder вернул
+Uint8Array, тогда как компактный Beetcodec требовалArray: нормализован только
+формат accountIndexes/data для сравнения, байты инструкций не менялись.
+
+Порог2/3 и12h исполнены настоящим SquadsELF. NativeProposal timestamps
+подтверждают43201сек между Approved/Executed в каждом из36предложений.
+Не прошли исполнение с одной подписью, доtimelock, при неправильном
+configauthority/type, отсутствующем NFTephemeral, недостатке base/SOL,
+повторное исполнение и прямое получениеLPfees обычным member безvault.
+Некоторые отрицательные случаи — явно внесённые локальные повреждения
+accounts, не действия производственного сервиса.
+
+Readback24пулов совпал с точными sqrt/liquidity/principal v100. Все24NFT
+остались уvault. SOLdebit vault равен сумме lamports всех созданных аккаунтов,
+включая principal иrent; PLOVdebit точно соответствует700M/0 по полосам.
+СозданиеLOWER не меняетUPPER. После публичной D0продажи70M PLOV
+12отдельных feeпредложений сephemeralSigners=0 иединственным signervault
+фактически выдали claimableSOL. WSOLrentrefund2039280lamports отделён отfees;
+principal/price/NFTowner не изменились. Это D0smoke, не повтор полногоD0–D90;
+полный математический/nativeпуть остаётся отдельным v101результатом.
+
+### Обнаруженный промежуток между пулами
+
+При последовательных timelockисполнениях между UPPER иLOWER в этой
+репетиции43201сек. Активация «сразу при создании» не даёт атомарной готовности
+TWO. В финальном тесте обеим полосам передан ОДИН будущий timestamp;
+24nativeпопытки торговли отклонены сPoolDisabled: UPPER, когдаLOWER ещё нет,
+иLOWER за1сек до общего timestamp. Продажа при самом timestamp прошла.
+Оба пула созданы заранее;300сек запаса после второго — только testfixture,
+не рекомендованный operationalбуфер и не датаTGE.
+
+Критическое ограничение: timestamp НЕ проверяет наличие второго пула.
+ЕслиLOWER не готов к реальномуT0, UPPER всё равно может открыться по времени.
+Передmainnet нужны утверждённый план готовности обоих пулов и проверенная
+процедура опоздания/переноса/отмены. Реальный activationPoint остаётсяnull,
+productionactivationfailureprocedure OPEN. Этот тест не разрешает запуск
+или самовольное изменение утверждённого календаря.
+
+Итог одного прогона:444nativeтранзакции,240успехов/204ожидаемыхотказа,
+60отдельных localfundingairdrops.1558независимых Pythonпроверок PASS:
+полнота12×2,геометрия/суммы/fees,бюджет/rent,NFTowner,proposal timestamps,
+readbackmessagehash,общаяактивация и сохранность rollbackhashes.
+Максимальный serializedenvelope1194байта, CU181601 в этойVM; безALT,
+не mainnetfee/CUquote. Показанные размеры относятся к этим отдельным
+предложениям, а не к атомарной сборке сразу двух пулов.
+
+Повторный полныйrun дал побайтно одинаковые3 JSON/CSVвыхода.
+Полный transcript1062057байт SHA256
+27657c4121578d5c40cf5831b2a35e36c57b9b06d4edd760ec099d259009b6ce
+сохранён отдельно какPLOV_v102_SQUADS_TRANSCRIPT.json,
+Library libfile_45a9937163e4819194c8112e017132bb. Исходники, summary/review/
+reproduction вGit; большой генерируемый rawtranscript игнорируетсяGit.
+
+Не подтверждены realconfig/authority/manifest, фактическое финансирование
+Treasury, безопасность governanceнаживыхкошельках/доступподписантов,
+sourcebuildparity, atomic/Jupiterrouting, mainnetконкуренция иreleaseGO.
+Бюджет/60PLOV отложены владельцем. Rootapp/deps/lock/routes/flags прежние;
+networkrequests/sends/realwallet0, есть localsyntheticsignatures.
+Wave1inputs=null; MAINNET_GO=NO.

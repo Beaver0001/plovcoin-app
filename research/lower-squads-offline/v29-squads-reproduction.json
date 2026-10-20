@@ -1,0 +1,19 @@
+{
+  "status": "PASS_BYTE_IDENTICAL_SECOND_RUN",
+  "outputsSHA256": {
+    "v29-squads-result.json": "27657c4121578d5c40cf5831b2a35e36c57b9b06d4edd760ec099d259009b6ce",
+    "v29-squads-review.json": "104101cf48edfb7fd9ba227ace6129fd6bd4dc324f0e5dca49c1dedd6d74d40d",
+    "v29-squads-summary.csv": "0e5f976b8722c11b1fa0411ffc4b51f49d36c3d79ad7b4005af2a25d439e6e46"
+  },
+  "sourcesSHA256": {
+    "v29-squads.cjs": "e3180d493d1caab933686ddd08b9a33d87cc9d1b9bb1557ad8111d2d53c7a203",
+    "verify-v29-squads.py": "53d0086e1c34e801aa0c5964eb653c05d39c9c41766c1c0ec0123cb9de705943",
+    "v29-geometry-result.json": "346e58abfcf6f7629da0d86f978bbd795fb457bd83407a3903c73da13fa595ee",
+    "program-pins-v90.json": "f12656a55549bb228c83081f31e7036d24389f309dcc98ceadddb30af5e2dc1d",
+    "package-lock.json": "ad977c65ee6961f46ea749cab7d6ec401dc4cdc1bd39ae6db52744bd21c89458"
+  },
+  "nativeTransactionsPerRun": 444,
+  "realWalletPrompts": 0,
+  "networkSends": 0,
+  "MAINNET_GO": "NO"
+}
