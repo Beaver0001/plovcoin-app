@@ -540,3 +540,88 @@ v90/v93 не считаются исполнением этих точных v29
 с точными atomic fees/claims/returns, проверкой10SOL/drop/IL и реальных runtime
 ограничений. Productionconfig/authority/адреса/бюджет остаются не утверждены.
 RPC/кошельки/подписи/сборки/сетевые отправки0. Wave1inputs=null;MAINNET_GO=NO.
+
+## v101 — полный нативный путь исследовательских v29
+
+20.10.2026. Все12 проходящих TWO MIN/IDEAL×90/100%×три frozenFX
+исполнены вLiteSVM1.4.1 на пяти retainedELF v90. Для каждой VM создаются
+синтетические mint9decimals, Operator/config, customizableUPPER иdynamicLOWER
+с точными Q64/liquidity v100. Реальный PLOVmint не меняется. Все подписанты
+локальные прямые keypairs; это не новый тест Squads и не приёмка realconfig.
+
+```bash
+node v29-native.cjs /absolute/path/to/v90/fixtures
+python3 -S verify-v29-native.py
+```
+
+Fixtures предоставляются явно; скрипт сверяет все5ELF SHA256 с
+program-pins-v90.json. Никаких автоматических скачиваний/RPC нет.
+Существующий PLOV_LIQUIDITY_v90_FULL_CYCLE.zip содержит pinnedfixtures.
+Для cloneрепозитория нужны зависимости из закреплённого локального lock.
+SDKentry/lock/input/runner/oracle hashes — v29-native-reproduction.json.
+
+Результат одного итогового прогона:246 nativeтранзакций,234успеха,
+12 ожидаемых ExceededSlippage с откатом10 отслеживаемых аккаунтов
+(внешний плательщик теряет только5000lamports). Отдельно36локальных funding
+airdrops.162swaplegs,24poolinitializations,24реальных localLPfeeclaims,
+60postсобытий. Все границы иinitialliquidity прочитаны обратно из программы.
+Второй полный прогон дал побайтно одинаковые4 JSON/CSVрезультата.
+
+v29-path-input.json сохраняет точные исходные покупки/claim и непрерывные
+referenceevents. Покупки переводятся в атомы вниз; возврат=floor((1−k)*buyAtoms).
+Три claim распределяются разностями cumulativefloor, поэтому сумма точно
+W=1171170270PLOV, без потери последнего атома. Купленные токены и выданные
+claim в тесте принадлежат одному синтетическому trader; retained/return
+суммы учитываются отдельным точным ledger, не создают новых marketпокупок.
+TERMINAL имеет условный VMday91 только для порядка послеD90; это не заданная
+дата возврата когорт или принятие производственного календаря Wave1.
+
+Маршрут покупки: LOWERдообщейP0границы, затемUPPER; маршрут продажи:
+UPPERдоP0, затемLOWER. Переход использует PartialFill с точным остатком,
+остальные покупкиExactOut ипродажиExactIn. Это ручной SDKмаршрут,
+не доказательство того, что Jupiter выберет те же legs или исполнит атомарно
+двухпуловую сделку. Здесь legs исполняются последовательно в замороженном
+локальном состоянии; конкурентная торговля между ними не моделируется.
+
+3593 независимых Pythonпроверки (безSDK/model) заново считают feeceil,
+protocolfloor20%, swapQ64переходы/amounts, conservation, claims/returns,
+withdrawablefloorprincipal иIL, minOutrollback/transactionlimits.
+IL использует доступные к выводу curveA/B и claimableLPfees, а не все балансы
+vault. Порог principal≥10SOL соблюдён во всех60 событиях; минимум
+10.001001103SOL. Падение≤45%, downside/all-post IL≥−.19% сохранены.
+Послеterminal фактически полученные LPfees совпали с claimableснимком;
+principal/price не изменились. Refund существующего WSOLrent отделён отfee.
+
+| Основной FX103.80 | Минимальный withdrawableprincipal,SOL | Максимальное падение,% |
+|---|---:|---:|
+| MIN90% | 10.001001438 | 36.065736779935 |
+| MIN100% | 10.001001438 | 23.868044148543 |
+| IDEAL90% | 10.001001435 | 23.298941496967 |
+| IDEAL100% | 10.001001435 | 10.168042609234 |
+
+Нативный readback выявил1lamport начального баланса customizableUPPER
+WSOLvault сверхprincipal: vaultB=1, pool.tokenBAmount=0, lamports2039281,
+nativeRentReserve2039280. ДляdynamicLOWER такого превышения нет.
+Этот surplus явно исключён изprincipal/fees и не представлен какseedQ.
+Доказан балансовый факт, но не отдельно аудит всех источников этойединицы.
+Сумма реального operationalB по этим данным не утверждается.
+Rounddust accountminuswithdrawable достигает18293rawPLOV и5lamports;
+это тоже не доступный резерв. Max price delta кcontinuousv29≈2.427e−18USD,
+max demanddelta≈6.995e−9SOL. Глобальная оптимальность спроса не заявлена.
+
+Подготовительные попытки остановились сначала из-за завышенного запроса
+localairdrop (fundingнепрошёл, поэтому добавлена проверка fundingreadback),
+затем из-за неверного ожидания отсутствия nativevaultsurplus. Исправлен
+стенд/учёт; Q/диапазоны/покупки/fees/пороги v29 не подгонялись.
+
+Полный transcript с nativeлогами сохранён отдельно:1278481байт,
+SHA256 a8838ea7c5e6f0363ef84bbd36b72eddad4e456c7cd4bad3d8325b5bc69b341b,
+PLOV_v101_NATIVE_TRANSCRIPT.json (Library libfile_fc9c1b5ffae081919994027fbbba1ad1).
+Он воспроизводится скриптом и игнорируетсяGit; исходники/input/review/summary/
+eventcomparison/reproduction вGit. Не копировать чужой transcript как новыйrun.
+
+Открыты exactcandidateSquads handoff, realconfig/authority/manifest,
+source/buildparity, mainnet features/ordering/Jupiter/walletacceptance,
+операционный бюджет и фактический спрос. Это не новый mainsnapshot и не
+выбор бюджета/productionгеометрии. Networkrequests/sends/realwalletprompts0;
+есть только localsyntheticsignatures. Wave1inputs=null;MAINNET_GO=NO.

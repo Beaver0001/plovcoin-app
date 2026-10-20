@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large reproducible local transcript; retained separately with a pinned hash.
+/research/lower-squads-offline/v29-native-result.json

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "v100",
+  "version": "v101",
   "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
   "dateDushanbe": "2026-10-20",
@@ -194,7 +194,10 @@
     "artifactSHA256": "92ecd7abf674d772c2d29ccd858f761c88b79a95bbc896b0624f3c66b2508989",
     "mathematicalResearchComplete": true,
     "offlineV29Q64Mapping": "PASS_206_SDK_564_INDEPENDENT_CHECKS_12_CASES",
-    "exactV29NativeRuntimeAcceptance": "NOT_RUN",
+    "exactV29NativeRuntimeAcceptance": "LOCAL_DIRECT_SIGNER_RESEARCH_PASS_REAL_CONFIG_OPEN",
+    "exactV29NativeReview": "research/lower-squads-offline/v29-native-review.json",
+    "exactV29NativeTransactions": 246,
+    "exactV29NativeExpectedFailures": 12,
     "runtimeOrLaunchAcceptanceGranted": false,
     "estimatedDeadlineDushanbe": "2026-10-21T18:00:00+05:00",
     "productionBudgetOrGeometryApproved": false

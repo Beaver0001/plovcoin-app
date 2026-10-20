@@ -1,0 +1,21 @@
+{
+  "status": "PASS_BYTE_IDENTICAL_NATIVE_REPLAY",
+  "outputsSHA256": {
+    "v29-native-result.json": "a8838ea7c5e6f0363ef84bbd36b72eddad4e456c7cd4bad3d8325b5bc69b341b",
+    "v29-native-summary.csv": "999edb800723b42953542f978e3a278bcb70166212735342974bad807505e037",
+    "v29-native-event-review.csv": "64526f2e1e59dd79ed651e3de15d39c8f8a73c460022e76a842631ebe0d6f848",
+    "v29-native-review.json": "fa7d7774a9726ca659173a9ed01fe7cf87442648a9e8595d464babd090512e6d"
+  },
+  "sourcesSHA256": {
+    "v29-native.cjs": "7ee49514c37ffda2f1d9c8a4d0966218898a36b5a14958c72002ac71b1126219",
+    "verify-v29-native.py": "dd1b837fefa0f2c6cc78d74ea07aa26aef9b1d045117d8958b00f0ab88c1084d",
+    "v29-path-input.json": "0f78ce640aed13a7b203e04d9fc500670e8abc93e4eae3ee4b7e35f6c4becb87",
+    "v29-geometry-input.json": "3c2f701ac22d250c35198f3c4270c984ff97f78112ecd2b7cb3cebd21fd672d8",
+    "v29-geometry-result.json": "346e58abfcf6f7629da0d86f978bbd795fb457bd83407a3903c73da13fa595ee",
+    "package-lock.json": "ad977c65ee6961f46ea749cab7d6ec401dc4cdc1bd39ae6db52744bd21c89458"
+  },
+  "sdkEntrySHA256": "2849b3517e0c0418e8cce2f0cb265e5d5f740bf72672eb66096488188940391b",
+  "nativeTransactionsPerRun": 246,
+  "networkSends": 0,
+  "MAINNET_GO": "NO"
+}
