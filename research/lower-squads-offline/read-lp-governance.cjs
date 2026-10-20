@@ -3,8 +3,10 @@
 const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const {PublicKey}=require('@solana/web3.js'),sq=require('@sqds/multisig'),bs58=require('bs58');
 const endpoint='https://api.mainnet-beta.solana.com',genesis='5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d';
-const multisig=new PublicKey('9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B'),vault=sq.getVaultPda({multisigPda:multisig,index:0})[0];
-assert.equal(vault.toBase58(),'2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK');
+const targets={lp:{multisig:'9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B',vault:'2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK',version:94},treasury:{multisig:'Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz',vault:'3w5DmerxzYfMhVLHsdjHn5BU194u3R9DD5HaD7rr5VRm',version:95}};
+const targetName=process.argv[4]==='--target'?process.argv[5]:'lp',target=targets[targetName];assert(target,'Unknown fixed project target');
+const multisig=new PublicKey(target.multisig),vault=sq.getVaultPda({multisigPda:multisig,index:0})[0];
+assert.equal(vault.toBase58(),target.vault);
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
 const BN=require('bn.js');
 function json(v){if(typeof v==='bigint'||BN.isBN(v))return v.toString(10);if(v instanceof PublicKey)return v.toBase58();if(Array.isArray(v))return v.map(json);if(v&&typeof v==='object')return Object.fromEntries(Object.entries(v).map(([k,x])=>[k,json(x)]));return v;}
@@ -15,7 +17,7 @@ async function rpc(method,params=[],retain=true){
  const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Connection':'close'},body:JSON.stringify(request),signal:AbortSignal.timeout(45000)});
  assert(response.ok,'HTTP '+response.status);const body=await response.json();assert(!body.error,JSON.stringify(body.error));assert.equal(body.id,request.id);assert('result' in body);
  if(body.result?.context){assert(Number.isSafeInteger(body.result.context.slot));assert(body.result.context.slot>=floor);floor=body.result.context.slot;}
- if(retain)reads.push({request,result:body.result});return body.result;
+ if(retain)reads.push({request,result:body.result});console.error(method,body.result?.context?.slot??'OK');return body.result;
 }
 const options=()=>({encoding:'base64',commitment:'finalized',minContextSlot:floor});
 function bytes(a){assert(a&&a.data[1]==='base64');const b=Buffer.from(a.data[0],'base64');assert.equal(b.toString('base64'),a.data[0]);return b;}
@@ -23,6 +25,7 @@ function decode(Type,a,disc){assert.equal(a.owner,sq.PROGRAM_ID.toBase58());asse
 function ms(a){const v=decode(sq.accounts.Multisig,a,sq.accounts.multisigDiscriminator),b=bytes(a);assert(sq.getMultisigPda({createKey:v.createKey})[0].equals(multisig));assert.equal(b.readUInt16LE(72),v.threshold);assert.equal(b.readUInt32LE(74),v.timeLock);assert.equal(b.readBigUInt64LE(78).toString(),v.transactionIndex.toString());assert.equal(b.readBigUInt64LE(86).toString(),v.staleTransactionIndex.toString());return v;}
 async function scan(discriminator){return rpc('getProgramAccounts',[sq.PROGRAM_ID.toBase58(),{...options(),withContext:true,filters:[{memcmp:{offset:0,bytes:bs58.encode(Buffer.from(discriminator))}},{memcmp:{offset:8,bytes:multisig.toBase58()}}]}]);}
 async function main(){
+ const output=process.argv[3];assert(process.argv[2]==='--live'&&output,'Usage: node read-lp-governance.cjs --live OUTPUT.json [--target treasury]');assert(!fs.existsSync(output),'Refuse to overwrite existing snapshot');
  assert.equal(await rpc('getGenesisHash'),genesis);
  const initial=await rpc('getMultipleAccounts',[[multisig.toBase58(),vault.toBase58(),sq.PROGRAM_ID.toBase58()],options()]);
  const state=ms(initial.value[0]),program=initial.value[2],programBytes=bytes(program);
@@ -53,8 +56,10 @@ async function main(){
  assert.equal(await rpc('getGenesisHash'),genesis);
  const unresolved=proposalRows.filter(p=>['Draft','Active','Approved','Executing'].includes(p.status.__kind));
  const result={version:94,status:'READ_ONLY_GOVERNANCE_SNAPSHOT',capturedAt:new Date().toISOString(),endpoint,genesis,multisig:multisig.toBase58(),vault:vault.toBase58(),vaultIndex:0,firstSlot:initial.context.slot,lastSlot:final.context.slot,threshold:state.threshold,timeLockSeconds:state.timeLock,configAuthority:state.configAuthority.toBase58(),autonomous:state.configAuthority.equals(PublicKey.default),transactionIndex:state.transactionIndex.toString(),staleTransactionIndex:state.staleTransactionIndex.toString(),members:state.members.map(x=>({key:x.key.toBase58(),mask:x.permissions.mask,initiate:(x.permissions.mask&1)!==0,vote:(x.permissions.mask&2)!==0,execute:(x.permissions.mask&4)!==0})),vaultAccount:initial.value[1]?{owner:initial.value[1].owner,lamports:initial.value[1].lamports}:null,proposalRows,unresolvedProposalIndexes:unresolved.map(p=>p.index),spendingLimits,transactionRows,programPin,multisigBytesUnchangedAcrossRead:true,reads,networkSends:0,walletPrompts:0,MAINNET_GO:'NO',limitations:['Single RPC and known SDK layouts, not cryptographic completeness or a simultaneous snapshot.','Missing/closed historical proposal accounts are not recovered; retained-account scan is not transaction history.','No permission, threshold or timelock guarantees future governance state or transaction order.','ProgramData hash/header retained; full freshly returned ELF bytes omitted, comparison fixture retained separately in v90.','Candidate authority is not approved by this read; config issuance and production wallet acceptance remain separate.']};
- const output=process.argv[3];assert(process.argv[2]==='--live'&&output,'Usage: node read-lp-governance.cjs --live OUTPUT.json');assert(!fs.existsSync(output),'Refuse to overwrite existing snapshot');
+ result.version=target.version;result.subject=targetName;
+ result.addressSources=targetName==='treasury'?['https://drive.google.com/file/d/152Asad6U-ccmpYCjATOLHt1ZwFUUVB81/view','https://drive.google.com/file/d/18m1PjWRrOA9BZatFq8FzZ6kcTGilGmu7/view']:['docs/lower-config-inquiry.json'];
+ result.limitations[4]='This read does not authorize funding or config authority selection; actual config issuance and production wallet acceptance remain separate.';
  fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n',{flag:'wx'});
  console.log(JSON.stringify({...result,reads:result.reads.map(r=>({method:r.request.method,slot:r.result?.context?.slot})),proposalRows:result.proposalRows.map(p=>({index:p.index,status:p.status.__kind})),transactionRows:result.transactionRows.map(t=>({index:t.index,kind:t.kind,exists:t.exists}))},null,2));
 }
-if(require.main===module){if(process.argv[2]!=='--live'||!process.argv[3])throw Error('Explicit --live OUTPUT.json required');main().then(()=>process.exit(0)).catch(e=>{console.error(e);process.exit(1);});}
+if(require.main===module){assert(process.argv.length===4||(process.argv.length===6&&process.argv[4]==='--target'&&!!targets[process.argv[5]]),'Explicit --live OUTPUT.json [--target lp|treasury] required');if(process.argv[2]!=='--live'||!process.argv[3])throw Error('Explicit --live OUTPUT.json required');main().then(()=>process.exit(0)).catch(e=>{console.error(e);process.exit(1);});}

@@ -1,9 +1,41 @@
-# LOWER через Squads: локальные проверки v88–v94
+# LOWER через Squads: локальные проверки v88–v95
 
 Исторический этап v88,20.10.2026: **OFFLINE_SDK_CONTRACT_PASS**.
 Актуальная публичная сверка v94 и локальные этапы v92/v93 описаны ниже;
 исторические v90/v91 и ограничения — далее.
 Это сборка и анализ инструкций, без исполнения программ. **MAINNET_GO=NO**.
+
+## v95: подготовка публичной сверки Treasury
+
+Treasury адрес восстановлен по сохранённому `read_snapshot.py` из v34:
+multisig `Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz`.
+SDK вывел vault index0 `3w5DmerxzYfMhVLHsdjHn5BU194u3R9DD5HaD7rr5VRm`;
+этот же owner Treasury ATA указан в отчёте v45. Исторический профиль v34/v43 —
+3/5/172800 секунд (48h); свежим наблюдением Treasury он не стал.
+
+Reader расширен фиксированным target `treasury`, сохраняя прежний LP default.
+Reviewer понимает новый target и нормализует большие числа config actions
+в десятичные строки. Офлайн-readback сохранённого LP v94 полностью совпал с
+прежним результатом; синтаксис обоих скриптов проверен.
+
+Попытка текущего чтения Treasury завершилась остановкой среды:
+`network approval was cancelled before a decision was returned`.
+Свежего RPC snapshot нет; текущие threshold/members/timelock/configAuthority/
+proposal/spending-limit поля сохранены как null в `treasury-preparation-v95.json`.
+Это не сетевой отказ Solana и не результат проверки governance. Повторный сетевой
+вызов после отмены разрешения не выполнялся. LP-08 остаётся OPEN.
+
+После возобновления разрешённого сетевого чтения подготовлены команды:
+
+```
+node read-lp-governance.cjs --live treasury-snapshot-v95.json --target treasury
+node review-lp-governance.cjs treasury-snapshot-v95.json treasury-review-v95.json
+```
+
+Reader ограничен публичными методами чтения и не создаёт транзакции.
+Проверка адреса/PDA не подтверждает доступ к подписантам или разрешение funding.
+Источники адресов и исторического профиля перечислены в preparation JSON.
+Запись v94 ниже остаётся свежим срезом только LP Operations на указанных слотах.
 
 ## v94: реальные настройки LP Operations
 

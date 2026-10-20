@@ -1,0 +1,44 @@
+{
+  "version": 95,
+  "status": "PREPARED_LIVE_READ_BLOCKED",
+  "dateDushanbe": "2026-10-20",
+  "subject": "treasury",
+  "multisig": "Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz",
+  "vaultIndex": 0,
+  "derivedVault": "3w5DmerxzYfMhVLHsdjHn5BU194u3R9DD5HaD7rr5VRm",
+  "pdaMatchesHistoricalDestinationOwner": true,
+  "addressSources": [
+    "https://drive.google.com/file/d/152Asad6U-ccmpYCjATOLHt1ZwFUUVB81/view",
+    "https://drive.google.com/file/d/18m1PjWRrOA9BZatFq8FzZ6kcTGilGmu7/view"
+  ],
+  "historicalProfile": {
+    "threshold": 3,
+    "members": 5,
+    "timeLockSeconds": 172800,
+    "source": "https://drive.google.com/file/d/1Cnx1zXxTdIApaSc3KA-awnGzjTpTlMnA/view",
+    "freshness": "HISTORICAL_V34_PROFILE_REUSED_IN_V43_NOT_FRESH_TREASURY_READ"
+  },
+  "currentThreshold": null,
+  "currentMembers": null,
+  "currentTimeLockSeconds": null,
+  "currentProposalStatuses": null,
+  "currentSpendingLimits": null,
+  "currentConfigAuthority": null,
+  "rpcSnapshot": null,
+  "readFailure": {
+    "stage": "WAITING_FOR_EXEC_RESULT",
+    "message": "Unified exec process failed: network approval was cancelled before a decision was returned",
+    "meaning": "No completed fresh RPC snapshot available; permission cancellation is not an on-chain failure or a governance finding."
+  },
+  "verification": {
+    "fixedProjectPdaDerivation": "PASS",
+    "readerAndReviewerSyntax": "PASS",
+    "previousV94OfflineReadback": "UNCHANGED_PASS",
+    "freshTreasuryReadback": "NOT_RUN"
+  },
+  "signerAvailability": "NOT_CONFIRMED",
+  "walletPrompts": 0,
+  "networkTransactionSends": 0,
+  "LP08": "OPEN",
+  "MAINNET_GO": "NO"
+}
