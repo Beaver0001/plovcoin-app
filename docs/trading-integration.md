@@ -1021,3 +1021,18 @@ state is unchanged by LOWER exit. Final remove also refunds the pre-existing
 WSOL ATA lamports2039280; this is distinct from quote output and position-close
 rent9897120. The SDK's unwrap closes the shared owner ATA, not an operation-scoped
 temporary account. Balance review must include its pre-existing contents.
+
+### v91: offline config account review
+
+The isolated research package adds `config-account-check.cjs`: it compares caller-
+supplied snapshot bytes/context and explicit expectations for Config328, mainnet
+genesis, finalized freshness bounds, owner/executable, PDA/index, authority and
+zero u128 permission. Fixed-offset reads agree with the pinned SDK decoder.
+Thirty checks pass, including malformed/stale/wrong-role inputs and preservation
+of the actual null/unapproved project record. No RPC, wallet or network action.
+
+`EXPECTED_ACCOUNT_FIELDS_MATCH_ONLY` is not issuance acceptance or authorization.
+Caller-supplied context is not cryptographic provenance. Current program pins,
+issuance transaction/historical Operator path and project approval remain separate.
+The actual acceptance record stays NOT_RUN. Existing runtime evidence is not rerun
+for this independent tool. LP-03/09/15 OPEN; MAINNET_GO=NO.

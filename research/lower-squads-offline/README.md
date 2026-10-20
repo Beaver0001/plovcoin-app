@@ -273,3 +273,38 @@ WSOL ATA с прежним балансом/рентой2039280lamports и ве�
 прирост равен quote-поступлению из пула **плюс** прежние lamports WSOL ATA; этот
 возврат учтён отдельно от ренты позиции9897120. В production нельзя считать, что
 unwrap затрагивает только средства конкретной LP операции.
+
+# v91 — проверка байтов полученного config
+
+`config-account-check.cjs` — отдельная офлайн-проверка известного Config328.
+Она не обращается к RPC, не обнаруживает кошельки и не подписывает/отправляет
+транзакции. `npm run check:config` проверил30 условий, включая отказы и сохранение
+текущей проектной карточки NOT_RUN/null. Результат — `config-account-check-result.json`.
+
+Вход1 — JSON snapshot с полями schema1, genesisBefore/genesisAfter, capturedAt
+(канонический UTC ISO с миллисекундами), currentFinalizedSlot, commitment,
+address и accountResponse (сырой getAccountInfo result с context/value).
+Вход2 — ожидаемые authority, index (десятичная строка u64), address,
+minContextSlot, maxSlotLag, maxAgeMs. Все поля обязательны. Временные/slot лимиты
+задаёт вызывающий; скрипт не выбирает и не утверждает production policy.
+Команда: `node config-account-check.cjs SNAPSHOT.json EXPECTED.json`.
+
+Проверяются основной genesis до/после чтения, finalized, время/slot floor/lag,
+program owner, non-executable, канонический base64, размер328/discriminator,
+dynamic type1, точное authority/index/PDA и все128 permission bits=0.
+Fixed-offset чтение отдельно сверяется с decoder SDK1.5.1 (`Config`, snake_case).
+Неизвестный размер/layout отклоняется; совместимость с иной deployed-версией
+требует отдельного decoder/program pin review. Геометрия/fees/mint-пара будущего
+пула не проверяются внутри dynamic config: эти поля не фиксируют будущий LOWER.
+
+Успешный результат называется `EXPECTED_ACCOUNT_FIELDS_MATCH_ONLY` и всегда
+сохраняет issuanceAccepted=false, poolCreationAuthorized=false,
+readyForNetworkSend=false и MAINNET_GO=NO. Он доказывает только внутреннее
+совпадение переданных байтов и ожиданий. Заголовки RPC, timestamps и ожидания
+поставляет вызывающий; подпись/честность сервера или одобрение владельца этим
+не устанавливаются. SHA256 — контроль содержимого, не удостоверение подлинности.
+
+Отдельно остаются текущие program/deployment/ELF pins, успешная finalized issuance
+transaction, исторический Operator authorization path, одобрение authority/расходов
+и actual pools/manifest. CLI не заполняет acceptanceRecord и не назначает authority.
+Реальный config в v91 не получен; тестовый index89 не зарезервирован в сети.

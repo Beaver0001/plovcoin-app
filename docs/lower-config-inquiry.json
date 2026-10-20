@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": 87,
+  "version": 91,
   "kind": "TECHNICAL_INQUIRY_NOT_ISSUANCE_AUTHORIZATION",
   "status": "DRAFT_NOT_SENT",
   "dateDushanbe": "2026-10-20",
@@ -110,11 +110,14 @@
     "squadsVaultTransactions": "https://docs.squads.so/main/development/typescript/instructions/create-vault-transaction",
     "solanaFees": "https://solana.com/docs/core/fees",
     "genericDevnetProcedure": "PUBLIC_NOT_AN_OPERATOR_QUESTION",
-    "squadsSignerMechanism": "PUBLIC_EPHEMERAL_SIGNERS_CONCRETE_INTEGRATION_NOT_YET_VERIFIED",
+    "squadsSignerMechanism": "V90_PINNED_LOCAL_LIFECYCLE_PASS_NOT_PRODUCTION_ACCEPTANCE",
     "feeEncodingAndDeployedCompatibility": "OUR_SOURCE_IDL_AND_PINNED_SDK_VERIFICATION_NOT_AN_OPERATOR_QUESTION",
     "onchainRentAndTransactionFee": "CALCULATE_FOR_ACTUAL_ACCOUNTS_AND_MESSAGE_NOT_A_SERVICE_QUOTE",
     "issuanceEvidence": "OUR_READBACK_AND_TRANSACTION_ACCEPTANCE_CHECKLIST",
     "issue78": "NO_COMMENTS_AT_CHECK_NOT_A_MAINTAINER_ANSWER",
-    "freshChainScan": false
+    "freshChainScan": false,
+    "accountReadbackTool": "research/lower-squads-offline/config-account-check.cjs",
+    "accountReadbackScope": "OFFLINE_EXPECTED_FIELDS_ONLY_NOT_ISSUANCE_OR_AUTHORIZATION",
+    "accountReadbackTests": "V91_30_CHECKS_PASS_NO_ACTUAL_CONFIG_ACCEPTED"
   }
 }
