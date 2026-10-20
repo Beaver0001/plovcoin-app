@@ -659,7 +659,7 @@ view does not close it. No application route imports these components.
 
 This candidate accepts **only** `scope: ISOLATED_REHEARSAL` and an exact
 `http://127.0.0.1[:port]` origin. It is not production bootstrap or a launch
-authorization mechanism. Configuration must explicitly supply schema1, distinct
+authorization mechanism. The original v79 configuration supplied schema1, distinct
 database names, epoch, canonical HTTPS endpoint, approved SHA256 RPC digest list,
 safe slot floor and bounded RPC timeout. These are trusted caller inputs, not
 inferred approvals. The host compares the supplied `readOrigin` result and
@@ -695,4 +695,65 @@ cleanup exceptions and native versionchange. Fixtures explicitly initialize
 their separate test databases and grant persistence outside the host. This
 does not establish a production origin/epoch policy, current approved markets,
 quota/history/conflict policy, real Phantom/chain acceptance or launch GO.
+**LP-15 remains OPEN; MAINNET_GO=NO; TRADE_LAUNCH_ENABLED=false.**
+
+
+### v80: logical history write budgets and retained conflict witnesses
+
+The rehearsal host now requires **configuration schema2** and an explicit
+`observationWritePolicy` with version1, maxRecords, maxEventsPerRecord,
+maxEventsTotal and maxSerializedBytes. Old schema1 host configurations reject;
+the receipt/observation databases remain schema1, with no migration or new
+persistent metadata. Test values are fixtures, not approved production limits.
+
+A configured companion checks each proposed append in the same native records
+readwrite transaction as the final put. It replaces the target row in the
+logical calculation and scans other records by cursor, replay-validating them.
+Counts and the sum of UTF8 JSON record-value bytes must fit all caps. Concurrent
+compliant tabs with the same policy cannot both spend the last available event,
+record or byte. This measures logical serialized record values, not IndexedDB
+disk allocation, identity-store overhead, storage estimation or free disk space.
+The browser may still reject a below-limit write with QuotaExceededError.
+
+Cap failure aborts the transaction, preserving previous evidence and the public
+receipt. No trimming, deletion, eviction, sequence reset, automatic cap increase,
+retry or replacement is performed. A cap lower than existing history permits
+reading/recovery but rejects further over-limit appends. The scan/replay and
+legacy reads are not memory- or wall-clock bounded by these new limits.
+
+The optional store-level writePolicy defaults to null for legacy integration;
+only the rehearsal host requires explicit limits. Policy is copied per handle
+and **is not stored in the DB identity**. Different/unbounded legacy writers can
+bypass another handle's policy; consistent host approval and a production policy
+protocol remain open. This is a compliant-writer budget, not adversarial quota
+isolation or a completed production retention policy.
+
+Lifecycle results add observationWriteIssue: null for acknowledged/readback
+presence, HISTORY_LIMIT for module-branded budget rejection, STORAGE_QUOTA for
+reported QuotaExceededError, otherwise UNACKNOWLEDGED. Successful readback still
+requires matching evidence after the prior revision; equivalent concurrent
+presence is allowed. Classification is advisory and never authorizes a send.
+
+The RU/EN panel displays distinct cap/quota warnings and masks the old successful
+status. Local reread alone cannot clear a warning in that UI session; a saved
+fresh check can. **Warnings about unsaved answers are volatile**: this change
+cannot make a failed write durable or reconstruct that missing response after
+restart. Reconciliation queries happen before append-budget enforcement; a new
+answer, including a contradiction, may remain unsaved when the cap/disk quota is
+exhausted. A retained history is not proof that no such answer was seen.
+
+For an already stored FINALIZED_CONFLICT, expandable details show the first
+saved finalized witness and first contrary outcome/execution-slot witness,
+with context/execution slots and full RPC SHA256 identity. Only two entries
+render; neither is ranked as truth. Saved conflict remains explicit even when
+a subsequent response cannot be stored. There is no resolve/clear/delete action.
+
+`test:observation-policy` checks logical budgets; `test:observation-policy-browser`
+adds actual IndexedDB byte/count boundaries, a two-tab last-event race,
+unchanged prior records, lower policy/reopen, genuine adapter provenance,
+controller/host propagation, injected QuotaExceededError, RU/EN warnings and
+mobile conflict detail. Chain responses in these new policy scenarios are
+synthetic fetch responses; they do not add real-chain or disk-exhaustion proof.
+Production policy/limits, durable treatment of unsaved answers, quota/conflict
+operations, real Phantom/chain acceptance and separate launch GO remain open.
 **LP-15 remains OPEN; MAINNET_GO=NO; TRADE_LAUNCH_ENABLED=false.**

@@ -1,9 +1,11 @@
 "use client";
 
 import { useMemo, useSyncExternalStore } from "react";
-import { createSwapRecoverySession, recoveryStatus, type RecoverySource } from "@/lib/trading/recovery-panel";
+import { createSwapRecoverySession, recoveryStatus, conflictEvidence, type RecoverySource } from "@/lib/trading/recovery-panel";
 
 const COPY: Record<string, [string, string, string, string]> = {
+  HISTORY_LIMIT: ["Лимит истории достигнут", "Новый ответ не сохранён из-за лимита истории. Прежние записи сохранены. Не удаляйте их и не отправляйте операцию повторно.", "History limit reached", "The new response was not saved because of the history limit. Previous records are retained. Do not delete them or resubmit the transaction."],
+  STORAGE_QUOTA: ["Хранилище не приняло новый ответ", "Браузер сообщил о нехватке места. Сохранение нового ответа не подтверждено; прежние записи не удалялись. Не отправляйте операцию повторно.", "Storage did not accept the new response", "The browser reported insufficient space. Saving the new response is unconfirmed; previous records were not deleted. Do not resubmit the transaction."],
   DISPATCH_INTENT: ["Результат не установлен", "Запись операции сохранена. Проверьте исходную транзакцию перед дальнейшими действиями.", "Result not established", "The operation record is saved. Check the original transaction before taking further action."],
   PENDING: ["Ожидает проверки", "Есть ответ об отправке. Исполнение ещё нужно проверить по исходной подписи.", "Awaiting verification", "A submission response was received. Execution still needs to be checked using the original signature."],
   UNKNOWN: ["Исход отправки неизвестен", "Операция могла исполниться. Проверьте статус; не отправляйте её заново.", "Submission outcome unknown", "The transaction may have executed. Check its status; do not submit it again."],
@@ -37,11 +39,20 @@ export function SwapRecoveryPanel({ source, locale = "en" }: { source: RecoveryS
     {state.phase === "error" && <p role="alert" className="mt-4 rounded-lg border border-gold/40 bg-gold/5 p-3 text-sm text-gold">{ru ? "Не удалось прочитать историю. Показанные сведения могут быть устаревшими. Подробности ошибки скрыты; повторите чтение." : "History could not be read. Displayed information may be outdated. Error details are hidden; read the history again."}</p>}
     <ol className="mt-5 space-y-4">
       {state.rows.map((row, index) => {
-        const code = recoveryStatus(row, state.phase === "error"), copy = COPY[code];
+        const code = recoveryStatus(row, state.phase === "error"), copy = COPY[code], witnesses = conflictEvidence(row);
         return <li key={row.receipt.intentId} data-intent-id={row.receipt.intentId} data-recovery-status={code} className="rounded-xl border border-fire/15 bg-bg p-4 sm:p-5">
           <h3 className="font-semibold">{ru ? "Операция" : "Transaction"} {index + 1}</h3>
           <p className="mt-2 font-medium text-gold">{copy[ru ? 0 : 2]}</p>
           <p className="mt-2 text-sm leading-relaxed text-rice-soft">{copy[ru ? 1 : 3]}</p>
+          {code === "FINALIZED_CONFLICT" && (row.attention.includes("HISTORY_LIMIT") || row.attention.includes("STORAGE_QUOTA")) && <p role="alert" className="mt-3 text-sm text-gold">{ru ? "Сохранение нового ответа также ограничено хранилищем. Сохранённый конфликт остаётся неразрешённым." : "Saving the new response is also limited by storage. The saved conflict remains unresolved."}</p>}
+          {witnesses.length > 0 && <details className="mt-4 text-sm" data-conflict-evidence>
+            <summary className="cursor-pointer text-gold">{ru ? "Показать сохранённое противоречие" : "Show the saved conflict"}</summary>
+            <p className="mt-2 text-rice-soft">{ru ? "Это сохранённые ответы RPC. Ни один из них не выбран окончательным решением." : "These are saved RPC responses. Neither has been selected as a resolution."}</p>
+            <ol className="mt-3 space-y-3">{witnesses.map((w, i) => <li key={i} className="rounded-lg border border-gold/20 p-3" data-conflict-witness>
+              <p>{w.observation === "FINALIZED_SUCCESS_OBSERVED" ? (ru ? "RPC: исполнение" : "RPC: execution") : (ru ? "RPC: ошибка" : "RPC: failure")}</p>
+              <dl className="mt-2 space-y-2"><div><dt className="text-rice-dim">{ru ? "Слот исполнения / контекста" : "Execution / context slot"}</dt><dd>{w.executionSlot} / {w.contextSlot}</dd></div><div><dt className="text-rice-dim">{ru ? "Идентификатор RPC (SHA256)" : "RPC identity (SHA256)"}</dt><dd className="break-all font-mono text-xs">{w.rpcIdentity}</dd></div></dl>
+            </li>)}</ol>
+          </details>}
           <dl className="mt-4 space-y-2 text-sm"><div><dt className="text-rice-dim">{ru ? "Сеть" : "Network"}</dt><dd>Solana mainnet</dd></div><div><dt className="text-rice-dim">{ru ? "Подпись исходной транзакции" : "Original transaction signature"}</dt><dd className="mt-1 break-all font-mono text-xs leading-relaxed">{row.receipt.signature}</dd></div></dl>
           <button type="button" data-action="check" disabled={busy || state.phase !== "ready" || row.attention.includes("MISSING")} onClick={() => { void session.check(row.receipt.intentId); }} className="mt-4 rounded-lg border border-fire/40 px-4 py-2 text-sm font-semibold hover:bg-fire/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fire disabled:cursor-not-allowed disabled:opacity-50">{state.pending === row.receipt.intentId ? (ru ? "Проверяем…" : "Checking…") : (ru ? "Проверить статус" : "Check status")}</button>
         </li>;

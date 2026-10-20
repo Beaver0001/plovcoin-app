@@ -1,0 +1,20 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs');
+(async()=>{
+ const E=await import('../lib/trading/observation-policy.mjs'),cases=[],test=(name,fn)=>{fn();cases.push({name,status:'PASS'});};
+ const policy=(p={})=>({version:1,maxRecords:2,maxEventsPerRecord:2,maxEventsTotal:3,maxSerializedBytes:10000,...p}),row=(n=1)=>({intentId:'A',events:Array.from({length:n},()=>({x:1}))});
+ test('policy copied and frozen before caller mutation',()=>{const p=policy(),c=E.copyObservationWritePolicy(p);p.maxRecords=1;assert.equal(c.maxRecords,2);assert(Object.isFrozen(c));});
+ for(const key of ['maxRecords','maxEventsPerRecord','maxEventsTotal','maxSerializedBytes'])for(const value of [0,-1,1.5,Number.MAX_SAFE_INTEGER+1])test(key+' rejects '+value,()=>assert.throws(()=>E.copyObservationWritePolicy(policy({[key]:value}))));
+ test('unknown policy version rejects',()=>assert.throws(()=>E.copyObservationWritePolicy(policy({version:2}))));
+ test('unknown field rejects',()=>assert.throws(()=>E.copyObservationWritePolicy({...policy(),clear:true})));
+ test('missing field rejects',()=>{const p=policy();delete p.maxRecords;assert.throws(()=>E.copyObservationWritePolicy(p));});
+ test('accessor never invoked',()=>{const p=policy();Object.defineProperty(p,'maxRecords',{get(){throw Error('BAD_GETTER');}});assert.throws(()=>E.copyObservationWritePolicy(p),/data fields/);});
+ test('incoherent limits reject',()=>assert.throws(()=>E.copyObservationWritePolicy(policy({maxEventsTotal:1}))));
+ test('exact record count accepted then next rejected',()=>{const b=E.createObservationBudget(policy());b.add(row());b.add(row());assert.throws(()=>b.add(row()),e=>E.observationWriteIssue(e)==='HISTORY_LIMIT');});
+ test('per-record limit rejects without truncating input',()=>{const r=row(3),before=JSON.stringify(r),b=E.createObservationBudget(policy());assert.throws(()=>b.add(r));assert.equal(JSON.stringify(r),before);});
+ test('global event budget rejects across individually valid rows',()=>{const b=E.createObservationBudget(policy());b.add(row(2));assert.throws(()=>b.add(row(2)));});
+ test('exact UTF8 byte count accepted and one byte less rejects',()=>{const r={intentId:'Ю',events:[{text:'🥘'}]},size=Buffer.byteLength(JSON.stringify(r));E.createObservationBudget(policy({maxSerializedBytes:size})).add(r);assert.throws(()=>E.createObservationBudget(policy({maxSerializedBytes:size-1})).add(r));});
+ test('fabricated limit error has no branded limit classification',()=>assert.equal(E.observationWriteIssue(Error('Observation history write limit reached')),'UNACKNOWLEDGED'));
+ test('quota name is advisory classification, not an authorization',()=>assert.equal(E.observationWriteIssue(new DOMException('injected','QuotaExceededError')),'STORAGE_QUOTA'));
+ const result={status:'PASS',checks:cases.length,cases,scope:'PURE_LOGICAL_BUDGET; NOT_DISK_QUOTA_OR_POLICY_APPROVAL'};if(process.env.PLOV_POLICY_RESULTS)fs.writeFileSync(process.env.PLOV_POLICY_RESULTS,JSON.stringify(result,null,2));console.log(JSON.stringify(result));
+})().catch(e=>{console.error(e);process.exitCode=1;});

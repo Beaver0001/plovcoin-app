@@ -4,7 +4,7 @@ module.exports=async({page:p,out,outputDir})=>{
  const cases=[],test=async(name,fn)=>{await fn();cases.push({name,status:'PASS'});},tick=()=>p.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
  out.hostConsoleErrors=[];p.on('console',m=>{if(m.type()==='error')out.hostConsoleErrors.push(m.text());});
  await p.evaluate(()=>{
-  window.hostConfig=()=>({schema:1,scope:'ISOLATED_REHEARSAL',origin:location.origin,receiptDatabaseName:'receipts_stable',observationDatabaseName:'observations_stable',epochId:'epoch_A',rpcEndpoint:h.connection.rpcEndpoint,rpcIdentities:[h.rpc.identity.rpcIdentity],minimumContextSlot:fixture.slot,timeoutMs:500});
+  window.hostConfig=()=>({schema:2,scope:'ISOLATED_REHEARSAL',origin:location.origin,receiptDatabaseName:'receipts_stable',observationDatabaseName:'observations_stable',epochId:'epoch_A',rpcEndpoint:h.connection.rpcEndpoint,rpcIdentities:[h.rpc.identity.rpcIdentity],minimumContextSlot:fixture.slot,timeoutMs:500,observationWritePolicy:{version:1,maxRecords:100,maxEventsPerRecord:100,maxEventsTotal:1000,maxSerializedBytes:1000000}});
   window.newHost=(patch={},options={})=>{
    const log={opens:[],closes:[],methods:[],signals:[],storageCalls:0,borrowedCloses:0,origin:location.origin};
    const connection={rpcEndpoint:h.connection.rpcEndpoint,close:()=>log.borrowedCloses++};

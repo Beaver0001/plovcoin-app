@@ -1,7 +1,7 @@
 // Presentation boundary only. No engine/provider/storage/network imports.
 export type Receipt = Readonly<{ intentId: string; reviewId: string; signature: string; genesis: string; blockhash: string; lastValidBlockHeight: number; expiresAtMs: number; state: "DISPATCH_INTENT" | "PENDING" | "UNKNOWN" }>;
 export type RecoverySource = { recover(): Promise<unknown>; reconcile(intentId: string): Promise<unknown> };
-export type Attention = "UNACKNOWLEDGED" | "CHECK_FAILED" | "MISSING";
+export type Attention = "UNACKNOWLEDGED" | "HISTORY_LIMIT" | "STORAGE_QUOTA" | "CHECK_FAILED" | "MISSING";
 type Fingerprint = Readonly<{ observation: string; contextSlot: number | null; executionSlot: number | null; rpcIdentity: string }>;
 type Projection = Readonly<{ code: string; revision: number; history: readonly Fingerprint[] }>;
 export type RecoveryCard = Readonly<{ receipt: Receipt; projection: Projection | null; attention: readonly Attention[] }>;
@@ -98,7 +98,9 @@ export function createSwapRecoverySession(source: RecoverySource) {
         noRegression(previous, next);
         if (response.observationPersistence === "UNACKNOWLEDGED") {
           // Never display a fresh or old green result over a known failed write.
-          publish({ ...state, pending: null, rows: update(intentId, old => withAttention(Object.freeze({ ...old, projection: saved || old.projection }), "UNACKNOWLEDGED")) });
+          const issue = response.observationWriteIssue ?? "UNACKNOWLEDGED";
+          if (!["UNACKNOWLEDGED", "HISTORY_LIMIT", "STORAGE_QUOTA"].includes(String(issue))) throw Error("Invalid write issue");
+          publish({ ...state, pending: null, rows: update(intentId, old => withAttention(Object.freeze({ ...old, projection: saved || old.projection }), issue as Attention)) });
           return false;
         }
         if (!saved || !saved.history.some(event => matches(event, fresh))) throw Error("Persisted evidence does not match response");
@@ -116,7 +118,18 @@ export function recoveryStatus(row: RecoveryCard, stale = false): string {
   if (stale) return "STALE";
   if (row.projection?.code === "FINALIZED_CONFLICT") return "FINALIZED_CONFLICT";
   if (row.attention.includes("MISSING")) return "MISSING";
+  if (row.attention.includes("HISTORY_LIMIT")) return "HISTORY_LIMIT";
+  if (row.attention.includes("STORAGE_QUOTA")) return "STORAGE_QUOTA";
   if (row.attention.includes("UNACKNOWLEDGED")) return "UNACKNOWLEDGED";
   if (row.attention.includes("CHECK_FAILED")) return "CHECK_FAILED";
   return row.projection?.code || row.receipt.state;
+}
+
+// Two retained witnesses explain the conflict; they do not resolve it or rank
+// providers. No fresh network request or unbounded rendered history list.
+export function conflictEvidence(row: RecoveryCard): readonly Fingerprint[] {
+  if (row.projection?.code !== "FINALIZED_CONFLICT") return Object.freeze([]);
+  const first = row.projection.history.find(x => x.observation.startsWith("FINALIZED_"));
+  const other = first && row.projection.history.find(x => x.observation.startsWith("FINALIZED_") && (x.observation !== first.observation || x.executionSlot !== first.executionSlot));
+  return Object.freeze(first && other ? [first, other] : []);
 }
