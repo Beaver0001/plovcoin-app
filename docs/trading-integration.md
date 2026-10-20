@@ -955,3 +955,19 @@ checklist rather than a generic support question.
 is revised in place. No new chain scan, runtime test, signature, send or external
 message. Acceptance remains NOT_RUN; authority/index/address stay unapproved.
 **LP-03/09/15 OPEN; MAINNET_GO=NO.**
+
+
+### v88: offline LOWER/Squads SDK contract
+
+The isolated [research check](../research/lower-squads-offline/README.md) builds the
+actual Meteora1.5.1 instructions and Squads2.1.4 stored message/execute metas with
+synthetic addresses. Seven checks pass: vault/ephemeral mint signer roles, SDK
+WSOL wrap, no external PDA signatures in execute, missing/changed-index ephemeral
+negative cases, Token-2022 WSOL rejection, and synthetic no-ALT v0 envelope sizes.
+Meteora creator is explicitly the NFT owner; it is not implicitly config authority.
+The builder wraps SOL even when WSOL may already exist; funding/debit must be reviewed.
+
+This is offline message inspection, not runtime execution or Operator access.
+No real project index/config/authority/geometry is selected. RPC/signatures/send0.
+Root app dependencies/lock/routes/launch flag are unchanged. Runtime CPI/binary
+parity/real config and the existing LP-03/09/15 gates remain OPEN; MAINNET_GO=NO.

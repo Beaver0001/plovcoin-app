@@ -1,0 +1,15 @@
+{
+  "name": "plovcoin-lower-squads-offline",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "check": "node check.cjs"
+  },
+  "dependencies": {
+    "@meteora-ag/cp-amm-sdk": "1.5.1",
+    "@sqds/multisig": "2.1.4",
+    "@solana/web3.js": "1.98.0",
+    "@solana/spl-token": "0.4.15",
+    "bn.js": "5.2.5"
+  }
+}

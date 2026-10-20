@@ -1,0 +1,36 @@
+{
+  "version": 88,
+  "status": "OFFLINE_SDK_CONTRACT_PASS",
+  "checks": [
+    "Meteora init signer roles: vault payer/authority and ephemeral NFT mint",
+    "SDK automatically adds SOL transfer to vault WSOL ATA; no fresh WSOL keypair",
+    "Stored message retains inner signers; execute metas suppress only vault/known ephemeral PDA signatures",
+    "Negative: ephemeralSigners=0 leaves an unavailable external NFT-mint signer",
+    "Negative: changed proposal transaction index cannot reuse the old NFT ephemeral address",
+    "Negative: Token-2022 wrapped SOL rejected by SDK",
+    "Synthetic v0 create/execute envelopes fit 1232 bytes without lookup tables or compute-budget instructions"
+  ],
+  "dependencies": {
+    "meteora": "1.5.1",
+    "squads": "2.1.4",
+    "web3": "1.98.0"
+  },
+  "messageSha256": "1a35622b375381628386ef6a99ff775175f523d7b280c99e4efbd4e1013660f2",
+  "innerInstructionCount": 5,
+  "innerSignerCount": 2,
+  "createEnvelope": {
+    "bytes": 1146,
+    "lookupTables": 0
+  },
+  "executeEnvelope": {
+    "bytes": 972,
+    "lookupTables": 0
+  },
+  "rpcCalls": 0,
+  "signatures": 0,
+  "networkSends": 0,
+  "runtimeExecution": "NOT_RUN",
+  "operatorAccess": "NOT_PROVEN",
+  "productionGeometry": "NOT_SELECTED",
+  "MAINNET_GO": "NO"
+}
