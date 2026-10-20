@@ -1015,3 +1015,9 @@ results are historical and not rerun here.
 Only isolated research and documentation change; root app dependencies/lock/routes/
 launch flag unchanged. No operator message or real wallet/network send.
 **LP-03/09/15 OPEN; MAINNET_GO=NO.**
+
+The v90 companion test funds both pools concurrently and verifies companion
+state is unchanged by LOWER exit. Final remove also refunds the pre-existing
+WSOL ATA lamports2039280; this is distinct from quote output and position-close
+rent9897120. The SDK's unwrap closes the shared owner ATA, not an operation-scoped
+temporary account. Balance review must include its pre-existing contents.

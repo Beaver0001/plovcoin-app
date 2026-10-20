@@ -205,7 +205,7 @@ Native mint state, governance, balances, config/Operator и геометрия �
 | Возврат NFT в vault | права восстановлены без изменения config authority |
 | Полный вывод остатка позиции | unlocked/pool liquidity0, суммы совпали с quote |
 | Закрытие пустой позиции | position/NFT mint/NFT token account закрыты,9897120lamports ренты вернулись vault |
-| Config-based и customizable той же пары | разные pool PDA, оба аккаунта существуют независимо |
+| Два одновременно фондированных пула одной пары | config-based и customizable имеют разные PDA; вывод LOWER не меняет companion |
 | Второй customizable той же пары | тот же PDA; создание отклонено, новые NFT/position аккаунты откатились |
 
 Geometry companion-пула синтетическая и служит проверке PDA. Она не выбирает
@@ -265,3 +265,11 @@ provider/storage policy и installed Phantom; отдельно разрешён�
 проверены; запись реальной wallet acceptance остаётся NOT_RUN/null. Старое описание
 provider integration уточнено с учётомv84; исторические144 browser/109 Node checks
 здесь не перезапускались. Root app dependencies/lock/routes/launch flag не менялись.
+
+Дополнительная проверка совместного фондирования: companion создаётся до полного
+вывода LOWER, обе liquidity положительны. Hash companion pool неизменен после
+полного вывода/закрытия LOWER позиции. На final remove SDK также закрыл общий
+WSOL ATA с прежним балансом/рентой2039280lamports и вернул их vault. Поэтому SOL
+прирост равен quote-поступлению из пула **плюс** прежние lamports WSOL ATA; этот
+возврат учтён отдельно от ренты позиции9897120. В production нельзя считать, что
+unwrap затрагивает только средства конкретной LP операции.
