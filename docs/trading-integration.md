@@ -647,3 +647,52 @@ loopback RPC; its test-only durable-storage grant is not production bootstrap.
 These checks do not establish real Phantom acceptance or production browser,
 approved-pool, origin/quota/conflict-policy readiness. Production wiring and
 separate launch authorization remain open. **LP-15 remains OPEN.**
+
+### v79: explicit isolated recovery host (rehearsal only)
+
+`createSwapRecoveryHost` owns the receipt/observation handles, RPC adapter and
+lifecycle controller that it opens. It exposes only a read-only `source`
+(`recover`/`reconcile`), explicit `open`/`close` and immutable observable state.
+Construction, subscription and the unmounted `SwapRecoveryHostPanel` do not
+open databases or query RPC. The React caller owns the host: unmounting the
+view does not close it. No application route imports these components.
+
+This candidate accepts **only** `scope: ISOLATED_REHEARSAL` and an exact
+`http://127.0.0.1[:port]` origin. It is not production bootstrap or a launch
+authorization mechanism. Configuration must explicitly supply schema1, distinct
+database names, epoch, canonical HTTPS endpoint, approved SHA256 RPC digest list,
+safe slot floor and bounded RPC timeout. These are trusted caller inputs, not
+inferred approvals. The host compares the supplied `readOrigin` result and
+borrowed connection endpoint at asynchronous boundaries and before source use;
+the host cannot authenticate a dishonest caller or hostile same-realm script.
+
+Opening validates the endpoint digest before storage, opens both existing DBs
+with `initialize:false`, checks their full identities/policy, then creates the
+adapter (one genesis request) and genuine controller. It never requests
+persistence, initializes/recreates/deletes storage, discovers/connects a wallet,
+binds a swap, signs, sends or automatically loads/checks history. Missing DBs,
+wrong epoch/RPC list/origin/endpoint/genesis and acquisition errors are terminal
+for that instance, with fixed public errors and no fallback. Existing history
+may be read without persistence grant; an explicit status check can return an
+unacknowledged observation when durable writes are unavailable.
+
+Duplicate/reentrant opens share one promise. Close is terminal: it aborts the
+owned fetch signal, disposes the controller, detaches subscriptions and closes
+the owned adapter/stores while leaving the borrowed connection and other store
+handles alone. Handles acquired after close are cleaned when acquisition settles;
+late results cannot publish READY or escape through `source`. Fetch body abort
+remains wired until JSON consumption. A fetch ignoring abort is still bounded
+by the adapter timeout; pending IDB acquisition is not given a new timeout or
+automatic retry. Cleanup exceptions do not prevent remaining cleanup and are
+reported separately. Native store invalidation closes the host.
+
+`test:swap-recovery-host` covers inert construction, configuration rejection,
+SSR and terminal closure. `test:swap-recovery-host-browser` also runs the prior
+lifecycle32/UI12 scenarios, then exercises the actual host with both native
+IndexedDBs, React, the genuine controller and loopback RPC, including missing
+DBs, policy errors, timeout/body abort, late acquisition, reentrant subscribers,
+cleanup exceptions and native versionchange. Fixtures explicitly initialize
+their separate test databases and grant persistence outside the host. This
+does not establish a production origin/epoch policy, current approved markets,
+quota/history/conflict policy, real Phantom/chain acceptance or launch GO.
+**LP-15 remains OPEN; MAINNET_GO=NO; TRADE_LAUNCH_ENABLED=false.**

@@ -19,7 +19,9 @@
     "test:observation-store-browser": "node scripts/test-observation-store-browser.cjs",
     "test:swap-lifecycle-browser": "node scripts/test-swap-lifecycle-browser.cjs",
     "test:swap-recovery-panel": "node scripts/test-swap-recovery-panel.cjs",
-    "test:swap-recovery-panel-browser": "node scripts/test-swap-recovery-panel-browser.cjs"
+    "test:swap-recovery-panel-browser": "node scripts/test-swap-recovery-panel-browser.cjs",
+    "test:swap-recovery-host": "node scripts/test-swap-recovery-host.cjs",
+    "test:swap-recovery-host-browser": "node scripts/test-swap-recovery-host-browser.cjs"
   },
   "dependencies": {
     "@meteora-ag/cp-amm-sdk": "1.5.1",
