@@ -1,6 +1,7 @@
 {
   "schema": 1,
-  "version": "v98",
+  "version": "v99",
+  "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
   "dateDushanbe": "2026-10-20",
   "codeBaseline": "b7f06a0ec556ef874968c9427cd7fb0980f90994",

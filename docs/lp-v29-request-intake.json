@@ -65,6 +65,19 @@
     "launchAuthorized": false
   },
   "reviewDateDushanbe": "2026-10-20",
+  "postCalculationReview": {
+    "status": "MATHEMATICAL_RESULT_NOT_OPERATIONAL_ACCEPTANCE",
+    "mainFXPassingCasesReviewed": 4,
+    "minimumPrincipalSOLApproxMIN": "10.001001438644124",
+    "minimumPrincipalSOLApproxIDEAL": "10.001001436146284",
+    "requiredPrincipalSOL": "10",
+    "headroomAboveRequiredReserveSOLApprox": "0.00100144",
+    "interpretation": "Witnesses sit close to the mathematical10SOL floor. Principal inside pools is not the separately unknown operating budget B; neither the10SOL reserve nor the0.001SOL headroom establishes available config/rent/transaction funding.",
+    "researchGeometryApproved": true,
+    "productionCandidateSelected": false,
+    "nextUncompletedTechnicalGate": "Map explicitly labelled research candidates to exact Meteora Q64.64/runtime/config constraints; do not promote older synthetic runtime results to acceptance of these candidates.",
+    "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json"
+  },
   "request": {
     "title": "Запрос на LP v29 — геометрия диапазона по канону (владелец, 20.10.2026)",
     "url": "https://docs.google.com/document/d/17n4N8FwG3xu903plmNKJQC_iK3qxsml-r_rE7O7OF_k/edit",
