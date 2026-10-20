@@ -1,0 +1,17 @@
+{
+  "version": 110,
+  "sourceCommit": "5398b5c7c534de014091132da37c6478cce671a8",
+  "repository": "https://github.com/MeteoraAg/damm-v2.git",
+  "image": "solanafoundation/solana-verifiable-build@sha256:f71be5ca7620b7e40933b7f1294fa44e01d08c1fc5ba1f375a2478f5a01580d3",
+  "cliVersion": "0.5.2",
+  "cliSHA256": "b9d5ccce9634dc14269cab3e7a58649bc141b3306e7735a94478c936341f211f",
+  "library": "cp_amm",
+  "arch": "v0",
+  "cargoFeaturesAdded": [],
+  "cleanBuildDirectories": 2,
+  "recipeStatus": "INDEPENDENT_CANDIDATE_NOT_CONFIRMED_DEPLOYER_RECIPE",
+  "buildPerformed": false,
+  "currentChainRechecked": false,
+  "productionAccepted": false,
+  "MAINNET_GO": "NO"
+}

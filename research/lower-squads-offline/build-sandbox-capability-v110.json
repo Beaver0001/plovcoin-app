@@ -1,0 +1,10 @@
+{
+  "mountNamespace": {
+    "exitCode": 1,
+    "stderr": "unshare: unshare failed: Operation not permitted"
+  },
+  "userNamespace": {
+    "exitCode": 1,
+    "stderr": "unshare: write failed /proc/self/uid_map: Operation not permitted"
+  }
+}

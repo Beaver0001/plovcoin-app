@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "v109",
+  "version": "v110",
   "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
   "dateDushanbe": "2026-10-21",
@@ -214,7 +214,7 @@
     "TreasuryLPFundingHandoff": "LOCAL_SYNTHETIC_PASS_REAL_FUNDING_OPEN",
     "TreasuryLPFundingReview": "research/lower-squads-offline/v29-funding-review.json",
     "productionFundingApproved": false,
-    "productionAcceptancePacket": "docs/lp-source-build-review-v109-ru.md",
+    "productionAcceptancePacket": "docs/lp-build-runner-v110-ru.md",
     "productionAcceptancePacketStatus": "AUTHORITY_SELECTED_ACTUAL_CONFIG_OPEN",
     "configPoolCreatorAuthorityApproved": true,
     "approvedConfigPoolCreatorAuthority": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
@@ -229,5 +229,20 @@
   },
   "publicConfigReview": "research/lower-squads-offline/public-config-review-v108.json",
   "sourceBuildReview": "research/lower-squads-offline/source-build-review-v109.json",
-  "sourceBuildParityProven": false
+  "sourceBuildParityProven": false,
+  "sourceBuildPreparation": {
+    "human": "docs/lp-build-runner-v110-ru.md",
+    "plan": "research/lower-squads-offline/build-plan-v110.json",
+    "runner": "research/lower-squads-offline/build-compare-v110.py",
+    "capability": "research/lower-squads-offline/build-runner-capability-v110.json",
+    "checks": "research/lower-squads-offline/build-tool-checks-v110.json",
+    "status": "PREPARED_DOCKER_BUILD_NOT_RUN",
+    "buildsRun": 0,
+    "sourceBuildParityProven": false,
+    "currentChainRechecked": false,
+    "requiredRunner": "linux/amd64 Docker daemon + Git + checksum-pinned CLI0.5.2",
+    "supportReplyRequired": false,
+    "sandboxCapability": "research/lower-squads-offline/build-sandbox-capability-v110.json",
+    "checkRunnerScript": "research/lower-squads-offline/check-build-tool-v110.py"
+  }
 }

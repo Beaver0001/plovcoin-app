@@ -75,7 +75,7 @@
     "interpretation": "Witnesses sit close to the mathematical10SOL floor. Principal inside pools is not the separately unknown operating budget B; neither the10SOL reserve nor the0.001SOL headroom establishes available config/rent/transaction funding.",
     "researchGeometryApproved": true,
     "productionCandidateSelected": false,
-    "nextUncompletedTechnicalGate": "Prepare independent reproducible production build comparison in a capable runner; local-feature CI and Otter nonverification do not close parity. Continue independent payer/signer/ALT/message acceptance preparation; support reply is not a prerequisite.",
+    "nextUncompletedTechnicalGate": "Run the pinned independent candidate build twice on a Linux amd64 Docker runner, retain source checks/logs/artifacts, then compare against a refreshed deployed program. Prepared runner/capability tests are not completed builds or parity proof. No support reply prerequisite; independent production acceptance work can continue.",
     "exactCandidateSquadsReview": {
       "status": "LOCAL_SYNTHETIC_INITIALIZATION_AND_FEE_CUSTODY_PASS",
       "review": "research/lower-squads-offline/v29-squads-review.json",
@@ -226,7 +226,7 @@
     },
     "productionAcceptancePacket": {
       "status": "AUTHORITY_SELECTED_ACTUAL_CONFIG_OPEN",
-      "human": "docs/lp-source-build-review-v109-ru.md",
+      "human": "docs/lp-build-runner-v110-ru.md",
       "machine": "docs/lp-production-acceptance-v109.json",
       "verification": "research/lower-squads-offline/authority-selection-review-v107.json",
       "JSONSHA256": "ba3da3c2ee3930d170ecec378891cd4698592d3b132c5a683880e188a74a81b8",
@@ -251,7 +251,22 @@
       "verificationScope": "Historical v107 authority selection proof; v109 program/source evidence does not establish source/build parity or actual config acceptance.",
       "sourceBuildReview": "research/lower-squads-offline/source-build-review-v109.json"
     },
-    "sourceBuildReview": "research/lower-squads-offline/source-build-review-v109.json"
+    "sourceBuildReview": "research/lower-squads-offline/source-build-review-v109.json",
+    "sourceBuildPreparation": {
+      "human": "docs/lp-build-runner-v110-ru.md",
+      "plan": "research/lower-squads-offline/build-plan-v110.json",
+      "runner": "research/lower-squads-offline/build-compare-v110.py",
+      "capability": "research/lower-squads-offline/build-runner-capability-v110.json",
+      "checks": "research/lower-squads-offline/build-tool-checks-v110.json",
+      "status": "PREPARED_DOCKER_BUILD_NOT_RUN",
+      "buildsRun": 0,
+      "sourceBuildParityProven": false,
+      "currentChainRechecked": false,
+      "requiredRunner": "linux/amd64 Docker daemon + Git + checksum-pinned CLI0.5.2",
+      "supportReplyRequired": false,
+      "sandboxCapability": "research/lower-squads-offline/build-sandbox-capability-v110.json",
+      "checkRunnerScript": "research/lower-squads-offline/check-build-tool-v110.py"
+    }
   },
   "request": {
     "title": "Запрос на LP v29 — геометрия диапазона по канону (владелец, 20.10.2026)",
