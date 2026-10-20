@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "version": "v103",
+  "version": "v104",
   "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
-  "dateDushanbe": "2026-10-20",
+  "dateDushanbe": "2026-10-21",
   "codeBaseline": "b7f06a0ec556ef874968c9427cd7fb0980f90994",
   "MAINNET_GO": "NO",
   "readyForWalletTest": false,
@@ -200,13 +200,16 @@
     "exactV29SquadsReview": "research/lower-squads-offline/v29-squads-review.json",
     "productionActivationPoint": null,
     "automaticBothPoolsReadyGuard": false,
-    "productionActivationFailureProcedure": "BLOCKED_CURRENT_CREATOR_ONLY_DESIGN",
+    "productionActivationFailureProcedure": "LOCAL_ATOMIC_ALTERNATIVE_PASS_PRODUCTION_ADOPTION_OPEN",
     "exactV29NativeTransactions": 246,
     "exactV29NativeExpectedFailures": 12,
     "runtimeOrLaunchAcceptanceGranted": false,
     "estimatedDeadlineDushanbe": "2026-10-21T18:00:00+05:00",
     "productionBudgetOrGeometryApproved": false,
     "activationFailureReview": "research/lower-squads-offline/v29-activation-review.json",
-    "safePrestartAbortProven": false
+    "safePrestartAbortProven": false,
+    "independentCreatorOnlyStopDesign": "BLOCKED_AS_DOCUMENTED_V103",
+    "atomicDualInitializationReview": "research/lower-squads-offline/v29-atomic-review.json",
+    "productionAtomicDesignApproved": false
   }
 }

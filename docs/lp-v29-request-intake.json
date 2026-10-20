@@ -64,7 +64,7 @@
     },
     "launchAuthorized": false
   },
-  "reviewDateDushanbe": "2026-10-20",
+  "reviewDateDushanbe": "2026-10-21",
   "postCalculationReview": {
     "status": "MATHEMATICAL_RESULT_NOT_OPERATIONAL_ACCEPTANCE",
     "mainFXPassingCasesReviewed": 4,
@@ -75,7 +75,7 @@
     "interpretation": "Witnesses sit close to the mathematical10SOL floor. Principal inside pools is not the separately unknown operating budget B; neither the10SOL reserve nor the0.001SOL headroom establishes available config/rent/transaction funding.",
     "researchGeometryApproved": true,
     "productionCandidateSelected": false,
-    "nextUncompletedTechnicalGate": "Remove the independent funded-UPPER timer hazard before production: verify atomic both-pool initialization feasibility or a genuinely authorized stop design. Pinned creator-only design cannot postpone activation or withdraw before T0; cancellation of pending LOWER does not stop UPPER. Treasury funding handoff and actual config/authority/manifest acceptance remain open.",
+    "nextUncompletedTechnicalGate": "Local atomic alternative is proven in v104; independently funded creator-only timer design remains blocked by v103. Next: Treasury-to-LP funding handoff rehearsal and acceptance of real project config/authority/manifest plus frozen ALT contents/owner/program and production atomic design. Production budget/geometry/T0 remain owner-deferred and unapproved.",
     "exactCandidateSquadsReview": {
       "status": "LOCAL_SYNTHETIC_INITIALIZATION_AND_FEE_CUSTODY_PASS",
       "review": "research/lower-squads-offline/v29-squads-review.json",
@@ -165,6 +165,37 @@
       "transcriptLibraryFileId": "libfile_bbde135abc34819191fad0db358ae6de",
       "transcriptBytes": 716096,
       "transcriptSHA256": "3f75cc62a1d308c80b466590bb1d9a1c3812510218c1b6746020c20c65c86d7e"
+    },
+    "atomicDualInitializationReview": {
+      "status": "LOCAL_ATOMIC_DUAL_INITIALIZATION_PASS_PRODUCTION_ADOPTION_OPEN",
+      "review": "research/lower-squads-offline/v29-atomic-review.json",
+      "reproduction": "research/lower-squads-offline/v29-atomic-reproduction.json",
+      "candidateCases": 12,
+      "VMcases": 48,
+      "atomicDualExecutions": 24,
+      "poolsCreated": 48,
+      "transactionsPerRun": 924,
+      "successesPerRun": 576,
+      "expectedFailuresPerRun": 348,
+      "independentChecks": 3371,
+      "rollbackAfterSuccessfulUPPER": 96,
+      "cancelledWholeProposals": 12,
+      "expiredActivationRejections": 12,
+      "nativeFrozenALTs": 48,
+      "storedMessagesMatchedNativeAccount": 48,
+      "twoRunsByteIdentical": true,
+      "plainExecuteBytes": 1243,
+      "ALTExecuteBytes": 440,
+      "ALTStoreBytes": 862,
+      "maxComputeUnits": 320408,
+      "productionAtomicDesignApproved": false,
+      "productionActivationPoint": null,
+      "realConfigAccepted": false,
+      "ALTProgram": "LiteSVM bundled builtin, not separately captured mainnet ELF",
+      "transcriptArtifact": "PLOV_v104_ATOMIC_TRANSCRIPT.json",
+      "transcriptLibraryFileId": "libfile_5996379c50448191aff970105772f183",
+      "transcriptBytes": 2626599,
+      "transcriptSHA256": "3cb8a7867f92b765c39650c27b34fa901f70381cbf1deaaa095dab5bbaf926bc"
     }
   },
   "request": {

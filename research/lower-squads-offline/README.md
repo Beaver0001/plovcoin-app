@@ -774,3 +774,90 @@ the final suite records these boundaries as expected failures.
 Root application/dependencies/lock/routes/launch flag unchanged; no real keys,
 wallet prompts, chain sends, operator contact, funding, merge or deployment.
 Only synthetic local signatures/transactions. Wave1Inputs=null; MAINNET_GO=NO.
+
+### v104 — атомарное создание UPPER и LOWER (21.10.2026)
+
+**Локально найден и проверен альтернативный путь для блокера v103:** обе
+точные инициализации помещены в одну VaultTransaction Squads. Это одна
+транзакция исполнения с двумя NFT ephemeral signer PDA, а не Batch с раздельными
+исполнениями. При отказе поздней инструкции UPPER тоже откатывается. Независимая
+схема с заранее созданным funded UPPER по-прежнему имеет ограничения v103;
+производственный переход на атомарную схему ещё не утверждён.
+
+Обычное сообщение хранения занимает1244байта без внешней обёртки; его упаковка
+в vaultTransactionCreate превышает размер сериализатора. Финальный execute без
+ALT занимает1243байта при лимите1232. Это ограничение данной конкретной сборки,
+а не доказательство невозможности всех вариантов без ALT.
+
+В каждой VM таблица адресов создана, заполнена и заморожена реальными локальными
+инструкциями Address Lookup Table Program. Проверены состав, отсутствие authority,
+прогрев после lastExtendedSlot и отказ изменения замороженной таблицы. Сообщение
+с ALT занимает534байта, его запись в Squads —862байта, финальное исполнение —
+440байт. Хеши всех48 сообщений совпали с native VaultTransaction account readback.
+Таблица содержит адреса и ничего не разрешает подписывать от имени vault.
+
+| Режим для каждого из12 кандидатов v29 | Результат |
+|---|---|
+| Исполнение за300сек до общего T0 | Оба пула создаются одним execute; обе публичные попытки обмена вT0−1 отклонены PoolDisabled. |
+| Исполнение ровно вT0 | Оба пула создаются одним execute. Это граничный тест, не рекомендация исполнять запуск в последнюю секунду. |
+| Исполнение после фиксированного T0 | InvalidActivationPoint; оба пула отсутствуют, proposal остаётсяApproved. Автоматической отмены заявки нет. |
+| Два голоса отмены до execute | Статус Cancelled; execute отклонён InvalidProposalStatus, оба пула отсутствуют. |
+
+В24 успешных dual-execute создано48пулов и48NFT, все NFT принадлежат vault.
+Точные sqrtQ64/liquidity/initial principal, общий activationPoint и статическая
+комиссия2500004/1e9, protocol20%, OnlyB, dynamic0/compounding0 сверены с v100.
+Ceil суммы проверены независимой целочисленной формулой. SOL дебет равен сумме
+lamports всех новых аккаунтов; начальный WSOL surplus1lamport UPPER сохранён
+отдельно от principal. Цена/бюджет/границы v29 не менялись.
+
+На каждый успешный режим до окончательного исполнения вводятся ошибки:
+неверная authority/type LOWER config, недостаток SOL для LOWER, отсутствие второго
+ephemeral signer и недостаточный CU budget. В96 пробах native лог уже содержит
+успешный CPI UPPER, но поздняя ошибка откатывает все19 отслеживаемых аккаунтов:
+оба пула/NFT/позиции/vaults отсутствуют, balances и proposal не меняются.
+Отдельный внешний плательщик теряет5000lamports комиссии. Replay исполненной
+заявки тоже отвергается. Подмена config/funding/signers сделана только в VM.
+
+Итог:48 VM-кейсов,924native TX/run (576успехов/348ожидаемых отказов) и240отдельных
+local funding airdrops.3371 независимая Python-проверка PASS. Второй полный
+прогон побайтно воспроизвёл3 JSON/CSV результата. Максимум862байта/320408CU в VM
+не является оценкой комиссии или приоритета mainnet.
+
+Практический вывод для последующего принятия схемы: LOWER config и все адреса
+нужно знать до фиксации сообщения и ALT; обе инициализации должны оставаться
+одним execute. После изменения T0/содержимого потребуется новая заявка с
+применимым quorum/timelock. Просроченная заявка не превращается в новый запуск.
+До подтверждённого полного readback обоих пулов нельзя считать подготовку
+ликвидности принятой. Общий timestamp сам по себе не проверяет готовность;
+атомарность обеспечивает отсутствие частично созданной пары в проверенном
+исполнении. Отмена/вывод уже успешно созданных пулов — отдельная задача v103.
+
+Ограничения: пять retained ELF v90 hash-pinned, не свежий mainnet snapshot;
+Address Lookup Table Program — встроенная реализация LiteSVM1.4.1,
+**не отдельно захваченный mainnet ELF**. Source/build parity не установлена.
+Реальные config/authority/manifest/ALT, доступ signers, Treasury funding,
+Phantom и production adoption/GO не приняты. Это init/rollback boundary suite,
+не полный D0–D90 и не атомарный swap/Jupiter route. Следующий технический блок —
+репетиция Treasury→LP funding handoff без выбора производственного бюджета.
+
+Воспроизведение из этой папки:
+```sh
+node v29-atomic.cjs /absolute/path/to/continuation_v90/fixtures
+python3 verify-v29-atomic.py
+```
+
+В Git: исходники `v29-atomic.cjs`, `verify-v29-atomic.py`,
+`v29-atomic-review.json`, `v29-atomic-summary.csv`,
+`v29-atomic-reproduction.json`. Raw transcript не включён в Git:
+PLOV_v104_ATOMIC_TRANSCRIPT.json, 2626599bytes,
+SHA2563cb8a7867f92b765c39650c27b34fa901f70381cbf1deaaa095dab5bbaf926bc,
+Library libfile_5996379c50448191aff970105772f183.
+
+В первых диагностических попытках поправлены number→BigInt для ALT slot и
+Uint8Array→Array при native message reserialization; поздний T0 выделен как
+ожидаемый InvalidActivationPoint вместо успешного создания. Финальные проверки
+отражают наблюдаемое поведение, исходные предположения v29 не изменены.
+
+Root app/dependencies/lock/routes/flags прежние. Только синтетические локальные
+подписи; real wallet/network sends0. Production T0=null, бюджет/геометрия/60PLOV
+остаются перед запуском. MAINNET_GO=NO.
