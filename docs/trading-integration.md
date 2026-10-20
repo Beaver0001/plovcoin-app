@@ -801,3 +801,20 @@ file-as-proof use, development StrictMode, duplicate clicks, fixed errors,
 source replacement/unmount and genuine read-only host wiring. It uses synthetic
 accounts/signer/RPC responses and loopback fixtures, not real Phantom/chain
 acceptance. No application route mounts the export/recovery UI.
+
+
+### v82: production readiness review and target-wallet protocol
+
+The source-pinned [readiness inventory](trading-release-gates.json) and
+[Russian acceptance plan](phantom-acceptance-plan-ru.md) separate eight open
+production gates from historical local test results. The acceptance record is
+entirely NOT_RUN/null; the files are not executable authorization or a ready
+wallet package. No application code, dependencies, route, feature flag, wallet
+request, funding or network submission changes in v82. No runtime test is
+claimed newly rerun for this documentation-only block.
+
+The plan distinguishes independent private sign-only acceptance from full
+storage/send acceptance and release GO, keeps the retired v67 probe closed,
+and maps current traditional Phantom limitations to the actual source modules.
+Current LP-03/09/13/15/17/18 gaps remain open. The owner-deferred budget and
+60PLOV decisions are not reopened. **LP-15 OPEN; MAINNET_GO=NO.**
