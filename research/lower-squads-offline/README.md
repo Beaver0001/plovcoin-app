@@ -1,8 +1,68 @@
-# LOWER через Squads: локальные проверки v88–v93
+# LOWER через Squads: локальные проверки v88–v94
 
 Исторический этап v88,20.10.2026: **OFFLINE_SDK_CONTRACT_PASS**.
-Этапы v92/v93 описаны ниже; исторические v90/v91 и ограничения — далее.
+Актуальная публичная сверка v94 и локальные этапы v92/v93 описаны ниже;
+исторические v90/v91 и ограничения — далее.
 Это сборка и анализ инструкций, без исполнения программ. **MAINNET_GO=NO**.
+
+## v94: реальные настройки LP Operations
+
+20.10.2026 21:30:11 Asia/Dushanbe получен публичный finalized-срез LP multisig
+`9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B`, vault index0
+`2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK`.
+Raw account responses/request bodies находятся в `governance-snapshot-v94.json`;
+повторная офлайн-декодировка — в `governance-review-v94.json`.
+
+| Поле | Наблюдение |
+|---|---|
+| Контексты чтения | 459296308–459296533; предложения на459296354 |
+| Порог / участники / timelock | 2/3;43200 секунд (12h) |
+| Права | все3 участника имеют mask7: initiate/vote/execute |
+| Config authority | default; autonomous multisig |
+| SpendingLimit accounts | 0 в известном layout/filter этого multisig |
+| transactionIndex / staleTransactionIndex | 3 / 2 |
+| Предложение1 | Approved,ConfigTransaction:SetRentCollector(vault0),index1≤stale2 |
+| Предложения2 / 3 | Executed:SetTimeLock43200 / Executed:VaultTransaction |
+| Approved VaultTransaction | 0 среди3 найденных retained proposals |
+| Vault native SOL | 20000000lamports =0.02SOL на первом слоте; не смета запуска |
+| Squads ELF |1470416bytes,dec8d3e0fae58c7c8f2416e5f67c25e673f047afd6dd2bba4a47e0b29a01d34c; совпал с v90 |
+
+Не терминальный статус Approved у предложения1 нельзя приравнивать к готовности
+исполнения. В закреплённом исходнике `config_transaction_execute.rs` требуется
+proposal.index>staleTransactionIndex; здесь1≤2. Это классификация по правилу
+исходника; реальный execute не вызывался. Тот же stale-check нельзя переносить
+на уже Approved VaultTransaction: `vault_transaction_execute.rs` прямо допускает
+такое исполнение без этой проверки. Source/build parity отдельно не доказана.
+
+Reader разрешает только getGenesisHash/getMultipleAccounts/getProgramAccounts.
+Проверены genesis до/после, finalized и монотонный minContextSlot, owner/discriminator,
+SDK decode/serialize и PDA. В офлайн-повторе threshold/timelock/индексы дополнительно
+проверены по фиксированным offsets сырых bytes; все3 proposal/transaction сопоставлены
+по PDA/index/hash,времена статусов нормализованы в decimal strings. До/после bytes
+multisig совпали. Свежий ProgramData загружен для хеша; в JSON сохранены header/hash,
+ELF повторно в Git не включён (полная совпадающая fixture есть в пакете v90).
+
+Это один RPC, несколько слотов и известные layouts. Голоса/статусы proposals
+могли меняться между чтениями даже при неизменном multisig. Закрытые исторические
+аккаунты не восстановлены; полнота RPC криптографически не доказана. Проверка
+не охватывает Treasury и не подтверждает доступность людей/ключей подписантов.
+LP-08 остаётся OPEN; выбранный vault не становится approved config authority.
+Никакие транзакции не строились/не подписывались/не отправлялись; MAINNET_GO=NO.
+
+Воспроизведение:
+
+```
+node read-lp-governance.cjs --live NEW_SNAPSHOT.json
+node review-lp-governance.cjs governance-snapshot-v94.json NEW_REVIEW.json
+```
+
+CLI отказывается перезаписывать существующий output. Второй вызов офлайн;
+он сверяет сохранённые bytes, а не обновляет mainnet-состояние.
+
+Источники: [Config execute,закреплённый commit](https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/programs/squads_multisig_program/src/instructions/config_transaction_execute.rs),
+[Vault execute,тот же commit](https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/programs/squads_multisig_program/src/instructions/vault_transaction_execute.rs),
+[permissions](https://docs.squads.so/main/development/reference/permissions),
+[config transactions](https://docs.squads.so/main/development/typescript/instructions/create-config-transaction).
 
 ## v93: один голос отмены не останавливает исполнение
 
