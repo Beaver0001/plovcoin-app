@@ -818,3 +818,37 @@ storage/send acceptance and release GO, keeps the retired v67 probe closed,
 and maps current traditional Phantom limitations to the actual source modules.
 Current LP-03/09/13/15/17/18 gaps remain open. The owner-deferred budget and
 60PLOV decisions are not reopened. **LP-15 OPEN; MAINNET_GO=NO.**
+
+
+### v83: injected Phantom adapter through verified synthetic preflight
+
+`npm run test:phantom-session-browser` adds 26 actual Chromium checks for the
+shipped `createInjectedPhantomReviewSession`, `createWalletReviewSession`,
+`signPreparedSwap` and genuine `refreshVerifiedSwapContext` path. Fresh reviews
+come from account-byte verification, not fabricated context callbacks. The
+provider is synthetic and uses the existing public fixture seed. Stable signing
+preserves the temporary WSOL signature, verifies both signatures and unchanged
+message, and runs confirmed simulation before signing and with sigVerify after.
+
+The suite rejects missing temporary signatures, changed blockhash, 4001 rejection,
+unsupported/disconnected/wrong-account providers, connect/accountChanged/disconnect
+before and during pending signing, account-null and app network/launch round trips,
+disposal during signing, copied preflight, reused review, subscription and cleanup
+failures, changed fee, post-sign simulation failure, expired blockhash, wrong
+genesis and changed program bytes. It checks cleanup and forbids connect,
+signAndSend/signAll and both connection send methods. This new block sends zero
+transactions and creates no delivery receipts.
+
+The same run repeats 95 existing browser checks: lifecycle32, recovery UI12,
+host28, observation policy13 and evidence export10. Those existing fixtures send
+10 transactions to their loopback test server; no external request, real wallet
+prompt or mainnet send occurs. TypeScript and diff checks pass. No production
+build was rerun: application source, dependencies, lock, routes and launch flag
+are unchanged. The v82 inventory's 12 source hashes still match.
+
+This is adapter integration regression, not installed-Phantom acceptance, an
+owner-ready wallet package, or provider-through-full-controller dispatch proof.
+The isPhantom compatibility flag is not authentication. The target record remains
+NOT_RUN/null; production manifest/origin/storage policy, provider/controller
+wiring, real sign/send, audit and release remain open. Retired v67 stays retired.
+**LP-15 OPEN; MAINNET_GO=NO.**
