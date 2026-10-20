@@ -7,7 +7,8 @@
     "check:runtime": "node runtime.cjs",
     "check:lifecycle": "node lifecycle-runner.cjs",
     "check:config": "node check-config-account.cjs",
-    "check:delayed": "node delayed-review-runner.cjs"
+    "check:delayed": "node delayed-review-runner.cjs",
+    "check:cancellation": "node cancellation-review-runner.cjs"
   },
   "dependencies": {
     "@meteora-ag/cp-amm-sdk": "1.5.1",

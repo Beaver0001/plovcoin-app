@@ -54,5 +54,7 @@ module.exports=async function(ctx){
   checks.push({operation:label,oldProposal:index.toString(),newProposal:next.toString(),beforePrice,afterPrice,oldStatusAfterSlippage:'Approved',oldFinalStatus:'Cancelled',cancelVotes:2,cancelledExecuteRejected:true,newStatus:'Executed',freshLiquidityDelta:fresh.delta.toString(),staleAttempts:2});
  }
  assert.equal(spl.AccountLayout.decode(Buffer.from(account(nftAccount).data)).amount,1n);
- return {checks,transactions:cases.length-begin,scope:'Synthetic pinned SBF runtime; tight limits, one market move per operation. Not exhaustive market/expiry protection.',warning:'Slippage rejection alone leaves proposal Approved. Recovery tested here explicitly cancels stale proposal with governance votes, verifies execute rejection, then re-quotes and obtains new approvals and timelock. No automatic expiry is proved.'};
+ const transactions=cases.length-begin;
+ const cancellationReview=process.env.PLOV_CANCEL_REVIEW==='1'?await require('./cancellation-review.cjs')({...ctx,approve,execute,add,remove,snap,status,wait,position}):null;
+ return {checks,transactions,...(cancellationReview?{cancellationReview}:{}),scope:'Synthetic pinned SBF runtime; tight limits, one market move per operation. Not exhaustive market/expiry protection.',warning:'Slippage rejection alone leaves proposal Approved. Recovery tested here explicitly cancels stale proposal with governance votes, verifies execute rejection, then re-quotes and obtains new approvals and timelock. No automatic expiry is proved.'};
 };
