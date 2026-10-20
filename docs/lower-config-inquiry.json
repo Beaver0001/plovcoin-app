@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": 107,
+  "version": 108,
   "kind": "TECHNICAL_INQUIRY_WITH_APPROVED_AUTHORITY_NOT_ISSUANCE_AUTHORIZATION",
   "status": "DRAFT_NOT_SENT",
   "dateDushanbe": "2026-10-21",
@@ -124,5 +124,13 @@
     "accountReadbackTests": "V91_30_CHECKS_PASS_NO_ACTUAL_CONFIG_ACCEPTED"
   },
   "requestDraft": "docs/lower-config-issuance-request-v107-ru.md",
-  "authoritySelectionScope": "OWNER_IDENTITY_SELECTION_ONLY_NO_ISSUANCE_PAYMENT_SIGNING_SEND_OR_EXTERNAL_MESSAGE_AUTHORIZATION"
+  "authoritySelectionScope": "OWNER_IDENTITY_SELECTION_ONLY_NO_ISSUANCE_PAYMENT_SIGNING_SEND_OR_EXTERNAL_MESSAGE_AUTHORIZATION",
+  "workflowPolicy": {
+    "reference": "docs/lp-public-first-v108-ru.md",
+    "supportReplyRequiredToContinue": false,
+    "externalInquiryOptional": true,
+    "nextAction": "PUBLIC_CONFIG_SCAN_AND_COMPATIBLE_PERMISSIONLESS_PATH_REVIEW",
+    "publicDocumentationIsNotIssuedConfig": true
+  },
+  "publicConfigReview": "research/lower-squads-offline/public-config-review-v108.json"
 }

@@ -75,7 +75,7 @@
     "interpretation": "Witnesses sit close to the mathematical10SOL floor. Principal inside pools is not the separately unknown operating budget B; neither the10SOL reserve nor the0.001SOL headroom establishes available config/rent/transaction funding.",
     "researchGeometryApproved": true,
     "productionCandidateSelected": false,
-    "nextUncompletedTechnicalGate": "Owner selected LP vault config authority in v107; A01 closed for identity only. Next: a project-specific issuance availability/terms inquiry through verified official support, with recipient/ticket and sending authorization still absent; accept actual config/index/issuer/transaction/readback separately. Production atomic adoption, live manifest/ALT/program evidence, signer/payer policy and Phantom/network/GO remain open. Budget/geometry/T0/60PLOV remain owner-deferred.",
+    "nextUncompletedTechnicalGate": "Current program/source-build parity and independent production acceptance preparation. Public config scan completed: no compatible config found for current TWO design. No support reply required; actual compatible config remains an execution prerequisite.",
     "exactCandidateSquadsReview": {
       "status": "LOCAL_SYNTHETIC_INITIALIZATION_AND_FEE_CUSTODY_PASS",
       "review": "research/lower-squads-offline/v29-squads-review.json",
@@ -226,10 +226,10 @@
     },
     "productionAcceptancePacket": {
       "status": "AUTHORITY_SELECTED_ACTUAL_CONFIG_OPEN",
-      "human": "docs/lower-config-issuance-request-v107-ru.md",
-      "machine": "docs/lp-production-acceptance-v107.json",
+      "human": "docs/lp-public-first-v108-ru.md",
+      "machine": "docs/lp-production-acceptance-v108.json",
       "verification": "research/lower-squads-offline/authority-selection-review-v107.json",
-      "JSONSHA256": "e5cd2d6f05bd99c8c8f96c0061218342e1b33387a7118ac2c2b73877e52e075d",
+      "JSONSHA256": "b8af062da26973dbbf5f64142f792d3acdfd5aae8f3e0dc79706cd121eafcced",
       "historicalBasePacket": "docs/lp-production-acceptance-v106.json",
       "historicalBaseSHA256": "a7bc8f4b47b4fd19718ec57054b0bfb719b8796e5ec41ceb47cd9daa75f8f402",
       "authorityApproved": true,
@@ -240,7 +240,15 @@
       "requestStatus": "DRAFT_NOT_SENT",
       "readyForIssuance": false,
       "readyForNetworkSend": false,
-      "actualConfigAccepted": false
+      "actualConfigAccepted": false,
+      "workflowPolicy": {
+        "reference": "docs/lp-public-first-v108-ru.md",
+        "supportReplyRequiredToContinue": false,
+        "externalInquiryOptional": true,
+        "nextAction": "PUBLIC_CONFIG_SCAN_AND_COMPATIBLE_PERMISSIONLESS_PATH_REVIEW",
+        "publicDocumentationIsNotIssuedConfig": true
+      },
+      "verificationScope": "v107 authority selection review is historical; v108 changes workflow only, not actual config acceptance."
     }
   },
   "request": {
@@ -264,9 +272,20 @@
     "upperPriceUSDApprox": "0.001",
     "D14InRequestPLOV": "367000000",
     "frozenSOLUSD": "103.80",
-    "architectures": ["ONE", "TWO"],
-    "scenarios": ["ZERO", "MIN", "IDEAL"],
-    "retentionPercent": [50, 90, 100],
+    "architectures": [
+      "ONE",
+      "TWO"
+    ],
+    "scenarios": [
+      "ZERO",
+      "MIN",
+      "IDEAL"
+    ],
+    "retentionPercent": [
+      50,
+      90,
+      100
+    ],
     "wave1Inputs": null,
     "otherInputsAndThresholds": "PRESERVE_V28_WITH_EXPLICIT_SOURCE_COMPARISON"
   },
@@ -309,7 +328,11 @@
     "bytes": 92366,
     "sha256": "5b51934aa65ace4af87f5afe662b29e0426c6b0889ea7d20aefc34f00b523edc",
     "manifestMatchedFiles": 59,
-    "originalProvenanceFilesNotRestored": ["fx_snapshot.json", "provenance.json", "reproduction.json"],
+    "originalProvenanceFilesNotRestored": [
+      "fx_snapshot.json",
+      "provenance.json",
+      "reproduction.json"
+    ],
     "ZERO": {
       "status": "INFEASIBLE_CERTIFIED_BY_NECESSARY_D14_DROP",
       "minimumDropPctLowerBoundExactV28D14Approx": "53.93397164018",

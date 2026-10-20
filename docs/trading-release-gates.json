@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "v107",
+  "version": "v108",
   "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
   "dateDushanbe": "2026-10-21",
@@ -214,10 +214,18 @@
     "TreasuryLPFundingHandoff": "LOCAL_SYNTHETIC_PASS_REAL_FUNDING_OPEN",
     "TreasuryLPFundingReview": "research/lower-squads-offline/v29-funding-review.json",
     "productionFundingApproved": false,
-    "productionAcceptancePacket": "docs/lower-config-issuance-request-v107-ru.md",
+    "productionAcceptancePacket": "docs/lp-public-first-v108-ru.md",
     "productionAcceptancePacketStatus": "AUTHORITY_SELECTED_ACTUAL_CONFIG_OPEN",
     "configPoolCreatorAuthorityApproved": true,
     "approvedConfigPoolCreatorAuthority": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
     "configAuthorityApprovalReference": "docs/lp-config-authority-approval-v107.json"
-  }
+  },
+  "publicFirstWorkflow": {
+    "reference": "docs/lp-public-first-v108-ru.md",
+    "supportReplyRequiredToContinue": false,
+    "externalInquiryOptional": true,
+    "nextAction": "PUBLIC_CONFIG_SCAN_AND_COMPATIBLE_PERMISSIONLESS_PATH_REVIEW",
+    "publicDocumentationIsNotIssuedConfig": true
+  },
+  "publicConfigReview": "research/lower-squads-offline/public-config-review-v108.json"
 }
