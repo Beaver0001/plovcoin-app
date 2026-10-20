@@ -1,0 +1,514 @@
+{
+  "schema": 1,
+  "version": 106,
+  "kind": "REVIEW_PACKET_NOT_RUNTIME_MANIFEST_OR_TRANSACTION",
+  "status": "PACKET_ASSEMBLED_PRODUCTION_BLOCKED",
+  "dateDushanbe": "2026-10-21",
+  "sourceBaselineCommit": "e27601798a0a06031669da592808923544c6f3eb",
+  "MAINNET_GO": "NO",
+  "readyForIssuance": false,
+  "readyForWalletTest": false,
+  "readyForNetworkSend": false,
+  "externalMessagesSent": 0,
+  "networkRequests": 0,
+  "networkSends": 0,
+  "realWalletPrompts": 0,
+  "identity": {
+    "network": "mainnet-beta",
+    "expectedGenesis": "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d",
+    "addresses": {
+      "mintA": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
+      "mintB": "So11111111111111111111111111111111111111112",
+      "tokenProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "positionNFTProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "associatedTokenProgram": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+      "meteoraProgram": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+      "squadsProgram": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+      "LPmultisig": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+      "LPvault": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+      "TreasuryMultisig": "Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz",
+      "TreasuryVault": "3w5DmerxzYfMhVLHsdjHn5BU194u3R9DD5HaD7rr5VRm",
+      "LPplovATA": "73uLrfPQCELdWEPKbiceQkqeWfDgM2g34xRsdJro6vDj",
+      "LPwsolATA": "ASNjimLJYvHngozupSMQGyBarrAkFFQ5hrWpbTMFQB2E",
+      "TreasuryPlovATA": "4Xw9pQhyVrjkrdtTGFuGBWXDPSVhekwYWXjrspvcHGWS",
+      "derivedUpperPool": "64CgrpfD1mirgn7jea22wT8sJgnHwqTPTzZksYUC6ZsR",
+      "derivedUpperVaultA": "GZUGWcmn3ejP2wXLEBeKh3nCf5Qvb3vKmzxRwH2eUetD",
+      "derivedUpperVaultB": "BvokskvvKKe6RcRNGJzPzPhyiDvgF2ZwWiVHiMsxEPRk",
+      "meteoraPoolAuthority": "HLnpSz9h2S4hiLQ43rnSD9XkcUThA7B8hQMKmDaiTLcC",
+      "addressLookupTableProgram": "AddressLookupTab1e1111111111111111111111111"
+    },
+    "addressEvidence": "Multisigs/vaults are retained v94/v95 observations; ATA/UPPER/vault addresses are offline PDA derivations, not existence/control/readiness evidence.",
+    "currentOnchainExistenceVerified": false
+  },
+  "retainedProgramPins": {
+    "atUTC": "2026-10-20T09:45:56.283374+00:00",
+    "rpc": "https://api.mainnet-beta.solana.com",
+    "genesis": "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d",
+    "programs": [
+      {
+        "name": "meteora",
+        "program": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+        "programData": "AUh8bm2XsMfex3KjYGcM3G4uBqUNSDw6HEhWaWMYnyPH",
+        "deploymentSlot": 457080014,
+        "accountReadSlot": 459181480,
+        "programReadSlot": 459181440,
+        "elfBytes": 2174352,
+        "elfSha256": "967ff9fb161eec2e62f66d2c899100739fb747c445f697b8625c86b31b9a2022",
+        "programDataSha256": "69d693fb7554fbfb21c50d7bb6327b284563347391a4f94056e029363863f810",
+        "loader": "BPFLoaderUpgradeab1e11111111111111111111111"
+      },
+      {
+        "name": "squads",
+        "program": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+        "programData": "Fy3YMJCvwbAXUgUM5b91ucUVA3jYzwWLHL3MwBqKsh8n",
+        "deploymentSlot": 302582236,
+        "accountReadSlot": 459181480,
+        "programReadSlot": 459181440,
+        "elfBytes": 1470416,
+        "elfSha256": "dec8d3e0fae58c7c8f2416e5f67c25e673f047afd6dd2bba4a47e0b29a01d34c",
+        "programDataSha256": "e1c596fdcf397686dfa67cc568c8c2e4696a1ef6949de4c2d251527913af7f1e",
+        "loader": "BPFLoaderUpgradeab1e11111111111111111111111"
+      },
+      {
+        "name": "ata",
+        "program": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+        "loader": "BPFLoader2111111111111111111111111111111111",
+        "programData": null,
+        "deploymentSlot": null,
+        "accountReadSlot": 459185138,
+        "programReadSlot": 459185138,
+        "elfBytes": 105032,
+        "elfSha256": "6804554e69fd3a58caa191dc4a58f4c67223d30ca28ab8987f39fc18d2f7374d",
+        "programDataSha256": null
+      },
+      {
+        "name": "spl_token",
+        "program": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        "loader": "BPFLoaderUpgradeab1e11111111111111111111111",
+        "programData": "3gvYRKWyXRR9xKWe1ZjPhLY5ZJRN7KDB4rFZFGoJfFk2",
+        "deploymentSlot": 419472000,
+        "accountReadSlot": 459185174,
+        "programReadSlot": 459185138,
+        "elfBytes": 108600,
+        "elfSha256": "8190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f697",
+        "programDataSha256": "573971c9baedda479bf4c38537787ae396358009b4920f8a270bd2b31dde5fe3"
+      },
+      {
+        "name": "token2022",
+        "program": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+        "loader": "BPFLoaderUpgradeab1e11111111111111111111111",
+        "programData": "DoU57AYuPFu2QU514RktNPG22QhApEjnKxnBcu4BHDTY",
+        "deploymentSlot": 427147035,
+        "accountReadSlot": 459185174,
+        "programReadSlot": 459185138,
+        "elfBytes": 1382016,
+        "elfSha256": "0999dbf708971e723b08d1caafc988826a59c6001ed6dc02260da07defbe1469",
+        "programDataSha256": "4bba6bf1da06a44b467038e2df01ae41199f97d9072888ce9856694ea8b2eec1"
+      }
+    ],
+    "note": "Two read-only finalized snapshots, one RPC; different contexts, not atomic; no source/build parity proof.",
+    "snapshots": [
+      {
+        "atUTC": "2026-10-20T09:32:28.944172+00:00",
+        "programReadSlot": 459181440,
+        "programDataReadSlot": 459181480
+      },
+      {
+        "atUTC": "2026-10-20T09:45:56.283374+00:00",
+        "programReadSlot": 459185138,
+        "programDataReadSlot": 459185174
+      }
+    ]
+  },
+  "candidatePoolProfile": {
+    "status": "RESEARCH_CANDIDATE_NOT_PRODUCTION_APPROVAL",
+    "baseFeeNumerator": "2500004",
+    "feeDenominator": "1000000000",
+    "collectFeeMode": 1,
+    "protocolFeePercent": 20,
+    "dynamicFee": 0,
+    "compoundingFeeBps": 0,
+    "activationType": 1,
+    "alphaVault": false
+  },
+  "retainedGovernance": {
+    "LP": {
+      "capturedAt": "2026-10-20T16:30:11.173Z",
+      "firstSlot": 459296308,
+      "lastSlot": 459296533,
+      "threshold": 2,
+      "timeLockSeconds": 43200,
+      "members": [
+        {
+          "key": "rVj5eRYuSGC5LcA3GLNACJXCNyJZ6he3HWJJhEhyHYP",
+          "mask": 7,
+          "initiate": true,
+          "vote": true,
+          "execute": true
+        },
+        {
+          "key": "8j7nVhQ3WxmF6VvKRF6QujCXrMxqZ25boMqSznBTvQyv",
+          "mask": 7,
+          "initiate": true,
+          "vote": true,
+          "execute": true
+        },
+        {
+          "key": "DHHFa9ReLFYN49GKmX4XseDhyVyv8gpRY594oRfPHb96",
+          "mask": 7,
+          "initiate": true,
+          "vote": true,
+          "execute": true
+        }
+      ],
+      "transactionIndexObserved": "3"
+    },
+    "Treasury": {
+      "capturedAt": "2026-10-20T17:08:39.884Z",
+      "firstSlot": 459307036,
+      "lastSlot": 459307215,
+      "threshold": 3,
+      "timeLockSeconds": 172800,
+      "members": [
+        {
+          "key": "rVj5eRYuSGC5LcA3GLNACJXCNyJZ6he3HWJJhEhyHYP",
+          "mask": 7,
+          "initiate": true,
+          "vote": true,
+          "execute": true
+        },
+        {
+          "key": "2NSSYizysuYa82RYiwZKYrM9qF2eAL9Y3eyADYMiYs3F",
+          "mask": 7,
+          "initiate": true,
+          "vote": true,
+          "execute": true
+        },
+        {
+          "key": "8j7nVhQ3WxmF6VvKRF6QujCXrMxqZ25boMqSznBTvQyv",
+          "mask": 7,
+          "initiate": true,
+          "vote": true,
+          "execute": true
+        },
+        {
+          "key": "CoyNfd2s1cJaCVWBNUpRh8y8CQrxLfjEB5TN5PikDFDN",
+          "mask": 7,
+          "initiate": true,
+          "vote": true,
+          "execute": true
+        },
+        {
+          "key": "DHHFa9ReLFYN49GKmX4XseDhyVyv8gpRY594oRfPHb96",
+          "mask": 7,
+          "initiate": true,
+          "vote": true,
+          "execute": true
+        }
+      ],
+      "transactionIndexObserved": "2"
+    },
+    "sharedMemberAddresses": [
+      "rVj5eRYuSGC5LcA3GLNACJXCNyJZ6he3HWJJhEhyHYP",
+      "8j7nVhQ3WxmF6VvKRF6QujCXrMxqZ25boMqSznBTvQyv",
+      "DHHFa9ReLFYN49GKmX4XseDhyVyv8gpRY594oRfPHb96"
+    ],
+    "signerAvailability": "NOT_CONFIRMED",
+    "humanIdentities": "UNKNOWN",
+    "freshlyRequeried": false
+  },
+  "proposedRoles": {
+    "configAuthority": {
+      "candidate": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+      "candidateMultisig": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+      "approvedAuthority": null,
+      "approvalReference": null,
+      "status": "OWNER_DECISION_REQUIRED",
+      "scope": "Dynamic config pool-creator authority, not mint/update authority or Meteora Operator."
+    },
+    "positionNFTCustody": {
+      "candidate": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+      "approvedOwner": null,
+      "approvalReference": null
+    },
+    "poolCreator": {
+      "candidate": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+      "approvedCreator": null,
+      "approvalReference": null
+    },
+    "mintAuthorityChange": false,
+    "freezeAuthorityChange": false,
+    "operatorRoleRequested": false,
+    "productionAtomicDesignApproved": false
+  },
+  "actualConfig": {
+    "authority": null,
+    "index": null,
+    "address": null,
+    "issuer": null,
+    "issuanceTransaction": null,
+    "historicalOperatorProof": null,
+    "finalizedSlot": null,
+    "rawAccountSHA256": null,
+    "expectedConfigType": 1,
+    "expectedPermissionU128": "0",
+    "status": "NOT_ISSUED_OR_ACCEPTED_IN_RETAINED_PROJECT_RECORD",
+    "pairRestrictionClaimed": false
+  },
+  "productionInputs": {
+    "candidateId": null,
+    "budget": null,
+    "geometry": null,
+    "T0": null,
+    "LPTransactionIndex": null,
+    "TreasuryTransactionIndex": null,
+    "ephemeralNFTAddresses": null,
+    "LOWERPoolAddress": null,
+    "ALTAddress": null,
+    "ALTContentsSHA256": null,
+    "approvedProgramPins": null,
+    "approvedManifestSHA256": null,
+    "signerAssignments": null,
+    "payerAssignments": null,
+    "operatingReserve": null,
+    "networkSendApprovalReference": null,
+    "releaseGOReference": null
+  },
+  "payerCategories": [
+    "Config service quote versus on-chain issuer payer",
+    "Treasury/LP proposal account rent and member transaction fees",
+    "Frozen ALT creation/extension rent and payer",
+    "LP/Treasury ATA creation payer",
+    "LP seed and initialization account rent",
+    "Operating reserve and priority-fee policy after creation"
+  ],
+  "bindingOrder": [
+    "Owner authority selection; no issuance/payment/send permission",
+    "Project-specific issuance availability/terms with approved identity",
+    "Accept issued config evidence separately",
+    "Owner-deferred geometry/budget/T0 plus payer/signer policy",
+    "Fresh governance indexes, ephemeral NFT PDAs and LOWER PDA",
+    "Verify frozen ALT and exact funding+dual-init message hashes",
+    "Quorums/timelocks/live preflight and separate real-send permission",
+    "Finalized actual readback/runtime manifest; separate launch GO"
+  ],
+  "runtimeManifestRequiredBindings": [
+    "Approved current ProgramData address/hash/deployment slot",
+    "UPPER address/creator/sqrtMinPrice/sqrtMaxPrice/liquidity/poolType/activationType/activationPoint",
+    "LOWER same fields plus config.address/config.authority/config.index",
+    "Shared approved integer P0 and activationPoint; separately accepted fee profile",
+    "Post-create existence/ownership/NFT custody/current live route checks; packet has no root pools array"
+  ],
+  "nativeEvidence": {
+    "v100": "PINNED_SDK_OFFLINE_GEOMETRY_PASS",
+    "v101": "PASS_NATIVE_V29_WITNESSES_WITHIN_LOCAL_SCOPE",
+    "v102": "PASS_EXACT_LOCAL_SQUADS_INIT_AND_FEE_CUSTODY",
+    "v103": "PASS_LOCAL_BOUNDARY_TESTS_PRESTART_ABORT_BLOCKED",
+    "v104": "PASS_LOCAL_ATOMIC_DUAL_INITIALIZATION_REAL_CONFIG_OPEN",
+    "v105": "PASS_LOCAL_TREASURY_LP_HANDOFF_REAL_FUNDING_OPEN",
+    "realAcceptanceGranted": false
+  },
+  "sourceEvidence": [
+    {
+      "path": "research/lower-squads-offline/governance-snapshot-v94.json",
+      "sha256": "96f1b361712572690338f8a05a157b02177d5a0a243a999df1c6fff2e27795b4"
+    },
+    {
+      "path": "research/lower-squads-offline/governance-review-v94.json",
+      "sha256": "e59c38aa9490fe19bbc8f5d8fcd45977229629f0671b6ea23226720a2babdeaa"
+    },
+    {
+      "path": "research/lower-squads-offline/treasury-snapshot-v95.json",
+      "sha256": "29fc36803e70dc66662c4f3e3feb5c6312c16dfa103c156e080348b6d3d1f58c"
+    },
+    {
+      "path": "research/lower-squads-offline/treasury-review-v95.json",
+      "sha256": "d3d9cee43adab5d38a8c884ed159c439a41986c2ab6ef3899d3aaa90a65ed1ab"
+    },
+    {
+      "path": "research/lower-squads-offline/program-pins-v90.json",
+      "sha256": "f12656a55549bb228c83081f31e7036d24389f309dcc98ceadddb30af5e2dc1d"
+    },
+    {
+      "path": "docs/lower-config-inquiry.json",
+      "sha256": "9dbef8afc866a9838a14cb61f0714c5eb4a2a99cd63ce588a190e9a8ca979a09"
+    },
+    {
+      "path": "research/lower-squads-offline/v29-geometry-result.json",
+      "sha256": "346e58abfcf6f7629da0d86f978bbd795fb457bd83407a3903c73da13fa595ee"
+    },
+    {
+      "path": "research/lower-squads-offline/v29-native-review.json",
+      "sha256": "fa7d7774a9726ca659173a9ed01fe7cf87442648a9e8595d464babd090512e6d"
+    },
+    {
+      "path": "research/lower-squads-offline/v29-squads-review.json",
+      "sha256": "104101cf48edfb7fd9ba227ace6129fd6bd4dc324f0e5dca49c1dedd6d74d40d"
+    },
+    {
+      "path": "research/lower-squads-offline/v29-activation-review.json",
+      "sha256": "21ee42c8596252c137f79e6356a4e1ec104e8dfb7375c9b2811aeceb85ad1370"
+    },
+    {
+      "path": "research/lower-squads-offline/v29-atomic-review.json",
+      "sha256": "d0c12d636315a0d024d8046d4340c63374ac36581d59edb0655fe4381bdba02c"
+    },
+    {
+      "path": "research/lower-squads-offline/v29-funding-review.json",
+      "sha256": "67d4ba626d164ab9a1624f21bcab7b89dfb2082fa44e7d17834c4232c3670320"
+    },
+    {
+      "path": "lib/trading/live-accounts.mjs",
+      "sha256": "f06cc03fc7347c47de55df634de537c61568ef3781c5370b67f4669bc66597e1"
+    },
+    {
+      "path": "research/lower-squads-offline/config-account-check.cjs",
+      "sha256": "2103ab8801b291e3feece7dae90d48de2049b587d63bce839b16f531ce68f17b"
+    },
+    {
+      "path": "research/lower-squads-offline/package-lock.json",
+      "sha256": "ad977c65ee6961f46ea749cab7d6ec401dc4cdc1bd39ae6db52744bd21c89458"
+    }
+  ],
+  "applicationPins": [
+    {
+      "path": "lib/trading/review.ts",
+      "sha256": "ae562c00c32f491b33284a7ce6b218cd017b2e977fc1a75cf9d4c38f677cf6a9"
+    },
+    {
+      "path": "lib/trading/live-accounts.mjs",
+      "sha256": "f06cc03fc7347c47de55df634de537c61568ef3781c5370b67f4669bc66597e1"
+    },
+    {
+      "path": "lib/trading/phantom-session.mjs",
+      "sha256": "e3cf4e17e72b50babea4dbf05c3f9b9ea84c683b3cb97e18733bb4b5f5e4a73f"
+    },
+    {
+      "path": "lib/trading/wallet-session.mjs",
+      "sha256": "d2efaaf8e73d696c5b86e2cbb7c6ed1c5feb61aa76ac99feeacfc032f46130ea"
+    },
+    {
+      "path": "lib/trading/wallet-transaction.mjs",
+      "sha256": "f6ecd3314c3a9906def29b99970e8608434549a9f35c3c8c2bae20f361e622e5"
+    },
+    {
+      "path": "lib/trading/swap-attempt.mjs",
+      "sha256": "c9a5bea5bd846c07ebf5710bd4b96f1e5f2e781ea7adcbefc6ab51012b75276b"
+    },
+    {
+      "path": "lib/trading/swap-lifecycle.mjs",
+      "sha256": "199472d6dbe887417c62193cbacde799bbbdfddf4ce1df4816a936319c279957"
+    },
+    {
+      "path": "lib/trading/recovery-host.mjs",
+      "sha256": "4efe4a523b1d211287e5f607745b3a5657bc89ca4385c750acd2f59027fd674d"
+    },
+    {
+      "path": "lib/trading/observation-store.mjs",
+      "sha256": "feb52dfbc5b61e2a15da9e2be74f58b4e4e94ddb20fe456266e9f4ac8c89c288"
+    },
+    {
+      "path": "lib/trading/recovery-evidence.mjs",
+      "sha256": "1cec6877cab709e0803869e63102042b26ede0078b16a3b8d476773e1ee11b43"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "a45d44f760c0dec60a7d21d6493c684d93d1bf3ee7bc8cbbc467fc105c8556cf"
+    },
+    {
+      "path": "scripts/fixtures/trading-accounts.json",
+      "sha256": "4406dae7cba04a851b7c9ac5e783a443ab6f84fd2d99aac5c221f21d2477e036"
+    },
+    {
+      "path": "lib/trading/engine/index.mjs",
+      "sha256": "bc4830ed8fdb39a4c41fb023a4ec3a02dabb16b9720ffd4d8f03fd6feaf434e3"
+    }
+  ],
+  "assemblerSHA256": "ee766f4062a27d09a883b94bbea98a775c86124382fa19fb3a5bfdb871d49df1",
+  "requirements": [
+    {
+      "id": "A01",
+      "status": "OWNER_DECISION",
+      "title": "Утвердить poolCreatorAuthority",
+      "requiredEvidence": "Кандидат — LP vault; требуются owner approval reference и approved authority."
+    },
+    {
+      "id": "A02",
+      "status": "PRODUCTION_ADOPTION_OPEN",
+      "title": "Принять атомарную схему",
+      "requiredEvidence": "Один VaultTransaction с обеими инициализациями и двумя ephemeral NFT PDA; раздельные batch execute не заменяют атомарность."
+    },
+    {
+      "id": "A03",
+      "status": "EXTERNAL_ISSUANCE_OPEN",
+      "title": "Получить и принять LOWER config",
+      "requiredEvidence": "config/index/PDA/type1/permission0/authority; finalized issuance transaction и историческая Operator authorization. Офлайн v91 checker сверяет лишь ожидаемые поля."
+    },
+    {
+      "id": "A04",
+      "status": "LIVE_EVIDENCE_OPEN",
+      "title": "Обновить chain evidence",
+      "requiredEvidence": "Genesis до/после, finalized context/floors/time, mint/program/governance/config/UPPER existence/балансы. Снимки20.10 не объявлять текущими."
+    },
+    {
+      "id": "A05",
+      "status": "OWNER_DEFERRED",
+      "title": "Бюджет, геометрия и T0",
+      "requiredEvidence": "Выбрать production candidate/капитал/границы/объёмы/operating budget/T0 перед запуском; research MIN/IDEAL и frozen FX не подставлять автоматически."
+    },
+    {
+      "id": "A06",
+      "status": "SIGNER_ACCESS_OPEN",
+      "title": "Подтвердить подписантов",
+      "requiredEvidence": "Treasury3/5, LP2/3; public membership не доказывает контроль ключа или доступность человека."
+    },
+    {
+      "id": "A07",
+      "status": "PAYER_POLICY_OPEN",
+      "title": "Назначить плательщиков",
+      "requiredEvidence": "Отдельно governance/ALT/ATA rent, init rent/seed, transaction/priority fees, услуга config и operating reserve.890880lamports fixture не operating budget."
+    },
+    {
+      "id": "A08",
+      "status": "MESSAGE_IDENTITY_OPEN",
+      "title": "Зафиксировать два сообщения",
+      "requiredEvidence": "Treasury SOL→LP vault и checked PLOV→LP ATA; LP обе инициализации; свежие transaction indexes, exact bytes/hash, signer/writable metas, CU/bytes."
+    },
+    {
+      "id": "A09",
+      "status": "ALT_ACCEPTANCE_OPEN",
+      "title": "Принять frozen ALT",
+      "requiredEvidence": "Реальные address/owner/program/contents/index mapping/authority absent/activation slot/readback; builtin LiteSVM не mainnet ELF acceptance."
+    },
+    {
+      "id": "A10",
+      "status": "SOURCE_PARITY_OPEN",
+      "title": "Привязать актуальные программы и аудит",
+      "requiredEvidence": "Deployment/ProgramData/ELF и source/build review; cached v90 и application hashes не доказывают binary parity."
+    },
+    {
+      "id": "A11",
+      "status": "SIGN_ONLY_NOT_RUN",
+      "title": "Installed Phantom sign-only",
+      "requiredEvidence": "Согласованные wallet/origin/RPC/build/manifest/message; temporary signature preservation; retired v67 не использовать."
+    },
+    {
+      "id": "A12",
+      "status": "NETWORK_ACCEPTANCE_OPEN",
+      "title": "Отдельно разрешить real send",
+      "requiredEvidence": "Sign-only не разрешает send; finalized actual governance/config/funding/pools/NFT/readback после действий."
+    },
+    {
+      "id": "A13",
+      "status": "RELEASE_GO_OPEN",
+      "title": "Отдельный release GO",
+      "requiredEvidence": "Approved runtime manifest и live routing/storage/browser acceptance; MAINNET_GO остаётсяNO."
+    },
+    {
+      "id": "A14",
+      "status": "OWNER_DEFERRED",
+      "title": "Вернуть60PLOV до POOL_CREATE",
+      "requiredEvidence": "Решение/действие владельца перед запуском; проверить распределение и чужой customizable pool перед созданием, переводов в пакете нет."
+    }
+  ]
+}

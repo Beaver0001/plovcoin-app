@@ -75,7 +75,7 @@
     "interpretation": "Witnesses sit close to the mathematical10SOL floor. Principal inside pools is not the separately unknown operating budget B; neither the10SOL reserve nor the0.001SOL headroom establishes available config/rent/transaction funding.",
     "researchGeometryApproved": true,
     "productionCandidateSelected": false,
-    "nextUncompletedTechnicalGate": "Local funding handoff plus atomic initialization is proven in v105, without establishing operating budget or authorizing real funding. Next: assemble and verify one concrete production config/authority/manifest/frozen-ALT acceptance packet and signer/payer policy. Actual config issuance/access, source/build parity, installed Phantom, real network acceptance and GO remain open; budget/geometry/T0/60PLOV remain owner-deferred.",
+    "nextUncompletedTechnicalGate": "v106 concrete review packet completed with retained identities/derived PDAs and14 requirement groups. Next owner identity decision: approve or defer proposed LP vault as LOWER config poolCreatorAuthority; then project-specific issuance and actual config evidence. Production atomic adoption/config/ALT/manifest/signer/payer/live acceptance remain open. No issuance/payment/send permission implied; budget/geometry/T0/60PLOV stay owner-deferred.",
     "exactCandidateSquadsReview": {
       "status": "LOCAL_SYNTHETIC_INITIALIZATION_AND_FEE_CUSTODY_PASS",
       "review": "research/lower-squads-offline/v29-squads-review.json",
@@ -223,6 +223,23 @@
       "transcriptLibraryFileId": "libfile_d67963bcd7c88191b8901d9f6474141c",
       "transcriptBytes": 1915880,
       "transcriptSHA256": "21f8a32e98c17ea7e445a0c00f2e90f2fe7033233f64a9f92b3d38da1e956205"
+    },
+    "productionAcceptancePacket": {
+      "status": "REVIEW_PACKET_COMPLETE_PRODUCTION_BLOCKED",
+      "human": "docs/lp-production-acceptance-v106-ru.md",
+      "machine": "docs/lp-production-acceptance-v106.json",
+      "verification": "research/lower-squads-offline/production-review-v106.json",
+      "JSONSHA256": "a7bc8f4b47b4fd19718ec57054b0bfb719b8796e5ec41ceb47cd9daa75f8f402",
+      "sourceEvidenceHashes": 15,
+      "applicationSourceHashes": 13,
+      "retainedGovernanceReviewsMatched": 2,
+      "addresses": 19,
+      "openRequirementGroups": 14,
+      "authorityApproved": false,
+      "approvedAuthority": null,
+      "nextOwnerDecision": "Whether to approve LP vault2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK as poolCreatorAuthority for prospective LOWER config; no issuance/payment/send authority granted.",
+      "readyForIssuance": false,
+      "readyForNetworkSend": false
     }
   },
   "request": {

@@ -950,3 +950,38 @@ Library libfile_d67963bcd7c88191b8901d9f6474141c.
 
 Root app/dependencies/lock/routes/flags прежние. Только синтетические локальные
 подписи; real wallet/network sends0, Wave1Inputs=null, MAINNET_GO=NO.
+
+### v106 — единый пакет production-приёмки (21.10.2026)
+
+[Человекочитаемый пакет](../../docs/lp-production-acceptance-v106-ru.md) и
+[JSON](../../docs/lp-production-acceptance-v106.json) сводят19 сохранённых или
+офлайн-выведенных адресов/PDA, роли и14 групп незакрытых условий. Это review,
+не runtime manifest, готовая транзакция или launch acceptance. Текущие
+production geometry/budget/T0/config/LOWER/ALT/плательщики/индексы остаютсяnull.
+
+Офлайн assembler повторно вызывает raw governance reviewer v94/v95 и сверяет
+его результат с сохранёнными review. Проверены оба vault PDA и observed roster,
+threshold/timelock, общие member адреса.15 source evidence hashes и13 application
+pins фиксируют точные входы; два выходных файла воспроизводятся побайтно.
+JSON SHA256a7bc8f4b47b4fd19718ec57054b0bfb719b8796e5ec41ceb47cd9daa75f8f402.
+Это исторические снимки20.10, не свежие chain reads или доказательство ключевого
+доступа; source/build parity по-прежнему не доказана.
+
+Ближайшее решение владельца — выбрать или отложить предложенный LP vault
+2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK как poolCreatorAuthority LOWER
+dynamic config. Multisig account9Ccv…A7B и глобальный Meteora pool authority —
+другие адреса/роли. Подготовлен точный текст отдельного согласования.
+authorityApproved=false и approvedAuthority=null сохранены; mint/update authority,
+governance или балансы не менялись. Черновик обращения DRAFT_NOT_SENT.
+
+Реальные issuer/config evidence, signer/payer policy, production atomic adoption,
+frozenALT/manifest/live program evidence, Phantom/network acceptance и GO остаются
+открытыми. Бюджет/геометрия/T0/60PLOV остаются перед запуском. Полезные локальные
+v100–v105 проверки без новых входов не повторялись; новых native/runtime tests нет.
+Этот блок — assembly/consistency review, не новая транзакционная репетиция.
+
+Из этой папки: `node assemble-production-review.cjs --write`.
+Assembler пишет только два фиксированных документа; не вызывает RPC, не строит
+и не подписывает транзакций. production-review-v106.json содержит hash/readback
+результат. Root app/deps/lock/routes/flags прежние, realwallet/network/external
+messages0, MAINNET_GO=NO.

@@ -1,0 +1,20 @@
+{
+  "version": 106,
+  "status": "PACKET_CONSISTENCY_PASS_PRODUCTION_BLOCKED",
+  "sourceEvidenceHashes": 15,
+  "applicationHashes": 13,
+  "governanceRawReviewsMatch": 2,
+  "addresses": 19,
+  "openRequirementGroups": 14,
+  "byteIdenticalOutputs": 2,
+  "outputsSHA256": {
+    "docs/lp-production-acceptance-v106.json": "a7bc8f4b47b4fd19718ec57054b0bfb719b8796e5ec41ceb47cd9daa75f8f402",
+    "docs/lp-production-acceptance-v106-ru.md": "21f51f49b6e459b6de8875df765ca73024f0b6190ff889929c978be2477b951d"
+  },
+  "productionAcceptance": false,
+  "networkRequests": 0,
+  "transactionBuilds": 0,
+  "realWalletPrompts": 0,
+  "networkSends": 0,
+  "MAINNET_GO": "NO"
+}
