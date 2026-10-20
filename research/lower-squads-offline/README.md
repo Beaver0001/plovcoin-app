@@ -1,6 +1,7 @@
-# LOWER через Squads: проверка контракта SDK v88
+# LOWER через Squads: локальные проверки v88–v90
 
-20.10.2026, Asia/Dushanbe. Результат: **OFFLINE_SDK_CONTRACT_PASS**.
+Исторический этап v88,20.10.2026: **OFFLINE_SDK_CONTRACT_PASS**.
+Текущий этап v90 и ограничения описаны в конце документа.
 Это сборка и анализ инструкций, без исполнения программ. **MAINNET_GO=NO**.
 
 ## Что проверено
@@ -169,3 +170,98 @@ HTTP RPC в runtime отсутствует. При необходимости **
 InvalidPermission6054. После исправлений полная suite и7 offline checks прошли.
 Не проводились installed Phantom, devnet/mainnet execution, source/build audit,
 production wiring или утверждение настоящего config/manifest. LP-03/09/15 Открыто.
+
+
+# v90 — полный цикл и пять закреплённых программ
+
+**LOCAL_PINNED_LIFECYCLE_PASS**:93 программные транзакции,76 успешных и17
+ожидаемых отказов. Включает19 сценарных шагов v89, повторённых с новыми support ELF,
+и74 дополнительных транзакции. Число93 включает служебные proposals/голоса;
+это не93 независимых экономических сценария. Дополнительно5 локальных funding airdrop.
+Реальных prompts/network sends0; подписи есть только от детерминированных fixture keys.
+
+Meteora/Squads ELF сохранены из finalized read459181440/459181480. Дополнительно
+прочитаны SPL Token, Token-2022 и ATA на459185138/459185174 (14:45:56Dushanbe).
+Каждый ELF проверяется по SHA256 перед загрузкой. Loader для support-программ
+также учитывается: ATA — legacy BPF Loader2, SPL Token/Token-2022 — upgradeable.
+`program-pins-v90.json` содержит полные адреса, loader, contexts/slots и хеши.
+Это два среза одного RPC; они не атомарны и не доказывают честность сервера.
+Native mint state, governance, balances, config/Operator и геометрия синтетические.
+Бинарники исполняются в LiteSVM1.4.1 с её native runtime/sysvars/features, не в mainnet.
+
+## Результаты полного цикла
+
+| Действие | Проверка |
+|---|---|
+| Пополнение LP через2/3+12h Squads | position liquidity выросла на SDK quote delta; NFT остаётся у vault |
+| Нулевой допустимый входной лимит add | ExceededSlippage, rollback |
+| ExactIn и ExactOut, A→B и B→A |4 успешных swaps; точные token/reserve deltas по quote |
+| Невозможный min output swap | ExceededSlippage; LP/pool/trader token state откатились |
+| Сбор LP fees через Squads | OnlyB:43921lamport получил vault; A fees0 |
+| Частичный вывод | liquidity/token/SOL deltas совпали с withdraw quote |
+| Завышенный min output вывода | ExceededSlippage, rollback |
+| Закрытие непустой позиции | PositionIsNotEmpty, rollback |
+| Реальная локальная передача NFT другому владельцу | vault claim отклонён InvalidAuthority6053, получатель может claim |
+| Возврат NFT в vault | права восстановлены без изменения config authority |
+| Полный вывод остатка позиции | unlocked/pool liquidity0, суммы совпали с quote |
+| Закрытие пустой позиции | position/NFT mint/NFT token account закрыты,9897120lamports ренты вернулись vault |
+| Config-based и customizable той же пары | разные pool PDA, оба аккаунта существуют независимо |
+| Второй customizable той же пары | тот же PDA; создание отклонено, новые NFT/position аккаунты откатились |
+
+Geometry companion-пула синтетическая и служит проверке PDA. Она не выбирает
+production UPPER/LOWER диапазоны, цену или бюджет. Даже после закрытия LP позиции
+pool account остаётся; его закрытие этим циклом не выполняется.
+
+У4 swaps дополнительно проверены SOL и оба token vault delta, включая локальную
+fee5000lamports на каждую одно-подписную транзакцию. Это параметр данного теста,
+не калькуляция реальных сетевых расходов. Максимальный wire container1186bytes
+(с ComputeBudget instruction, без ALT); применимость к другому набору инструкций
+не следует из этого размера. Успешный LOWER create173363CU в этой VM.
+
+## Округления, которые нельзя терять в отчёте
+
+Сумма quote LP fees43922, фактический claim43921:1raw unit остаётся из-за
+накопления/округления fee growth. Protocol B fees10979 проверены отдельно.
+После частичного, затем полного вывода и закрытия позиции в пуле остаются
+2raw units A и10981raw units B (protocol10979 + non-protocol residual2).
+Это не «нулевые резервы». Остатки сверены с балансами перед последним выводом
+минус точные amounts SDK quote; закрытие NFT/позиции их не перемещает.
+Все значения относятся к синтетическому SPL9/WSOL9 примеру; бюджет проекта не меняется.
+
+## Публичная проверка source/build
+
+Read-only GET documented OtterSec status API выполнен20.10 в14:50Dushanbe.
+Сырые ответы сохранены в `public-build-status-v90.json`:
+Meteora/Squads/ATA — `is_verified:false`; SPL Token/Token-2022 — true.
+Для Squads, SPL Token и Token-2022 registry on_chain_hash совпадает с SHA256
+наших ELF после удаления trailing0 bytes. Полные ELF hashes из pins не заменяются.
+У true-ответов registry executable_hash также совпадает; это сообщение внешнего
+реестра, а не наша независимая воспроизводимая сборка. У Squads executable_hash
+пустой, поэтому наличие repo URL/совпавшего on_chain_hash не превращено в PASS.
+Флагfalse не означает автоматически уязвимость или доказанное различие исходников.
+API описан владельцем: https://github.com/otter-sec/solana-verified-programs-api.
+Новых jobs/verification requests, сетевых транзакций и сообщений не создавалось.
+
+## Воспроизведение v90
+
+Из этой папки установить зависимости из lockfile. Распаковать сохранённый пакет,
+задать `PLOV_LOCAL_FIXTURES` на его абсолютную папку fixtures и выполнить
+`npm run check:lifecycle -- /absolute/path/to/fixtures`. Скрипт использует соседний
+program-pins.json с5 программами; launcher также работает в Windows с путём в кавычках.
+Полный результат и logs — `lifecycle-result.json`; предыдущие v88/v89 JSON сохранены.
+Пример нового read-only support snapshot: `python download-program-fixtures.py
+--support-only --output /absolute/scratch/path`. Он не перезаписывает прежний срез.
+
+## Что ещё требует реальных входов
+
+Actual Operator issuance/config и финальный authority; реальные UPPER/LOWER и
+одобренный manifest; исходники/сборки/аудит применимого release; production host,
+provider/storage policy и installed Phantom; отдельно разрешённая реальная проверка
+подписи/отправки; окончательный release GO. Бюджет/геометрия и возврат60PLOV остаются
+решениями владельца перед запуском. Весь этот блок не требует его текущего участия,
+но также не закрывает эти production gates. MAINNET_GO=NO.
+
+Инвентарь `docs/trading-release-gates.json` обновлён доv90:13 текущих source hashes
+проверены; запись реальной wallet acceptance остаётся NOT_RUN/null. Старое описание
+provider integration уточнено с учётомv84; исторические144 browser/109 Node checks
+здесь не перезапускались. Root app dependencies/lock/routes/launch flag не менялись.

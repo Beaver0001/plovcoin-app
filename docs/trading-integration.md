@@ -991,3 +991,27 @@ identities hold for this fixture; they do not approve a launch budget.
 
 See [procedure, results and limits](../research/lower-squads-offline/README.md).
 Root app dependencies/lock/routes/flag unchanged. LP-03/09/15 OPEN; MAINNET_GO=NO.
+
+
+### v90: pinned full local liquidity lifecycle and refreshed readiness
+
+Five mainnet-read ELF (Meteora/Squads plus SPL Token/Token2022/ATA) execute in
+LiteSVM with synthetic state.93 program transactions:76 successes/17 expected
+failures, including proposal/vote setup;5 additional local funding airdrops.
+Add, four ExactIn/ExactOut swaps, claim, partial/full remove, NFT ownership
+transfer/return, empty-position close/rent refund, and same-pair customizable
+companion/PDA collision are checked. Wrong owner, slippage limits, nonempty close
+and existing v89 rejection/rollback cases pass. All4 swap quotes match token/SOL
+reserve deltas including local base fee. LP/withdraw rounding leaves explicit
+2rawA/10981rawB residuals; full withdrawal is not zero pool balances.
+
+External read-only build-status claims are retained; Meteora/Squads/ATA are not
+reported verified. Independent source/build parity remains unproved. Refreshed
+readiness inventory has13 current source hashes; all actual wallet/config/manifest
+approvals and production gates remain unchanged/OPEN or NOT_RUN. v84 browser/Node
+results are historical and not rerun here.
+
+[Full procedure, results and limits](../research/lower-squads-offline/README.md).
+Only isolated research and documentation change; root app dependencies/lock/routes/
+launch flag unchanged. No operator message or real wallet/network send.
+**LP-03/09/15 OPEN; MAINNET_GO=NO.**

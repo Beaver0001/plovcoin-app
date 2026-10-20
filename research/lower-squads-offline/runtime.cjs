@@ -11,7 +11,7 @@ const hash=b=>createHash('sha256').update(b).digest('hex');
 const key=n=>Keypair.fromSeed(createHash('sha256').update('PLOV_V89_LOCAL_ONLY:'+n).digest());
 const members=[key('a'),key('b'),key('c')],op=key('synthetic-operator'),mint=key('mint'),createKey=key('create-key'),treasury=key('synthetic-treasury').publicKey;
 const svm=new LiteSVM();let localTransactions=0;const cases=[];
-for(const p of pins.programs){const bytes=fs.readFileSync(path.join(fixtureDir,p.name+'.so'));assert.equal(hash(bytes),p.elfSha256);svm.addProgram(p.program,bytes);}
+for(const p of pins.programs){const bytes=fs.readFileSync(path.join(fixtureDir,p.name+'.so'));assert.equal(hash(bytes),p.elfSha256);if(p.loader)svm.addProgramWithLoader(p.program,bytes,p.loader);else svm.addProgram(p.program,bytes);}
 svm.setClock(new Clock(1000n,0n,0n,0n,1800000000n));
 const connection={getAccountInfo:async(pub)=>{const a=svm.getAccount(pub.toBase58());return a.exists?{data:Buffer.from(a.data),owner:new PublicKey(a.programAddress),lamports:Number(a.lamports),executable:a.executable,rentEpoch:0}:null;}};
 const amm=new m.CpAmm(new Connection('http://127.0.0.1:1',{fetch:async()=>{throw Error('RPC forbidden')}}));
@@ -23,7 +23,7 @@ function send(label,ixs,signers=[members[0]],expect=true,units=1400000){
  const fail=r instanceof FailedTransactionMetadata;const meta=fail?r.meta():r;
  if(fail===expect){console.error(label,fail?r.err().toString():'unexpected success',meta.logs());throw Error(label+' unexpected result');}
  console.log(label,fail?'expected failure':'PASS',String(meta.computeUnitsConsumed()));
- const result={label,success:!fail,error:fail?r.err().toString():null,logs:meta.logs(),computeUnits:String(meta.computeUnitsConsumed())};cases.push(result);return result;
+ const result={label,serializedBytes:tx.serialize().length,computeUnitLimit:units,success:!fail,error:fail?r.err().toString():null,logs:meta.logs(),computeUnits:String(meta.computeUnitsConsumed())};cases.push(result);return result;
 }
 (async()=>{
  for(const k of [...members,op])svm.airdrop(k.publicKey.toBase58(),100000000000n);
@@ -78,7 +78,7 @@ function send(label,ixs,signers=[members[0]],expect=true,units=1400000){
  assert(wrongExecute.instruction.keys.find(k=>k.pubkey.equals(wrongNft)).isSigner);
  wrongExecute.instruction.keys.find(k=>k.pubkey.equals(wrongNft)).isSigner=false;
  const beforeWrong=snapshot(),wrongResult=send('reject foreign transaction ephemeral address',[wrongExecute.instruction],[members[0]],false);assert.match(wrongResult.logs.join('\n'),/InvalidAccount/);assert.deepEqual(snapshot(),beforeWrong);wrongResult.rollback='ALL_TRACKED_ACCOUNTS_UNCHANGED_FEE_PAYER_EXCLUDED';svm.setAccount(savedTransaction);tracked.pop();
- negative('reject compute budget exhaustion',/exceeded|ComputationalBudgetExceeded|compute/i,100000);
+ negative('reject compute budget exhaustion',/exceeded CUs meter|ComputationalBudgetExceeded/,100000);
  const beforeSuccess=snapshot(),beforeVault=account(vault).lamports,beforeTokens=spl.AccountLayout.decode(Buffer.from(account(payerAta).data)).amount;
  const execution=send('execute Squads -> Meteora create',[execute.instruction]);
  const pool=amm._program.coder.accounts.decode('pool',Buffer.from(account(built.pool).data));
@@ -95,5 +95,6 @@ function send(label,ixs,signers=[members[0]],expect=true,units=1400000){
  negative('reject replay of executed proposal',/InvalidProposalStatus/);
  const feeData=Buffer.from(pool.poolFees.baseFee.baseFeeInfo.data);assert.equal(feeData.readBigUInt64LE(0),2500004n);assert.equal(feeData.subarray(8).some(x=>x!==0),false);assert.equal(pool.poolFees.protocolFeePercent,20);assert.equal(pool.poolFees.compoundingFeeBps,0);assert.equal(pool.poolFees.dynamicFee.initialized,0);assert.equal(pool.collectFeeMode,1);assert.equal(pool.activationType,1);assert(pool.creator.equals(vault));assert(pool.whitelistedVault.equals(PublicKey.default));const nftMintState=spl.MintLayout.decode(Buffer.from(account(nft).data));assert.equal(nftMintState.supply,1n);assert.equal(nftMintState.decimals,0);
  const out={version:89,status:'LOCAL_SBF_SUITE_PASS',cases,rollbackScope:'12 tracked state/accounts; external fee payer excluded',supportPrograms:'LiteSVM1.4.1 bundled SPL Token/Token2022/ATA; not mainnet-pinned',localFundingAirdrops:5,signatureVerification:true,feeReadback:{baseFeeNumerator:'2500004',constant:true,protocolFeePercent:20,compoundingFeeBps:0,dynamicFeeInitialized:0,collectFeeMode:1,activationType:1,alphaVault:false},faultInjection:'Synthetic Operator/global config/native mint. Wrong config, missing/foreign ephemeral state, and insufficient balances are local state injections.',inventory:{tokenADebit:String(aDebit),poolTokenA:String(aAmount),poolTokenB:String(bAmount),wsolResidual:String(residual),vaultLamportDebit:String(vaultDebit),createdAccounts:created},programPins:pins,execution,localTransactions,networkSends:0,realWalletPrompts:0,operatorPermission:'SYNTHETIC_INJECTED',multisig:'SYNTHETIC_2_OF_3_12H',sourceBuildParity:'NOT_PROVEN',pool:built.pool.toBase58(),position:built.position.toBase58(),nft:nft.toBase58(),nftOwner:vault.toBase58(),MAINNET_GO:'NO'};
+ if(process.env.PLOV_LIFECYCLE==='1'){assert.equal(pins.programs.length,5);out.lifecycle=await require('./lifecycle.cjs')({svm,account,set,send,amm,connection,multisig,vault,built,nft,nftAccount,members,mint,payerAta,wsolAta,tracked,hash,cases,pins});out.version=90;out.status='LOCAL_PINNED_LIFECYCLE_PASS';out.supportPrograms='Mainnet-read ELF for SPL Token/Token2022/ATA plus Meteora/Squads; native mint and all business state synthetic';out.localTransactions=cases.length;fs.writeFileSync('lifecycle-result.json',JSON.stringify(out,null,2)+'\n');console.log('LIFECYCLE VERIFIED',cases.length);return;}
  fs.writeFileSync('runtime-result.json',JSON.stringify(out,null,2)+'\n');console.log('FULL LOCAL SUITE VERIFIED',cases.length,'transactions');
 })().catch(e=>{console.error(e);process.exitCode=1;});

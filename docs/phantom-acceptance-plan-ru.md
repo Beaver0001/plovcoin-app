@@ -1,10 +1,11 @@
-# LP v82 — условия целевой проверки Phantom
+# LP v90 — условия целевой проверки Phantom
 
 20.10.2026, Asia/Dushanbe. **ПРОТОКОЛ ПОДГОТОВЛЕН, ЗАПУСК ЗАБЛОКИРОВАН.**
 
 Это план и незаполненная карточка доказательств. Исполняемого пакета для
 кошелька, готовой транзакции, разрешения на подпись/отправку или launch GO нет.
-Проверенный код до этой документации: fd6e1cbcbeca45521f7f55415ca8e83c2f0a1db6.
+Текущий runtime baseline: b7f06a0ec556ef874968c9427cd7fb0980f90994 (v84).
+Инвентарь хешей обновлён в v90; это не новое подтверждение сборки или кошелька.
 `MAINNET_GO=NO`, `TRADE_LAUNCH_ENABLED=false`; приложение не меняется.
 
 ## Что установлено сверкой
@@ -17,11 +18,12 @@
    HTTP127.0.0.1 origin. Это владелец ресурсов восстановления, а не bootstrap
    реальной торговли. Production origin, trusted epoch/RPC-list/floor и
    первоначальное создание баз должны иметь отдельный проект и проверку.
-3. `createInjectedPhantomReviewSession` выполняет sign-only с событиями
-   provider/app. `createSwapLifecycleController.bindSwap` получает wallet и
-   subscribe извне. Готовое проверенное соединение настоящего provider с полным
-   production signing/claim/send lifetime ещё не предъявлено. Успех этих двух
-   модулей по отдельности не закрывает интеграцию.
+3. В v84 `createInjectedPhantomReviewSession` и `bindInjectedPhantomSwapAttempt`
+   используют общий private provider lifetime. Полная связка прошла локальные
+   проверки с синтетическим provider, реальными локальными stores и loopback RPC.
+   Это исторический результат144 browser/109 Node, не повторённый при v90 review.
+   Production mount/bootstrap и установленный Phantom не проверены. `approve()`
+   full-swap binding подписывает/claim/send и не подходит для sign-only диагностики.
 4. Лимиты истории заданы на handle; старый writer без policy способен их обойти.
    Несохранённый ответ и предупреждение о нём после перезапуска неизвестны.
    Экспорт SHA256 не создаёт подлинности и не восстанавливает отсутствующее
@@ -40,7 +42,7 @@
 
 ## Матрица входов
 
-| Вход | Что нужно предъявить | Состояние v82 |
+| Вход | Что нужно предъявить | Состояние v90 |
 |---|---|---|
 | Manifest/markets | Подтверждённые UPPER/LOWER/config/authority, параметры активации/fees/границ и actual program-data hash/slot; отдельное одобрение источника и live проверки | OPEN, LP-03/09/10 |
 | Origin/build/harness | Точный доверенный origin, commit/build hash, проверенный private sign-only harness без send; происхождение provider | OPEN, LP-13/14 |
@@ -138,7 +140,7 @@ send вызовов в проверенном harness. Заявление о н�
 наблюдаемому клиенту, а не к глобальной сети. Ни один критерий пока не выполнен
 на новом установленном кошельке. Все поля карточки JSON остаются null/NOT_RUN.
 
-## Официальные источники, повторно проверены 20.10.2026
+## Официальные источники (проверены при v82; в v90 повторно не открывались)
 
 - https://docs.phantom.com/solana/sending-a-transaction — traditional sign-only
   доступен, но находится вне Wallet Standard реализации и может быть удалён;
@@ -157,3 +159,13 @@ https://drive.google.com/file/d/1PNsn_Kjy-TryQf5l1pTwg5VNktIsrdYW/view
 
 Исходный журнал (статусы не повышены):
 https://docs.google.com/spreadsheets/d/194mFEzCiCcqPX3sT9_t_EUcV8DpG2pas6ECoRNAJZzc/edit
+
+
+## Дополнение v90: что закрыла локальная протокольная репетиция
+
+Пять mainnet-read ELF выполнили synthetic full liquidity lifecycle в LiteSVM:
+93 program tx,76 success/17 expected failure;7 offline checks отдельно. Это
+проверка протокольного пути, ownership, quote/delta и rollback, без реального
+config доступа/кошелька/production acceptance. Карточка выше остаётся NOT_RUN/null.
+Реестр verified-build status не подтверждает Meteora; независимая сборка не сделана.
+Подробнее: research/lower-squads-offline/README.md и lifecycle-result.json.

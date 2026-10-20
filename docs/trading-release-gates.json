@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "version": "v82",
+  "version": "v90",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
   "dateDushanbe": "2026-10-20",
-  "codeBaseline": "fd6e1cbcbeca45521f7f55415ca8e83c2f0a1db6",
+  "codeBaseline": "b7f06a0ec556ef874968c9427cd7fb0980f90994",
   "MAINNET_GO": "NO",
   "readyForWalletTest": false,
   "readyForNetworkSend": false,
@@ -48,7 +48,8 @@
         "LP-15"
       ],
       "status": "OPEN",
-      "closureRequirement": "Reviewed actual injected-provider event lifetime through full controller sign/claim/send."
+      "closureRequirement": "Reviewed actual injected-provider event lifetime through full controller sign/claim/send.",
+      "localEvidence": "v84 shared injected Phantom lifecycle binding; historical144 browser and109 Node checks; production wiring and installed-wallet acceptance remain OPEN"
     },
     {
       "id": "REAL_SIGN_ONLY",
@@ -88,7 +89,7 @@
   "sourceSha256": {
     "lib/trading/review.ts": "ae562c00c32f491b33284a7ce6b218cd017b2e977fc1a75cf9d4c38f677cf6a9",
     "lib/trading/live-accounts.mjs": "f06cc03fc7347c47de55df634de537c61568ef3781c5370b67f4669bc66597e1",
-    "lib/trading/phantom-session.mjs": "053008f66ac7531582351711ffcda8e11f1136e93662ea79a73cc0b03334c74a",
+    "lib/trading/phantom-session.mjs": "e3cf4e17e72b50babea4dbf05c3f9b9ea84c683b3cb97e18733bb4b5f5e4a73f",
     "lib/trading/wallet-session.mjs": "d2efaaf8e73d696c5b86e2cbb7c6ed1c5feb61aa76ac99feeacfc032f46130ea",
     "lib/trading/wallet-transaction.mjs": "f6ecd3314c3a9906def29b99970e8608434549a9f35c3c8c2bae20f361e622e5",
     "lib/trading/swap-attempt.mjs": "c9a5bea5bd846c07ebf5710bd4b96f1e5f2e781ea7adcbefc6ab51012b75276b",
@@ -97,7 +98,8 @@
     "lib/trading/observation-store.mjs": "feb52dfbc5b61e2a15da9e2be74f58b4e4e94ddb20fe456266e9f4ac8c89c288",
     "lib/trading/recovery-evidence.mjs": "1cec6877cab709e0803869e63102042b26ede0078b16a3b8d476773e1ee11b43",
     "package-lock.json": "a45d44f760c0dec60a7d21d6493c684d93d1bf3ee7bc8cbbc467fc105c8556cf",
-    "scripts/fixtures/trading-accounts.json": "4406dae7cba04a851b7c9ac5e783a443ab6f84fd2d99aac5c221f21d2477e036"
+    "scripts/fixtures/trading-accounts.json": "4406dae7cba04a851b7c9ac5e783a443ab6f84fd2d99aac5c221f21d2477e036",
+    "lib/trading/engine/index.mjs": "bc4830ed8fdb39a4c41fb023a4ec3a02dabb16b9720ffd4d8f03fd6feaf434e3"
   },
   "acceptanceRecord": {
     "status": "NOT_RUN",
@@ -132,5 +134,22 @@
     "Sign-only permission is distinct from send permission and release GO.",
     "Retired v67 probe is never retried or funded."
   ],
-  "plan": "docs/phantom-acceptance-plan-ru.md"
+  "plan": "docs/phantom-acceptance-plan-ru.md",
+  "supersedes": "v82 readiness inventory; historical runtime tests are not rerun by this review",
+  "researchBaselineBeforeReview": "f9a4c7816f62fe95638ce297dcffb07cc2f9fce3",
+  "localProtocolEvidence": {
+    "version": 90,
+    "status": "LOCAL_PINNED_LIFECYCLE_PASS",
+    "result": "research/lower-squads-offline/lifecycle-result.json",
+    "programs": "Mainnet-read ELF for Meteora/Squads/SPL Token/Token2022/ATA",
+    "programTransactions": 93,
+    "successes": 76,
+    "expectedFailures": 17,
+    "syntheticState": true,
+    "mainnetSends": 0,
+    "realWalletPrompts": 0,
+    "sourceBuildParityProven": false,
+    "actualConfigAccessProven": false,
+    "productionBudgetOrGeometryApproved": false
+  }
 }
