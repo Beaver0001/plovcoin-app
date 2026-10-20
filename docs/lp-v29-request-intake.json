@@ -75,7 +75,23 @@
     "interpretation": "Witnesses sit close to the mathematical10SOL floor. Principal inside pools is not the separately unknown operating budget B; neither the10SOL reserve nor the0.001SOL headroom establishes available config/rent/transaction funding.",
     "researchGeometryApproved": true,
     "productionCandidateSelected": false,
-    "nextUncompletedTechnicalGate": "Map explicitly labelled research candidates to exact Meteora Q64.64/runtime/config constraints; do not promote older synthetic runtime results to acceptance of these candidates.",
+    "nextUncompletedTechnicalGate": "Native replay of exact v29 research candidates with atomic fees/claims/returns and runtime maxL constraints; real config/authority acceptance remains separate. Older synthetic runtime results do not accept these candidates.",
+    "Q64Mapping": {
+      "status": "PINNED_SDK_AND_INDEPENDENT_INTEGER_PASS",
+      "input": "research/lower-squads-offline/v29-geometry-input.json",
+      "sdkResult": "research/lower-squads-offline/v29-geometry-result.json",
+      "independentResult": "research/lower-squads-offline/v29-geometry-independent.json",
+      "candidateCases": 12,
+      "poolLegs": 24,
+      "primaryFXCases": 4,
+      "SDKChecks": 206,
+      "independentIntegerChecks": 564,
+      "initialAtomicBudgetExceeded": false,
+      "sqrtFloorsExactlyVerified": true,
+      "nativeExecution": "NOT_RUN",
+      "fullAtomicPathReplay": "NOT_RUN",
+      "productionConfigAccepted": false
+    },
     "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json"
   },
   "request": {

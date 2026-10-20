@@ -1,0 +1,603 @@
+{
+  "version": 100,
+  "status": "PINNED_SDK_OFFLINE_GEOMETRY_PASS",
+  "sdk": "@meteora-ag/cp-amm-sdk@1.5.1",
+  "sdkEntrySHA256": "2849b3517e0c0418e8cce2f0cb265e5d5f740bf72672eb66096488188940391b",
+  "lockSHA256": "ad977c65ee6961f46ea749cab7d6ec401dc4cdc1bd39ae6db52744bd21c89458",
+  "inputSHA256": "3c2f701ac22d250c35198f3c4270c984ff97f78112ecd2b7cb3cebd21fd672d8",
+  "checks": 206,
+  "candidateCases": 12,
+  "legs": 24,
+  "primaryFXCases": 4,
+  "roundingPolicy": "SDK sqrt floor; seed SOL atom budget floor; liquidity floor; initialization debit ceil; withdrawal floor",
+  "rows": [
+    {
+      "id": "TWO_MIN_90_minus30",
+      "scenario": "MIN",
+      "retentionPercent": "90",
+      "FX_USD_per_SOL": "3633/50",
+      "sqrtQ64": {
+        "lower": "26443398270205962",
+        "start": "26504380350970107",
+        "upper": "68434015800569544"
+      },
+      "seedSOLAtomsBudgetFloor": "474985606157",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "26504380350970107",
+          "sqrtMax": "68434015800569544",
+          "sqrtInitial": "26504380350970107",
+          "liquidityU128": "30280750476163384560282312133588224",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "26443398270205962",
+          "sqrtMax": "26504380350970107",
+          "sqrtInitial": "26504380350970107",
+          "liquidityU128": "2650438035094271455423218167949753337",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "474985606157",
+          "amountBDown": "474985606156",
+          "budgetA": "0",
+          "budgetB": "474985606157",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "TWO_MIN_90_current",
+      "scenario": "MIN",
+      "retentionPercent": "90",
+      "FX_USD_per_SOL": "519/5",
+      "sqrtQ64": {
+        "lower": "22124134298401648",
+        "start": "22175155567711880",
+        "upper": "57256005475537860"
+      },
+      "seedSOLAtomsBudgetFloor": "332489924310",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "22175155567711880",
+          "sqrtMax": "57256005475537860",
+          "sqrtInitial": "22175155567711880",
+          "liquidityU128": "25334693496858577532945958291691091",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "22124134298401648",
+          "sqrtMax": "22175155567711880",
+          "sqrtInitial": "22175155567711880",
+          "liquidityU128": "2217515556769593309475713983062531739",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "332489924310",
+          "amountBDown": "332489924309",
+          "budgetA": "0",
+          "budgetB": "332489924310",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "TWO_MIN_90_plus30",
+      "scenario": "MIN",
+      "retentionPercent": "90",
+      "FX_USD_per_SOL": "6747/50",
+      "sqrtQ64": {
+        "lower": "19404149406638859",
+        "start": "19448898020042622",
+        "upper": "50216838755807654"
+      },
+      "seedSOLAtomsBudgetFloor": "255761480238",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "19448898020042622",
+          "sqrtMax": "50216838755807654",
+          "sqrtInitial": "19448898020042622",
+          "liquidityU128": "22219996098105457208886578594767391",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "19404149406638859",
+          "sqrtMax": "19448898020042622",
+          "sqrtInitial": "19448898020042622",
+          "liquidityU128": "1944889801999336305839109356103056923",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "255761480238",
+          "amountBDown": "255761480237",
+          "budgetA": "0",
+          "budgetB": "255761480238",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "TWO_MIN_100_minus30",
+      "scenario": "MIN",
+      "retentionPercent": "100",
+      "FX_USD_per_SOL": "3633/50",
+      "sqrtQ64": {
+        "lower": "26443398270205962",
+        "start": "26504380350970107",
+        "upper": "68434015800569544"
+      },
+      "seedSOLAtomsBudgetFloor": "474985606157",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "26504380350970107",
+          "sqrtMax": "68434015800569544",
+          "sqrtInitial": "26504380350970107",
+          "liquidityU128": "30280750476163384560282312133588224",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "26443398270205962",
+          "sqrtMax": "26504380350970107",
+          "sqrtInitial": "26504380350970107",
+          "liquidityU128": "2650438035094271455423218167949753337",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "474985606157",
+          "amountBDown": "474985606156",
+          "budgetA": "0",
+          "budgetB": "474985606157",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "TWO_MIN_100_current",
+      "scenario": "MIN",
+      "retentionPercent": "100",
+      "FX_USD_per_SOL": "519/5",
+      "sqrtQ64": {
+        "lower": "22124134298401648",
+        "start": "22175155567711880",
+        "upper": "57256005475537860"
+      },
+      "seedSOLAtomsBudgetFloor": "332489924310",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "22175155567711880",
+          "sqrtMax": "57256005475537860",
+          "sqrtInitial": "22175155567711880",
+          "liquidityU128": "25334693496858577532945958291691091",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "22124134298401648",
+          "sqrtMax": "22175155567711880",
+          "sqrtInitial": "22175155567711880",
+          "liquidityU128": "2217515556769593309475713983062531739",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "332489924310",
+          "amountBDown": "332489924309",
+          "budgetA": "0",
+          "budgetB": "332489924310",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "TWO_MIN_100_plus30",
+      "scenario": "MIN",
+      "retentionPercent": "100",
+      "FX_USD_per_SOL": "6747/50",
+      "sqrtQ64": {
+        "lower": "19404149406638859",
+        "start": "19448898020042622",
+        "upper": "50216838755807654"
+      },
+      "seedSOLAtomsBudgetFloor": "255761480238",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "19448898020042622",
+          "sqrtMax": "50216838755807654",
+          "sqrtInitial": "19448898020042622",
+          "liquidityU128": "22219996098105457208886578594767391",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "19404149406638859",
+          "sqrtMax": "19448898020042622",
+          "sqrtInitial": "19448898020042622",
+          "liquidityU128": "1944889801999336305839109356103056923",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "255761480238",
+          "amountBDown": "255761480237",
+          "budgetA": "0",
+          "budgetB": "255761480238",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "TWO_IDEAL_90_minus30",
+      "scenario": "IDEAL",
+      "retentionPercent": "90",
+      "FX_USD_per_SOL": "3633/50",
+      "sqrtQ64": {
+        "lower": "26420430595012535",
+        "start": "26504380350970107",
+        "upper": "68434015800569544"
+      },
+      "seedSOLAtomsBudgetFloor": "653879389168",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "26504380350970107",
+          "sqrtMax": "68434015800569544",
+          "sqrtInitial": "26504380350970107",
+          "liquidityU128": "30280750476163384560282312133588224",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "26420430595012535",
+          "sqrtMax": "26504380350970107",
+          "sqrtInitial": "26504380350970107",
+          "liquidityU128": "2650438035095149965555169651547541476",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "653879389168",
+          "amountBDown": "653879389167",
+          "budgetA": "0",
+          "budgetB": "653879389168",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "TWO_IDEAL_90_current",
+      "scenario": "IDEAL",
+      "retentionPercent": "90",
+      "FX_USD_per_SOL": "519/5",
+      "sqrtQ64": {
+        "lower": "22104918162664889",
+        "start": "22175155567711880",
+        "upper": "57256005475537860"
+      },
+      "seedSOLAtomsBudgetFloor": "457715572417",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "22175155567711880",
+          "sqrtMax": "57256005475537860",
+          "sqrtInitial": "22175155567711880",
+          "liquidityU128": "25334693496858577532945958291691091",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "22104918162664889",
+          "sqrtMax": "22175155567711880",
+          "sqrtInitial": "22175155567711880",
+          "liquidityU128": "2217515556766735631234457974462411225",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "457715572417",
+          "amountBDown": "457715572416",
+          "budgetA": "0",
+          "budgetB": "457715572417",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "TWO_IDEAL_90_plus30",
+      "scenario": "IDEAL",
+      "retentionPercent": "90",
+      "FX_USD_per_SOL": "6747/50",
+      "sqrtQ64": {
+        "lower": "19387295740690843",
+        "start": "19448898020042622",
+        "upper": "50216838755807654"
+      },
+      "seedSOLAtomsBudgetFloor": "352088901859",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "19448898020042622",
+          "sqrtMax": "50216838755807654",
+          "sqrtInitial": "19448898020042622",
+          "liquidityU128": "22219996098105457208886578594767391",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "19387295740690843",
+          "sqrtMax": "19448898020042622",
+          "sqrtInitial": "19448898020042622",
+          "liquidityU128": "1944889801999097160303013455764562206",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "352088901859",
+          "amountBDown": "352088901858",
+          "budgetA": "0",
+          "budgetB": "352088901859",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "TWO_IDEAL_100_minus30",
+      "scenario": "IDEAL",
+      "retentionPercent": "100",
+      "FX_USD_per_SOL": "3633/50",
+      "sqrtQ64": {
+        "lower": "26420430595012535",
+        "start": "26504380350970107",
+        "upper": "68434015800569544"
+      },
+      "seedSOLAtomsBudgetFloor": "653879389168",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "26504380350970107",
+          "sqrtMax": "68434015800569544",
+          "sqrtInitial": "26504380350970107",
+          "liquidityU128": "30280750476163384560282312133588224",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "26420430595012535",
+          "sqrtMax": "26504380350970107",
+          "sqrtInitial": "26504380350970107",
+          "liquidityU128": "2650438035095149965555169651547541476",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "653879389168",
+          "amountBDown": "653879389167",
+          "budgetA": "0",
+          "budgetB": "653879389168",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "TWO_IDEAL_100_current",
+      "scenario": "IDEAL",
+      "retentionPercent": "100",
+      "FX_USD_per_SOL": "519/5",
+      "sqrtQ64": {
+        "lower": "22104918162664889",
+        "start": "22175155567711880",
+        "upper": "57256005475537860"
+      },
+      "seedSOLAtomsBudgetFloor": "457715572417",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "22175155567711880",
+          "sqrtMax": "57256005475537860",
+          "sqrtInitial": "22175155567711880",
+          "liquidityU128": "25334693496858577532945958291691091",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "22104918162664889",
+          "sqrtMax": "22175155567711880",
+          "sqrtInitial": "22175155567711880",
+          "liquidityU128": "2217515556766735631234457974462411225",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "457715572417",
+          "amountBDown": "457715572416",
+          "budgetA": "0",
+          "budgetB": "457715572417",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "TWO_IDEAL_100_plus30",
+      "scenario": "IDEAL",
+      "retentionPercent": "100",
+      "FX_USD_per_SOL": "6747/50",
+      "sqrtQ64": {
+        "lower": "19387295740690843",
+        "start": "19448898020042622",
+        "upper": "50216838755807654"
+      },
+      "seedSOLAtomsBudgetFloor": "352088901859",
+      "legs": [
+        {
+          "name": "UPPER",
+          "sqrtMin": "19448898020042622",
+          "sqrtMax": "50216838755807654",
+          "sqrtInitial": "19448898020042622",
+          "liquidityU128": "22219996098105457208886578594767391",
+          "amountAUp": "700000000000000000",
+          "amountADown": "699999999999999999",
+          "amountBUp": "0",
+          "amountBDown": "0",
+          "budgetA": "700000000000000000",
+          "budgetB": "0",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        },
+        {
+          "name": "LOWER",
+          "sqrtMin": "19387295740690843",
+          "sqrtMax": "19448898020042622",
+          "sqrtInitial": "19448898020042622",
+          "liquidityU128": "1944889801999097160303013455764562206",
+          "amountAUp": "0",
+          "amountADown": "0",
+          "amountBUp": "352088901859",
+          "amountBDown": "352088901858",
+          "budgetA": "0",
+          "budgetB": "352088901859",
+          "unspentA": "0",
+          "unspentB": "0",
+          "parameterValidation": "PASS",
+          "nativeExecution": "NOT_RUN"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Not deployed-program execution or maximum-liquidity proof beyond u128 representation.",
+    "Not a real config, authority, pool address, operational budget or production geometry approval.",
+    "Does not replay D0/D14/D45/D90 swaps or reconfirm v29 thresholds after all atomic fees."
+  ],
+  "RPCRequests": 0,
+  "walletPrompts": 0,
+  "signatures": 0,
+  "transactionBuilds": 0,
+  "networkSends": 0,
+  "Wave1Inputs": null,
+  "MAINNET_GO": "NO"
+}

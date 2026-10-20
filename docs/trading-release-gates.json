@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "v99",
+  "version": "v100",
   "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json",
   "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
   "dateDushanbe": "2026-10-20",
@@ -193,6 +193,8 @@
     "artifact": "PLOV_v29_FINAL.zip",
     "artifactSHA256": "92ecd7abf674d772c2d29ccd858f761c88b79a95bbc896b0624f3c66b2508989",
     "mathematicalResearchComplete": true,
+    "offlineV29Q64Mapping": "PASS_206_SDK_564_INDEPENDENT_CHECKS_12_CASES",
+    "exactV29NativeRuntimeAcceptance": "NOT_RUN",
     "runtimeOrLaunchAcceptanceGranted": false,
     "estimatedDeadlineDushanbe": "2026-10-21T18:00:00+05:00",
     "productionBudgetOrGeometryApproved": false
