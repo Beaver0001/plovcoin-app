@@ -1,0 +1,19 @@
+{
+  "status": "PASS_BYTE_IDENTICAL_SECOND_RUN",
+  "outputsSHA256": {
+    "v29-activation-result.json": "3f75cc62a1d308c80b466590bb1d9a1c3812510218c1b6746020c20c65c86d7e",
+    "v29-activation-review.json": "21ee42c8596252c137f79e6356a4e1ec104e8dfb7375c9b2811aeceb85ad1370",
+    "v29-activation-summary.csv": "d036d7a7910808650c58b2ce9ba84a1e737c40556afabbe333ea7591bb20f01b"
+  },
+  "sourcesSHA256": {
+    "v29-activation.cjs": "0ab0a81f6a66413a03674ed55537531b3f01cea875577fec6911692b8342ffba",
+    "verify-v29-activation.py": "de48cfa970246a5248504a65e52f7430bdae5f06f1877c2ed09a308835c6c77e",
+    "v29-geometry-result.json": "346e58abfcf6f7629da0d86f978bbd795fb457bd83407a3903c73da13fa595ee",
+    "program-pins-v90.json": "f12656a55549bb228c83081f31e7036d24389f309dcc98ceadddb30af5e2dc1d",
+    "package-lock.json": "ad977c65ee6961f46ea749cab7d6ec401dc4cdc1bd39ae6db52744bd21c89458"
+  },
+  "nativeTransactionsPerRun": 388,
+  "realWalletPrompts": 0,
+  "networkSends": 0,
+  "MAINNET_GO": "NO"
+}

@@ -1,0 +1,469 @@
+{
+  "version": 94,
+  "status": "READ_ONLY_GOVERNANCE_SNAPSHOT",
+  "capturedAt": "2026-10-20T16:30:11.173Z",
+  "endpoint": "https://api.mainnet-beta.solana.com",
+  "genesis": "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d",
+  "multisig": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+  "vault": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+  "vaultIndex": 0,
+  "firstSlot": 459296308,
+  "lastSlot": 459296533,
+  "threshold": 2,
+  "timeLockSeconds": 43200,
+  "configAuthority": "11111111111111111111111111111111",
+  "autonomous": true,
+  "transactionIndex": "3",
+  "staleTransactionIndex": "2",
+  "members": [
+    {
+      "key": "rVj5eRYuSGC5LcA3GLNACJXCNyJZ6he3HWJJhEhyHYP",
+      "mask": 7,
+      "initiate": true,
+      "vote": true,
+      "execute": true
+    },
+    {
+      "key": "8j7nVhQ3WxmF6VvKRF6QujCXrMxqZ25boMqSznBTvQyv",
+      "mask": 7,
+      "initiate": true,
+      "vote": true,
+      "execute": true
+    },
+    {
+      "key": "DHHFa9ReLFYN49GKmX4XseDhyVyv8gpRY594oRfPHb96",
+      "mask": 7,
+      "initiate": true,
+      "vote": true,
+      "execute": true
+    }
+  ],
+  "vaultAccount": {
+    "owner": "11111111111111111111111111111111",
+    "lamports": 20000000
+  },
+  "proposalRows": [
+    {
+      "address": "9TEM1QifDSFCbZ6BDE9qtswvETt2P2GtUSabAnVVgTWV",
+      "index": "1",
+      "status": {
+        "__kind": "Approved",
+        "timestamp": "1784054673"
+      },
+      "approved": [
+        "8j7nVhQ3WxmF6VvKRF6QujCXrMxqZ25boMqSznBTvQyv",
+        "DHHFa9ReLFYN49GKmX4XseDhyVyv8gpRY594oRfPHb96"
+      ],
+      "rejected": [],
+      "cancelled": [],
+      "transaction": "BLzhahYihn4o6ubQ7WvkSvxHNWdjfFzcBcP7VPkwqBhF",
+      "dataSha256": "9c1a77e08c417e200d28f68b3b734622827e1a888c68b4d57b85311a48da975c"
+    },
+    {
+      "address": "Hn16c6axExT2MjYX8W2Eay8aDs67iw3wQ9kzAJTcVJJB",
+      "index": "3",
+      "status": {
+        "__kind": "Executed",
+        "timestamp": "1784221519"
+      },
+      "approved": [
+        "rVj5eRYuSGC5LcA3GLNACJXCNyJZ6he3HWJJhEhyHYP",
+        "8j7nVhQ3WxmF6VvKRF6QujCXrMxqZ25boMqSznBTvQyv"
+      ],
+      "rejected": [],
+      "cancelled": [],
+      "transaction": "DBEvF45dHswaMfht7RvnsQ1ebQiVrkwV6crSMG7Pjrbx",
+      "dataSha256": "a3e2e5c44cc2feb00134e1c879479c9d22506c7d9446532834fda4948c457f53"
+    },
+    {
+      "address": "J7QssdR95Kv3faCK6DNHymNW1cSDRciG7rgN5btw5h5m",
+      "index": "2",
+      "status": {
+        "__kind": "Executed",
+        "timestamp": "1784054783"
+      },
+      "approved": [
+        "8j7nVhQ3WxmF6VvKRF6QujCXrMxqZ25boMqSznBTvQyv",
+        "DHHFa9ReLFYN49GKmX4XseDhyVyv8gpRY594oRfPHb96"
+      ],
+      "rejected": [],
+      "cancelled": [],
+      "transaction": "HdhpAGkctm2tW6u7TrxkMz12rsDfTpZE5w2S632FoqRq",
+      "dataSha256": "7fa62983ba85eb9970b9b1133c260204dae2210fa7bd8522fa80f275b1364c78"
+    }
+  ],
+  "unresolvedProposalIndexes": [
+    "1"
+  ],
+  "spendingLimits": [],
+  "transactionRows": [
+    {
+      "index": "1",
+      "address": "BLzhahYihn4o6ubQ7WvkSvxHNWdjfFzcBcP7VPkwqBhF",
+      "exists": true,
+      "kind": "ConfigTransaction",
+      "dataSha256": "d873f592004661907bf5580af24ae778f8965cf2a6bcb76c23cd40880048a8aa",
+      "actions": [
+        {
+          "__kind": "SetRentCollector",
+          "newRentCollector": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK"
+        }
+      ]
+    },
+    {
+      "index": "3",
+      "address": "DBEvF45dHswaMfht7RvnsQ1ebQiVrkwV6crSMG7Pjrbx",
+      "exists": true,
+      "kind": "VaultTransaction",
+      "dataSha256": "ae1d5dae33894348a6f1bd2630d75ed763c3eaecff10ce1557b693956be6ebe5",
+      "vaultIndex": 0,
+      "accountKeys": [
+        "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+        "8j7nVhQ3WxmF6VvKRF6QujCXrMxqZ25boMqSznBTvQyv"
+      ],
+      "instructionProgramIndexes": [
+        2
+      ]
+    },
+    {
+      "index": "2",
+      "address": "HdhpAGkctm2tW6u7TrxkMz12rsDfTpZE5w2S632FoqRq",
+      "exists": true,
+      "kind": "ConfigTransaction",
+      "dataSha256": "01477236b39e44d8f4ef041cd83714029e1e94e3545ac66a414d1a50f6e58c19",
+      "actions": [
+        {
+          "__kind": "SetTimeLock",
+          "newTimeLock": 43200
+        }
+      ]
+    }
+  ],
+  "programPin": {
+    "program": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+    "programData": "Fy3YMJCvwbAXUgUM5b91ucUVA3jYzwWLHL3MwBqKsh8n",
+    "readSlot": 459296484,
+    "deploymentSlot": "302582236",
+    "elfBytes": 1470416,
+    "elfSha256": "dec8d3e0fae58c7c8f2416e5f67c25e673f047afd6dd2bba4a47e0b29a01d34c",
+    "programDataSha256": "e1c596fdcf397686dfa67cc568c8c2e4696a1ef6949de4c2d251527913af7f1e",
+    "headerBase64": "AwAAANwJCRIAAAAAACXAp0kL9hD+atgJDWt/6AsoVsOtYXVpCiDgmBYHziFl",
+    "matchesV90Elf": true
+  },
+  "multisigBytesUnchangedAcrossRead": true,
+  "reads": [
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "getGenesisHash",
+        "params": []
+      },
+      "result": "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d"
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "getMultipleAccounts",
+        "params": [
+          [
+            "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+            "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+            "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf"
+          ],
+          {
+            "encoding": "base64",
+            "commitment": "finalized",
+            "minContextSlot": 0
+          }
+        ]
+      },
+      "result": {
+        "context": {
+          "apiVersion": "4.3.2",
+          "slot": 459296308
+        },
+        "value": [
+          {
+            "data": [
+              "4HR5ukShT+xpAWjdOQHqnSqLCwBeGmeyeLuDOV9FWOZUWhYPolFqxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgDAqAAAAwAAAAAAAAACAAAAAAAAAAD9AwAAAAyt8I+tJrW+1B5hlypzyB/3Fknxh9jhiBHEQQ7IF0U8B3LL36RthgkiFtC5YlMKVvqReCNvvd6Kdff3aTLMlNoJB7Z36VC+c32tXLnr7cE+SHRNFeoWaiRmqNybitzXrKw9BwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "base64"
+            ],
+            "executable": false,
+            "lamports": 2498640,
+            "owner": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+            "rentEpoch": 18446744073709552000,
+            "space": 231
+          },
+          {
+            "data": [
+              "",
+              "base64"
+            ],
+            "executable": false,
+            "lamports": 20000000,
+            "owner": "11111111111111111111111111111111",
+            "rentEpoch": 18446744073709552000,
+            "space": 0
+          },
+          {
+            "data": [
+              "AgAAAN5fA80UTvlZeDAEQujVsh/36bXCtTG7b/FG999tVB3T",
+              "base64"
+            ],
+            "executable": true,
+            "lamports": 12171440,
+            "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+            "rentEpoch": 18446744073709552000,
+            "space": 36
+          }
+        ]
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "method": "getProgramAccounts",
+        "params": [
+          "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+          {
+            "encoding": "base64",
+            "commitment": "finalized",
+            "minContextSlot": 459296308,
+            "withContext": true,
+            "filters": [
+              {
+                "memcmp": {
+                  "offset": 0,
+                  "bytes": "5Qpj1hsHT4k"
+                }
+              },
+              {
+                "memcmp": {
+                  "offset": 8,
+                  "bytes": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "result": {
+        "context": {
+          "slot": 459296354,
+          "apiVersion": "4.3.0-beta.2"
+        },
+        "value": [
+          {
+            "pubkey": "9TEM1QifDSFCbZ6BDE9qtswvETt2P2GtUSabAnVVgTWV",
+            "account": {
+              "lamports": 3382560,
+              "data": [
+                "Gl69u3SINSF514FTII9uIlJCdJoNTyrGU/sbZgyMSwuGlXjO8I56KgEAAAAAAAAAA5GDVmoAAAAA/wIAAAByy9+kbYYJIhbQuWJTClb6kXgjb73einX392kyzJTaCbZ36VC+c32tXLnr7cE+SHRNFeoWaiRmqNybitzXrKw9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+                "base64"
+              ],
+              "owner": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+              "executable": false,
+              "rentEpoch": 18446744073709552000,
+              "space": 358
+            }
+          },
+          {
+            "pubkey": "Hn16c6axExT2MjYX8W2Eay8aDs67iw3wQ9kzAJTcVJJB",
+            "account": {
+              "lamports": 3382560,
+              "data": [
+                "Gl69u3SINSF514FTII9uIlJCdJoNTyrGU/sbZgyMSwuGlXjO8I56KgMAAAAAAAAABU8PWWoAAAAA/wIAAAAMrfCPrSa1vtQeYZcqc8gf9xZJ8YfY4YgRxEEOyBdFPHLL36RthgkiFtC5YlMKVvqReCNvvd6Kdff3aTLMlNoJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+                "base64"
+              ],
+              "owner": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+              "executable": false,
+              "rentEpoch": 18446744073709552000,
+              "space": 358
+            }
+          },
+          {
+            "pubkey": "J7QssdR95Kv3faCK6DNHymNW1cSDRciG7rgN5btw5h5m",
+            "account": {
+              "lamports": 3382560,
+              "data": [
+                "Gl69u3SINSF514FTII9uIlJCdJoNTyrGU/sbZgyMSwuGlXjO8I56KgIAAAAAAAAABf+DVmoAAAAA/gIAAAByy9+kbYYJIhbQuWJTClb6kXgjb73einX392kyzJTaCbZ36VC+c32tXLnr7cE+SHRNFeoWaiRmqNybitzXrKw9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+                "base64"
+              ],
+              "owner": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+              "executable": false,
+              "rentEpoch": 18446744073709552000,
+              "space": 358
+            }
+          }
+        ]
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "method": "getProgramAccounts",
+        "params": [
+          "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+          {
+            "encoding": "base64",
+            "commitment": "finalized",
+            "minContextSlot": 459296354,
+            "withContext": true,
+            "filters": [
+              {
+                "memcmp": {
+                  "offset": 0,
+                  "bytes": "2odkUytTTsV"
+                }
+              },
+              {
+                "memcmp": {
+                  "offset": 8,
+                  "bytes": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "result": {
+        "context": {
+          "slot": 459296403,
+          "apiVersion": "4.3.0-beta.2"
+        },
+        "value": []
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "method": "getMultipleAccounts",
+        "params": [
+          [
+            "BLzhahYihn4o6ubQ7WvkSvxHNWdjfFzcBcP7VPkwqBhF",
+            "DBEvF45dHswaMfht7RvnsQ1ebQiVrkwV6crSMG7Pjrbx",
+            "HdhpAGkctm2tW6u7TrxkMz12rsDfTpZE5w2S632FoqRq"
+          ],
+          {
+            "encoding": "base64",
+            "commitment": "finalized",
+            "minContextSlot": 459296403
+          }
+        ]
+      },
+      "result": {
+        "context": {
+          "apiVersion": "4.3.2",
+          "slot": 459296447
+        },
+        "value": [
+          {
+            "data": [
+              "XggEI3GLi3B514FTII9uIlJCdJoNTyrGU/sbZgyMSwuGlXjO8I56KnLL36RthgkiFtC5YlMKVvqReCNvvd6Kdff3aTLMlNoJAQAAAAAAAAD7AQAAAAYBF71MUcjQqgSP2L3lTjWI4GsMYlgMOGUsUMo5xgtKBjA=",
+              "base64"
+            ],
+            "executable": false,
+            "lamports": 1719120,
+            "owner": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+            "rentEpoch": 18446744073709552000,
+            "space": 119
+          },
+          {
+            "data": [
+              "qPqiZFEOos9514FTII9uIlJCdJoNTyrGU/sbZgyMSwuGlXjO8I56KnLL36RthgkiFtC5YlMKVvqReCNvvd6Kdff3aTLMlNoJAwAAAAAAAAD/AP8AAAAAAQEBAgAAABe9TFHI0KoEj9i95U41iOBrDGJYDDhlLFDKOcYLSgYwcsvfpG2GCSIW0LliUwpW+pF4I2+93op19/dpMsyU2gkBAAAAAgIAAAAAAQwAAAACAAAAQEIPAAAAAAABAAAAuqYsSRK6ZVVHVrbhjLquSRYjUgBIrqDUBDfQNehOxEQAAAAAAQAAAAU=",
+              "base64"
+            ],
+            "executable": false,
+            "lamports": 2491680,
+            "owner": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+            "rentEpoch": 18446744073709552000,
+            "space": 230
+          },
+          {
+            "data": [
+              "XggEI3GLi3B514FTII9uIlJCdJoNTyrGU/sbZgyMSwuGlXjO8I56KnLL36RthgkiFtC5YlMKVvqReCNvvd6Kdff3aTLMlNoJAgAAAAAAAAD8AQAAAAPAqAAA",
+              "base64"
+            ],
+            "executable": false,
+            "lamports": 1517280,
+            "owner": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+            "rentEpoch": 18446744073709552000,
+            "space": 90
+          }
+        ]
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "method": "getMultipleAccounts",
+        "params": [
+          [
+            "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+            "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf"
+          ],
+          {
+            "encoding": "base64",
+            "commitment": "finalized",
+            "minContextSlot": 459296484
+          }
+        ]
+      },
+      "result": {
+        "context": {
+          "apiVersion": "4.3.2",
+          "slot": 459296533
+        },
+        "value": [
+          {
+            "data": [
+              "4HR5ukShT+xpAWjdOQHqnSqLCwBeGmeyeLuDOV9FWOZUWhYPolFqxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgDAqAAAAwAAAAAAAAACAAAAAAAAAAD9AwAAAAyt8I+tJrW+1B5hlypzyB/3Fknxh9jhiBHEQQ7IF0U8B3LL36RthgkiFtC5YlMKVvqReCNvvd6Kdff3aTLMlNoJB7Z36VC+c32tXLnr7cE+SHRNFeoWaiRmqNybitzXrKw9BwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "base64"
+            ],
+            "executable": false,
+            "lamports": 2498640,
+            "owner": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+            "rentEpoch": 18446744073709552000,
+            "space": 231
+          },
+          {
+            "data": [
+              "AgAAAN5fA80UTvlZeDAEQujVsh/36bXCtTG7b/FG999tVB3T",
+              "base64"
+            ],
+            "executable": true,
+            "lamports": 12171440,
+            "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+            "rentEpoch": 18446744073709552000,
+            "space": 36
+          }
+        ]
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 8,
+        "method": "getGenesisHash",
+        "params": []
+      },
+      "result": "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d"
+    }
+  ],
+  "networkSends": 0,
+  "walletPrompts": 0,
+  "MAINNET_GO": "NO",
+  "limitations": [
+    "Single RPC and known SDK layouts, not cryptographic completeness or a simultaneous snapshot.",
+    "Missing/closed historical proposal accounts are not recovered; retained-account scan is not transaction history.",
+    "No permission, threshold or timelock guarantees future governance state or transaction order.",
+    "ProgramData hash/header retained; full freshly returned ELF bytes omitted, comparison fixture retained separately in v90.",
+    "Candidate authority is not approved by this read; config issuance and production wallet acceptance remain separate."
+  ]
+}

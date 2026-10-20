@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "version": 109,
+  "status": "LIVE_BINARY_MATCH_SOURCE_BUILD_PARITY_OPEN",
+  "program": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+  "sourceCommit": "5398b5c7c534de014091132da37c6478cce671a8",
+  "sourceHeadCheckedAt": "2026-10-20T21:17:09.295344+00:00",
+  "release": "0.2.5",
+  "sourceFilesGitBlobAndSizeVerified": 15,
+  "sourceEvidenceSHA256": "0f7ad29e04a732f1e5b6fe11eabc40a0b79a17fa848419c09f6480ba55fb218a",
+  "currentProgramPin": "research/lower-squads-offline/live-program-pin-v109.json",
+  "otterStatus": {
+    "url": "https://verify.osec.io/status/cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+    "capturedAt": "2026-10-20T21:17:04.246192+00:00",
+    "isVerified": false,
+    "classification": "SERVICE_REPORT_NO_POSITIVE_VERIFICATION_NOT_A_HASH_MISMATCH",
+    "raw": "research/lower-squads-offline/otter-status-v109.json"
+  },
+  "independentBuild": {
+    "performed": false,
+    "reason": "Docker/Podman, Cargo/Rust, Anchor/Solana and solana-verify absent from current runtime",
+    "toolAvailability": {
+      "docker": null,
+      "podman": null,
+      "cargo": null,
+      "rustc": null,
+      "anchor": null,
+      "solana": null,
+      "solana-verify": null
+    },
+    "sourceDeclaredVersions": {
+      "rust": "1.94.0",
+      "solana": "3.1.10",
+      "anchor": "1.0.2"
+    },
+    "productionBuildFlagsOrContainerDigestConfirmed": false,
+    "ciLocalFeatureMayNotBeUsedAsProductionParityEvidence": true
+  },
+  "nativeAdminBoundary": "research/lower-squads-offline/admin-boundary-result-v109.json",
+  "actualConfigAccepted": false,
+  "supportReplyRequiredToContinue": false,
+  "sourceBuildParityProven": false,
+  "auditCoverageProven": false,
+  "onchainSends": 0,
+  "realWalletPrompts": 0,
+  "MAINNET_GO": "NO"
+}

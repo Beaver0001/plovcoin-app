@@ -1,0 +1,248 @@
+{
+  "schema": 1,
+  "version": "v110",
+  "JupiterTokenCardHistory": "docs/jupiter-token-card-history.json",
+  "kind": "READINESS_REVIEW_NOT_EXECUTABLE_AUTHORIZATION",
+  "dateDushanbe": "2026-10-21",
+  "codeBaseline": "b7f06a0ec556ef874968c9427cd7fb0980f90994",
+  "MAINNET_GO": "NO",
+  "readyForWalletTest": false,
+  "readyForNetworkSend": false,
+  "publicTradingEnabled": false,
+  "ownerDeferred": [
+    "LP budget/geometry decision before launch",
+    "return60PLOV before launch"
+  ],
+  "gates": [
+    {
+      "id": "MARKETS_MANIFEST",
+      "journalIds": [
+        "LP-03",
+        "LP-09"
+      ],
+      "status": "OPEN",
+      "closureRequirement": "Approved actual UPPER/LOWER/config/authority and live program-data manifest; fixture is synthetic."
+    },
+    {
+      "id": "ORIGIN_BOOTSTRAP",
+      "journalIds": [
+        "LP-14",
+        "LP-15"
+      ],
+      "status": "OPEN",
+      "closureRequirement": "Approved production origin/epoch/RPC-list/floor/init; current recovery host loopback rehearsal only."
+    },
+    {
+      "id": "STORAGE_POLICY",
+      "journalIds": [
+        "LP-15",
+        "LP-17"
+      ],
+      "status": "OPEN",
+      "closureRequirement": "Single production policy; quota/unsaved answers/conflict handling; handle-only limits are insufficient."
+    },
+    {
+      "id": "PROVIDER_INTEGRATION",
+      "journalIds": [
+        "LP-13",
+        "LP-14",
+        "LP-15"
+      ],
+      "status": "OPEN",
+      "closureRequirement": "Reviewed actual injected-provider event lifetime through full controller sign/claim/send.",
+      "localEvidence": "v84 shared injected Phantom lifecycle binding; historical144 browser and109 Node checks; production wiring and installed-wallet acceptance remain OPEN"
+    },
+    {
+      "id": "REAL_SIGN_ONLY",
+      "journalIds": [
+        "LP-13"
+      ],
+      "status": "NOT_RUN",
+      "closureRequirement": "Approved account/origin/RPC/actual manifest and separately reviewed TEST_SIGN_ONLY harness; real signature/WSOL preservation."
+    },
+    {
+      "id": "REAL_SUBMISSION",
+      "journalIds": [
+        "LP-11",
+        "LP-15"
+      ],
+      "status": "NOT_RUN",
+      "closureRequirement": "Separately authorized network acceptance; durable claim/single enqueue/original-signature recovery."
+    },
+    {
+      "id": "BUILD_AUDIT",
+      "journalIds": [
+        "LP-10",
+        "LP-17"
+      ],
+      "status": "OPEN",
+      "closureRequirement": "Reviewed applicable wallet/lifecycle code, exact build/lock and release artifact parity."
+    },
+    {
+      "id": "RELEASE_GO",
+      "journalIds": [
+        "LP-18"
+      ],
+      "status": "NOT_GRANTED",
+      "closureRequirement": "Explicit launch authorization after independent gates; sign-only PASS is insufficient."
+    }
+  ],
+  "sourceSha256": {
+    "lib/trading/review.ts": "ae562c00c32f491b33284a7ce6b218cd017b2e977fc1a75cf9d4c38f677cf6a9",
+    "lib/trading/live-accounts.mjs": "f06cc03fc7347c47de55df634de537c61568ef3781c5370b67f4669bc66597e1",
+    "lib/trading/phantom-session.mjs": "e3cf4e17e72b50babea4dbf05c3f9b9ea84c683b3cb97e18733bb4b5f5e4a73f",
+    "lib/trading/wallet-session.mjs": "d2efaaf8e73d696c5b86e2cbb7c6ed1c5feb61aa76ac99feeacfc032f46130ea",
+    "lib/trading/wallet-transaction.mjs": "f6ecd3314c3a9906def29b99970e8608434549a9f35c3c8c2bae20f361e622e5",
+    "lib/trading/swap-attempt.mjs": "c9a5bea5bd846c07ebf5710bd4b96f1e5f2e781ea7adcbefc6ab51012b75276b",
+    "lib/trading/swap-lifecycle.mjs": "199472d6dbe887417c62193cbacde799bbbdfddf4ce1df4816a936319c279957",
+    "lib/trading/recovery-host.mjs": "4efe4a523b1d211287e5f607745b3a5657bc89ca4385c750acd2f59027fd674d",
+    "lib/trading/observation-store.mjs": "feb52dfbc5b61e2a15da9e2be74f58b4e4e94ddb20fe456266e9f4ac8c89c288",
+    "lib/trading/recovery-evidence.mjs": "1cec6877cab709e0803869e63102042b26ede0078b16a3b8d476773e1ee11b43",
+    "package-lock.json": "a45d44f760c0dec60a7d21d6493c684d93d1bf3ee7bc8cbbc467fc105c8556cf",
+    "scripts/fixtures/trading-accounts.json": "4406dae7cba04a851b7c9ac5e783a443ab6f84fd2d99aac5c221f21d2477e036",
+    "lib/trading/engine/index.mjs": "bc4830ed8fdb39a4c41fb023a4ec3a02dabb16b9720ffd4d8f03fd6feaf434e3"
+  },
+  "acceptanceRecord": {
+    "status": "NOT_RUN",
+    "walletPublicKey": null,
+    "origin": null,
+    "browserVersion": null,
+    "extensionVersion": null,
+    "providerKind": null,
+    "manifestApprovalReference": null,
+    "manifestSha256": null,
+    "rpcIdentity": null,
+    "genesis": null,
+    "buildCommit": null,
+    "buildArtifactSha256": null,
+    "testSignOnlyApprovalReference": null,
+    "reviewId": null,
+    "messageSha256": null,
+    "publicSignature": null,
+    "temporarySignaturePreserved": null,
+    "allSignaturesVerified": null,
+    "beforeContextVerified": null,
+    "afterContextVerified": null,
+    "observedSignCalls": null,
+    "observedSendCalls": null,
+    "listenerCleanupVerified": null,
+    "rawErrorCode": null
+  },
+  "recordRules": [
+    "Null means not established, never PASS or zero.",
+    "Record contains no full signed bytes, private keys, API secrets or seed.",
+    "Documentation/checksum/capability flags do not prove provider authenticity or grant authority.",
+    "Sign-only permission is distinct from send permission and release GO.",
+    "Retired v67 probe is never retried or funded."
+  ],
+  "plan": "docs/phantom-acceptance-plan-ru.md",
+  "supersedes": "v90 readiness inventory; adds recorded v94/v95 governance observations and new owner research request; no real acceptance promoted",
+  "researchBaselineBeforeReview": "f9a4c7816f62fe95638ce297dcffb07cc2f9fce3",
+  "localProtocolEvidence": {
+    "version": 90,
+    "status": "LOCAL_PINNED_LIFECYCLE_PASS",
+    "result": "research/lower-squads-offline/lifecycle-result.json",
+    "programs": "Mainnet-read ELF for Meteora/Squads/SPL Token/Token2022/ATA",
+    "programTransactions": 93,
+    "successes": 76,
+    "expectedFailures": 17,
+    "syntheticState": true,
+    "mainnetSends": 0,
+    "realWalletPrompts": 0,
+    "sourceBuildParityProven": false,
+    "actualConfigAccessProven": false,
+    "productionBudgetOrGeometryApproved": false
+  },
+  "governanceReadback": {
+    "journalId": "LP-08",
+    "status": "PUBLIC_STATE_RECORDED_SIGNER_ACCESS_NOT_CONFIRMED",
+    "lpOperations": {
+      "snapshot": "research/lower-squads-offline/governance-snapshot-v94.json",
+      "review": "research/lower-squads-offline/governance-review-v94.json",
+      "multisig": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+      "threshold": 2,
+      "members": 3,
+      "timeLockSeconds": 43200,
+      "firstSlot": 459296308,
+      "lastSlot": 459296533
+    },
+    "treasury": {
+      "snapshot": "research/lower-squads-offline/treasury-snapshot-v95.json",
+      "review": "research/lower-squads-offline/treasury-review-v95.json",
+      "multisig": "Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz",
+      "threshold": 3,
+      "members": 5,
+      "timeLockSeconds": 172800,
+      "firstSlot": 459307036,
+      "lastSlot": 459307215
+    },
+    "signerAccessConfirmed": false,
+    "oldReturnControllersRefreshed": false,
+    "realFundingApproved": false,
+    "observationScope": "Single RPC, recorded finalized slots and known retained account layouts; not live signer availability or future execution permission."
+  },
+  "newOwnerResearchRequest": {
+    "intake": "docs/lp-v29-request-intake.json",
+    "status": "V29_MATHEMATICAL_CLASSIFICATION_COMPLETE_OWNER_ONE_POLICY_APPLIED",
+    "mathematicalCases": 54,
+    "constructivePaths": 12,
+    "infeasibilityCertificates": 42,
+    "currentFXFeasibleCases": 4,
+    "currentFXFeasibleScope": "TWO MIN/IDEAL with retention90/100 percent only",
+    "ONEPolicyApproved": "RESEARCH_ONLY_UNIFORM_DERIVED_LOWER",
+    "artifact": "PLOV_v29_FINAL.zip",
+    "artifactSHA256": "92ecd7abf674d772c2d29ccd858f761c88b79a95bbc896b0624f3c66b2508989",
+    "mathematicalResearchComplete": true,
+    "offlineV29Q64Mapping": "PASS_206_SDK_564_INDEPENDENT_CHECKS_12_CASES",
+    "exactV29NativeRuntimeAcceptance": "LOCAL_DIRECT_SIGNER_RESEARCH_PASS_REAL_CONFIG_OPEN",
+    "exactV29NativeReview": "research/lower-squads-offline/v29-native-review.json",
+    "exactV29SquadsInitializationAndFeeCustody": "LOCAL_SYNTHETIC_PASS_REAL_CONFIG_OPEN",
+    "exactV29SquadsReview": "research/lower-squads-offline/v29-squads-review.json",
+    "productionActivationPoint": null,
+    "automaticBothPoolsReadyGuard": false,
+    "productionActivationFailureProcedure": "LOCAL_ATOMIC_ALTERNATIVE_PASS_PRODUCTION_ADOPTION_OPEN",
+    "exactV29NativeTransactions": 246,
+    "exactV29NativeExpectedFailures": 12,
+    "runtimeOrLaunchAcceptanceGranted": false,
+    "estimatedDeadlineDushanbe": "2026-10-21T18:00:00+05:00",
+    "productionBudgetOrGeometryApproved": false,
+    "activationFailureReview": "research/lower-squads-offline/v29-activation-review.json",
+    "safePrestartAbortProven": false,
+    "independentCreatorOnlyStopDesign": "BLOCKED_AS_DOCUMENTED_V103",
+    "atomicDualInitializationReview": "research/lower-squads-offline/v29-atomic-review.json",
+    "productionAtomicDesignApproved": false,
+    "TreasuryLPFundingHandoff": "LOCAL_SYNTHETIC_PASS_REAL_FUNDING_OPEN",
+    "TreasuryLPFundingReview": "research/lower-squads-offline/v29-funding-review.json",
+    "productionFundingApproved": false,
+    "productionAcceptancePacket": "docs/lp-build-runner-v110-ru.md",
+    "productionAcceptancePacketStatus": "AUTHORITY_SELECTED_ACTUAL_CONFIG_OPEN",
+    "configPoolCreatorAuthorityApproved": true,
+    "approvedConfigPoolCreatorAuthority": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+    "configAuthorityApprovalReference": "docs/lp-config-authority-approval-v107.json"
+  },
+  "publicFirstWorkflow": {
+    "reference": "docs/lp-public-first-v108-ru.md",
+    "supportReplyRequiredToContinue": false,
+    "externalInquiryOptional": true,
+    "nextAction": "PUBLIC_CONFIG_SCAN_AND_COMPATIBLE_PERMISSIONLESS_PATH_REVIEW",
+    "publicDocumentationIsNotIssuedConfig": true
+  },
+  "publicConfigReview": "research/lower-squads-offline/public-config-review-v108.json",
+  "sourceBuildReview": "research/lower-squads-offline/source-build-review-v109.json",
+  "sourceBuildParityProven": false,
+  "sourceBuildPreparation": {
+    "human": "docs/lp-build-runner-v110-ru.md",
+    "plan": "research/lower-squads-offline/build-plan-v110.json",
+    "runner": "research/lower-squads-offline/build-compare-v110.py",
+    "capability": "research/lower-squads-offline/build-runner-capability-v110.json",
+    "checks": "research/lower-squads-offline/build-tool-checks-v110.json",
+    "status": "PREPARED_DOCKER_BUILD_NOT_RUN",
+    "buildsRun": 0,
+    "sourceBuildParityProven": false,
+    "currentChainRechecked": false,
+    "requiredRunner": "linux/amd64 Docker daemon + Git + checksum-pinned CLI0.5.2",
+    "supportReplyRequired": false,
+    "sandboxCapability": "research/lower-squads-offline/build-sandbox-capability-v110.json",
+    "checkRunnerScript": "research/lower-squads-offline/check-build-tool-v110.py"
+  }
+}

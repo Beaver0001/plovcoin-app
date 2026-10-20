@@ -1,0 +1,12 @@
+{
+  "version": 110,
+  "buildPerformed": false,
+  "productionAccepted": false,
+  "MAINNET_GO": "NO",
+  "cliVersion": "solana-verify 0.5.2",
+  "cliSHA256": "b9d5ccce9634dc14269cab3e7a58649bc141b3306e7735a94478c936341f211f",
+  "dockerExecutable": null,
+  "gitExecutable": "/usr/local/bin/git",
+  "dockerServerPlatform": null,
+  "readyForCandidateBuild": false
+}

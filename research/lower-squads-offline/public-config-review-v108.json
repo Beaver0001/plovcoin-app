@@ -1,0 +1,111 @@
+{
+  "version": 108,
+  "status": "PUBLIC_READ_NOT_PRODUCTION_ACCEPTANCE",
+  "capturedAt": "2026-10-20T21:08:05.331Z",
+  "slot": 459373645,
+  "total": 764,
+  "counts": {
+    "publicStatic": 672,
+    "privateStatic": 20,
+    "dynamic": 72,
+    "publicDynamic": 0,
+    "approvedAuthorityDynamic": 0
+  },
+  "publicStaticRanges": {
+    "0:340282366920938463463374607431768211455": 520,
+    "4295048016:79226673521066979257578248091": 152
+  },
+  "snapshotSHA256": "50451c3a49deb6a14b88b44197feaf26b297aed02fe46e464aa2967c1502ca97",
+  "customizable": {
+    "address": "64CgrpfD1mirgn7jea22wT8sJgnHwqTPTzZksYUC6ZsR",
+    "seeds": "cpool + sorted mint pair; no config/range/authority seed",
+    "twoDistinctCustomizablePoolsForSamePair": false,
+    "scope": "Pinned SDK 1.5.1 PDA derivation, not a new native execution test"
+  },
+  "supportReplyRequiredToContinue": false,
+  "actualConfigAccepted": false,
+  "MAINNET_GO": "NO",
+  "limitations": [
+    "One RPC, finalized retained-account scan with dataSize328; not cryptographic completeness, future availability, other layouts or historical issuance proof.",
+    "No current ProgramData/ELF/source-build parity check in this scan.",
+    "Public static bounds must match LOWER geometry; existence alone is insufficient.",
+    "Local verifier still intentionally requires approved private authority; public config would need separately reviewed acceptance."
+  ],
+  "researchLowerRangeCompatibility": [
+    {
+      "id": "TWO_MIN_90_minus30",
+      "sqrtMin": "26443398270205962",
+      "sqrtMax": "26504380350970107",
+      "publicStaticRangeMatches": 0
+    },
+    {
+      "id": "TWO_MIN_90_current",
+      "sqrtMin": "22124134298401648",
+      "sqrtMax": "22175155567711880",
+      "publicStaticRangeMatches": 0
+    },
+    {
+      "id": "TWO_MIN_90_plus30",
+      "sqrtMin": "19404149406638859",
+      "sqrtMax": "19448898020042622",
+      "publicStaticRangeMatches": 0
+    },
+    {
+      "id": "TWO_MIN_100_minus30",
+      "sqrtMin": "26443398270205962",
+      "sqrtMax": "26504380350970107",
+      "publicStaticRangeMatches": 0
+    },
+    {
+      "id": "TWO_MIN_100_current",
+      "sqrtMin": "22124134298401648",
+      "sqrtMax": "22175155567711880",
+      "publicStaticRangeMatches": 0
+    },
+    {
+      "id": "TWO_MIN_100_plus30",
+      "sqrtMin": "19404149406638859",
+      "sqrtMax": "19448898020042622",
+      "publicStaticRangeMatches": 0
+    },
+    {
+      "id": "TWO_IDEAL_90_minus30",
+      "sqrtMin": "26420430595012535",
+      "sqrtMax": "26504380350970107",
+      "publicStaticRangeMatches": 0
+    },
+    {
+      "id": "TWO_IDEAL_90_current",
+      "sqrtMin": "22104918162664889",
+      "sqrtMax": "22175155567711880",
+      "publicStaticRangeMatches": 0
+    },
+    {
+      "id": "TWO_IDEAL_90_plus30",
+      "sqrtMin": "19387295740690843",
+      "sqrtMax": "19448898020042622",
+      "publicStaticRangeMatches": 0
+    },
+    {
+      "id": "TWO_IDEAL_100_minus30",
+      "sqrtMin": "26420430595012535",
+      "sqrtMax": "26504380350970107",
+      "publicStaticRangeMatches": 0
+    },
+    {
+      "id": "TWO_IDEAL_100_current",
+      "sqrtMin": "22104918162664889",
+      "sqrtMax": "22175155567711880",
+      "publicStaticRangeMatches": 0
+    },
+    {
+      "id": "TWO_IDEAL_100_plus30",
+      "sqrtMin": "19387295740690843",
+      "sqrtMax": "19448898020042622",
+      "publicStaticRangeMatches": 0
+    }
+  ],
+  "sdkEntrySHA256": "2849b3517e0c0418e8cce2f0cb265e5d5f740bf72672eb66096488188940391b",
+  "publicCompatiblePathFoundForCurrentTwoPoolDesign": false,
+  "nextIndependentWork": "Current program/source-build parity and production acceptance preparation; no support reply required. Actual compatible config remains an execution prerequisite, not an information request."
+}

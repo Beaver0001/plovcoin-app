@@ -1,0 +1,80 @@
+{
+  "atUTC": "2026-10-20T09:45:56.283374+00:00",
+  "rpc": "https://api.mainnet-beta.solana.com",
+  "genesis": "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d",
+  "programs": [
+    {
+      "name": "meteora",
+      "program": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+      "programData": "AUh8bm2XsMfex3KjYGcM3G4uBqUNSDw6HEhWaWMYnyPH",
+      "deploymentSlot": 457080014,
+      "accountReadSlot": 459181480,
+      "programReadSlot": 459181440,
+      "elfBytes": 2174352,
+      "elfSha256": "967ff9fb161eec2e62f66d2c899100739fb747c445f697b8625c86b31b9a2022",
+      "programDataSha256": "69d693fb7554fbfb21c50d7bb6327b284563347391a4f94056e029363863f810",
+      "loader": "BPFLoaderUpgradeab1e11111111111111111111111"
+    },
+    {
+      "name": "squads",
+      "program": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+      "programData": "Fy3YMJCvwbAXUgUM5b91ucUVA3jYzwWLHL3MwBqKsh8n",
+      "deploymentSlot": 302582236,
+      "accountReadSlot": 459181480,
+      "programReadSlot": 459181440,
+      "elfBytes": 1470416,
+      "elfSha256": "dec8d3e0fae58c7c8f2416e5f67c25e673f047afd6dd2bba4a47e0b29a01d34c",
+      "programDataSha256": "e1c596fdcf397686dfa67cc568c8c2e4696a1ef6949de4c2d251527913af7f1e",
+      "loader": "BPFLoaderUpgradeab1e11111111111111111111111"
+    },
+    {
+      "name": "ata",
+      "program": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+      "loader": "BPFLoader2111111111111111111111111111111111",
+      "programData": null,
+      "deploymentSlot": null,
+      "accountReadSlot": 459185138,
+      "programReadSlot": 459185138,
+      "elfBytes": 105032,
+      "elfSha256": "6804554e69fd3a58caa191dc4a58f4c67223d30ca28ab8987f39fc18d2f7374d",
+      "programDataSha256": null
+    },
+    {
+      "name": "spl_token",
+      "program": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "loader": "BPFLoaderUpgradeab1e11111111111111111111111",
+      "programData": "3gvYRKWyXRR9xKWe1ZjPhLY5ZJRN7KDB4rFZFGoJfFk2",
+      "deploymentSlot": 419472000,
+      "accountReadSlot": 459185174,
+      "programReadSlot": 459185138,
+      "elfBytes": 108600,
+      "elfSha256": "8190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f697",
+      "programDataSha256": "573971c9baedda479bf4c38537787ae396358009b4920f8a270bd2b31dde5fe3"
+    },
+    {
+      "name": "token2022",
+      "program": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "loader": "BPFLoaderUpgradeab1e11111111111111111111111",
+      "programData": "DoU57AYuPFu2QU514RktNPG22QhApEjnKxnBcu4BHDTY",
+      "deploymentSlot": 427147035,
+      "accountReadSlot": 459185174,
+      "programReadSlot": 459185138,
+      "elfBytes": 1382016,
+      "elfSha256": "0999dbf708971e723b08d1caafc988826a59c6001ed6dc02260da07defbe1469",
+      "programDataSha256": "4bba6bf1da06a44b467038e2df01ae41199f97d9072888ce9856694ea8b2eec1"
+    }
+  ],
+  "note": "Two read-only finalized snapshots, one RPC; different contexts, not atomic; no source/build parity proof.",
+  "snapshots": [
+    {
+      "atUTC": "2026-10-20T09:32:28.944172+00:00",
+      "programReadSlot": 459181440,
+      "programDataReadSlot": 459181480
+    },
+    {
+      "atUTC": "2026-10-20T09:45:56.283374+00:00",
+      "programReadSlot": 459185138,
+      "programDataReadSlot": 459185174
+    }
+  ]
+}

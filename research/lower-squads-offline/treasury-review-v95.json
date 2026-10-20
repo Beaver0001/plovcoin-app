@@ -1,0 +1,51 @@
+{
+  "version": 95,
+  "status": "OFFLINE_SNAPSHOT_READBACK_PASS",
+  "snapshotCapturedAt": "2026-10-20T17:08:39.884Z",
+  "multisig": "Fg5AiXSjZrnUUmNTDQH47WBtAhtTXiM6yX66fFw4UNBz",
+  "vault": "3w5DmerxzYfMhVLHsdjHn5BU194u3R9DD5HaD7rr5VRm",
+  "threshold": 3,
+  "members": 5,
+  "timeLockSeconds": 172800,
+  "autonomous": true,
+  "spendingLimitAccounts": 0,
+  "proposalReadSlot": 459307072,
+  "proposals": [
+    {
+      "index": "1",
+      "kind": "ConfigTransaction",
+      "status": "Executed",
+      "indexAtOrBelowStale": true,
+      "assessment": "TERMINAL_STATUS",
+      "actions": [
+        {
+          "__kind": "SetTimeLock",
+          "newTimeLock": 172800
+        }
+      ]
+    },
+    {
+      "index": "2",
+      "kind": "VaultTransaction",
+      "status": "Executed",
+      "indexAtOrBelowStale": false,
+      "assessment": "TERMINAL_STATUS"
+    }
+  ],
+  "approvedVaultProposals": 0,
+  "staleApprovedConfigProposals": 0,
+  "programElfMatchesV90": true,
+  "sourceRule": "ConfigTransactionExecute requires proposal.transaction_index > multisig.stale_transaction_index; approved vault execution does not apply that same stale check.",
+  "sourceCommit": "af94153ff77a28b6effe46b9c94baaa93742b48c",
+  "sourceBuildParity": "NOT_PROVEN",
+  "signerAvailability": "NOT_CONFIRMED",
+  "networkSends": 0,
+  "walletPrompts": 0,
+  "MAINNET_GO": "NO",
+  "limits": "Only Treasury and its retained known-layout accounts at recorded slots; not availability of signing keys, historical transaction completeness, independent RPC proof or funding authorization.",
+  "subject": "treasury",
+  "addressSources": [
+    "https://drive.google.com/file/d/152Asad6U-ccmpYCjATOLHt1ZwFUUVB81/view",
+    "https://drive.google.com/file/d/18m1PjWRrOA9BZatFq8FzZ6kcTGilGmu7/view"
+  ]
+}

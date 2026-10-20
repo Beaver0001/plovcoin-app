@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "version": 109,
+  "kind": "CURRENT_REVIEW_OVERLAY_NOT_RUNTIME_MANIFEST",
+  "status": "AUTHORITY_SELECTED_ACTUAL_CONFIG_OPEN",
+  "dateDushanbe": "2026-10-21",
+  "basePacket": {
+    "path": "docs/lp-production-acceptance-v106.json",
+    "sha256": "a7bc8f4b47b4fd19718ec57054b0bfb719b8796e5ec41ceb47cd9daa75f8f402",
+    "commit": "160777108ba8d8e11bd0d3c1c69c02de71f855d0",
+    "historical": true
+  },
+  "authorityDecision": {
+    "approvalRecord": "docs/lp-config-authority-approval-v107.json",
+    "approvedAuthority": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+    "candidateMultisig": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+    "scope": "IDENTITY_SELECTION_ONLY"
+  },
+  "effectiveRequirementChanges": [
+    {
+      "id": "A01",
+      "previousStatus": "OWNER_DECISION",
+      "status": "CLOSED_AUTHORITY_SELECTION_ONLY",
+      "evidence": "docs/lp-config-authority-approval-v107.json"
+    }
+  ],
+  "remainingRequirementIds": [
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "A08",
+    "A09",
+    "A10",
+    "A11",
+    "A12",
+    "A13",
+    "A14"
+  ],
+  "otherProposedRolesAccepted": false,
+  "productionAtomicDesignApproved": false,
+  "actualConfig": {
+    "status": "NOT_RUN",
+    "authorityOnIssuedAccount": null,
+    "address": null,
+    "index": null,
+    "issuer": null,
+    "issuanceTransaction": null,
+    "historicalOperatorProof": null,
+    "finalizedSlot": null,
+    "readbackSHA256": null
+  },
+  "currentInquiry": "docs/lower-config-inquiry.json",
+  "requestDraft": "docs/lower-config-issuance-request-v107-ru.md",
+  "requestStatus": "DRAFT_NOT_SENT",
+  "readyForIssuance": false,
+  "readyForWalletTest": false,
+  "readyForNetworkSend": false,
+  "externalMessagesSent": 0,
+  "networkSends": 0,
+  "realWalletPrompts": 0,
+  "productionInputsRemainNull": true,
+  "ownerDeferred": [
+    "budget",
+    "geometry",
+    "T0",
+    "60PLOV return before POOL_CREATE"
+  ],
+  "nextStep": "Prepare independent reproducible production build comparison in a capable runner; local-feature CI and Otter nonverification do not close parity. Continue independent payer/signer/ALT/message acceptance preparation; support reply is not a prerequisite.",
+  "MAINNET_GO": "NO",
+  "previousOverlay": {
+    "path": "docs/lp-production-acceptance-v108.json",
+    "sha256": "b8af062da26973dbbf5f64142f792d3acdfd5aae8f3e0dc79706cd121eafcced"
+  },
+  "workflowPolicy": {
+    "reference": "docs/lp-public-first-v108-ru.md",
+    "supportReplyRequiredToContinue": false,
+    "externalInquiryOptional": true,
+    "nextAction": "PUBLIC_CONFIG_SCAN_AND_COMPATIBLE_PERMISSIONLESS_PATH_REVIEW",
+    "publicDocumentationIsNotIssuedConfig": true
+  },
+  "publicConfigReview": "research/lower-squads-offline/public-config-review-v108.json",
+  "sourceBuildReview": "research/lower-squads-offline/source-build-review-v109.json",
+  "sourceBuildParityProven": false,
+  "freshProgramPinScope": "METEORA_ONLY_NOT_ALL_PROGRAMS"
+}

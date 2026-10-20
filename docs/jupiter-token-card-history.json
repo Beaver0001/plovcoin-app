@@ -1,0 +1,52 @@
+{
+  "reviewDateDushanbe": "2026-10-20",
+  "mint": "B4LhtMwbKh8D1nfj7dE6FefKpg7U2qkbYC371DBcJq9x",
+  "scope": "Jupiter token directory card, logo and metadata; excludes routing/quote/LP tests",
+  "finding": "NO_CONFIRMED_SUBMISSION_OR_CARD_MUTATION_FOUND_IN_REVIEWED_HISTORY",
+  "currentLiquidityWork": {
+    "JupiterCardSubmissions": 0,
+    "JupiterCardLogoOrMetadataChanges": 0,
+    "account": null,
+    "submissionDate": null,
+    "ticketOrApplicationURL": null
+  },
+  "historicalAttribution": {
+    "initialJupiterCardCreator": "UNKNOWN",
+    "initialIconSubmitter": "UNKNOWN",
+    "earlierCodexSubmission": "NOT_ESTABLISHED",
+    "automaticImportForThisMint": "NOT_ESTABLISHED",
+    "limits": "Search of accessible history/docs and current repository is not an exhaustive audit of every account or all past sessions. Absence of a retained submission is not proof that nobody submitted."
+  },
+  "evidence": [
+    {
+      "url": "https://drive.google.com/file/d/1PNsn_Kjy-TryQf5l1pTwg5VNktIsrdYW/view",
+      "finding": "v46 describes offline SDK diagnostics, not Jupiter submission or card edit."
+    },
+    {
+      "url": "https://drive.google.com/file/d/1BkKw3DX_VVWEqgk21uw8-hbqby5VfPFE/view",
+      "finding": "Reviewed routing_probe source explicitly outputs jupiter_API_requests=0 and network_requests=0."
+    },
+    {
+      "url": "https://drive.google.com/file/d/1l4V4Whk5l-giwn4lgkbA-7-l6fmSWNGb/view",
+      "finding": "Launch work pack describes metadata/quote/routing checks; does not confirm a card application."
+    },
+    {
+      "url": "https://docs.google.com/document/d/1bIrRPGUdZXsv1B-qAdgHcVjoAForkTbLy17FzNUTj-0/edit",
+      "finding": "Existing20Oct CoS package says no unilateral Jupiter/on-chain mutation; LP-team attribution is not established. This is retained report evidence, not a fresh Jupiter server audit."
+    }
+  ],
+  "priorClaimsNotAcceptedAsProof": [
+    "Plans/instructions to apply are not proof of submission.",
+    "Historical Solana Token List/Solscan drafts are different services and do not establish Jupiter submission.",
+    "A token creator/developer wallet does not identify the Jupiter card submitter.",
+    "API icon presence does not establish who submitted or updated it."
+  ],
+  "changesMadeByThisReview": {
+    "JupiterCard": false,
+    "onChainMetadata": false,
+    "tokenAuthority": false,
+    "website": false,
+    "externalMessages": false
+  },
+  "MAINNET_GO": "NO"
+}

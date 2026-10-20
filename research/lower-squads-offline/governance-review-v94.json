@@ -1,0 +1,59 @@
+{
+  "version": 94,
+  "status": "OFFLINE_SNAPSHOT_READBACK_PASS",
+  "snapshotCapturedAt": "2026-10-20T16:30:11.173Z",
+  "multisig": "9CcvfhksgjsQhK7fi4S7Mjv4gaCMNDpDiqGgS4CduA7B",
+  "vault": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK",
+  "threshold": 2,
+  "members": 3,
+  "timeLockSeconds": 43200,
+  "autonomous": true,
+  "spendingLimitAccounts": 0,
+  "proposalReadSlot": 459296354,
+  "proposals": [
+    {
+      "index": "1",
+      "kind": "ConfigTransaction",
+      "status": "Approved",
+      "indexAtOrBelowStale": true,
+      "assessment": "STALE_CONFIG_BLOCKED_BY_INDEX",
+      "actions": [
+        {
+          "__kind": "SetRentCollector",
+          "newRentCollector": "2bfo1Z7kfFu5BgmjCNCK5jAPqzV8emB39gCag62gravK"
+        }
+      ]
+    },
+    {
+      "index": "2",
+      "kind": "ConfigTransaction",
+      "status": "Executed",
+      "indexAtOrBelowStale": true,
+      "assessment": "TERMINAL_STATUS",
+      "actions": [
+        {
+          "__kind": "SetTimeLock",
+          "newTimeLock": 43200
+        }
+      ]
+    },
+    {
+      "index": "3",
+      "kind": "VaultTransaction",
+      "status": "Executed",
+      "indexAtOrBelowStale": false,
+      "assessment": "TERMINAL_STATUS"
+    }
+  ],
+  "approvedVaultProposals": 0,
+  "staleApprovedConfigProposals": 1,
+  "programElfMatchesV90": true,
+  "sourceRule": "ConfigTransactionExecute requires proposal.transaction_index > multisig.stale_transaction_index; approved vault execution does not apply that same stale check.",
+  "sourceCommit": "af94153ff77a28b6effe46b9c94baaa93742b48c",
+  "sourceBuildParity": "NOT_PROVEN",
+  "signerAvailability": "NOT_CONFIRMED",
+  "networkSends": 0,
+  "walletPrompts": 0,
+  "MAINNET_GO": "NO",
+  "limits": "Only this LP multisig and retained known-layout accounts at recorded slots; not Treasury, historical transaction completeness, independent RPC proof or future execution authorization."
+}

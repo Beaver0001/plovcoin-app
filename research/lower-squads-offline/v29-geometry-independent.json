@@ -1,0 +1,19 @@
+{
+  "status": "PASS_INDEPENDENT_INTEGER_ORACLE",
+  "checks": 564,
+  "candidateCases": 12,
+  "poolLegs": 24,
+  "primaryFXCases": 4,
+  "inputSHA256": "3c2f701ac22d250c35198f3c4270c984ff97f78112ecd2b7cb3cebd21fd672d8",
+  "sdkResultSHA256": "346e58abfcf6f7629da0d86f978bbd795fb457bd83407a3903c73da13fa595ee",
+  "maxRelativePriceFloorError": "250469179470831496484884756834765582016279120431/2772562528961970635254995673689789637779232332070975235273261056",
+  "maxRelativeVirtualCoefficientError": "2582519848493272117718897/972444901002131100000000000000000000",
+  "maxSeedBudgetDeficitLamports": "12655/13494",
+  "allSqrtFloorsExact": true,
+  "initialAtomicBudgetsExceeded": false,
+  "allDisplayedProductsFitU256": true,
+  "fullAtomicPathReplay": "NOT_RUN",
+  "nativeExecution": "NOT_RUN",
+  "realConfigAccepted": false,
+  "MAINNET_GO": "NO"
+}

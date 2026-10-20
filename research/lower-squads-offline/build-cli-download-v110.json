@@ -1,0 +1,17 @@
+{
+  "assets": [
+    {
+      "name": "solana-verify-0.5.2-linux",
+      "url": "https://github.com/solana-foundation/solana-verifiable-build/releases/download/v0.5.2/solana-verify-0.5.2-linux",
+      "bytes": 17532896,
+      "sha256": "b9d5ccce9634dc14269cab3e7a58649bc141b3306e7735a94478c936341f211f"
+    },
+    {
+      "name": "solana-verify-0.5.2-linux.sha256",
+      "url": "https://github.com/solana-foundation/solana-verifiable-build/releases/download/v0.5.2/solana-verify-0.5.2-linux.sha256",
+      "bytes": 92,
+      "sha256": "e72ee837ee95c845d59065fcdb9896ea459347ef88e6d73f8f1e082ca6ce235b"
+    }
+  ],
+  "checksumMatches": true
+}

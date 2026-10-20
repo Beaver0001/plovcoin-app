@@ -1,0 +1,101 @@
+{
+  "atUTC": "2026-10-20T09:50:15.339253+00:00",
+  "kind": "READ_ONLY_EXTERNAL_REGISTRY_CLAIMS_NOT_INDEPENDENT_BUILD",
+  "results": [
+    {
+      "name": "meteora",
+      "url": "https://verify.osec.io/status/cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+      "httpStatus": 200,
+      "response": {
+        "is_verified": false,
+        "message": "On chain program not verified",
+        "on_chain_hash": "",
+        "executable_hash": "",
+        "repo_url": "",
+        "commit": "",
+        "last_verified_at": null,
+        "is_frozen": false,
+        "is_closed": false
+      },
+      "fixtureFullSha256": "967ff9fb161eec2e62f66d2c899100739fb747c445f697b8625c86b31b9a2022",
+      "fixtureTrailingZerosTrimmedSha256": "0712ca6d350757b9a71a0ea40da8fe9d5b48fca044f2deae0b65a33320e6a59b",
+      "registryOnChainHashMatchesTrimmedFixture": false
+    },
+    {
+      "name": "squads",
+      "url": "https://verify.osec.io/status/SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+      "httpStatus": 200,
+      "response": {
+        "is_verified": false,
+        "message": "On chain program not verified",
+        "on_chain_hash": "d48660833989ecea3145ff726164fe640bd90696f03ce00dfd0cda258cbf2fac",
+        "executable_hash": "",
+        "repo_url": "https://github.com/Squads-Protocol/v4/tree/3742e5521a3e833f24a4c6bc024dd1aa5385d010",
+        "commit": "3742e5521a3e833f24a4c6bc024dd1aa5385d010",
+        "last_verified_at": null,
+        "is_frozen": true,
+        "is_closed": false
+      },
+      "fixtureFullSha256": "dec8d3e0fae58c7c8f2416e5f67c25e673f047afd6dd2bba4a47e0b29a01d34c",
+      "fixtureTrailingZerosTrimmedSha256": "d48660833989ecea3145ff726164fe640bd90696f03ce00dfd0cda258cbf2fac",
+      "registryOnChainHashMatchesTrimmedFixture": true
+    },
+    {
+      "name": "ata",
+      "url": "https://verify.osec.io/status/ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+      "httpStatus": 200,
+      "response": {
+        "is_verified": false,
+        "message": "On chain program not verified",
+        "on_chain_hash": "",
+        "executable_hash": "",
+        "repo_url": "",
+        "commit": "",
+        "last_verified_at": null,
+        "is_frozen": false,
+        "is_closed": false
+      },
+      "fixtureFullSha256": "6804554e69fd3a58caa191dc4a58f4c67223d30ca28ab8987f39fc18d2f7374d",
+      "fixtureTrailingZerosTrimmedSha256": "e93ab1ff110697630b0814bd49980a3b85f8890fa5a574c439eace3120522b5c",
+      "registryOnChainHashMatchesTrimmedFixture": false
+    },
+    {
+      "name": "spl_token",
+      "url": "https://verify.osec.io/status/TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "httpStatus": 200,
+      "response": {
+        "is_verified": true,
+        "message": "On chain program verified",
+        "on_chain_hash": "435df1e70f1ca6258eb01a4507701688c7f1a22656e3e4ef361db473bf478075",
+        "executable_hash": "435df1e70f1ca6258eb01a4507701688c7f1a22656e3e4ef361db473bf478075",
+        "repo_url": "https://github.com/solana-program/token/tree/a94dd19750dc3b2409f73e15bb74754935b2a489",
+        "commit": "a94dd19750dc3b2409f73e15bb74754935b2a489",
+        "last_verified_at": "2026-06-04T03:10:01.260080",
+        "is_frozen": true,
+        "is_closed": false
+      },
+      "fixtureFullSha256": "8190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f697",
+      "fixtureTrailingZerosTrimmedSha256": "435df1e70f1ca6258eb01a4507701688c7f1a22656e3e4ef361db473bf478075",
+      "registryOnChainHashMatchesTrimmedFixture": true
+    },
+    {
+      "name": "token2022",
+      "url": "https://verify.osec.io/status/TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "httpStatus": 200,
+      "response": {
+        "is_verified": true,
+        "message": "On chain program verified",
+        "on_chain_hash": "7ea94a027005b39196fa08e6d0ddcd55ec32eb43266179921a834a1ba2eb1947",
+        "executable_hash": "7ea94a027005b39196fa08e6d0ddcd55ec32eb43266179921a834a1ba2eb1947",
+        "repo_url": "https://github.com/solana-program/token-2022/tree/9bc02757f600ffe754746708a8a072bcd49d1260",
+        "commit": "9bc02757f600ffe754746708a8a072bcd49d1260",
+        "last_verified_at": "2026-09-16T15:34:08.767174",
+        "is_frozen": false,
+        "is_closed": false
+      },
+      "fixtureFullSha256": "0999dbf708971e723b08d1caafc988826a59c6001ed6dc02260da07defbe1469",
+      "fixtureTrailingZerosTrimmedSha256": "7ea94a027005b39196fa08e6d0ddcd55ec32eb43266179921a834a1ba2eb1947",
+      "registryOnChainHashMatchesTrimmedFixture": true
+    }
+  ]
+}
