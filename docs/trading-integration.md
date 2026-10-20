@@ -897,3 +897,17 @@ The target installed-Phantom record remains NOT_RUN/null; real manifest/config,
 production host/provider selection, storage policy, full production wiring,
 real-chain acceptance, applicable audit and release GO remain open. Synthetic
 provider events do not prove installed extension behavior. **LP-15 OPEN; MAINNET_GO=NO.**
+
+
+### v85: current read-only config evidence
+
+The [current LP-03/09 evidence](lp-config-current-evidence-ru.md) replaces reliance
+on the historical v41 snapshot for today's config-access assessment. At finalized
+slots459073875–459074032,764 configs/2 operators were decoded and PDA-checked;
+public static ranges are full-range only, public dynamic0, and no config/operator
+belongs to the8 explicitly checked authority candidates. Known-layout PLOV pool
+scans return0; customizable PDA is null at the recorded slot. These are scoped
+single-RPC observations, not future/global absence or crypto-proof of completeness.
+The deployed ELF hash still matches the recorded historical ELF; source/build
+parity is unproved. Actual authority/config issuance, market manifest and launch
+remain open. No runtime change/build/test/sign/simulate/send occurs in v85.
