@@ -614,6 +614,7 @@ Real wallet acceptance, current approved pools/manifest/RPC, production UI wirin
 quota/conflict policy and separate release authorization remain open.
 **LP-15 remains OPEN; MAINNET_GO=NO; TRADE_LAUNCH_ENABLED=false.**
 
+
 ### v78: read-only recovery panel (unmounted)
 
 `SwapRecoveryPanel` accepts only the controller's `recover` and `reconcile`
@@ -757,3 +758,46 @@ synthetic fetch responses; they do not add real-chain or disk-exhaustion proof.
 Production policy/limits, durable treatment of unsaved answers, quota/conflict
 operations, real Phantom/chain acceptance and separate launch GO remain open.
 **LP-15 remains OPEN; MAINNET_GO=NO; TRADE_LAUNCH_ENABLED=false.**
+
+### v81: explicit local evidence export and offline integrity check
+
+The unmounted rehearsal host view offers a manual JSON download using only
+source.recover. Rendering/SSR, including development StrictMode effect replay,
+does not read storage, query RPC, upload, write or download. The export includes
+public receipt fields, explicit recovered floors and complete saved observation
+histories. Source changes/unmount invalidate pending work; synchronous duplicate
+clicks share the busy lock. Object URLs are revoked after initiating download.
+The UI says the file was prepared, not that the user saved it successfully.
+
+createRecoveryEvidence copies/validates before hashing awaits, replays every
+saved history with projectObservationRecord and rejects mismatched identity,
+projection, dispositions, floor, duplicate intents and unexpected fields.
+Only the defined public schema is serialized; endpoint URLs/configuration,
+arbitrary errors, signed transaction bytes and volatile UI attention are absent.
+Rows sort deterministically. The entire operation rejects, without truncation,
+above 1000 rows, 10000 saved events or 4MiB canonical JSON output. These are
+export bounds, not retention limits or a memory bound on upstream recover.
+
+The version1 envelope contains a canonical saved-local-snapshot payload and
+SHA256 of its compact canonical UTF8 JSON. verifyRecoveryEvidence checks bounds,
+strict schema, replay, digest and the exact generated pretty-JSON/newline format.
+Duplicate JSON keys, changed whitespace/order, unknown fields and modified
+content therefore reject. It does no network/storage access and exposes no
+import/restore/send API. Parsed/verified values cannot become module-branded
+RPC observations and remain ineligible for recordObservation.
+
+A checksum is not a digital signature: anyone can change the data and compute
+a fresh digest. Successful verification proves internal consistency with that
+checksum, not RPC/source authenticity, real-chain execution, capture time or
+complete evidence. The payload always says UNSAVED_RESPONSES_UNKNOWN; a fresh
+read cannot reconstruct failed writes or volatile warnings. Controller recovery
+still joins separate databases rather than taking an atomic two-DB snapshot.
+The export is for manual analysis and cannot resolve FINALIZED_CONFLICT.
+
+test:recovery-evidence covers canonical replay/integrity and RU/EN SSR.
+test:recovery-evidence-browser runs prior lifecycle/UI/host/policy scenarios and
+adds actual Chromium downloads, independent Node SHA256 verification, rejected
+file-as-proof use, development StrictMode, duplicate clicks, fixed errors,
+source replacement/unmount and genuine read-only host wiring. It uses synthetic
+accounts/signer/RPC responses and loopback fixtures, not real Phantom/chain
+acceptance. No application route mounts the export/recovery UI.

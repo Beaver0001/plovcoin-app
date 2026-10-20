@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { SwapRecoveryPanel } from "./SwapRecoveryPanel";
+import { SwapEvidenceExport } from "./SwapEvidenceExport";
 import type { RecoverySource } from "@/lib/trading/recovery-panel";
 
 type Snapshot = Readonly<{ phase: "IDLE" | "OPENING" | "READY" | "ERROR" | "CLOSED"; cleanupFailed: boolean }>;
@@ -25,5 +26,6 @@ export function SwapRecoveryHostPanel({ host, locale = "en" }: { host: RecoveryH
       {state.cleanupFailed && <p role="alert" className="mt-3 text-sm text-gold">{ru ? "Закрытие ресурсов требует дополнительной проверки." : "Resource cleanup needs further verification."}</p>}
     </div>
     {state.phase === "READY" && <SwapRecoveryPanel source={host.source} locale={locale} />}
+    {state.phase === "READY" && <SwapEvidenceExport source={host.source} locale={locale} />}
   </div>;
 }
